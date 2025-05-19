@@ -4,18 +4,124 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-    <style>
-      body{
-        margin: 0;
-      }
-      * {
-        overflow: hidden;
-      }
-    </style>
+    <link rel="stylesheet" href="/src/styles.css">
+    <link href="https://fonts.cdnfonts.com/css/tracer" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/smooch-sans" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/jura" rel="stylesheet">
+                
+                
+              
+    <title>Winter-Nomad</title>
   </head>
   <body>
+    <div class="loading-text">
+      <h1>Loading...
+        <p class="loading-number"></p>
+      </h1>
+    </div>
+    <div class="loading-bar"></div>
+
+    <div class="section-container-div">
+      <section id="heading" class="page">
+        <h1> Hi, Am Winter Nomad</h1>
+        <h4>Lourem ipsum, Lourem ipsum</h4>
+      </section>
+
+      <section id="page1" class="page">
+        <h1>Projects</h1>
+        <div class="project-container">
+          <div class="projects-card-container">
+            <div class="card">
+              <h2>North</h2>
+              <i class="fas fa-arrow-right"></i>
+              <p>a lonely trip.</p>
+              
+              <div class="pic"></div>
+              
+              <div class="social">
+                <i class="fab fa-facebook-f">li</i>
+                <i class="fab fa-twitter">l</i>
+                <i class="fab fa-instagram">li</i>
+                <i class="fab fa-github">s</i>
+              </div>
+              
+              <button>more</button> <!-- Assuming you'll add text or icons later -->
+            </div>
+          </div>
+        </div>
+        
+      </section>
+      <section id="page2" class="page">
+          <h1>Tech Stack</h1>
+          <div class="techStack-container">
+          </div>
+      </section>      
+      <section id="page3" class="page projects">
+        <h1>Labs </h1>
+                <div class="project-container">
+          <div class="projects-card-container">
+            <div class="card">
+              <h2>North</h2>
+              <i class="fas fa-arrow-right"></i>
+              <p>a lonely trip.</p>
+              
+              <div class="pic"></div>
+              
+              <div class="social">
+                <i class="fab fa-facebook-f">li</i>
+                <i class="fab fa-twitter">l</i>
+                <i class="fab fa-instagram">li</i>
+                <i class="fab fa-github">s</i>
+              </div>
+              
+              <button>more</button> <!-- Assuming you'll add text or icons later -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="page4" class="page">
+        <h1>About me</h1>
+         <p>
+            Hi, I'm <strong>Winter-Nomad</strong> — a passionate software engineer and web developer based in Ethiopia. 
+            I bring a strong technical foundation in JavaScript, Python, C, C++, GLSL, and Go, 
+            along with hands-on experience in building scalable and engaging web applications. 
+            My toolbox includes modern technologies like React, Three.js, Vite, and Express, 
+            which I use to create both seamless user experiences and robust backend systems.
+            <br>
+            <br>
+            Throughout my journey, I’ve worked on diverse projects—from responsive websites and real-time 3D visualizations 
+            to backend services and system-level applications. I enjoy the challenge of solving complex problems and transforming ideas into well-architected, 
+            high-performance solutions.
+            <br>
+            <br>
+            I'm currently diving deeper into database systems, 
+            expanding my knowledge in data modeling, performance optimization, and system architecture. 
+            I’m driven by a constant desire to learn, improve, and collaborate with others who share a passion for impactful technology.
+            <br>
+            <br>
+            When I’m not coding, I’m exploring new ideas, 
+            reading about emerging technologies, and contributing to projects that push the boundaries of what’s possible.
+            <br>
+            <br>
+            <br>
+            “Make it work, make it right, make it fast.” – Kent Beck
+        </p>
+      </section>
+
+      <section id="page5" class="page">
+        <h1>Contact Me</h1>
+      </section>
+
+      <section id="page6" class="page">
+        <footer class="footer">
+          <p>&copy; 2025 Eyob Jemane. All rights reserved.</p>
+        </footer>
+      </section>
+    </div>
+    <!-- webgl canvas -->
     <canvas class="webgl"></canvas>
-    <script type="module" src="/main.js"></script>
+
+    <script type="module" src="/src/main.js"></script>
   </body>
 </html>

@@ -1,0 +1,400 @@
+
+body{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: #000;
+  max-width: 100%;
+}
+/* * {
+  overflow: hidden;
+} */
+
+canvas{
+  margin: 0;
+  border: 0;
+  padding: 0;
+  /* overflow: hidden; */
+  position:fixed;
+  top: 0;
+  left: 0;
+  z-index: -10;
+  outline: none;
+}
+h1, h2, h3, h4, h5, h6, p{
+  font-family: 'Tracer', sans-serif;
+  color: #fff;
+}
+
+
+/* lading configurations */
+.loading-bar{
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  width: 100%;
+  height: 2px;
+  background-color: #ffffff;
+  transform: scaleX(0);
+  transform-origin: top left;
+  transition: transform 1s;
+  will-change: transform;
+}
+.loading-bar.enabled{
+  transform: scaleX(0);
+  transform-origin: top right;
+  transition: transform 3.5s ease-in-out;
+}
+
+.loading-text{
+  position: fixed;
+  top: 50%;
+  right: 0%;
+  color: #ffffff;
+  z-index: 1;
+  transform: scaleY();
+  transform-origin: top left;
+  transition: transform 1s;
+  will-change: transform;
+}
+.loading-text.enabled{
+  transform: scaleY(0);
+  transform-origin: top right;
+  transition: transform cubic-bezier(0.39, 0.575, 0.565, 1) ease-in-out;
+}
+.loading-text h1, .loading-text p{
+  display: inline;
+  font-size: 6rch;
+}
+
+
+
+.section-container-div{
+   visibility: hidden;
+   max-height: 0;
+   max-width: 0;
+   overflow: hidden;
+}
+
+/*sections */
+.page h1{
+  font-family: 'Smooch Sans', sans-serif; 
+  font-size: 3rem;
+}
+.page p{
+  font-family: 'Jura', sans-serif;
+}
+
+section{
+  height: 100vh;
+  min-height:fit-content;
+}
+
+/***************************************heading section *******************************/
+
+
+#heading{
+  padding-top: 20vh;
+  padding-left: 50px;
+}
+
+#heading h1{
+  font-family: 'Smooch Sans', sans-serif;                                                                                   
+  font-size: 4rem;
+  max-width: 50%;
+  margin: 0;                                                                                       
+}
+#heading h4{
+  font-family: 'Jura', sans-serif;
+  font-weight: 900;
+  max-width: 30%;
+  margin: 0;
+                                              
+}
+
+/*************************************** project section *******************************/
+
+ i {
+	 opacity: 0;
+	 font-size: 18px;
+	 color: #fff;
+	 will-change: transform;
+	 -webkit-transform: scale(0.1);
+	 transform: scale(0.1);
+	 -webkit-transition: all 0.2s ease;
+	 transition: all 0.2s ease;
+}
+ .projects-card-container {
+	 width: 100%;
+	 height: 100%;
+	 display: flex;
+	 justify-content: center;
+	 align-items: center;
+	 flex-direction: column;
+}
+ .projects-card-container .card {
+	 position: relative;
+	 width: 60%;
+	 height: 270px;
+	 background-color: #fff;
+	 overflow: hidden;
+	 margin-bottom: 4px;
+}
+
+ .projects-card-container .card h2 {
+	 z-index: 99;
+	 font-family: "Poppins", sans-serif;
+	 position: absolute;
+	 bottom: 0;
+	 right: 130px;
+	 font-size: 60px;
+	 font-weight: 700;
+	 color: #fff;
+}
+ .projects-card-container .card .fa-arrow-right {
+	 z-index: 100;
+	 position: absolute;
+	 right: 75px;
+	 bottom: 25px;
+	 font-size: 40px;
+	 cursor: pointer;
+}
+ .projects-card-container .card p {
+	 z-index: 99;
+	 position: absolute;
+	 top: 20px;
+	 right: 70px;
+	 color: #333;
+	 opacity: 0.7;
+	 font-size: 12px;
+	 letter-spacing: 1px;
+	 writing-mode: vertical-lr;
+	 -webkit-transition: all 0.2s ease;
+	 transition: all 0.2s ease;
+}
+ .projects-card-container .card .pic {
+	 z-index: 100;
+	 width: 400px;
+	 height: 200px;
+	 background-image: url("https://images.unsplash.com/photo-1528785198459-ec50485704c7?ixlib=rb-0.3.5&s=3a2fc3039516555bbb2e9cd2967bd321&auto=format&fit=crop&w=1537&q=80");
+	 background-size: 100% 100%;
+	 filter: grayscale(100%);
+	 
+}
+.projects-card-container .card .social {
+	 position: absolute;
+	 left: 60px;
+	 top: 0;
+	 display: -webkit-box;
+	 display: -ms-flexbox;
+	 display: grid;
+	 -ms-flex-pack: distribute;
+	 justify-content: space-around;
+	 -webkit-box-align: center;
+	 -ms-flex-align: center;
+	 align-items: center;
+	 width: 180px;
+	 height: 64px;
+	 border-radius: 80px;
+}
+ .projects-card-container .card .social i:nth-of-type(1) {
+	 -webkit-transition-delay: 0.4s;
+	 transition-delay: 0.4s;
+}
+ .projects-card-container .card .social i:nth-of-type(2) {
+	 -webkit-transition-delay: 0.3s;
+	 transition-delay: 0.3s;
+}
+ .projects-card-container .card .social i:nth-of-type(3) {
+	 -webkit-transition-delay: 0.2s;
+	 transition-delay: 0.2s;
+}
+ .projects-card-container .card .social i:nth-of-type(4) {
+	 -webkit-transition-delay: 0.1s;
+	 transition-delay: 0.1s;
+}
+ .projects-card-container .card:hover i {
+	 opacity: 1;
+	 -webkit-transform: scale(1);
+	 transform: scale(1);
+}
+ .projects-card-container .card button {
+	 position: absolute;
+	 right: 14px;
+	 bottom: 14px;
+	 width: 30px;
+	 height: 30px;
+	 background-color: #6169665a;
+	 border: none;
+	 border-radius: 30px;
+	 cursor: pointer;
+	 outline: none;
+	 transition: all 0.3s ease;
+	 mix-blend-mode: hard-light;
+}
+ .projects-card-container .card button i {
+	 font-size: 3rem;
+}
+ .projects-card-container .card:hover button {
+	 transform: scale(16.5);
+}
+ .projects-card-container .card:hover p {
+	 color: #fff;
+}
+ .projects-card-container .card:hover .pic {
+	 filter: grayscale(0);
+}
+
+
+  .card {
+    width: 90%;
+    max-width: 100%;
+    background-color: #ffffff2f;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  /* Responsive image box */
+  
+  /* Responsive text */
+  .card h2 {
+    font-size: 2rem;
+    color: white;
+    position: relative;
+    margin-bottom: 0.5rem;
+  }
+  
+  .card p {
+    font-size: 1rem;
+    color: #333;
+    opacity: 0.8;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Social icons */
+  .card .social {
+    display: flex;
+    gap: 10px;
+    margin: 0.5rem 0;
+  }
+  
+  .card button {
+    background-color: rgb(106, 148, 106);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+  }
+  
+  /* Responsive override */
+  @media (max-width: 768px) {
+  
+    .card h2 {
+      font-size: 1.5rem;
+    }
+  
+    .card .fa-arrow-right {
+      font-size: 24px;
+      position: static;
+    }
+  
+    .card p {
+      writing-mode: horizontal-tb;
+      font-size: 0.9rem;
+    }
+  
+    .card .social {
+      flex-wrap: wrap;
+    }
+  }
+  
+  @media (max-width: 550px) {
+    .projects-card-container {
+        padding-left: 0;
+    }
+    .projects-card-container .card h2{
+        font-size: 1.5rem;
+    }
+    .card p{
+        font-size: .3rem;
+    }
+    .projects-card-container .card {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 2 / 1; /* Maintains similar height proportion */
+        box-sizing: border-box;
+    }
+    .projects-card-container .card:hover button {
+        transform: scale(10.5);
+        padding-bottom: 10px;
+    }
+  }
+
+/***************************************tech stack *******************************/
+#page2{
+  width: 50%;
+}
+.techStack-container{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.icons-container {
+  display: grid;
+  justify-content: center;
+  text-align: center;
+}
+.icons-container svg{
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  margin: 0;
+}
+
+/*************************************** about me *******************************/
+
+#page4{
+  max-width: 50%;
+}
+
+
+
+/*************************************** footer *******************************/
+
+.footer {
+  color: white;
+  padding: 1.5rem 0;
+  padding-bottom: 2px; /* equivalent to py-6 */
+  text-align: center;
+  font-size: 0.875rem; /* equivalent to text-sm */
+}
+#page6{
+	height: auto;
+}
+
+/*************************************** responsive *******************************/
+
+@media (width < 550px ){
+  .loading-text h1, .loading-text p{
+    display: block;
+    margin: 0;
+  }
+  #heading h1{                                                                                  
+    font-size: 3rem;
+    max-width: 80%;
+    margin: 0;                                                                                       
+  }
+  #heading h4{
+    max-width: 40%;
+    margin: 0;
+                                                
+  }
+  #page2{
+    width: 50%;
+  }
+  #page4{
+    max-width: 100%;
+  }
+}
