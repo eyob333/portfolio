@@ -1,4 +1,4 @@
-import { Injector } from "./Injector.js";
+import { Injector } from "/src/Injector.js";
 import projects from "./assets/porojectCards.js";
 import  labs  from "./assets/labsCards.js";
 
