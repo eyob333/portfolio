@@ -1,6 +1,6 @@
-import { Injector } from "./Injector";
-import projects from "./assets/porojectCards";
-import  labs  from "./assets/labsCards";
+import { Injector } from "./Injector.js";
+import projects from "./assets/porojectCards.js";
+import  labs  from "./assets/labsCards.js";
 
 
 class InjectorManager{

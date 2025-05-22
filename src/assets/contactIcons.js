@@ -46,5 +46,12 @@ const  discored = `
 `
 
 const instagram = `
-    
+    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#ffffff">
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_iconCarrier"><polygon points="56 20 32 12 8 20 8 52 56 52 56 20">
+            </polygon><polyline points="48 28 32 36 16 28">
+            </polyline>
+        </g>
+    </svg>
 `
