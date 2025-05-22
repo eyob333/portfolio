@@ -1,34 +1,51 @@
+
+
 const slicedModel = {
-    img: '',
+    img: '/images/Screenshot 2025-05-18 141904.png',
     link: 'https://sliced-model-shaders.vercel.app/',
     name: 'sliced model',
-    description: ''
+    description: '',
+    role: 'ffsd'
 }
 
 const sortingVizualizer = {
-    img: '',
+    img: '/images/Screenshot 2025-05-18 141904.png',
     link: 'https://sort-visualizer-zeta.vercel.app/',
     name: 'sorting vizualizer',
-    description: ''
+    description: '',
+    role: 'sdfsd'
 }
 
 const particlesMorphing = {
-    img: '',
+    img: '/images/Screenshot 2025-05-18 141904.png',
     link: 'https://particles-morphing-shader-beige.vercel.app/',
     name: 'particle morphing',
-    description: ''
+    description: '',
+    role: 'sdfse'
 }
 
 const particlescursor = {
-    img: '',
+    img: '/images/Screenshot 2025-05-18 141904.png',
     link: 'https://particle-cursor-shaders.vercel.app/',
     name: 'particles cursor',
-    description: ''
+    description: '',
+    role: 'sefsfe'
 }
 
 const earthShader =  {
-    img: '',
+    img: '/images/Screenshot 2025-05-18 141904.png',
     link: 'https://earth-shaders-b4.vercel.app/',
     name: 'earth shader',
-    description
+    description: '',
+    role: 'sfseft'
 }
+
+const labs = [
+    slicedModel,
+    sortingVizualizer,
+    particlesMorphing,
+    particlescursor,
+    earthShader
+]
+
+export default labs

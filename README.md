@@ -31,12 +31,17 @@ npm run dev
 ---
 🧰 Project Structure
 
-├── public/               # Static assets
-├── src/
-│   ├── assets/           # Models, textures, shaders
-│   ├── shaders/          # GLSL shader files
-│   ├── animations/       # GSAP + Theatre.js animation setup
-│   ├── main.js           # Entry point
-│   └── loading.js        # Loading screen logic
-├── index.html
-└── vite.config.js
+/src
+  ├── main.js
+  ├── App.js
+  ├── SceneManager.js
+  ├── ModelLoader.js
+  ├── Materials.js
+  ├── Overlay.js
+  ├── UI.js
+  ├── TechStack.js
+  └── shaders/
+      ├── includes/
+          └── test/
+              ├── vertexShader.glsl
+              └── fragmentShader.glsl
