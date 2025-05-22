@@ -1,7 +1,7 @@
 
 import projects from "./assets/porojectCards.js";
 import  labs  from "./assets/labsCards.js";
-import { Injector } from "./Injector.js";
+import { Injector } from "./injector.js";
 
 class InjectorManager{
     constructor(){
