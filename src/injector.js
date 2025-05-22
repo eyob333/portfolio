@@ -1,5 +1,5 @@
 
-export class Injector{
+class Injector{
     constructor(array, element){
         this.array = array;
         this.element = element;
@@ -28,6 +28,6 @@ export class Injector{
 
         this.element.innerHTML = this.injectElement;
     }
-    
-
 }
+
+export {Injector}
