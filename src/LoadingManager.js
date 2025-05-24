@@ -6,6 +6,7 @@ const sectionContainingElement = document.querySelector("div.section-container-d
 const loadingTExtElement = document.querySelector("div.loading-text");
 const loadingElement = document.querySelector("div.loading-bar");
 const loadingNumberElement = document.querySelector("p.loading-number");
+const bodyElement = document.querySelector("body")
 
 class LoadingManager{
     constructor(overlaymaterial){
@@ -20,7 +21,10 @@ class LoadingManager{
                     sectionContainingElement.style.visibility= 'visible';
                     sectionContainingElement.style.maxHeight = '100%';
                     sectionContainingElement.style.maxWidth = '100%';
-                    sectionContainingElement.style.overflow = 'auto';
+                    // sectionContainingElement.style.overflow = 'auto';
+                    bodyElement.style.padding = '0 2%'
+                    bodyElement.style.overflowX = 'hidden'
+                    bodyElement.style.overflowY = 'auto'
                 }, [3000])
                 }, 1000)  
             },

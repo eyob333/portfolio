@@ -31,37 +31,7 @@ export class App {
     this.techStack = new TechStack();
     this.gui = setupGUI(this.camera);
     this.init();
-
-    this.slider = document.querySelector('.slider-wrapper');
-
-    this.isDown = false;
-    this.startX;
-    this.scrollLeft;
-
-    this.slider.addEventListener('mousedown', (e) => {
-      this.isDown = true;
-      this.slider.classList.add('dragging');
-      this.startX = e.pageX - this.slider.offsetLeft;
-      this.scrollLeft = this.slider.scrollLeft;
-    });
-
-    this.slider.addEventListener('mouseleave', () => {
-      this.isDown = false;
-      this.slider.classList.remove('dragging');
-    });
-
-    this.slider.addEventListener('mouseup', () => {
-      this.isDown = false;
-      this.slider.classList.remove('dragging');
-    });
-
-    this.slider.addEventListener('mousemove', (e) => {
-      if (!this.isDown) return;
-      e.preventDefault();
-      const x = e.pageX - this.slider.offsetLeft;
-      const walk = (x - this.startX) * 2.5; // Scroll speed multiplier
-      this.slider.scrollLeft = this.scrollLeft - walk;
-    });
+ 
 
   }
 

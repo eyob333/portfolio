@@ -1,32 +1,37 @@
 
 class Injector{
-    constructor(array, element){
+    constructor(array, element, type){
         this.array = array;
         this.element = element;
+        this.type = type;
         this.intial(array);
-
     }
-    intial(array){
-        this.injectElement = array.map( d => `<div class="projects-card-container">
-            <div class="card">
-            <h2>${d.name}</h2>
-            <i class="fas fa-arrow-right"></i>
-            <p>a lonely trip.</p>
-                    
-            <div class="pic" style="background-image: url('${d.img}');"></div>
-                    
-            <div class="social">
-                <i class="fab fa-twitter">Role</i>
-                <i class="fab fa-facebook-f"> > ${d.role}</i>
-                <i class="fab fa-instagram">li</i>
-                <i class="fab fa-github">s</i>
-            </div>
-                <button>more</button>
-            </div>
-        </div>
-    `).join('');
+    intial(){
+        if (this.type == 'element'){
+            this.injectElement = this.array.map( d => `<div class="projects-card-container">
+                <div class="card">
+                    <h2 ${d.mainTextC ?  `style="color:${d.mainTextC}"`: ''} >${d.name}</h2>
+                    <i class="fas fa-arrow-right"></i>
+                            
+                    <div class="pic" style="background-image: url('${d.img}');"></div>
+                            
+                    <div class="social">
+                        <i class="fab role" ${d.upTextC ?  `style="color: ${d.upTextC}"`: ''} >Role</i>
+                        <i class="fab roleT" ${d.upTextC ?  `style="color: ${d.upTextC}"`: ''} > ${d.role}</i>
 
-        this.element.innerHTML = this.injectElement;
+                    </div>
+                        <button onclick="location.href='${d.link}'">more</button>
+                </div>
+            </div>`).join('');
+            this.element.innerHTML = this.injectElement;
+        }
+        else if (this.type == 'icon'){
+            this.injectElement = this.array.map( d => ` <button onclick="location.href='${d.link}'" type="button"class="contact-icons  ${d.name == 'email' && `last`}">
+                    ${d.icon} ${d.name == 'email' ?  `<p>${d.acc}</p>`: ''}
+                </button>`).join('');
+            this.element.innerHTML = this.injectElement;
+        }
+
     }
 }
 
