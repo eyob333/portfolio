@@ -511,7 +511,8 @@ i {
     font-weight: 800;
     font-size: .8rem;
     overflow: hidden;
-
   }
-
+  .contact-icons.last p{
+    font-size: .9rem;
+  }
 }
