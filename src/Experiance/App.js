@@ -7,8 +7,9 @@ import World from './World/World.js';
 import Resources from './Utils/Resources.js'
 import Debug from './Utils/Debug.js'
 import sources from './Sources.js'
-import LoadingManager from './Controls/LoadingManager.js';
+import LoadingManager from './Controls/LoadingControler.js';
 import Overlay from './Ui/Overlay.js';
+import Ui from './Ui/Ui.js';
 
 let instance = null;
 
@@ -31,6 +32,7 @@ export default class App{
         this.camera = new Camera(this)
         this.renderer = new Renderer()
         this.world = new World()
+        this.ui = new Ui()
         this.debug = new Debug
 
         // resize

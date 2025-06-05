@@ -11,13 +11,20 @@ export default class Nomad{
 
         this.resource = this.resources.item.Nomad
         this.debug = this.app.debug
-        
-        if ( this.debug.active){
+
+        if (this.debug.active){
             this.debugFolder = this.debug.ui.addFolder('Nomad')
         }
 
         this.setModel()
         this.setAnimation()
+
+        if ( this.debug.active){
+            this.nomPosition = this.debugFolder.addFolder('nom-position')
+            this.nomPosition.add( this.model.position, 'x').name("x").step(0.001).max(10).min(-10)
+            this.nomPosition.add( this.model.position, 'y').name("y").step(0.001).max(10).min(-10)
+            this.nomPosition.add( this.model.position, 'z').name("z").step(0.001).max(10).min(-10)
+        }
     }
 
     setModel(){

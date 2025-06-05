@@ -9,8 +9,13 @@ export default class Camera{
         this.scene = this.experiance.scene
         this.sizes = this.experiance.sizes
         this.canvas = this.experiance.canvas
+       
         this.setInstance()
         this.orbitControls()
+
+        this.experiance.resources.on( 'ready', ()=>{ 
+            this.setDebug()      
+        })
     }
     
     setInstance(){
@@ -32,6 +37,24 @@ export default class Camera{
         this.instance.aspect = this.sizes.width/ this.sizes.height
         this.instance.updateProjectionMatrix()
     }
+    setDebug(){
+        this.debug = this.experiance.debug
+        console.log(this.debug)
+        if (this.debug.active){
+            this.debugFolder = this.debug.ui.addFolder('Camera')
+            this.posGui = this.debugFolder.addFolder('cam-position');
+            this.rotGui = this.debugFolder.addFolder('cam-rotation');
+
+            this.posGui.add(this.instance.position, 'x', -10, 10).step(0.001).name('x');
+            this.posGui.add(this.instance.position, 'y', -10, 10).step(0.001).name('y');
+            this.posGui.add(this.instance.position, 'z', -10, 10).step(0.001).name('z');
+
+            this.rotGui .add(this.instance.rotation, 'x', -Math.PI * .5, Math.PI * .5).step(0.01).name('x');
+            this.rotGui .add(this.instance.rotation, 'y', -Math.PI * .5, Math.PI * .5).step(0.01).name('y');
+            this.rotGui .add(this.instance.rotation, 'z', -Math.PI * .5, Math.PI * .5).step(0.01).name('z')
+        }
+    }
+
     update(){
         this.controls.update()
     }

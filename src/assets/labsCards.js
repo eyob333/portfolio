@@ -42,7 +42,7 @@ const earthShader =  {
     role: 'sfseft'
 }
 
-const labs = [
+const LabsCards = [
     slicedModel,
     sortingVizualizer,
     particlesMorphing,
@@ -50,4 +50,4 @@ const labs = [
     earthShader
 ]
 
-export default labs
+export default LabsCards
