@@ -1,4 +1,6 @@
-import { App } from './App.js';
+import App from "./Experiance/App";
+// import {App} from './App'
 
-const canvas = document.querySelector('canvas.webgl');
-new App(canvas); 
+
+const app = new App( document.querySelector('canvas.webgl'))
+// const app = new 

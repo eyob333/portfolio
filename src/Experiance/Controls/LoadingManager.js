@@ -8,12 +8,15 @@ const loadingElement = document.querySelector("div.loading-bar");
 const loadingNumberElement = document.querySelector("p.loading-number");
 const bodyElement = document.querySelector("body")
 
-class LoadingManager{
-    constructor(overlaymaterial){
+export default class LoadingManager{
+    constructor(overlay){
+        this.overlay = overlay
+        this.overlaymaterial = this.overlay.material
+  
         this.loadingManager =  new THREE.LoadingManager(
             () =>{
                 window.setTimeout( () => {
-                gsap.to(overlaymaterial.uniforms.uAlpha, {duration: 4, value:0, delay: 1}) 
+                gsap.to(this.overlaymaterial.uniforms.uAlpha, {duration: 4, value:0, delay: 1}) 
                 loadingElement.classList.add('enabled');
                 loadingElement.style.transform = '';
                 gsap.to(loadingTExtElement, {
@@ -33,6 +36,7 @@ class LoadingManager{
                     bodyElement.style.overflowY = 'auto'
                 }, [3000])
                 }, 1000)  
+                this.overlay.destroy()
             },
             (itemUrl, itemLoaded, itemTotal) => {
                 loadingNumberElement.innerHTML = `${Math.round((itemLoaded/itemTotal * 100) * 10)/10}%`;
@@ -41,5 +45,3 @@ class LoadingManager{
         );
     }
 }
-
-export {LoadingManager}

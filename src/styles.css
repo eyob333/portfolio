@@ -19,7 +19,7 @@ canvas{
 }
 h1, h2, h3, h4, h5, h6, p{
   font-family: 'Tracer', sans-serif;
-  color: #fff;
+  color: #ffffffea;
 }
 
 
@@ -48,15 +48,7 @@ h1, h2, h3, h4, h5, h6, p{
   right: 0%;
   color: #ffffff;
   z-index: 1;
-  transform: scaleY();
-  transform-origin: top left;
-  transition: transform 1s;
   will-change: transform;
-}
-.loading-text.enabled{
-  transform: scaleY(0);
-  transform-origin: top right;
-  transition: transform cubic-bezier(0.39, 0.575, 0.565, 1) ease-in-out;
 }
 .loading-text h1, .loading-text p{
   display: inline;
@@ -94,8 +86,9 @@ section{
 }
 
 #heading h1{
-  font-family: 'Smooch Sans', sans-serif;                                                                                   
-  font-size: 4rem;
+  font-family: 'Smooch Sans', sans-serif;   
+  font-weight: 500;                                                                                
+  font-size: 5rem;
   max-width: 50%;
   margin: 0;                                                                                       
 }
