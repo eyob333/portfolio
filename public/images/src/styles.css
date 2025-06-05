@@ -90,8 +90,7 @@ section{
   font-weight: 500;                                                                                
   font-size: 5rem;
   max-width: 50%;
-  margin: 0;
-  color: #edfcff6e;                                                                                   
+  margin: 0;                                                                                       
 }
 #heading h4{
   font-family: 'Jura', sans-serif;
@@ -377,13 +376,6 @@ i {
 }
 
 /********************************** contacts ******************/
-#page5 hr{
-  border-style:outset;
-  border-color: #fff;  
-  border-radius: 12px;
-  border-width: .3px;
-  border-bottom: 0;
-}
 #page5 h4{
   font-family: 'Jura', sans-serif;
   font-weight: 800;

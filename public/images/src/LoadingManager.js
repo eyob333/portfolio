@@ -8,20 +8,17 @@ const loadingElement = document.querySelector("div.loading-bar");
 const loadingNumberElement = document.querySelector("p.loading-number");
 const bodyElement = document.querySelector("body")
 
-export default class LoadingManager{
-    constructor(overlay){
-        this.overlay = overlay
-        this.overlaymaterial = this.overlay.material
-  
+class LoadingManager{
+    constructor(overlaymaterial){
         this.loadingManager =  new THREE.LoadingManager(
             () =>{
                 window.setTimeout( () => {
-                gsap.to(this.overlaymaterial.uniforms.uAlpha, {duration: 4, value:0, delay: 1}) 
+                gsap.to(overlaymaterial.uniforms.uAlpha, {duration: 4, value:0, delay: 1}) 
                 loadingElement.classList.add('enabled');
                 loadingElement.style.transform = '';
                 gsap.to(loadingTExtElement, {
-                    scaleY: 0, 
-                    transformOrigin: 'top',
+                    scale: 0,
+                    x: '200px',
                     duration: 3,
                     delay: 1,
                     ease: 'power2.out'
@@ -34,11 +31,8 @@ export default class LoadingManager{
                     bodyElement.style.padding = '0 2%'
                     bodyElement.style.overflowX = 'hidden'
                     bodyElement.style.overflowY = 'auto'
-                    this.overlay.destroy()
                 }, [3000])
-                
                 }, 1000)  
-                
             },
             (itemUrl, itemLoaded, itemTotal) => {
                 loadingNumberElement.innerHTML = `${Math.round((itemLoaded/itemTotal * 100) * 10)/10}%`;
@@ -47,3 +41,5 @@ export default class LoadingManager{
         );
     }
 }
+
+export {LoadingManager}
