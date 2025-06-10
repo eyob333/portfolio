@@ -42,6 +42,7 @@ export default class Camera{
         console.log(this.debug)
         if (this.debug.active){
             this.debugFolder = this.debug.ui.addFolder('Camera')
+                .close();
             this.posGui = this.debugFolder.addFolder('cam-position');
             this.rotGui = this.debugFolder.addFolder('cam-rotation');
 

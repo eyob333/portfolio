@@ -15,6 +15,7 @@ export default class Enviromet{
 
         if( this.debug.active){
             this.debugFolder = this.debug.ui.addFolder('Enviromet')
+                .close();
 
             this.debugFolder.add( this.sunLight, 'intensity' ).name('lightIntensity').min(0).max(10).step( 0.001)
             this.debugFolder.add( this.sunLight.position, 'x' ).name('lightPositionX').min(-10).max(10).step( 0.001)

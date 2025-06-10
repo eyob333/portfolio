@@ -12,12 +12,25 @@ export default class Ship{
         this.resource = this.resources.item.Ship
         this.debug = this.app.debug
         
-        if ( this.debug.active){
+        if (this.debug.active){
             this.debugFolder = this.debug.ui.addFolder('Ship')
+            .close()
         }
-
         this.setModel()
         this.setAnimation()
+
+        if ( this.debug.active){
+            this.shipPosition = this.debugFolder.addFolder('ship-position')
+            this.shipRoation = this.debugFolder.addFolder('ship-rotation')
+
+            this.shipPosition.add( this.model.position, 'x').name("x").step(0.001).max(10).min(-10)
+            this.shipPosition.add( this.model.position, 'y').name("y").step(0.001).max(10).min(-10)
+            this.shipPosition.add( this.model.position, 'z').name("z").step(0.001).max(10).min(-10)
+
+            this.shipRoation.add( this.model.rotation, 'x').name("x").step(0.001).max(10).min(-10)
+            this.shipRoation.add( this.model.rotation, 'y').name("y").step(0.001).max(10).min(-10)
+            this.shipRoation.add( this.model.rotation, 'z').name("z").step(0.001).max(10).min(-10)
+        }
     }
 
     setModel(){
