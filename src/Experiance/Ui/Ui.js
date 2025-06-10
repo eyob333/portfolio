@@ -6,7 +6,7 @@ import Contact from "./Contact";
 
 export default class Ui{
     constructor(){
-        this.setInstance();
+        // this.setInstance();
     }
 
     setInstance(){

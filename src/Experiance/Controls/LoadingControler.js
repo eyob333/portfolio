@@ -27,9 +27,9 @@ export default class LoadingManager{
                     ease: 'power2.out'
                 })
                 setTimeout( () =>{
-                    sectionContainingElement.style.visibility= 'visible';
-                    sectionContainingElement.style.maxHeight = '100%';
-                    sectionContainingElement.style.maxWidth = '100%';
+                    // sectionContainingElement.style.visibility= 'visible';
+                    // sectionContainingElement.style.maxHeight = '100%';
+                    // sectionContainingElement.style.maxWidth = '100%';
                     // sectionContainingElement.style.overflow = 'auto';
                     bodyElement.style.padding = '0 2%'
                     bodyElement.style.overflowX = 'hidden'

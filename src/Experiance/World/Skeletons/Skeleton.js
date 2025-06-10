@@ -12,7 +12,7 @@ export default class Skeleton{
         this.dFolder = debug
 
         if (this.debug && this.dFolder){
-            this.debugFolder = this.dFolder.addFolder('skeletons')
+            this.debugFolder = this.dFolder.addFolder('skeleton pose control')
         }
 
     }
@@ -28,7 +28,7 @@ export default class Skeleton{
         console.log("foo bones", this.bones)
     }
 
-    getBonesByName(){
+    setFloatPose(){
         let characterSkeleton;
         let spine;
         let spine1;
@@ -68,12 +68,45 @@ export default class Skeleton{
         }
 
         // ✅ Armspace: 74° outward spread (i.e., arms angled slightly away from torso)
-        const armSpread = THREE.MathUtils.degToRad(37); // 74° total = 37° per arm
+        let armSpread = {}
+        armSpread.value = THREE.MathUtils.degToRad(37); // 74° total = 37° per arm
 
-        if (leftArm) leftArm.rotation.z = armSpread;
-        if (rightArm) rightArm.rotation.z = -armSpread;
+        if (leftArm) leftArm.rotation.z = armSpread.value;
+        if (rightArm) rightArm.rotation.z = -armSpread.value;
 
+        if(this.debugFolder && this.dFolder){
+            this.debugF = this.debugFolder.addFolder('floating_pose')
 
+            if(armSpread && rightArm && leftArm){
+                this.armSpread =  this.debugF.addFolder("ArmSpred")
+                this.armSpread.add(armSpread, 'value').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("arm-spread-v").onChange( e => {
+                    leftArm.rotation.z = armSpread.value
+                    rightArm.rotation.z = -armSpread.value
+                })
+            }
+
+            if(spine){
+                this.spine = this.debugF.addFolder("spine")
+                this.spine.add(spine.rotation, 'y').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("spine-y")
+                this.spine.add(spine.rotation, 'z').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("spine-z")
+                this.spine.add(spine.rotation, 'x').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("spine-x")
+            }
+
+            if(spine1){
+                this.spine1 = this.debugF.addFolder("spine")
+                this.spine1.add(spine1.rotation, 'y').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("spine1-y")
+                this.spine1.add(spine1.rotation, 'z').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("spine1-z")
+                this.spine1.add(spine1.rotation, 'x').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("spine1-x")
+            }
+
+            if(hips){
+                this.hipD = this.debugF.addFolder("hips")
+                this.hipD.add( hips.rotation, 'y').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("hips-y")
+                this.hipD.add( hips.rotation, 'z').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("hips-z")
+                this.hipD.add( hips.rotation, 'x').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("hips-x")
+            }
+
+        }
     }
 
     setPose(){

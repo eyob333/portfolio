@@ -15,7 +15,7 @@ export default class Nomad{
 
         if (this.debug.active){
             this.debugFolder = this.debug.ui.addFolder('Nomad')
-                .close()
+                // .close()
         }
 
         this.setModel()
@@ -40,7 +40,7 @@ export default class Nomad{
     setModel(){
         this.model = this.resource.scene
         this.model.scale.set( 1., 1., 1.)
-        this.model.position.set(3.98,  0.664, 4.067)
+        this.model.position.set(10,  4.416, 10)
         this.scene.add( this.model )
     }
 
@@ -58,10 +58,10 @@ export default class Nomad{
         
         if (this.debug.active){
             const debugObject = {
-            idle: ()=> { this.Skeleton.getBonesByName()},
+            float_pose: ()=> { this.Skeleton.setFloatPose()},
             }
 
-            this.debugFolder.add( debugObject,  'idle')
+            this.debugFolder.add( debugObject,  'float_pose')
        }}
 
     update(){
