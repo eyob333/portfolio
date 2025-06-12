@@ -46,9 +46,9 @@ export default class Camera{
             this.posGui = this.debugFolder.addFolder('cam-position');
             this.rotGui = this.debugFolder.addFolder('cam-rotation');
 
-            this.posGui.add(this.instance.position, 'x', -10, 10).step(0.001).name('x');
-            this.posGui.add(this.instance.position, 'y', -10, 10).step(0.001).name('y');
-            this.posGui.add(this.instance.position, 'z', -10, 10).step(0.001).name('z');
+            this.posGui.add(this.instance.position, 'x', -20,20).step(0.001).name('x');
+            this.posGui.add(this.instance.position, 'y', -20,20).step(0.001).name('y');
+            this.posGui.add(this.instance.position, 'z', -20,20).step(0.001).name('z');
 
             this.rotGui .add(this.instance.rotation, 'x', -Math.PI * .5, Math.PI * .5).step(0.01).name('x');
             this.rotGui .add(this.instance.rotation, 'y', -Math.PI * .5, Math.PI * .5).step(0.01).name('y');

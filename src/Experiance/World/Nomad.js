@@ -22,14 +22,15 @@ export default class Nomad{
         this.setAnimation()
 
         this.Skeleton = new Skeleton(this.model, this.debugFolder)
+        this.Skeleton.getBones()
 
         if ( this.debug.active){
             this.nomPosition = this.debugFolder.addFolder('nom-position')
             this.nomRotation = this.debugFolder.addFolder('nom-rotation')
 
-            this.nomPosition.add( this.model.position, 'x').name("x").step(0.001).max(10).min(-10)
-            this.nomPosition.add( this.model.position, 'y').name("y").step(0.001).max(10).min(-10)
-            this.nomPosition.add( this.model.position, 'z').name("z").step(0.001).max(10).min(-10)
+            this.nomPosition.add( this.model.position, 'x').name("x").step(0.001).max(20).min(-20)
+            this.nomPosition.add( this.model.position, 'y').name("y").step(0.001).max(20).min(-20)
+            this.nomPosition.add( this.model.position, 'z').name("z").step(0.001).max(20).min(-20)
 
             this.nomRotation.add( this.model.rotation, 'x').name("x").step(0.001).max(10).min(-10)
             this.nomRotation.add( this.model.rotation, 'y').name("y").step(0.001).max(10).min(-10)
@@ -58,10 +59,12 @@ export default class Nomad{
         
         if (this.debug.active){
             const debugObject = {
-            float_pose: ()=> { this.Skeleton.setFloatPose()},
+                float_pose: ()=> { this.Skeleton.setFloatPose()},
+                flying_pose: ()=> {this.Skeleton.setFlyingPose()}
             }
 
             this.debugFolder.add( debugObject,  'float_pose')
+            this.debugFolder.add( debugObject,  'flying_pose')
        }}
 
     update(){

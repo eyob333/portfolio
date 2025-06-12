@@ -35,6 +35,7 @@ export default class Skeleton{
         let hips;
         let leftArm;
         let rightArm;
+        let head;
 
         this.model.traverse( (child) => {
             if(child.isSkinnedMesh){
@@ -55,7 +56,7 @@ export default class Skeleton{
         leftArm = characterSkeleton.bones.find( bone => bone.name =='CC_Base_L_Forearm_051');
 
         //const rightArm = characterSkeleton.getObjectByName('CC_Base_R_Forearm_064');
-        rightArm = characterSkeleton.bones.find( bone => bone.name =='CC_Base_R_Forearm_064')
+        rightArm = characterSkeleton.bones.find( bone => bone.name =='CC_Base_R_Forearm_064');
         
         // ✅ Lean: 20° forward (spine pitch)
         if (spine) spine.rotation.x = THREE.MathUtils.degToRad(-20);
@@ -79,7 +80,7 @@ export default class Skeleton{
 
             if(armSpread && rightArm && leftArm){
                 this.armSpread =  this.debugF.addFolder("ArmSpred")
-                this.armSpread.add(armSpread, 'value').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("arm-spread-v").onChange( e => {
+                this.armSpread.add(armSpread, 'value').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-90)).name("arm-spread-v").onChange( e => {
                     leftArm.rotation.z = armSpread.value
                     rightArm.rotation.z = -armSpread.value
                 })
@@ -109,7 +110,96 @@ export default class Skeleton{
         }
     }
 
-    setPose(){
+    setFlyingPose(){
+        // Bones
+        let characterSkeleton;
+        let leftArm;
+        let rightArm;
+        let leftFoot;
+        let rightFoot;
+        let hips;
+        let leftForeArm;
+        let rightForeArm;
+        let head;
+        let rigntLeg;
+        let leftLeg;
 
+        this.model.traverse( (child) => {
+            if(child.isSkinnedMesh){
+                characterSkeleton = child.skeleton;
+            }
+        });
+
+        head = characterSkeleton.bones.find( bone => bone.name == 'CC_Base_Head_039')
+        leftArm = characterSkeleton.bones.find( bone => bone.name =='CC_Base_L_Forearm_051');
+        rightArm = characterSkeleton.bones.find( bone => bone.name =='CC_Base_R_Forearm_064');
+        leftFoot = characterSkeleton.bones.find( bone => bone.name =='CC_Base_L_Foot_06');
+        rightFoot = characterSkeleton.bones.find( bone => bone.name =='CC_Base_R_Foot_022');
+        hips = characterSkeleton.bones.find( bone => bone.name =='CC_Base_Hip_02')
+        leftForeArm = characterSkeleton.bones.find( bone => bone.name =='CC_Base_L_Forearm_051');
+        rightForeArm = characterSkeleton.bones.find( bone => bone.name =='CC_Base_R_Forearm_064');
+       
+        if (hips) {
+            hips.rotation.x = THREE.MathUtils.degToRad(90); // lay flat, face down
+        }
+        
+        let footAngle = {}
+        footAngle.value = THREE.MathUtils.degToRad(-20);
+        if (leftFoot) leftFoot.rotation.x = footAngle.value;
+        if (rightFoot) rightFoot.rotation.x = footAngle.value;
+
+        let armAngle = {}
+        armAngle.value = THREE.MathUtils.degToRad(-90); 
+        if (leftArm) leftArm.rotation.x = armAngle.value;
+        if (rightArm) rightArm.rotation.x = -armAngle.value;
+
+        if (leftForeArm) leftForeArm.rotation.x = 0;
+        if (rightForeArm) rightForeArm.rotation.x = 0;
+
+        if(this.debugFolder && this.dFolder){
+            this.debugFl = this.debugFolder.addFolder('flying_pose')
+
+            if(head){
+                this.head =  this.debugFl.addFolder("head")
+                this.head.add( head.rotation, 'y').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(45)).min(THREE.MathUtils.degToRad(-45)).name("hips-y")
+                this.head.add( head.rotation, 'z').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(45)).min(THREE.MathUtils.degToRad(-45)).name("hips-z")
+                this.head.add( head.rotation, 'x').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(45)).min(THREE.MathUtils.degToRad(-45)).name("hips-x")
+            }
+
+            if(armAngle && rightArm && leftArm){
+                this.armAngle =  this.debugFl.addFolder("ArmAngle")
+                this.armAngle.add(armAngle, 'value').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-90)).name("arm-Degres-v").onChange( e => {
+                    leftArm.rotation.z = armAngle.value
+                    rightArm.rotation.z = -armAngle.value
+                })
+            }
+
+            if(footAngle && rightFoot && leftFoot){
+                this.footAngle =  this.debugFl.addFolder("footAngle")
+                this.footAngle.add(footAngle, 'value').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-10)).name("arm-Degres-v").onChange( ()=> {
+                    rightFoot.rotation.x = footAngle.value
+                    leftFoot.rotation.x = footAngle.value
+                })
+            }
+
+
+            if(hips){
+                this.hipD = this.debugFl.addFolder("hips")
+                this.hipD.add( hips.rotation, 'y').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("hips-y")
+                this.hipD.add( hips.rotation, 'z').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("hips-z")
+                this.hipD.add( hips.rotation, 'x').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("hips-x")
+            }
+
+            if(leftForeArm){
+                this.leftFor = this.debugFl.addFolder("left-fore-arm")
+                this.leftFor.add( leftForeArm.rotation, 'x').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-90)).name("left-fore-arm-x")
+            }
+
+            if (rightForeArm){
+                this.rightFor= this.debugFl.addFolder("right-fore-arm")
+                this.rightFor.add( rightForeArm.rotation, 'x').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-90)).name("right-fore-arm-x")
+            }
+            
+        }
     }
 }
