@@ -58,10 +58,29 @@ export default class Nomad{
         // debug 
         
         if (this.debug.active){
+            let clicked_float = true;
+            let clicked_flying = true;
+
             const debugObject = {
-                float_pose: ()=> { this.Skeleton.setFloatPose()},
-                flying_pose: ()=> {this.Skeleton.setFlyingPose()}
+            float_pose: () => {
+                if (clicked_float) {
+                    this.Skeleton.setFloatPose();
+                    clicked_float = !clicked_float;
+                } 
+                // else {
+                //     this.Skeleton.delete_float_pose();
+                // }
+            },
+
+            flying_pose: () => {
+                if (clicked_flying) {
+                    console.log("flying_pose");
+                    this.Skeleton.setFlyingPose();
+                    clicked_flying = !clicked_flying;
+                }
+               
             }
+            };
 
             this.debugFolder.add( debugObject,  'float_pose')
             this.debugFolder.add( debugObject,  'flying_pose')
