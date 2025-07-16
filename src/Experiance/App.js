@@ -9,10 +9,18 @@ import Debug from './Utils/Debug.js'
 import sources from './Sources.js'
 import LoadingManager from './Controls/LoadingControler.js';
 import Overlay from './Ui/Overlay.js';
-import Ui from './Ui/Ui.js';
+import Animation from './Animation/Animation.js';
+import Stats from 'stats-js';
 
 let instance = null;
+Stats
+var stats = new Stats();
+stats.showPanel( 1 ); // 0: fps, 1: ms, 2: mb, 3+: custom
+document.body.appendChild( stats.dom );
 
+ 
+
+ 
 export default class App{
     constructor(canvas){
         if (instance){
@@ -32,8 +40,8 @@ export default class App{
         this.camera = new Camera(this)
         this.renderer = new Renderer()
         this.world = new World()
-        this.ui = new Ui()
         this.debug = new Debug
+        this.animation = new Animation()
 
         // resize
         this.sizes.on( 'resize', ()=> {
@@ -44,23 +52,25 @@ export default class App{
             this.update()
         })
     }
-
+            
     resize(){
         this.camera.resize()
         this.renderer.resize()
         }
 
     update(){
+        stats.begin();
         this.camera.update()
         this.renderer.update()
         this.world.update()
+        stats.end();
     }
 
     destroy(){
         this.sizes.off('resize')
         this.time.off('tick')
 
-        // triverse scene
+        // traverse scene
         this.scene.traverse( child => {
             if ( child instanceof THREE.Mesh ){
                 child.geometry.dispose()

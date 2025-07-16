@@ -1,36 +1,53 @@
 import * as THREE from 'three'
 import App from '../../App'
 
-
-let characterSkeleton;
-let spine;
-let spine1;
-let hips;
-let leftArm;
-let rightArm;
-let toe;
-let leftFoot;
-let rightFoot;
-let leftForeArm;
-let rightForeArm;
-let head;
-let rightLeg;
-let leftLeg;
-let neck;
-
 export default class Skeleton{
-    constructor(model, debug){
+    constructor(debug){
         this.app = new App()
-        this.debug = this.app.debug
-        this.model = model
+        this.model = this.app.nomad.scene
         this.skindMesh = this.model.getObjectByProperty('type', 'SkinnedMesh')
         this.skeleton = this.skindMesh.skeleton
-
         this.dFolder = debug
 
-        if (this.debug && this.dFolder){
+        if (this.dFolder){
             this.debugFolder = this.dFolder.addFolder('skeleton pose control')
         }
+        this.characterSkeleton;
+        this.model.traverse( (child) => {
+            if(child.isSkinnedMesh){
+                this.characterSkeleton = child.skeleton;
+            }
+        });
+        
+        this.bones = {}
+        this.instanceBone()
+        this.app.nomad.bones = this.bones
+    }
+
+    instanceBone(){
+        const findBone = (name) => this.characterSkeleton.bones.find(bone => bone.name === name);
+        this.bones.spine = findBone('CC_Base_Spine01_035');
+        this.bones.spine1 = findBone('CC_Base_Spine02_036');
+        this.bones.hips = findBone('CC_Base_Hip_02');
+        this.bones.neck = findBone('CC_Base_NeckTwist01_037');
+        this.bones.leftFoot = findBone('CC_Base_L_Foot_06');
+        this.bones.rightFoot = findBone('CC_Base_R_Foot_022');
+        this.bones.leftForeArm = findBone('CC_Base_L_Forearm_051');
+        this.bones.rightForeArm = findBone('CC_Base_R_Forearm_064');
+        this.bones.head = findBone('CC_Base_Head_039');
+        this.bones.rightLeg = findBone('CC_Base_R_Thigh_019');
+        this.bones.leftLeg = findBone('CC_Base_L_Thigh_04');
+        this.bones.rightArm = findBone('CC_Base_R_Upperarm_063');//CC_Base_R_Upperarm_063
+        this.bones.leftArm = findBone('CC_Base_L_Upperarm_050')//CC_Base_L_Upperarm_050
+        this.bones.waist = findBone('CC_Base_Waist_034'); 
+        // this.bones.LeftBiceps; //CC_Base_L_UpperarmTwist02_057
+        // this.bones.rightBiceps; //CC_Base_R_UpperarmTwist02_070       
+        // this.bones.leftCalf; // CC_Base_L_Calf_05
+        // this.bones.rightCalf; //
+    }
+
+    instanceBoneDebugBones(){
+
     }
 
     getSkeleton(){
@@ -38,188 +55,141 @@ export default class Skeleton{
     }
 
     getBones(){
-        this.bones = this.skeleton.bones;
-        console.log("foo bones", this.bones)
+        console.log("foo bones", this.skeleton.bones)
     }
 
     setFloatPose(){
-        this.model.traverse( (child) => {
-            if(child.isSkinnedMesh){
-                characterSkeleton = child.skeleton;
-            }
-        });
-
-        //const spine = characterSkeleton.getObjectByName('CC_Base_Spine01_035');
-        spine = characterSkeleton.bones.find( bone => bone.name =='CC_Base_Spine01_035');
-
-        //const spine1 = characterSkeleton.getObjectByName('CC_Base_Spine02_036');
-        spine1 = characterSkeleton.bones.find( bone => bone.name =='CC_Base_Spine02_036');
-
-        //const hips = characterSkeleton.getObjectByName('CC_Base_Hip_02');
-        hips = characterSkeleton.bones.find( bone => bone.name =='CC_Base_Hip_02')
-
-        //const leftArm = characterSkeleton.getObjectByName('CC_Base_L_Forearm_051');
-        leftArm = characterSkeleton.bones.find( bone => bone.name =='CC_Base_L_Forearm_051');
-
-        //const rightArm = characterSkeleton.getObjectByName('CC_Base_R_Forearm_064');
-        rightArm = characterSkeleton.bones.find( bone => bone.name =='CC_Base_R_Forearm_064');
-
-        toe = characterSkeleton.bones.find( bone =>bone.name == 'CC_Base_L_Upperarm_050' )
-        
         // ✅ Lean: 20° forward (spine pitch)
-        if (spine) spine.rotation.x = THREE.MathUtils.degToRad(-20);
-        if (spine1) spine1.rotation.x = THREE.MathUtils.degToRad(-10); // subtle continuation
+        this.bones.spine.rotation.x = THREE.MathUtils.degToRad(-20);
+        console.log("foo spine 1")
+        this.bones.spine1.rotation.x = THREE.MathUtils.degToRad(-10); // subtle continuation
 
         // ✅ Posture: 90° = upright, no twist or tilt
-        if (hips) {
-            hips.rotation.y = 0;
-            hips.rotation.z = 0;
+        if (this.bones.hips) {
+            this.bones.hips.rotation.y = 0;
+            this.bones.hips.rotation.z = 0;
         }
 
         // ✅ Armspace: 74° outward spread (i.e., arms angled slightly away from torso)
         let armSpread = {}
         armSpread.value = THREE.MathUtils.degToRad(37); // 74° total = 37° per arm
 
-        if (leftArm) leftArm.rotation.z = armSpread.value;
-        if (rightArm) rightArm.rotation.z = -armSpread.value;
+        if (this.bones.leftForeArm) this.bones.leftForeArm.rotation.z = armSpread.value;
+        if (this.bones.rightForeArm) this.bones.rightForeArm.rotation.z = -armSpread.value;
 
         if(this.debugFolder && this.dFolder){
-            this.debugF = this.debugFolder.addFolder('floating_pose')
+            this.debugF = this.debugFolder.addFolder('floating_pose').bones
 
-            if(armSpread && rightArm && leftArm){
-                this.armSpread =  this.debugF.addFolder("ArmSpred")
-                this.armSpread.add(armSpread, 'value').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-90)).name("arm-spread-v").onChange( e => {
-                    leftArm.rotation.z = armSpread.value
-                    rightArm.rotation.z = -armSpread.value
+            if(armSpread && this.rightForeArm && this.bones.leftForeArm){
+                let spreadArm =  this.debugF.addFolder("ArmSpred")
+                spreadArm.add(armSpread, 'value').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-90)).name("arm-spread-v").onChange( e => {
+                    this.bones.leftForeArm.rotation.z = armSpread.value
+                    this.bones.rightForeArm.rotation.z = -armSpread.value
                 })
             }
 
-            if(spine){
-                this.spine = this.debugF.addFolder("spine")
-                this.spine.add(spine.rotation, 'y').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("spine-y")
-                this.spine.add(spine.rotation, 'z').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("spine-z")
-                this.spine.add(spine.rotation, 'x').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("spine-x")
+            if(this.bones.spine){
+                let spine = this.debugF.addFolder("spine")
+                spine.add(this.bones.spine.rotation, 'y').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("spine-y")
+                spine.add(this.bones.spine.rotation, 'z').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("spine-z")
+                spine.add(this.bones.spine.rotation, 'x').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("spine-x")
             }
 
-            if(spine1){
-                this.spine1 = this.debugF.addFolder("spine1")
-                this.spine1.add(spine1.rotation, 'y').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("spine1-y")
-                this.spine1.add(spine1.rotation, 'z').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("spine1-z")
-                this.spine1.add(spine1.rotation, 'x').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("spine1-x")
+            if(this.bones.spine1){
+                let spine1 = this.debugF.addFolder("spine1")
+                spine1.add(this.bones.spine1.rotation, 'y').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("spine1-y")
+                spine1.add(this.bones.spine1.rotation, 'z').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("spine1-z")
+                spine1.add(this.bones.spine1.rotation, 'x').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("spine1-x")
             }
 
-            if(hips){
-                this.hipD = this.debugF.addFolder("hips")
-                this.hipD.add( hips.rotation, 'y').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("hips-y")
-                this.hipD.add( hips.rotation, 'z').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("hips-z")
-                this.hipD.add( hips.rotation, 'x').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("hips-x")
+            if(this.bones.hips){
+                let hipD = this.debugF.addFolder("hips")
+                hipD.add( this.bones.hips.rotation, 'y').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("hips-y")
+                hipD.add( this.bones.hips.rotation, 'z').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("hips-z")
+                hipD.add( this.bones.hips.rotation, 'x').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("hips-x")
             }
             
-            if(toe){
+            if(this.bones.neck){
                 console.log("hel")
-                this.toe = this.debugF.addFolder("toe")
-                this.toe.add( toe.rotation, 'y').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("hips-y")
-                this.toe.add( toe.rotation, 'z').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("hips-z")
-                this.toe.add( toe.rotation, 'x').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("hips-x")
+                let toe = this.debugF.addFolder("toe")
+                toe.add( this.bones.neck.rotation, 'y').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-90)).name("hips-y")
+                toe.add( this.bones.neck.rotation, 'z').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-90)).name("hips-z")
+                toe.add( this.bones.neck.rotation, 'x').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-90)).name("hips-x")
             }
-
         }
     }
 
     setFlyingPose(){
-        this.model.traverse( (child) => {
-            if(child.isSkinnedMesh){
-                characterSkeleton = child.skeleton;
-            }
-        });
-
-        head = characterSkeleton.bones.find( bone => bone.name == 'CC_Base_Head_039')
-        leftArm = characterSkeleton.bones.find( bone => bone.name =='CC_Base_L_Forearm_051');
-        rightArm = characterSkeleton.bones.find( bone => bone.name =='CC_Base_R_Forearm_064');
-
-        leftFoot = characterSkeleton.bones.find( bone => bone.name =='CC_Base_L_Foot_06');
-        rightFoot = characterSkeleton.bones.find( bone => bone.name =='CC_Base_R_Foot_022');
-
-        hips = characterSkeleton.bones.find( bone => bone.name =='CC_Base_Hip_02')
-
-        leftLeg = characterSkeleton.bones.find( bone => bone.name =='CC_Base_L_Thigh_04');
-        rightLeg = characterSkeleton.bones.find( bone => bone.name =='CC_Base_R_Thigh_019');
-
-        leftForeArm = characterSkeleton.bones.find( bone => bone.name =='CC_Base_L_Forearm_051');
-        rightForeArm = characterSkeleton.bones.find( bone => bone.name =='CC_Base_R_Forearm_064');
        
-        if (hips) {
-            hips.rotation.x = THREE.MathUtils.degToRad(90); // lay flat, face down
+        if (this.bones.hips) {
+            this.bones.hips.rotation.x = THREE.MathUtils.degToRad(125); // lay flat, face down
         }
         
         let footAngle = {}
-        footAngle.value = THREE.MathUtils.degToRad(20);
-        if (leftFoot) leftFoot.rotation.x = footAngle.value;
-        if (rightFoot) rightFoot.rotation.x = footAngle.value;
+        footAngle.value = THREE.MathUtils.degToRad(30);
+        if (this.bones.leftFoot) this.bones.leftFoot.rotation.x = footAngle.value;
+        if (this.bones.rightFoot) this.bones.rightFoot.rotation.x = footAngle.value;
 
         let legAngle = {}
         legAngle.value = THREE.MathUtils.degToRad(-170);
-        if (leftLeg) leftLeg.rotation.z = legAngle.value;
-        if (rightLeg) rightLeg.rotation.z = -legAngle.value;
+        if (this.bones.leftLeg) this.bones.leftLeg.rotation.z = legAngle.value;
+        if (this.bones.rightLeg) this.bones.rightLeg.rotation.z = -legAngle.value;
 
         let armAngle = {}
         armAngle.value = THREE.MathUtils.degToRad(-60); 
-        if (leftArm) leftArm.rotation.x = armAngle.value;
-        if (rightArm) rightArm.rotation.x = -armAngle.value;
+        if (this.bones.leftForeArm) this.bones.leftForeArm.rotation.x = armAngle.value;
+        if (this.bones.rightForeArm) this.bones.rightForeArm.rotation.x = -armAngle.value;
 
-        if (leftForeArm) leftForeArm.rotation.x = 0;
-        if (rightForeArm) rightForeArm.rotation.x = 0;
+        if (this.bones.leftForeArm) this.bones.leftForeArm.rotation.x = 0;
+        if (this.bones.rightForeArm) this.bones.rightForeArm.rotation.x = 0;
 
         if(this.debugFolder && this.dFolder){
             this.debugFl = this.debugFolder.addFolder('flying_pose')
-
-            if(head){
-                this.head =  this.debugFl.addFolder("head")
-                this.head.add( head.rotation, 'y').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(45)).min(THREE.MathUtils.degToRad(-45)).name("head-y")
-                this.head.add( head.rotation, 'z').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(45)).min(THREE.MathUtils.degToRad(-45)).name("head-z")
-                this.head.add( head.rotation, 'x').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(45)).min(THREE.MathUtils.degToRad(-45)).name("head-x")
+            if(this.bones.head){
+                let head =  this.debugFl.addFolder("head")
+                head.add( this.bones.head.rotation, 'y').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(45)).min(THREE.MathUtils.degToRad(-45)).name("head-y")
+                head.add( this.bones.head.rotation, 'z').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(45)).min(THREE.MathUtils.degToRad(-45)).name("head-z")
+                head.add( this.bones.head.rotation, 'x').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(45)).min(THREE.MathUtils.degToRad(-45)).name("head-x")
             }
 
-            if(armAngle && rightArm && leftArm){
-                this.armAngle =  this.debugFl.addFolder("ArmAngle")
-                this.armAngle.add(armAngle, 'value').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-90)).name("arm-Degres-v").onChange( e => {
-                    leftArm.rotation.z = armAngle.value
-                    rightArm.rotation.z = -armAngle.value
+            if(armAngle && this.bones.rightForeArm && this.bones.leftForeArm){
+                let angleArm =  this.debugFl.addFolder("foreArmAngle")
+                angleArm.add(armAngle, 'value').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-90)).name("arm-Degres-v").onChange( e => {
+                    this.bones.leftForeArm.rotation.z = armAngle.value
+                    this.bones.rightForeArm.rotation.z = -armAngle.value
                 })
             }
 
-            if(footAngle && rightFoot && leftFoot){
-                this.footAngle =  this.debugFl.addFolder("footAngle")
-                this.footAngle.add(footAngle, 'value').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-10)).name("foot-Degres-v").onChange( ()=> {
-                    rightFoot.rotation.x = footAngle.value
-                    leftFoot.rotation.x = footAngle.value
+            if(footAngle && this.bones.rightFoot && this.bones.leftFoot){
+                let angleFoot =  this.debugFl.addFolder("footAngle")
+                angleFoot.add(footAngle, 'value').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-10)).name("foot-Degres-v").onChange( ()=> {
+                    this.bones.rightFoot.rotation.x = footAngle.value
+                    this.bones.leftFoot.rotation.x = footAngle.value
                 })
             }
 
-            if(legAngle && rightLeg && leftLeg){
-                this.legAngle =  this.debugFl.addFolder("legAngle")
-                this.legAngle.add(legAngle, 'value').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(-90)).min(THREE.MathUtils.degToRad(-180)).name("leg-Degres-v").onChange( ()=> {
-                    rightLeg.rotation.z = -legAngle.value
-                    leftLeg.rotation.z = legAngle.value
+            if(legAngle && this.bones.rightLeg && this.bones.leftLeg){
+                let angleLeg =  this.debugFl.addFolder("legAngle")
+                angleLeg.add(legAngle, 'value').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(-90)).min(THREE.MathUtils.degToRad(-180)).name("leg-Degres-v").onChange( ()=> {
+                    this.bones.rightLeg.rotation.z = -legAngle.value
+                    this.bones.leftLeg.rotation.z = legAngle.value
                 })
             }
-
-
-            if(hips){
-                this.hipD = this.debugFl.addFolder("hips")
-                this.hipD.add( hips.rotation, 'y').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("hips-y")
-                this.hipD.add( hips.rotation, 'z').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("hips-z")
-                this.hipD.add( hips.rotation, 'x').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("hips-x")
+            if(this.bones.hips){
+                let hipD = this.debugFl.addFolder("hips")
+                hipD.add( this.bones.hips.rotation, 'y').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("hips-y")
+                hipD.add( this.bones.hips.rotation, 'z').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("hips-z")
+                hipD.add( this.bones.hips.rotation, 'x').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(180)).min(THREE.MathUtils.degToRad(0)).name("hips-x")
             }
 
-            if(leftForeArm){
-                this.leftFor = this.debugFl.addFolder("left-fore-arm")
-                this.leftFor.add( leftForeArm.rotation, 'x').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-90)).name("left-fore-arm-x")
+            if(this.bones.leftForeArm){
+                let leftFor = this.debugFl.addFolder("left-fore-arm")
+                leftFor.add( this.bones.leftForeArm.rotation, 'x').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-90)).name("left-fore-arm-x")
             }
 
-            if (rightForeArm){
-                this.rightFor= this.debugFl.addFolder("right-fore-arm")
-                this.rightFor.add( rightForeArm.rotation, 'x').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-90)).name("right-fore-arm-x")
+            if (this.bones.rightForeArm){
+                let rightFor= this.debugFl.addFolder("right-fore-arm")
+                rightFor.add( this.bones.rightForeArm.rotation, 'x').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-90)).name("right-fore-arm-x")
             }
             
         }

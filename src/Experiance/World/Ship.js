@@ -42,7 +42,6 @@ export default class Ship{
             }
         })
         this.scene.add( this.model )
-        console.log(this.resource)
     }
     setAnimation(){
         this.animation = {}

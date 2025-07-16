@@ -5,6 +5,21 @@ export default class Contact{
         this.contactElement = document.querySelector('div.contact-container');
         this.array = ContactIcons;
         this.intial();
+        this.parent = `
+            <section id="page5" class="page">
+                <hr>
+                <h4>Say hi, I'd love to hear from you</h4>
+                <div class="contact-container">
+                </div>
+                
+            </section>
+
+            <section id="page6" class="page">
+                <footer class="footer">
+                <p>&copy; 2025 Eyob Jemane. All rights reserved.</p>
+                </footer>
+            </section>
+        `;
         
     }
     intial(){

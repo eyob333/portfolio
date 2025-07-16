@@ -6,6 +6,7 @@ import Enviromet from './Environment'
 import Nomad from './Nomad'
 
 
+
 export default class World{
 
     constructor(){
@@ -27,6 +28,7 @@ export default class World{
             this.Nomad = new Nomad()           
             this.Ship = new Ship()
             this.Enviromet = new Enviromet()
+            // this.animation = new SacredTimeLine();
             
         })
 
@@ -35,9 +37,6 @@ export default class World{
     update(){
         if ( this.Ship ){
             this.Ship.update()
-        }
-        if(this.Nomad){
-            this.Nomad.update()
         }
     }
 }

@@ -5,6 +5,16 @@ export default class Labs{
         this.labsElement = document.querySelector('div.Labs-container');
         this.array = LabsCards;
         this.instance();
+        this.parent = `
+              <section id="page3" class="page labs">
+                <h1>Labs </h1>
+                <p>Ideas, Experiments, Tweeks</p>
+                <div class="slider-wrapper">
+                <div class="Labs-container project-container">
+                    </div>
+                </div>
+            </section>
+        `;
     }
     instance(){
         this.injectElement = this.array.map( d => `<div class="projects-card-container">

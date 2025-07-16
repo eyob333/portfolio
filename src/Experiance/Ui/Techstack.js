@@ -9,5 +9,14 @@ export default class TechStack {
             <p>${icon.name}</p>
           </div>
         `).join('');
+
+        this.parent = `
+              <section id="page2" class="page techstack">
+                <h1>Tech Stack</h1>
+                <div class="techStack-container">
+                </div>
+            </section>   
+          `;
+
     }
 }

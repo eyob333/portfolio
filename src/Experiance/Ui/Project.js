@@ -5,9 +5,18 @@ export default class Project{
     constructor(array, element, type){
         this.projectElement = document.querySelector('div.project-container');
         this.array = projects;
-        this.intial();
+        this.setInstance();
+        this.parent = `
+                <section id="page1" class="page project">
+                    <h1>Projects</h1>
+                    <div class="slider-wrapper">
+                        <div class="project-container">
+                        </div>
+                    </div>
+                </section>
+            `;
     }
-    intial(){
+    setInstance(){
         this.injectElement = this.array.map( d => `<div class="projects-card-container">
              <div class="card">
                 <h2 ${d.mainTextC ?  `style="color:${d.mainTextC}"`: ''} >${d.name}</h2>
@@ -25,4 +34,9 @@ export default class Project{
         </div>`).join('');
         this.projectElement.innerHTML = this.injectElement;
     }
+
+    Inject(){
+        
+    }
+
 }

@@ -24,6 +24,5 @@ export default class Overlay {
         }
         this.overlay.material.dispose()
         this.material.dispose()
-        console.log(this.scene)
     }
 }

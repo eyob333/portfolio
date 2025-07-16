@@ -15,9 +15,9 @@
   "dependencies": {
     "@theatre/core": "^0.7.2",
     "@theatre/studio": "^0.7.2",
-    "cannon-es": "^0.20.0",
     "gsap": "^3.13.0",
     "lil-gui": "^0.19.2",
+    "stats-js": "^1.0.1",
     "three": "^0.169.0",
     "three-custom-shader-material": "^6.3.6"
   }

@@ -81,18 +81,20 @@ section{
 }
 
 /***************************************heading section *******************************/
-#heading{
-  padding-top: 20vh;
+section#heading{
+  margin-top: 20vh;
   /* padding-left: 50px; */
+  max-height: 100vh;
 }
 
 #heading h1{
+  
   font-family: 'Smooch Sans', sans-serif;   
   font-weight: 500;                                                                                
   font-size: 5rem;
   max-width: 50%;
   margin: 0;
-  color: #fff;                                                                                       
+  color: #fff;                                                                             
 }
 #heading h4{
   font-family: 'Jura', sans-serif;

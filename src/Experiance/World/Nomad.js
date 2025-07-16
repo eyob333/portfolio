@@ -9,7 +9,7 @@ export default class Nomad{
         this.scene = this.app.scene
         this.resources = this.app.resources
         this.time = this.app.time
-        this.resource = this.resources.item.Nomad
+        this.app.nomad = this.resources.item.Nomad
 
         this.debug = this.app.debug
 
@@ -21,37 +21,38 @@ export default class Nomad{
         this.setModel()
         this.setAnimation()
 
-        this.Skeleton = new Skeleton(this.model, this.debugFolder)
-        this.Skeleton.getBones()
+        this.Skeleton = new Skeleton(this.debugFolder)
+        this.Skeleton.setFlyingPose()
+        // this.pose = new Pose(this.skel);
+        // this.Skeleton.getBones()
 
         if ( this.debug.active){
             this.nomPosition = this.debugFolder.addFolder('nom-position')
             this.nomRotation = this.debugFolder.addFolder('nom-rotation')
 
-            this.nomPosition.add( this.model.position, 'x').name("x").step(0.001).max(20).min(-20)
-            this.nomPosition.add( this.model.position, 'y').name("y").step(0.001).max(20).min(-20)
-            this.nomPosition.add( this.model.position, 'z').name("z").step(0.001).max(20).min(-20)
+            this.nomPosition.add( this.app.nomad.scene.position, 'x').name("x").step(0.001).max(20).min(-20)
+            this.nomPosition.add( this.app.nomad.scene.position, 'y').name("y").step(0.001).max(20).min(-20)
+            this.nomPosition.add( this.app.nomad.scene.position, 'z').name("z").step(0.001).max(20).min(-20)
 
-            this.nomRotation.add( this.model.rotation, 'x').name("x").step(0.001).max(10).min(-10)
-            this.nomRotation.add( this.model.rotation, 'y').name("y").step(0.001).max(10).min(-10)
-            this.nomRotation.add( this.model.rotation, 'z').name("z").step(0.001).max(10).min(-10)
+            this.nomRotation.add( this.app.nomad.scene.rotation, 'x').name("x").step(0.001).max(10).min(-10)
+            this.nomRotation.add( this.app.nomad.scene.rotation, 'y').name("y").step(0.001).max(10).min(-10)
+            this.nomRotation.add( this.app.nomad.scene.rotation, 'z').name("z").step(0.001).max(10).min(-10)
         }
     }
 
     setModel(){
-        this.model = this.resource.scene
-        this.model.scale.set( 1., 1., 1.)
-        this.model.position.set(10,  4.416, 10)
-        this.scene.add( this.model )
+        this.app.nomad.scene.scale.set( 1., 1., 1.)
+        this.app.nomad.scene.position.set(15.637 ,5.691, 15.637)
+        this.app.nomad.scene.rotation.set(0, 3.892 , 0)
+        this.scene.add(  this.app.nomad.scene )
     }
 
     setAnimation(){
         this.animation = {}
-        this.animation.mixer = new THREE.AnimationMixer(this.model)
-
+        this.animation.mixer = new THREE.AnimationMixer(this.app.nomad.scene)
 
         this.animation.actions = {}
-        this.animation.actions.rotate = this.animation.mixer.clipAction( this.resource.animations[0])
+        this.animation.actions.rotate = this.animation.mixer.clipAction( this.app.nomad.animations[0])
         this.animation.actions.current = this.animation.actions.rotate
         this.animation.actions.current.play()
 
