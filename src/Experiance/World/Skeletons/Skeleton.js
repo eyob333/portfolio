@@ -4,6 +4,7 @@ import App from '../../App'
 export default class Skeleton{
     constructor(debug){
         this.app = new App()
+        this.scene = this.app.scene
         this.model = this.app.nomad.scene
         this.skindMesh = this.model.getObjectByProperty('type', 'SkinnedMesh')
         this.skeleton = this.skindMesh.skeleton
@@ -15,9 +16,11 @@ export default class Skeleton{
         this.characterSkeleton;
         this.model.traverse( (child) => {
             if(child.isSkinnedMesh){
+                let helper = new THREE.SkeletonHelper( child );
                 this.characterSkeleton = child.skeleton;
+                this.scene.add( helper );
             }
-        });
+        });     
         
         this.bones = {}
         this.instanceBone()

@@ -22,23 +22,25 @@ export default class Animation{
                     z: THREE.MathUtils.degToRad(-10),
                     delay: 2,
                     duration: 5.5,
-                    ease: 'elastic.inOut',
+                    ease: 'back.in(1.7)',
                 })
             gsap.to(this.app.camera.instance.position, {
-                x: 17.111,
+                x: 20.811740748918215,
+                y: 6.62357903679221,
+                z: 21.41001031130999,
                 delay: 2.5,
                 duration: 5,
-                ease: 'power4.inOut'
+                ease: 'back.inOut(3)'
             })
-            // const t1 = gsap.timeline({ 
-            //     defaults: {
-            //         // duration: 3,
-            //         repeat: -1,
-            //         ease: 'power1.inOut',
-            //         yoyo: true,
-            //         yoyoEase: 2,
-            //     }
-            // })
+            const t1 = gsap.timeline({ 
+                defaults: {
+                    // duration: 3,
+                    repeat: -1,
+                    ease: 'power1.inOut',
+                    yoyo: true,
+                    yoyoEase: 2,
+                }
+            })
             // t1 
                 // .to(this.bones.hips.rotation, {
                 //     x: THREE.MathUtils.degToRad(120),

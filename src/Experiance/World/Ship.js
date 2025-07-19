@@ -35,7 +35,7 @@ export default class Ship{
 
     setModel(){
         this.model = this.resource.scene
-        this.model.scale.set( 1., 1., 1.)
+        this.model.scale.set( 2.5, 2.5, 2.5)
         this.model.traverse( child =>{
             if ( child instanceof THREE.Mesh){
                 // child.castShadow = true
