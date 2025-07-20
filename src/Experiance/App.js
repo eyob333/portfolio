@@ -11,14 +11,16 @@ import LoadingManager from './Controls/LoadingControler.js';
 import Overlay from './Ui/Overlay.js';
 import Animation from './Animation/Animation.js';
 import Stats from 'stats-js';
+// import Lenis from 'lenis';
 
 let instance = null;
-Stats
+// const lenis = new Lenis({
+//   autoRaf: true,
+// });
+
 var stats = new Stats();
 stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
 document.body.appendChild( stats.dom );
-
- 
 
  
 export default class App{
@@ -58,7 +60,7 @@ export default class App{
         this.renderer.resize()
         }
 
-    update(){
+    update(time){
         stats.begin();
         this.camera.update()
         this.renderer.update()

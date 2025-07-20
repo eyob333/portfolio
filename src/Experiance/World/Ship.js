@@ -100,6 +100,6 @@ export default class Ship{
        }}
 
     update(){
-        this.animation.mixer.update( this.time.delta * 0.0001 )
+        this.animation.mixer.update( this.time.delta * 0.00002 )
     }
 }

@@ -1,23 +1,30 @@
 import projects from "../../assets/porojectCards";
 
-
 export default class Project{
-    constructor(array, element, type){
-        this.projectElement = document.querySelector('div.project-container');
+    constructor(root){
+        this.container = root
+        this.setParent()
         this.array = projects;
         this.setInstance();
-        this.parent = `
-                <section id="page1" class="page project">
+
+    }
+    setParent(){
+        parent = document.createElement('section')
+        parent.id = "page1" 
+        parent.classList.add('page')
+        parent.classList.add('project')
+        parent.innerHTML= `
                     <h1>Projects</h1>
                     <div class="slider-wrapper">
                         <div class="project-container">
                         </div>
                     </div>
-                </section>
             `;
+        this.container.appendChild(parent)
     }
     setInstance(){
-        this.injectElement = this.array.map( d => `<div class="projects-card-container">
+        let projectElement = document.querySelector('div.project-container');
+        let injectElement = this.array.map( d => `<div class="projects-card-container">
              <div class="card">
                 <h2 ${d.mainTextC ?  `style="color:${d.mainTextC}"`: ''} >${d.name}</h2>
                  <i class="fas fa-arrow-right"></i>
@@ -32,7 +39,7 @@ export default class Project{
                     <button onclick="location.href='${d.link}'">more</button>
             </div>
         </div>`).join('');
-        this.projectElement.innerHTML = this.injectElement;
+        projectElement.innerHTML = injectElement;
     }
 
     Inject(){

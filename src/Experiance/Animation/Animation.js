@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import gsap from "gsap";
 import App from "../App";
+import Ui from '../Ui/Ui';
 
 export default class Animation{
 
@@ -23,7 +24,7 @@ export default class Animation{
                     delay: 2,
                     duration: 5.5,
                     ease: 'back.in(1.7)',
-                })
+                });
             gsap.to(this.app.camera.instance.position, {
                 x: 20.811740748918215,
                 y: 6.62357903679221,
@@ -31,7 +32,8 @@ export default class Animation{
                 delay: 2.5,
                 duration: 5,
                 ease: 'back.inOut(3)'
-            })
+            });
+            this.ui = new Ui(document.querySelector("div.section-container-div"));
             const t1 = gsap.timeline({ 
                 defaults: {
                     // duration: 3,
@@ -40,7 +42,7 @@ export default class Animation{
                     yoyo: true,
                     yoyoEase: 2,
                 }
-            })
+            });
             // t1 
                 // .to(this.bones.hips.rotation, {
                 //     x: THREE.MathUtils.degToRad(120),
@@ -58,6 +60,10 @@ export default class Animation{
         else{
             return
         }
+    }
+
+    animateTake_02(){
+
     }
 }
 

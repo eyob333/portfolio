@@ -1,8 +1,15 @@
 
 export default class About{
-    constructor(){
-        this.parent = `
-            <section id="page4" class="page">
+    constructor(root){  
+        this.container = root;
+        this.setParent()
+    }
+
+    setParent(){
+        let parent = document.createElement('section')
+        parent.id = 'page4'
+        parent.classList.add('page')
+        parent.innerHTML = `
                 <h1>About me</h1>
                 <p>
                     Hi, <strong>Winter-Nomad</strong>, a software engineer, web developer and musician based in Ethiopia.
@@ -23,7 +30,7 @@ export default class About{
                     <br> 
                     <strong>“Make it work, make it right, make it fast.” – Kent Beck</strong>
                 </p>
-            </section>
         `;
+        this.container.appendChild(parent)
     }
 }

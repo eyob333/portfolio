@@ -1,23 +1,31 @@
 import LabsCards from "../../assets/labsCards";
 
 export default class Labs{
-    constructor(){
-        this.labsElement = document.querySelector('div.Labs-container');
+    constructor(root){
+        this.container = root
         this.array = LabsCards;
-        this.instance();
-        this.parent = `
-              <section id="page3" class="page labs">
+        this.setParent()
+        this.setInstance()
+    }
+    setParent(){
+        let parent = document.createElement('section')
+        parent.id = 'page3'
+        parent.classList.add('page')
+        parent.classList.add('labs')
+        parent.innerHTML =  `
                 <h1>Labs </h1>
                 <p>Ideas, Experiments, Tweeks</p>
                 <div class="slider-wrapper">
                 <div class="Labs-container project-container">
                     </div>
                 </div>
-            </section>
-        `;
+            `;
+        this.container.appendChild(parent)
     }
-    instance(){
-        this.injectElement = this.array.map( d => `<div class="projects-card-container">
+
+    setInstance(){
+        let element = document.querySelector('div.Labs-container');
+        let injectElement = this.array.map( d => `<div class="projects-card-container">
                 <div class="card">
                     <h2 ${d.mainTextC ?  `style="color:${d.mainTextC}"`: ''} >${d.name}</h2>
                     <i class="fas fa-arrow-right"></i>
@@ -32,7 +40,7 @@ export default class Labs{
                         <button onclick="location.href='${d.link}'">more</button>
                 </div>
             </div>`).join('');
-        this.labsElement.innerHTML = this.injectElement;
+        element.innerHTML = injectElement;
         
     }
 }

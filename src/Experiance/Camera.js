@@ -1,13 +1,10 @@
 import * as THREE from 'three'
 import App from "./App.js"
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
-// import { ArcballControls } from three/addons/controls/ArcballControls.js'
-// import { FlyControls } from 'three/addons/controls/FlyControls.js';
-// import { TrackballControls } from 'three/addons/controls/TrackballControls.js';
 
 export default class Camera{
 
-    constructor( ){
+    constructor(){
         this.experiance = new App()
         this.scene = this.experiance.scene
         this.sizes = this.experiance.sizes
@@ -28,7 +25,6 @@ export default class Camera{
     }
     orbitControls(){
         this.controls = new OrbitControls( this.instance, this.canvas)
-        // this.controls = new ArcballControls( this.instance, this.canvas, this.scene );
         this.controls.enableDamping = true
         
     }
@@ -38,10 +34,6 @@ export default class Camera{
         this.instance.updateProjectionMatrix()
     }
     
-    resize(){
-        this.instance.aspect = this.sizes.width/ this.sizes.height
-        this.instance.updateProjectionMatrix()
-    }
     setDebug(){
         this.debug = this.experiance.debug
         if (this.debug.active){
@@ -54,9 +46,9 @@ export default class Camera{
             this.posGui.add(this.instance.position, 'y', -20,20).step(0.00001).name('y').listen();
             this.posGui.add(this.instance.position, 'z', -20,20).step(0.00001).name('z').listen();
 
-            this.rotGui .add(this.instance.rotation, 'x', -Math.PI * .5, Math.PI * .5).step(0.01).name('x');
-            this.rotGui .add(this.instance.rotation, 'y', -Math.PI * .5, Math.PI * .5).step(0.01).name('y');
-            this.rotGui .add(this.instance.rotation, 'z', -Math.PI * .5, Math.PI * .5).step(0.01).name('z')
+            this.rotGui .add(this.instance.rotation, 'x', -Math.PI * .5, Math.PI * .5).step(0.01).name('x').listen();
+            this.rotGui .add(this.instance.rotation, 'y', -Math.PI * .5, Math.PI * .5).step(0.01).name('y').listen();
+            this.rotGui .add(this.instance.rotation, 'z', -Math.PI * .5, Math.PI * .5).step(0.01).name('z').listen();
         }
     }
 
