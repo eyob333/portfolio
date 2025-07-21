@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import App from "./App.js"
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
+import { vec3 } from 'three/src/nodes/TSL.js'
 
 export default class Camera{
 
@@ -26,7 +27,6 @@ export default class Camera{
     orbitControls(){
         this.controls = new OrbitControls( this.instance, this.canvas)
         this.controls.enableDamping = true
-        
     }
 
     resize(){

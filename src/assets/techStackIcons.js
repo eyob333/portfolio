@@ -198,7 +198,7 @@ const icons = [
     {name:'C', svg: c_},
     {name:'C++', svg: cpp},
     {name:'Java', svg: java},
-    {name:'PostgresQL', svg: postgress},
+    {name:'PostgresSQL', svg: postgress},
     {name:'MongoDB', svg: mongodb},
     {name:'Vite', svg: vite},
     {name:'React', svg: react},
