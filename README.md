@@ -33,15 +33,20 @@ npm run dev
 
 /src
   ├── main.js
-  ├── App.js
-  ├── SceneManager.js
-  ├── ModelLoader.js
-  ├── Materials.js
-  ├── Overlay.js
-  ├── UI.js
-  ├── TechStack.js
-  └── shaders/
-      ├── includes/
-          └── test/
-              ├── vertexShader.glsl
-              └── fragmentShader.glsl
+  ├── Experiance/
+  |   ├── App.js
+  |   ├── Camera.js
+  |   ├── Renderer.js
+  |   ├── Sources.js
+  |   ├── Utils/
+  |   ├── Animation/
+  |   ├── Controls/
+  |   ├── World/
+  |   ├── Ui/
+  |   └── Shaders/
+  |       ├── includes/
+  |           └── test/
+  |               ├── vertexShader.glsl
+  |               └── fragmentShader.glsl
+  |
+  └── assets/
