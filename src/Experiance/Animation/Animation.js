@@ -25,7 +25,7 @@ export default class Animation{
             const introTL = gsap.timeline()
             introTL
                 .to(this.bones.hips.rotation, {
-                    delay: 1,
+                    // delay: .5,
                     x: THREE.MathUtils.degToRad(130),
                     z: THREE.MathUtils.degToRad(-12),
                     duration: 5,
@@ -48,9 +48,9 @@ export default class Animation{
                                 duration: 3
                             })
                             gsap.to(this.app.camera.instance.position, {
-                                x: 20.655728905505388, 
-                                y: 6.789527319880829,
-                                z: 21.52754093837708,
+                               x: 18.669794632549852, 
+                               y: 5.826238461029424,
+                               z: 21.52754093837708,
                                 delay: 3,
                                 duration: 4
     
@@ -59,6 +59,7 @@ export default class Animation{
                             let pos = this.app.nomad.scene.position.y + .5
                             gsap.to( this.app.camera.controls.target, {
                                 y: pos,
+                                // delay: 3,
                                 duration: 5
                             })
                             // this.app.camera.controls.target.y = this.app.nomad.scene.position.y + .5
