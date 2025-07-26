@@ -11,17 +11,19 @@ export default class Animation{
     constructor(){
         this.app = new App()
         this.app.resources.on('ready', () =>{
+            this.bones = this.app.nomad.bones
+            console.log(this.app.world.Nomad.Skeleton.getBones())
             // this.app.camera.controls.target.copy(this.app.nomad.scene.position)
-            this.animateFly();
+            // this.animateFly();
             // this.animateTake_02();
+            
+            this.float()
         })
     }
 
     animateFly(){
         if (this.app.nomad){
-            console.log(this.app)
-            this.bones = this.app.nomad.bones
-            
+
             const introTL = gsap.timeline()
             introTL
                 .to(this.bones.hips.rotation, {
@@ -62,6 +64,8 @@ export default class Animation{
                                 // delay: 3,
                                 duration: 5
                             })
+                            this.master.pause()
+                            this.float()
                             // this.app.camera.controls.target.y = this.app.nomad.scene.position.y + .5
                         }, 2000)
                     }
@@ -82,8 +86,8 @@ export default class Animation{
                     duration: 13, 
                     ease: "slow(0.3,0.4,false)"
                 })
-            const master = gsap.timeline();
-            master
+            this. master = gsap.timeline();
+            this.master
                 .add(introTL)
                 .add(t1)
         }   
@@ -107,7 +111,53 @@ export default class Animation{
         //             this.app.camera.controls.target.set(this.app.nomad.scene.position.copy())
         //         }
         //     },)
+    }
+    
+    float(){
+        let {x, y, z} = this.app.nomad.scene.position
+        gsap.to(this.app.camera.controls.target, {
+            x: x,
+            y: y,
+            z: z,
+            duration: 3
+        })
+        gsap.to(this.bones.hips.rotation, {
+            x: THREE.MathUtils.degToRad(45),
+            y: 0,
+            z: 0,
+            duration: 2
+        })
+        const tlCan = gsap.timeline({
+            defaults: {
+                repeat:-1,
+                ease: 'power1.inOut',
+                yoyo: true,
+                duration: 4,
+            }
+        });
+         /*Can Animation*/
+        tlCan
+            //move top left
+            .to(this.app.nomad.scene.position, {
+                y:'-=.07',
+                x:'+=.06',  
+            })
             
+                //move down right
+            .to(this.app.nomad.scene.position,{ 
+                y:'+=.07', 
+                x:'-=.06', 
+                duration: 5
+            })
+            
+            .to(this.app.nomad.scene.position,{ 
+                y:'-=.06'
+            })
+            
+            .to(this.app.nomad.scene.position,{ 
+                y:'+=.06'
+            })
+
     }
 }
 
