@@ -12,6 +12,7 @@ export default class Animation{
         this.app = new App()
         this.app.resources.on('ready', () =>{
             this.bones = this.app.nomad.bones
+            this.angles = this.app.nomad.angles
             this.app.world.Nomad.Skeleton.getBones()
             // this.app.camera.controls.target.copy(this.app.nomad.scene.position)
             // this.animateFly();
@@ -124,10 +125,21 @@ export default class Animation{
             y: -0.0220175377663258, 
             z: 0.129489467863963
         })
-        // gsap.set('', {
-
+        gsap.set(this.angles.hand, {
+            'value': -1.00062344010713,
+            onComplete: () =>{
+                this.bones.rightArm.rotation.z = -this.angles.hand.value
+                this.bones.leftArm.rotation.z = this.angles.hand.value
+            }
+        })
+        // gsap.set(this.angles.leg, {
+        //     'value': -2.93020884656375,
+        //     onComplete: () =>{
+        //             this.bones.rightLeg.rotation.z = -this.angles.leg.value
+        //             this.bones.leftLeg.rotation.z = this.angles.leg.value
+        //     }
         // })
-        // gsap.()
+
 
         let {x, y, z} = this.app.nomad.scene.position
         gsap.to(this.app.camera.controls.target, {

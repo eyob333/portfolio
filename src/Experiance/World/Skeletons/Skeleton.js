@@ -26,6 +26,7 @@ export default class Skeleton{
         this.angles = {}
         this.instanceBone()
         this.app.nomad.bones = this.bones
+        this.app.nomad.angles = this.angles
     }
 
     instanceBone(){
@@ -160,7 +161,7 @@ export default class Skeleton{
 
             if(this.bones.rightForeArm && this.bones.leftForeArm){
                 let angleArm =  this.debugFl.addFolder("foreArmAngle")
-                angleArm.add(armAngle, 'value').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-90)).name("arm-Degres-v").onChange( e => {
+                angleArm.add(this.angles.foreArm, 'value').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-90)).name("arm-Degres-v").onChange( e => {
                     this.bones.leftForeArm.rotation.z = this.angles.foreArm.value
                     this.bones.rightForeArm.rotation.z = -this.angles.foreArm.value
                 })
@@ -207,7 +208,7 @@ export default class Skeleton{
 
             this.angles.hand = {}
             this.angles.hand.value = 0
-            if(this.this.angles.hand){
+            if(this.angles.hand){
                 let handAngleD = this.debugFl.addFolder('handAngle')
                 handAngleD.add( this.angles.hand, "value").step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-90)).name("handAngle")
                     .onChange(() =>{
