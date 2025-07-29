@@ -23,6 +23,7 @@ export default class Skeleton{
         });     
         
         this.bones = {}
+        this.angles = {}
         this.instanceBone()
         this.app.nomad.bones = this.bones
     }
@@ -47,6 +48,7 @@ export default class Skeleton{
         // this.bones.rightBiceps; //CC_Base_R_UpperarmTwist02_070       
         this.bones.leftCalf = findBone('CC_Base_L_Calf_05'); // CC_Base_L_Calf_05
         this.bones.rightCalf = findBone('CC_Base_R_Calf_020');
+        this.bones.rightBrest = findBone('CC_Base_R_RibsTwist_060');
     }
 
     instanceBoneDebugBones(){
@@ -129,20 +131,20 @@ export default class Skeleton{
             this.bones.hips.rotation.x = THREE.MathUtils.degToRad(125); // lay flat, face down
         }
         
-        let footAngle = {}
-        footAngle.value = THREE.MathUtils.degToRad(30);
-        if (this.bones.leftFoot) this.bones.leftFoot.rotation.x = footAngle.value;
-        if (this.bones.rightFoot) this.bones.rightFoot.rotation.x = footAngle.value;
+        this.angles.foot= {}
+        this.angles.foot.value = THREE.MathUtils.degToRad(30);
+        if (this.bones.leftFoot) this.bones.leftFoot.rotation.x = this.angles.foot.value;
+        if (this.bones.rightFoot) this.bones.rightFoot.rotation.x = this.angles.foot.value;
 
-        let legAngle = {}
-        legAngle.value = THREE.MathUtils.degToRad(-170);
-        if (this.bones.leftLeg) this.bones.leftLeg.rotation.z = legAngle.value;
-        if (this.bones.rightLeg) this.bones.rightLeg.rotation.z = -legAngle.value;
+        this.angles.leg = {}
+        this.angles.leg.value = THREE.MathUtils.degToRad(-170);
+        if (this.bones.leftLeg) this.bones.leftLeg.rotation.z = this.angles.leg.value;
+        if (this.bones.rightLeg) this.bones.rightLeg.rotation.z = -this.angles.leg.value;
 
-        let armAngle = {}
-        armAngle.value = THREE.MathUtils.degToRad(-60); 
-        if (this.bones.leftForeArm) this.bones.leftForeArm.rotation.x = armAngle.value;
-        if (this.bones.rightForeArm) this.bones.rightForeArm.rotation.x = -armAngle.value;
+        this.angles.foreArm = {}
+        this.angles.foreArm.value = THREE.MathUtils.degToRad(-60); 
+        if (this.bones.leftForeArm) this.bones.leftForeArm.rotation.x = this.angles.foreArm.value;
+        if (this.bones.rightForeArm) this.bones.rightForeArm.rotation.x = -this.angles.foreArm.value;
 
         if (this.bones.leftForeArm) this.bones.leftForeArm.rotation.x = 0;
         if (this.bones.rightForeArm) this.bones.rightForeArm.rotation.x = 0;
@@ -156,19 +158,19 @@ export default class Skeleton{
                 head.add( this.bones.head.rotation, 'x').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(45)).min(THREE.MathUtils.degToRad(-45)).name("head-x")
             }
 
-            if(armAngle && this.bones.rightForeArm && this.bones.leftForeArm){
+            if(this.bones.rightForeArm && this.bones.leftForeArm){
                 let angleArm =  this.debugFl.addFolder("foreArmAngle")
                 angleArm.add(armAngle, 'value').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-90)).name("arm-Degres-v").onChange( e => {
-                    this.bones.leftForeArm.rotation.z = armAngle.value
-                    this.bones.rightForeArm.rotation.z = -armAngle.value
+                    this.bones.leftForeArm.rotation.z = this.angles.foreArm.value
+                    this.bones.rightForeArm.rotation.z = -this.angles.foreArm.value
                 })
             }
 
-            if(footAngle && this.bones.rightFoot && this.bones.leftFoot){
+            if(this.bones.rightFoot && this.bones.leftFoot){
                 let angleFoot =  this.debugFl.addFolder("footAngle")
-                angleFoot.add(footAngle, 'value').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-10)).name("foot-Degres-v").onChange( ()=> {
-                    this.bones.rightFoot.rotation.x = footAngle.value
-                    this.bones.leftFoot.rotation.x = footAngle.value
+                angleFoot.add(this.angles.foot, 'value').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-10)).name("foot-Degres-v").onChange( ()=> {
+                    this.bones.rightFoot.rotation.x = this.angles.foot.value
+                    this.bones.leftFoot.rotation.x = this.angles.foot.value
                 })
             }
 
@@ -203,37 +205,37 @@ export default class Skeleton{
                 leftArm.add( this.bones.leftArm.rotation, 'x').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-90)).name("hips-x")
             }
 
-            let handAngle = {}
-            handAngle.value = 0
-            if(handAngle){
+            this.angles.hand = {}
+            this.angles.hand.value = 0
+            if(this.this.angles.hand){
                 let handAngleD = this.debugFl.addFolder('handAngle')
-                handAngleD.add( handAngle, "value").step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-90)).name("handAngle")
+                handAngleD.add( this.angles.hand, "value").step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-90)).name("handAngle")
                     .onChange(() =>{
-                        this.bones.rightArm.rotation.z = -handAngle.value
-                        this.bones.leftArm.rotation.z = handAngle.value
+                        this.bones.rightArm.rotation.z = -this.angles.hand.value
+                        this.bones.leftArm.rotation.z = this.angles.hand.value
                     })
     
             }
 
-            if(legAngle && this.bones.rightLeg && this.bones.leftLeg){
+            if(this.bones.rightLeg && this.bones.leftLeg){
                 let angleLeg =  this.debugFl.addFolder("legAngle")
-                angleLeg.add(legAngle, 'value').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(-90)).min(THREE.MathUtils.degToRad(-180)).name("leg-Degres-v").onChange( ()=> {
-                    this.bones.rightLeg.rotation.z = -legAngle.value
-                    this.bones.leftLeg.rotation.z = legAngle.value
+                angleLeg.add(this.angles.leg, 'value').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(-90)).min(THREE.MathUtils.degToRad(-180)).name("leg-Degres-v").onChange( ()=> {
+                    this.bones.rightLeg.rotation.z = -this.angles.leg.value
+                    this.bones.leftLeg.rotation.z = this.angles.leg.value
                 })
             }
 
             if(this.bones.rightLeg){
                 let rightLeg = this.debugFl.addFolder('ritghtLeg')
                 rightLeg.add( this.bones.rightLeg.rotation, 'y').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-90)).name("ritghtLeg-y")
-                rightLeg.add( this.bones.rightLeg.rotation, 'z').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-90)).name("ritghtLeg-z")
+                rightLeg.add( this.bones.rightLeg.rotation, 'z').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(190)).min(THREE.MathUtils.degToRad(90)).name("ritghtLeg-z")
                 rightLeg.add( this.bones.rightLeg.rotation, 'x').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-90)).name("ritghtLeg-x")
             }
 
             if(this.bones.leftLeg){
-                let leftLeg = this.debugFl.addFolder('leftArm')
+                let leftLeg = this.debugFl.addFolder('leftLeg')
                 leftLeg.add( this.bones.leftLeg.rotation, 'y').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-90)).name("leftLeg-y")
-                leftLeg.add( this.bones.leftLeg.rotation, 'z').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-90)).name("leftLeg-z")
+                leftLeg.add( this.bones.leftLeg.rotation, 'z').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(-90)).min(THREE.MathUtils.degToRad(-190)).name("leftLeg-z")
                 leftLeg.add( this.bones.leftLeg.rotation, 'x').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-90)).name("leftLeg-x")
             }
 
@@ -250,6 +252,13 @@ export default class Skeleton{
                 leftCalf.add( this.bones.leftCalf.rotation, 'z').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-90)).name("leftCalf-z")
                 leftCalf.add( this.bones.leftCalf.rotation, 'x').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-90)).name("leftCalf-x")
             }
+
+            // if(this.bones.rightBrest){
+            //     let rightBrest = this.debugFl.addFolder('rightBrest')
+            //     rightBrest.add( this.bones.rightBrest.rotation, 'y').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-90)).name("rightBrest-y")
+            //     rightBrest.add( this.bones.rightBrest.rotation, 'z').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-90)).name("rightBrest-z")
+            //     rightBrest.add( this.bones.rightBrest.rotation, 'x').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-90)).name("rightBrest-x")
+            // }
             
         }
 

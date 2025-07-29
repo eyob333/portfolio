@@ -12,7 +12,7 @@ export default class Animation{
         this.app = new App()
         this.app.resources.on('ready', () =>{
             this.bones = this.app.nomad.bones
-            console.log(this.app.world.Nomad.Skeleton.getBones())
+            this.app.world.Nomad.Skeleton.getBones()
             // this.app.camera.controls.target.copy(this.app.nomad.scene.position)
             // this.animateFly();
             // this.animateTake_02();
@@ -114,6 +114,21 @@ export default class Animation{
     }
     
     float(){
+        gsap.set(this.bones.rightLeg.rotation, {
+            x: -0.0670520592031182,
+            y: -0.0670520592031182, 
+            z: 2.95215810723683
+        })
+        gsap.set(this.bones.rightCalf.rotation, {
+            x: -0.853216422142192, 
+            y: -0.0220175377663258, 
+            z: 0.129489467863963
+        })
+        // gsap.set('', {
+
+        // })
+        // gsap.()
+
         let {x, y, z} = this.app.nomad.scene.position
         gsap.to(this.app.camera.controls.target, {
             x: x,
