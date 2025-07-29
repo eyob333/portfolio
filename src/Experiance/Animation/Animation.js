@@ -126,7 +126,7 @@ export default class Animation{
             z: 0.129489467863963
         })
         gsap.set(this.angles.hand, {
-            'value': -1.00062344010713,
+            value: -1.00062344010713,
             onComplete: () =>{
                 this.bones.rightArm.rotation.z = -this.angles.hand.value
                 this.bones.leftArm.rotation.z = this.angles.hand.value
