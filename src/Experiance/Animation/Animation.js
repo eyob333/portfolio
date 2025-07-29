@@ -13,7 +13,7 @@ export default class Animation{
         this.app.resources.on('ready', () =>{
             this.bones = this.app.nomad.bones
             this.angles = this.app.nomad.angles
-            this.app.world.Nomad.Skeleton.getBones()
+            // this.app.world.Nomad.Skeleton.getBones()
             // this.app.camera.controls.target.copy(this.app.nomad.scene.position)
             // this.animateFly();
             // this.animateTake_02();

@@ -22,6 +22,7 @@ export default class Nomad{
         this.setAnimation()
 
         this.Skeleton = new Skeleton(this.debugFolder)
+        console.log(this.Skeleton)
         this.Skeleton.setFlyingPose()
         // this.pose = new Pose(this.skel);
         // this.Skeleton.getBones()
