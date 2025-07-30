@@ -4,6 +4,7 @@ import App from "../App"
 import Ship from './Ship'
 import Enviromet from './Environment'
 import Nomad from './Nomad'
+import HyperDrive from './HyperDrive'
 
 
 
@@ -28,6 +29,7 @@ export default class World{
             this.Nomad = new Nomad()           
             this.Ship = new Ship()
             this.Enviromet = new Enviromet()
+            this.hyperDirve = new HyperDrive()
             // this.animation = new SacredTimeLine();
             
         })

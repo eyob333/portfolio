@@ -178,11 +178,10 @@ export default class Skeleton{
         }
 
         // ✅ Armspace: 74° outward spread (i.e., arms angled slightly away from torso)
-        let armSpread = {}
-        armSpread.value = THREE.MathUtils.degToRad(37); // 74° total = 37° per arm
+        this.angles.foreArm.value = THREE.MathUtils.degToRad(37); // 74° total = 37° per arm
 
-        if (this.bones.leftForeArm) this.bones.leftForeArm.rotation.z = armSpread.value;
-        if (this.bones.rightForeArm) this.bones.rightForeArm.rotation.z = -armSpread.value;
+        if (this.bones.leftForeArm) this.bones.leftForeArm.rotation.z = this.angles.foreArm.value;
+        if (this.bones.rightForeArm) this.bones.rightForeArm.rotation.z = -this.angles.foreArm.value;
     }
 
     setFlyingPose(){
