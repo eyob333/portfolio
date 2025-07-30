@@ -11,10 +11,11 @@ void main(){
     uv.x *= .5;
     uv.y += uTime * .0005;
     float warp = texture(uTexture, uv).r ;
-    warp = smoothstep(.4, 1., warp);
+    // warp = 1. - warp;
+    warp = smoothstep(.8, 1., warp);
 
-    warp*= smoothstep(0.0, 0.05, vUv.x);
-    warp*= smoothstep(1.0, 0.95, vUv.x);
+    warp*= smoothstep(0.0, 0.001, vUv.x);
+    warp*= smoothstep(1.0, 0.999, vUv.x);
     warp*= smoothstep(0.0, 0.1, vUv.y);
     warp*= smoothstep(1.0, 0.4, vUv.y);
 

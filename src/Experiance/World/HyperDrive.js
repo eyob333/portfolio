@@ -20,7 +20,7 @@ export default class HyperDrive{
     }
 
     setInstance(){
-        this.geometry = new THREE.CylinderGeometry( 5, 5, 20, 32, 20, true ); 
+        this.geometry = new THREE.CylinderGeometry( 5, 5, 40, 34, 1, true ); 
         this.material = new THREE.ShaderMaterial({
             vertexShader: vertexShader,
             fragmentShader: fragmentShader,
@@ -30,8 +30,10 @@ export default class HyperDrive{
             },
             side: THREE.BackSide,
             transparent: true,
-            wireframe: false
+            wireframe: false,
+            wireframeLinewidth: 10
         }); 
+        this.material.wir
         
         this.instance = new THREE.Mesh( this.geometry, this.material ); 
         this.instance.scale.set(2, 2, 2)
