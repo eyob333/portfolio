@@ -49,6 +49,17 @@ export default class Resources extends EventEmitter{
                     }
                 )
             } 
+            else if( source.type === 'texture'){
+                this.loaders.textureLoader.load(
+                    source.path,
+                    (file) =>{
+                        
+                        file.wrapS = THREE.RepeatWrapping
+                        file.wrapT= THREE.RepeatWrapping
+                        this.sourceLoaded(source, file)
+                    }
+                )
+            }
         });
     }
 

@@ -61,7 +61,7 @@ export default class App{
         this.renderer.resize()
         }
 
-    update(time){
+    update(){
         stats.begin();
         this.camera.update()
         this.renderer.update()

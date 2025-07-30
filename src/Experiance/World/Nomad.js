@@ -15,14 +15,14 @@ export default class Nomad{
 
         if (this.debug.active){
             this.debugFolder = this.debug.ui.addFolder('Nomad')
-                // .close()
+                .close()
         }
 
         this.setModel()
         this.setAnimation()
 
         this.Skeleton = new Skeleton(this.debugFolder)
-        console.log(this.Skeleton)
+        console.log(this.app)
         this.Skeleton.setFlyingPose()
         // this.pose = new Pose(this.skel);
         // this.Skeleton.getBones()

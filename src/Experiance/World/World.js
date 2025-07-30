@@ -40,5 +40,8 @@ export default class World{
         if ( this.Ship ){
             this.Ship.update()
         }
+        if( this.hyperDirve){
+            this.hyperDirve.update()
+        }
     }
 }
