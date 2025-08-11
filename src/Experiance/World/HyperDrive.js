@@ -38,6 +38,7 @@ export default class HyperDrive{
     }
     setDebug(){
         let driveDebug = this.degug.ui.addFolder("Hyper Drive")
+            .close();
         driveDebug.add(this.material, 'wireframe').name('wireframe')
         driveDebug.add(this.material, 'transparent').name('transparent')
         let dirveUniforms = driveDebug.addFolder("uniforms")

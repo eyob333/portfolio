@@ -44,7 +44,7 @@ export default class App{
         this.renderer = new Renderer()
         this.world = new World()
         this.debug = new Debug
-        this.animation = new Animation()
+        // this.animation = new Animation()
 
         // resize
         this.sizes.on( 'resize', ()=> {
