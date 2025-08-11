@@ -22,7 +22,6 @@ export default class Nomad{
         this.setAnimation()
 
         this.Skeleton = new Skeleton(this.debugFolder)
-        console.log(this.app)
         this.Skeleton.setFlyingPose()
         // this.pose = new Pose(this.skel);
         // this.Skeleton.getBones()
@@ -97,6 +96,6 @@ export default class Nomad{
        }}
 
     update(){
-        // this.animation.mixer.update( this.time.delta * 0.0005 )
+        this.animation.mixer.update( this.time.delta * 0.0005 )
     }
 }

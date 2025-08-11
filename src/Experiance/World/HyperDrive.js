@@ -14,9 +14,7 @@ export default class HyperDrive{
 
         if (this.degug.active){
             this.setDebug()
-            this.app.camera.controls.target.copy(this.app.world.Ship.scene)
         }
-
     }
 
     setInstance(){
@@ -26,14 +24,13 @@ export default class HyperDrive{
             fragmentShader: fragmentShader,
             uniforms: {
                 uTime: new THREE.Uniform(0),
-                uTexture: new THREE.Uniform(this.resource.item.Streak)
+                uTexture: new THREE.Uniform(this.resource.item.Streak),
+                uSpeed: new THREE.Uniform(1)
             },
             side: THREE.BackSide,
             transparent: true,
             wireframe: false,
-            wireframeLinewidth: 10
         }); 
-        this.material.wir
         
         this.instance = new THREE.Mesh( this.geometry, this.material ); 
         this.instance.scale.set(2, 2, 2)
@@ -44,7 +41,7 @@ export default class HyperDrive{
         driveDebug.add(this.material, 'wireframe').name('wireframe')
         driveDebug.add(this.material, 'transparent').name('transparent')
         let dirveUniforms = driveDebug.addFolder("uniforms")
-        dirveUniforms.add(this.material.uniforms.uTime, 'value').min(0).max(10).step(0.001).name('uTime')
+        dirveUniforms.add(this.material.uniforms.uSpeed, 'value').min(0).max(3).step(0.0001).name('uTime')
     }
     update(){
         this.material.uniforms.uTime.value = this.app.time.elapsed

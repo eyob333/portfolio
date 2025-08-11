@@ -30,7 +30,6 @@ export default class World{
             this.Ship = new Ship()
             this.Enviromet = new Enviromet()
             this.hyperDirve = new HyperDrive()
-            // this.animation = new SacredTimeLine();
             
         })
 
