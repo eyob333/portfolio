@@ -14,5 +14,10 @@ export default [
         type: 'texture',
         path: '/textures/Marble 11 - 512x512.png'
 
+    },
+    {
+        name: 'Star',
+        type: 'texture',
+        path: '/textures/PNG (Black background)/circle_05.png'
     }
 ]

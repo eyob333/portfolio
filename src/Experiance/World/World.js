@@ -30,19 +30,22 @@ export default class World{
             // this.Nomad = new Nomad()           
             // this.Ship = new Ship()
             // this.Enviromet = new Enviromet()
-            // this.HyperDirve = new HyperDrive()
-            this.Star = new Star()
+            this.HyperDirve = new HyperDrive()
+            // this.Star = new Star()
             
         })
 
     }
 
     update(){
-        if ( this.Ship ){
-            this.Ship.update()
-        }
-        if( this.HyperDirve){
-            this.HyperDirve.update()
-        }
+        // if ( this.Ship ){
+        //     this.Ship.update()
+        // }
+        // if( this.HyperDirve){
+        //     this.HyperDirve.update()
+        // }
+        // if( this.Star){
+        //     this.Star.update()
+        // }
     }
 }

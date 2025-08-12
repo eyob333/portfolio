@@ -2,6 +2,9 @@ import * as THREE from 'three'
 import App from "../App";
 import fragmentShader from '../Shaders/HyperDrive/fragment.glsl'
 import vertexShader from '../Shaders/HyperDrive/vertex.glsl'
+import outerVert from '../Shaders/HyperOuter/vertex.glsl'
+import outerFrag from '../Shaders/HyperOuter/fragment.glsl'
+
 
 
 export default class HyperDrive{
@@ -11,6 +14,7 @@ export default class HyperDrive{
         this.resource = this.app.resources
         this.degug = this.app.debug
         this.setInstance()
+        this.setOuterInstance()
 
         if (this.degug.active){
             this.setDebug()
@@ -18,7 +22,7 @@ export default class HyperDrive{
     }
 
     setInstance(){
-        this.geometry = new THREE.CylinderGeometry( 5, 5, 40, 34, 1, true ); 
+        this.geometry = new THREE.CylinderGeometry( 5, 5, 30, 34, 1, true ); 
         this.material = new THREE.ShaderMaterial({
             vertexShader: vertexShader,
             fragmentShader: fragmentShader,
@@ -35,6 +39,28 @@ export default class HyperDrive{
         this.instance = new THREE.Mesh( this.geometry, this.material ); 
         this.instance.scale.set(2, 2, 2)
         this.scene.add( this.instance )
+    }
+
+    setOuterInstance(){
+        this.outerGeometry= new THREE.CylinderGeometry(4. ,  9.3 , 30, 34, 1, true)
+
+        this.outerMaterial = new THREE.ShaderMaterial({
+            vertexShader: outerVert,
+            fragmentShader: outerFrag,
+            // uniforms: {
+            //     // uTime: new THREE.Uniform(0),
+            //     // uTexture: new THREE.Uniform(this.resource.item.Streak),
+            //     // uSpeed: new THREE.Uniform(1)
+            // },
+            side: THREE.BackSide,
+            // transparent: true,
+            // wireframe: true,
+        });
+
+        this.outerInstace = new THREE.Mesh(this.outerGeometry, this.outerMaterial);
+        this.outerInstace.scale.set(2, 2, 2)
+        this.scene.add(this.outerInstace)
+
     }
     setDebug(){
         let driveDebug = this.degug.ui.addFolder("Hyper Drive")
