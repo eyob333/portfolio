@@ -7,6 +7,7 @@ import outerFrag from '../Shaders/HyperOuter/fragment.glsl'
 
 
 
+
 export default class HyperDrive{
     constructor(){
         this.app = new App()
@@ -34,6 +35,8 @@ export default class HyperDrive{
             side: THREE.BackSide,
             transparent: true,
             wireframe: false,
+            // blending: THREE.AdditiveBlending,
+            depthWrite: false
         }); 
         
         this.instance = new THREE.Mesh( this.geometry, this.material ); 
@@ -47,13 +50,14 @@ export default class HyperDrive{
         this.outerMaterial = new THREE.ShaderMaterial({
             vertexShader: outerVert,
             fragmentShader: outerFrag,
-            // uniforms: {
-            //     // uTime: new THREE.Uniform(0),
-            //     // uTexture: new THREE.Uniform(this.resource.item.Streak),
-            //     // uSpeed: new THREE.Uniform(1)
-            // },
+            uniforms: {
+                uTime: new THREE.Uniform(0),
+                uTexture: new THREE.Uniform(this.resource.item.Hyper),
+                uSpeed: new THREE.Uniform(1)
+            },
             side: THREE.BackSide,
-            // transparent: true,
+            blending: THREE.AdditiveBlending,
+            transparent: true,
             // wireframe: true,
         });
 
@@ -64,13 +68,23 @@ export default class HyperDrive{
     }
     setDebug(){
         let driveDebug = this.degug.ui.addFolder("Hyper Drive")
-            .close();
-        driveDebug.add(this.material, 'wireframe').name('wireframe')
-        driveDebug.add(this.material, 'transparent').name('transparent')
-        let dirveUniforms = driveDebug.addFolder("uniforms")
-        dirveUniforms.add(this.material.uniforms.uSpeed, 'value').min(0).max(3).step(0.0001).name('uTime')
+            // .close();
+        let innerDrive = driveDebug.addFolder('inner Drive')
+            // .close();
+        let outerDrive = driveDebug.addFolder('outer Drive')
+            // .close();
+            
+        innerDrive.add(this.material.uniforms.uSpeed, 'value').min(0).max(3).step(0.0001).name('uTime')
+        innerDrive.add(this.material, 'wireframe').name('wireframe')
+        innerDrive.add(this.material, 'transparent').name('transparent')
+
+        outerDrive.add(this.outerMaterial.uniforms.uSpeed, 'value').min(0).max(3).step(0.0001).name('uTime')
+        outerDrive.add(this.outerMaterial, 'wireframe').name('wireframe')
+        outerDrive.add(this.outerMaterial, 'transparent').name('transparent')
+        
     }
     update(){
         this.material.uniforms.uTime.value = this.app.time.elapsed
+        this.outerMaterial.uniforms.uTime.value = this.app.time.elapsed
     }
 }

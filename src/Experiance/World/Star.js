@@ -20,7 +20,7 @@ export default class Star{
 
     setInstance(){
         this.uniform={}
-        this.uniform.uSize = new THREE.Uniform(70.9),
+        this.uniform.uSize = new THREE.Uniform(1.),
         this.uniform.uTime = new THREE.Uniform(0);
         this.uniform.uSpeed = new THREE.Uniform(.002);
         this.uniform.uTexture = new THREE.Uniform(this.resources.item.Star)
@@ -64,38 +64,39 @@ export default class Star{
 
 
 
-        let minX = Infinity;
-        let maxX = -Infinity;
-        for (let i = 0; i < positions.length; i += 3) {
-            if (positions[i] < minX) minX = positions[i];
-            if (positions[i] > maxX) maxX = positions[i];
-        }
+        // let minX = Infinity;
+        // let maxX = -Infinity;
+        // for (let i = 0; i < positions.length; i += 3) {
+        //     if (positions[i] < minX) minX = positions[i];
+        //     if (positions[i] > maxX) maxX = positions[i];
+        // }
 
-        const uvs = new Float32Array(positions.length / 3 * 2);
-        for (let i = 0; i < positions.length / 3; i++) {
-            // Normalize the x-coordinate to a 0-1 range for the 'u' value.
-            const u = (positions[i * 3] - minX) / (maxX - minX);
-            // Set the 'v' value to a constant (e.g., 0.5) if you don't need a vertical gradient.
-            const v = 0.5;
-            uvs[i * 2] = u;
-            uvs[i * 2 + 1] = v;
-        }
+        // const uvs = new Float32Array(positions.length / 3 * 2);
+        // for (let i = 0; i < positions.length / 3; i++) {
+        //     // Normalize the x-coordinate to a 0-1 range for the 'u' value.
+        //     const u = (positions[i * 3] - minX) / (maxX - minX);
+        //     // Set the 'v' value to a constant (e.g., 0.5) if you don't need a vertical gradient.
+        //     const v = 0.5;
+        //     uvs[i * 2] = u;
+        //     uvs[i * 2 + 1] = v;
+        // }
 
-        geometry.setAttribute('uv', new THREE.BufferAttribute(uvs, 2));
+        // geometry.setAttribute('uv', new THREE.BufferAttribute(uvs, 2));
 
         console.log(geometry.attributes)
         console.log(this.resources.item.Star)
 
-        const material = new  THREE.PointsMaterial({
-            // vertexShader: starVertex,
-            // fragmentShader: starFragment,
-            // uniforms: this.uniform,
+        const material = new  THREE.ShaderMaterial({
+            vertexShader: starVertex,
+            fragmentShader: starFragment,
+            uniforms: this.uniform,
             // depthWrite: THREE.AdditiveBlending,
-            color: '#050404ff',
-            size: 10.,
-            map: this.resources.item.Star,
-            sizeAttenuation: true,
+            // color: '#ffffff',
+            // size: 10.,
+            // map: this.resources.item.Star,
+            // sizeAttenuation: true,
             depthWrite: false,
+            blending: THREE.AdditiveBlending
             // blending : THREE.AdditiveBlending,
             // vertexColors :true
             
@@ -106,14 +107,14 @@ export default class Star{
 
     setDebug(){
         let points = this.debug.ui.addFolder('Stars')
-        // points.add(this.star.material.uniforms.uSize, 'value').min(0).max(40.).step(0.1).name('uSize')
-        //  points.add(this.star.material.uniforms.uSpeed, 'value').min(0).max(10.).step(0.001).name('uTime')
+        points.add(this.star.material.uniforms.uSize, 'value').min(0).max(4.).step(0.1).name('uSize')
+         points.add(this.star.material.uniforms.uSpeed, 'value').min(0).max(10.).step(0.001).name('uTime')
         // points.add(this.params, 'count').min(0).max(40.).step(0.1).name('count').onFinishChange( () =>{
         // })
 
     }
 
     update(){
-        // this.star.material.uniforms.uTime.value = this.app.time.elapsed
+        this.star.material.uniforms.uTime.value = this.app.time.elapsed
     }
 }

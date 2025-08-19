@@ -18,6 +18,11 @@ export default [
     {
         name: 'Star',
         type: 'texture',
-        path: '/textures/PNG (Black background)/circle_05.png'
+        path: '/textures/PNG (Black background)/star_04.png'
+    },
+    {
+        name: 'Hyper',
+        type: 'texture',
+        path: '/textures/PNG (Black background)/trace_02.png'
     }
 ]
