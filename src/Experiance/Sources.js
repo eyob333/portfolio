@@ -2,18 +2,17 @@ export default [
     {
         name: 'Ship',
         type: 'gltfModel',
-        path: '/models/1k-nomad.glb',
+        path: '/models/mojir.glb',
     },
     {
         name: 'Nomad',
         type: 'gltfModel',
-        path: '/models/1k-winter.glb',
+        path: '/models/someT.glb',
     },
     {
         name: 'Streak',
         type: 'texture',
         path: '/textures/Marble 11 - 512x512.png'
-
     },
     {
         name: 'Star',
@@ -23,6 +22,6 @@ export default [
     {
         name: 'Hyper',
         type: 'texture',
-        path: '/textures/PNG (Black background)/trace_02.png'
+        path: '/textures/PNG (Black background)/scratch_01.png'
     }
 ]

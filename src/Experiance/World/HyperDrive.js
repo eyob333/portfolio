@@ -14,6 +14,8 @@ export default class HyperDrive{
         this.scene = this.app.scene
         this.resource = this.app.resources
         this.degug = this.app.debug
+
+        console.log(this.app)
         this.setInstance()
         this.setOuterInstance()
 
@@ -23,6 +25,7 @@ export default class HyperDrive{
     }
 
     setInstance(){
+        
         this.geometry = new THREE.CylinderGeometry( 5, 5, 30, 34, 1, true ); 
         this.material = new THREE.ShaderMaterial({
             vertexShader: vertexShader,
@@ -45,7 +48,9 @@ export default class HyperDrive{
     }
 
     setOuterInstance(){
-        this.outerGeometry= new THREE.CylinderGeometry(4. ,  9.3 , 30, 34, 1, true)
+        this.degugObj = {}
+        this.degugObj.color = '#3b6d5e'
+        this.outerGeometry= new THREE.CylinderGeometry(6. ,  10.3 , 30, 34, 1, true)
 
         this.outerMaterial = new THREE.ShaderMaterial({
             vertexShader: outerVert,
@@ -53,7 +58,9 @@ export default class HyperDrive{
             uniforms: {
                 uTime: new THREE.Uniform(0),
                 uTexture: new THREE.Uniform(this.resource.item.Hyper),
-                uSpeed: new THREE.Uniform(1)
+                uSpeed: new THREE.Uniform(1),
+                uResolution: new THREE.Uniform( new THREE.Vector3(this.app.sizes.width, this.app.sizes.height, 1)),
+                uColor: new THREE.Uniform( new THREE.Color(this.degugObj.color))
             },
             side: THREE.BackSide,
             blending: THREE.AdditiveBlending,
@@ -81,10 +88,14 @@ export default class HyperDrive{
         outerDrive.add(this.outerMaterial.uniforms.uSpeed, 'value').min(0).max(3).step(0.0001).name('uTime')
         outerDrive.add(this.outerMaterial, 'wireframe').name('wireframe')
         outerDrive.add(this.outerMaterial, 'transparent').name('transparent')
+        outerDrive.addColor(this.degugObj, 'color').onChange( () =>{
+            this.outerMaterial.uniforms.uColor = new THREE.Uniform(new THREE.Color(this.degugObj.color))
+        })  
         
     }
     update(){
         this.material.uniforms.uTime.value = this.app.time.elapsed
+        // this.outerInstace.rotation.y -= .01;
         this.outerMaterial.uniforms.uTime.value = this.app.time.elapsed
     }
 }

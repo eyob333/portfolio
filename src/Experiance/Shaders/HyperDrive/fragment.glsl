@@ -21,7 +21,7 @@ void main(){
     warp*= smoothstep(0.0, 0.1, vUv.y);
     warp*= smoothstep(1.0, 0.4, vUv.y);
 
-    gl_FragColor = vec4(1., 1., 1., warp);
+    gl_FragColor = vec4(1., 1., 1., warp * .6);
     #include <tonemapping_fragment>
     #include <colorspace_fragment>
 }

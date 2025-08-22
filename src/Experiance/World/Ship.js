@@ -1,5 +1,7 @@
-import App from "../App";
 import * as THREE  from 'three'
+import App from "../App";
+import Weopens from './Skeletons/Weopens';
+
 
 export default class Ship{
     
@@ -31,10 +33,12 @@ export default class Ship{
             this.shipRoation.add( this.model.rotation, 'y').name("y").step(0.001).max(10).min(-10)
             this.shipRoation.add( this.model.rotation, 'z').name("z").step(0.001).max(10).min(-10)
         }
+
     }
 
     setModel(){
         this.model = this.resource.scene
+        console.log(this.model)
         this.model.scale.set( 2.5, 2.5, 2.5)
         this.model.traverse( child =>{
             if ( child instanceof THREE.Mesh){
