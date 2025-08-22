@@ -6,6 +6,7 @@ import Enviromet from './Environment'
 import Nomad from './Nomad'
 import HyperDrive from './HyperDrive'
 import Star from './Star'
+import ParticleDrive from './ParticleDrive'
 
 
 
@@ -27,12 +28,12 @@ export default class World{
         // this.scene.add( testMesh )
         
         this.resorces.on( 'ready', ()=>{ 
-            this.Nomad = new Nomad()           
-            // this.Ship = new Ship()
-            this.Enviromet = new Enviromet()
+            // this.Nomad = new Nomad()          
+            this.Ship = new Ship()
             // this.HyperDirve = new HyperDrive()
             // this.Star = new Star()
-            
+            this.Enviromet = new Enviromet()
+            this.Particle = new ParticleDrive()
         })
 
     }
@@ -41,9 +42,9 @@ export default class World{
         // if ( this.Ship ){
         //     this.Ship.update()
         // }
-        if( this.HyperDirve){
-            this.HyperDirve.update()
-        }
+        // if( this.HyperDirve){
+        //     this.HyperDirve.update()
+        // }
         // if( this.Star){
         //     this.Star.update()
         // }

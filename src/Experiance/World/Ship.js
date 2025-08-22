@@ -1,6 +1,6 @@
 import * as THREE  from 'three'
 import App from "../App";
-import Weopens from './Skeletons/Weopens';
+
 
 
 export default class Ship{
@@ -19,7 +19,7 @@ export default class Ship{
             .close()
         }
         this.setModel()
-        this.setAnimation()
+        // this.setAnimation()
 
         if ( this.debug.active){
             this.shipPosition = this.debugFolder.addFolder('ship-position')

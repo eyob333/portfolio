@@ -148,12 +148,12 @@ export default class Skeleton {
         let handAngleD = this.debugFolder.addFolder('handAngle')
         handAngleD.add(this.angles.hand, "value").step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-90)).name("handAngle")
             .onChange(() => {
-                this.bones.rightArm.rotation.z = this.angles.hand.value
-                this.bones.leftArm.rotation.z = -this.angles.hand.value
+                this.bones.rightArm.rotation.x = this.angles.hand.value
+                this.bones.leftArm.rotation.x = -this.angles.hand.value
             })
 
         let angleLeg = this.debugFolder.addFolder("legAngle")
-        angleLeg.add(this.angles.leg, 'value').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(-10)).name("leg-Degres-v").onChange(() => {
+        angleLeg.add(this.angles.leg, 'value').step(THREE.MathUtils.degToRad(.0001)).max(THREE.MathUtils.degToRad(90)).min(THREE.MathUtils.degToRad(0)).name("leg-Degres-v").onChange(() => {
             this.bones.rightLeg.rotation.x = -this.angles.leg.value
             this.bones.leftLeg.rotation.x = this.angles.leg.value
         })
