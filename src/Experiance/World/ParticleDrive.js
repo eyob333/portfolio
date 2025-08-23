@@ -54,6 +54,7 @@ export default class ParticleDrive{
         }); 
         
         this.instance = new THREE.Points( this.geometry, this.material ); 
+    
         this.scene.add( this.instance )
     }
 

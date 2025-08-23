@@ -4,8 +4,9 @@ uniform float uSize;
 
 
 void main(){
-    gl_Position = projectionMatrix * modelMatrix * viewMatrix * vec4( position, 1.);
+    vec4 mvPosition = modelViewMatrix * vec4( position, 1.);
+    gl_Position = projectionMatrix * mvPosition;
 
-    gl_PointSize =  uSize;
+    gl_PointSize =  (uSize * 10. )/ -mvPosition.z;
 
 }
