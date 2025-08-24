@@ -40,9 +40,10 @@ export default class ParticleDrive{
             let i3 = i * 3;
             position[ i3 + 0] = (Math.random() - .5) * 2;
             position[ i3 + 1] = (Math.random() - .5) * 2;
-            position[ i3 + 2] = (Math.random() - .5) * 2;
+            position[ i3 + 2] = (Math.random() - .5) * 1;
 
-            speed[i] = Math.random();
+            let factor = Math.abs(position[i3 + 2])
+            speed[i] = Math.random() * factor + .5;
         }   
         this.geometry.setAttribute( 'position', new THREE.BufferAttribute(position, 3))
         this.geometry.setAttribute( 'aSpeed', new THREE.BufferAttribute(speed, 1))
@@ -54,7 +55,7 @@ export default class ParticleDrive{
             transparent: true,
             wireframe: true,
             // side: THREE.DoubleSide,
-            blending: THREE.NormalBlending,
+            blending: THREE.AdditiveBlending,
             depthWrite: false
         }); 
         

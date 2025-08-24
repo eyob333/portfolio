@@ -20,10 +20,6 @@ let instance = null;
 
 var stats = new Stats();
 
-stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
-document.body.appendChild( stats.dom );
-
- 
 export default class App{
     constructor(canvas){
         if (instance){
@@ -46,6 +42,12 @@ export default class App{
         this.debug = new Debug
         // this.animation = new Animation()
 
+
+        if(this.debug.active){
+            stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
+            document.body.appendChild( stats.dom );
+        }
+
         // resize
         this.sizes.on( 'resize', ()=> {
             this.resize()
@@ -62,11 +64,17 @@ export default class App{
         }
 
     update(){
-        stats.begin();
+        if(this.debug.active){
+            stats.begin();
+        }
+        
         this.camera.update()
         this.renderer.update()
         this.world.update()
-        stats.end();
+        if (this.debug.active){
+            stats.end();
+        }
+  
     }
 
     destroy(){
