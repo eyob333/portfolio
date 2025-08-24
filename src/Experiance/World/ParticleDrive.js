@@ -19,12 +19,12 @@ export default class ParticleDrive{
 
     SetParams(){
         this.params = {}
-        this.params.count = 1000
+        this.params.count = 50
         
         this.uniforms = {}
         this.uniforms.uTime = new THREE.Uniform(0)
         this.uniforms.uSpeed =  new THREE.Uniform(1)
-        this.uniforms.uSize = new THREE.Uniform(1.)
+        this.uniforms.uSize = new THREE.Uniform(9.)
         this.uniforms.uResolution = new THREE.Uniform( new THREE.Vector2(this.app.sizes.width, this.app.sizes.height))
     }
     setInstance(){
@@ -32,29 +32,33 @@ export default class ParticleDrive{
         this.SetParams();
         
         this.geometry = new THREE.BufferGeometry(); 
+
         const position = new Float32Array( this.params.count * 3);
+        const speed = new Float32Array( this.params.count)
 
         for( let i = 0; i < this.params.count; i++ ){
             let i3 = i * 3;
             position[ i3 + 0] = (Math.random() - .5) * 2;
             position[ i3 + 1] = (Math.random() - .5) * 2;
             position[ i3 + 2] = (Math.random() - .5) * 2;
+
+            speed[i] = Math.random();
         }   
         this.geometry.setAttribute( 'position', new THREE.BufferAttribute(position, 3))
+        this.geometry.setAttribute( 'aSpeed', new THREE.BufferAttribute(speed, 1))
 
         this.material = new THREE.ShaderMaterial({
             vertexShader: vertexShader,
             fragmentShader: fragmentShader,
             uniforms: this.uniforms,
             transparent: true,
-            wireframe: false,
-            // side: THREE.BackSide,
-            // blending: THREE.AdditiveBlending,
-            // depthWrite: false
+            wireframe: true,
+            // side: THREE.DoubleSide,
+            blending: THREE.NormalBlending,
+            depthWrite: false
         }); 
         
-        this.instance = new THREE.Points( this.geometry, this.material ); 
-    
+        this.instance = new THREE.Points( this.geometry, this.material); 
         this.scene.add( this.instance )
     }
 
@@ -73,6 +77,6 @@ export default class ParticleDrive{
         
     }
     update(){
-        this.material.uniforms.uTime.value = this.app.time.elapsed
+        this.uniforms.uTime.value = this.app.time.elapsed
     }
 }

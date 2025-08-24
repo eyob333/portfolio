@@ -48,5 +48,8 @@ export default class World{
         // if( this.Star){
         //     this.Star.update()
         // }
+        if(this.Particle){
+            this.Particle.update()
+        }
     }
 }
