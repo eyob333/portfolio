@@ -19,7 +19,7 @@ export default class ParticleDrive{
 
     SetParams(){
         this.params = {}
-        this.params.count = 50
+        this.params.count = 1000
         
         this.uniforms = {}
         this.uniforms.uTime = new THREE.Uniform(0)
@@ -36,14 +36,37 @@ export default class ParticleDrive{
         const position = new Float32Array( this.params.count * 3);
         const speed = new Float32Array( this.params.count)
 
+        const outerA = 1.5; // Radius along the X-axis
+        const outerB = 1.0; // Radius along the Y-axis
+        const outerC = 0.5; // Radius along the Z-axis
+
+        // Define the radii for the inner void (proportional to outer shape)
+        const innerA = 0.15; // 0.1 * outerA
+        const innerB = 0.1;  // 0.1 * outerB
+        const innerC = 0.05; // 0.1 * outerC
+
         for( let i = 0; i < this.params.count; i++ ){
             let i3 = i * 3;
-            position[ i3 + 0] = (Math.random() - .5) * 2;
-            position[ i3 + 1] = (Math.random() - .5) * 2;
-            position[ i3 + 2] = (Math.random() - .5) * 1;
+            while(true){
+                position[ i3 + 0] = Math.random() * 2 - 1;
+                position[ i3 + 1] = Math.random() * 2 - 1;
+                position[ i3 + 2] = 0;
 
-            let factor = Math.abs(position[i3 + 2])
-            speed[i] = Math.random() * factor + .5;
+                // let distance = Math.sqrt(position[ i3 + 0] * position[ i3 + 0] + position[ i3 + 1] * position[ i3 + 1] +  position[ i3 + 2] * position[ i3 + 2])
+
+                // Calculate the distance from the center (0, 0)
+                const distance = Math.sqrt(position[ i3 + 0] * position[ i3 + 0] + position[ i3 + 1] * position[ i3 + 1]);
+
+                // Check if the point is within the hollow disc
+                if (distance >= 0.5 && distance <= 1) {
+                    break;
+                }
+
+            }
+
+
+            let factor = Math.abs(position[i3 + 0] * position[i3 + 0] + position[i3 + 1] * position[i3 + 1] );
+            speed[i] = (factor * 3.);
         }   
         this.geometry.setAttribute( 'position', new THREE.BufferAttribute(position, 3))
         this.geometry.setAttribute( 'aSpeed', new THREE.BufferAttribute(speed, 1))
@@ -53,9 +76,9 @@ export default class ParticleDrive{
             fragmentShader: fragmentShader,
             uniforms: this.uniforms,
             transparent: true,
-            wireframe: true,
+            wireframe: false,
             // side: THREE.DoubleSide,
-            blending: THREE.AdditiveBlending,
+            blending: THREE.NormalBlending,
             depthWrite: false
         }); 
         

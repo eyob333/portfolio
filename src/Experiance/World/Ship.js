@@ -39,12 +39,13 @@ export default class Ship{
     setModel(){
         this.model = this.resource.scene
         console.log(this.model)
-        this.model.scale.set( 2.5, 2.5, 2.5)
-        this.model.traverse( child =>{
-            if ( child instanceof THREE.Mesh){
-                // child.castShadow = true
-            }
-        })
+        this.model.scale.set( 2., 2., 2.)
+        this.model.rotation.set(0, -1.5, 0,)
+        // this.model.traverse( child =>{
+        //     if ( child instanceof THREE.Mesh){
+        //         child.castShadow = false
+        //     }
+        // })
         this.scene.add( this.model )
     }
     setAnimation(){

@@ -64,15 +64,13 @@ export default class App{
         }
 
     update(){
-        if(this.debug.active){
-            stats.begin();
-        }
+
         
         this.camera.update()
         this.renderer.update()
         this.world.update()
         if (this.debug.active){
-            stats.end();
+            stats.update();
         }
   
     }
