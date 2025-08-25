@@ -20,12 +20,15 @@ export default class ParticleDrive{
     SetParams(){
         this.params = {}
         this.params.count = 1000
-        
+        this.params.innerVoidRad = .5;
+        this.params.outerRad = 1.;
+
         this.uniforms = {}
         this.uniforms.uTime = new THREE.Uniform(0)
-        this.uniforms.uSpeed =  new THREE.Uniform(1)
-        this.uniforms.uSize = new THREE.Uniform(9.)
+        this.uniforms.uSpeed =  new THREE.Uniform(.1)
+        this.uniforms.uSize = new THREE.Uniform(35.)
         this.uniforms.uResolution = new THREE.Uniform( new THREE.Vector2(this.app.sizes.width, this.app.sizes.height))
+
     }
     setInstance(){
 
@@ -36,38 +39,35 @@ export default class ParticleDrive{
         const position = new Float32Array( this.params.count * 3);
         const speed = new Float32Array( this.params.count)
 
-        const outerA = 1.5; // Radius along the X-axis
-        const outerB = 1.0; // Radius along the Y-axis
-        const outerC = 0.5; // Radius along the Z-axis
+        this.setAttr = () => {
+       
+            for( let i = 0; i < this.params.count; i++ ){
+                let i3 = i * 3;
+                while(true){
+                    position[ i3 + 0] = Math.random() * 2 - 1;
+                    position[ i3 + 1] = Math.random() * 2 - 1;
+                    position[ i3 + 2] = 0;
 
-        // Define the radii for the inner void (proportional to outer shape)
-        const innerA = 0.15; // 0.1 * outerA
-        const innerB = 0.1;  // 0.1 * outerB
-        const innerC = 0.05; // 0.1 * outerC
+                    // let distance = Math.sqrt(position[ i3 + 0] * position[ i3 + 0] + position[ i3 + 1] * position[ i3 + 1] +  position[ i3 + 2] * position[ i3 + 2])
 
-        for( let i = 0; i < this.params.count; i++ ){
-            let i3 = i * 3;
-            while(true){
-                position[ i3 + 0] = Math.random() * 2 - 1;
-                position[ i3 + 1] = Math.random() * 2 - 1;
-                position[ i3 + 2] = 0;
+                    // Calculate the distance from the center (0, 0)
+                    const distance = Math.sqrt(position[ i3 + 0] * position[ i3 + 0] + position[ i3 + 1] * position[ i3 + 1]);
 
-                // let distance = Math.sqrt(position[ i3 + 0] * position[ i3 + 0] + position[ i3 + 1] * position[ i3 + 1] +  position[ i3 + 2] * position[ i3 + 2])
+                    // Check if the point is within the hollow disc
+                    if (distance >= 0.5 && distance <= 1) {
+                        break;
+                    }
 
-                // Calculate the distance from the center (0, 0)
-                const distance = Math.sqrt(position[ i3 + 0] * position[ i3 + 0] + position[ i3 + 1] * position[ i3 + 1]);
-
-                // Check if the point is within the hollow disc
-                if (distance >= 0.5 && distance <= 1) {
-                    break;
                 }
 
-            }
 
+                let factor = Math.abs(position[i3 + 0] * position[i3 + 0] + position[i3 + 1] * position[i3 + 1] );
+                speed[i] = (factor * 3.);
+            }   
+        }
 
-            let factor = Math.abs(position[i3 + 0] * position[i3 + 0] + position[i3 + 1] * position[i3 + 1] );
-            speed[i] = (factor * 3.);
-        }   
+        this.setAttr();
+
         this.geometry.setAttribute( 'position', new THREE.BufferAttribute(position, 3))
         this.geometry.setAttribute( 'aSpeed', new THREE.BufferAttribute(speed, 1))
 
@@ -77,9 +77,10 @@ export default class ParticleDrive{
             uniforms: this.uniforms,
             transparent: true,
             wireframe: false,
-            // side: THREE.DoubleSide,
             blending: THREE.NormalBlending,
-            depthWrite: false
+            depthWrite: false,
+            depthTest: true,
+            opacity: .5
         }); 
         
         this.instance = new THREE.Points( this.geometry, this.material); 
@@ -89,11 +90,16 @@ export default class ParticleDrive{
     setDebug(){
         let particle = this.degug.ui.addFolder("Particle Drive")
             // .close();
-        particle.add(this.params,  'count').min(10).max(100000).step(1).name('count')
+        particle.add(this.params,  'count').min(10).max(100000).step(1).name('count').onFinishChange( () =>{
+            this.setAttr()
+        })
+        particle.add(this.params, 'outerRad').min(0).max(1.).step(.001).name('outerRadius')
+        particle.add(this.params, 'innerVoidRad').min(0).max(1.).step(.001).name('VoidRadius')
         particle.add(this.uniforms.uSpeed, 'value').min(0).max(3).step(0.0001).name('uTime')
         particle.add(this.uniforms.uSize, 'value').min(0).max(40).step(0.0001).name('uSize')
         particle.add(this.material, 'wireframe').name('wireframe')
         particle.add(this.material, 'transparent').name('transparent')
+        // particle.add( this.)
 
         // particle.addColor(this.degugObj, 'color').onChange( () =>{
         //     this.outerMaterial.uniforms.uColor = new THREE.Uniform(new THREE.Color(this.degugObj.color))
