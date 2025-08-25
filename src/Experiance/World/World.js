@@ -29,7 +29,7 @@ export default class World{
         
         this.resorces.on( 'ready', ()=>{ 
             // this.Nomad = new Nomad()          
-            // this.Ship = new Ship()
+            this.Ship = new Ship()
             // this.HyperDirve = new HyperDrive()
             // this.Star = new Star()
             this.Enviromet = new Enviromet()

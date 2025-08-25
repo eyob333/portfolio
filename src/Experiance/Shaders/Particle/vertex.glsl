@@ -17,7 +17,7 @@ void main(){
     newPos.xyz *=  10.;
     
     newPos.z  -= max_z - 20.;
-    float mov = fract(uTime * .001  * aSpeed * uSpeed) * max_z ;
+    float mov = pow(fract(uTime * .001  * aSpeed * uSpeed), 3.) * max_z ;
     newPos.z += mov;
 
     // newPos.x = newPos.x + sin(+ uTime * uSpeed * .0001);

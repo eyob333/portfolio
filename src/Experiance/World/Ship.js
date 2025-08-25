@@ -39,8 +39,8 @@ export default class Ship{
     setModel(){
         this.model = this.resource.scene
         console.log(this.model)
-        this.model.scale.set( 2., 2., 2.)
-        this.model.rotation.set(0, -1.5, 0,)
+        this.model.scale.set( 1., 1., 1.)
+        this.model.rotation.set(0, Math.PI, 0,)
         // this.model.traverse( child =>{
         //     if ( child instanceof THREE.Mesh){
         //         child.castShadow = false
