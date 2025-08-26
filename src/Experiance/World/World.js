@@ -32,8 +32,9 @@ export default class World{
             this.Ship = new Ship()
             // this.HyperDirve = new HyperDrive()
             // this.Star = new Star()
+            // this.Particle = new ParticleDrive()
             this.Enviromet = new Enviromet()
-            this.Particle = new ParticleDrive()
+            
         })
 
     }
@@ -50,6 +51,9 @@ export default class World{
         // }
         if(this.Particle){
             this.Particle.update()
+        }
+        if (this.Enviromet){
+            this.Enviromet.update()
         }
     }
 }

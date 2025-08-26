@@ -4,11 +4,11 @@ import App from "./App";
 export default class Renderer{
     
     constructor(){
-        this.experiance = new App()
-        this.canvas = this.experiance.canvas
-        this.scene = this.experiance.scene
-        this.sizes = this.experiance.sizes        
-        this.camera = this.experiance.camera
+        this.app = new App()
+        this.canvas = this.app.canvas
+        this.scene = this.app.scene
+        this.sizes = this.app.sizes        
+        this.camera = this.app.camera
 
         this.setInstace()
     }

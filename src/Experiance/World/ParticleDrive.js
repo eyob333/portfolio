@@ -22,12 +22,14 @@ export default class ParticleDrive{
         this.params.count = 1000
         this.params.innerVoidRad = .5;
         this.params.outerRad = 1.;
+        this.params.color = '#619ae5'
 
         this.uniforms = {}
         this.uniforms.uTime = new THREE.Uniform(0)
         this.uniforms.uSpeed =  new THREE.Uniform(.1)
         this.uniforms.uSize = new THREE.Uniform(35.)
         this.uniforms.uResolution = new THREE.Uniform( new THREE.Vector2(this.app.sizes.width, this.app.sizes.height))
+        this.uniforms.uColor = new THREE.Uniform( new THREE.Color(this.params.color))
 
     }
     setInstance(){
@@ -54,7 +56,7 @@ export default class ParticleDrive{
                     const distance = Math.sqrt(position[ i3 + 0] * position[ i3 + 0] + position[ i3 + 1] * position[ i3 + 1]);
 
                     // Check if the point is within the hollow disc
-                    if (distance >= 0.5 && distance <= 1) {
+                    if (distance >= 0.3 && distance <= 1) {
                         break;
                     }
 
@@ -77,7 +79,7 @@ export default class ParticleDrive{
             uniforms: this.uniforms,
             transparent: true,
             wireframe: false,
-            blending: THREE.NormalBlending,
+            blending: THREE.AdditiveBlending,
             depthWrite: false,
             depthTest: true,
             opacity: .5
@@ -95,11 +97,14 @@ export default class ParticleDrive{
         })
         particle.add(this.params, 'outerRad').min(0).max(1.).step(.001).name('outerRadius')
         particle.add(this.params, 'innerVoidRad').min(0).max(1.).step(.001).name('VoidRadius')
-        particle.add(this.uniforms.uSpeed, 'value').min(0).max(3).step(0.0001).name('uTime')
-        particle.add(this.uniforms.uSize, 'value').min(0).max(40).step(0.0001).name('uSize')
+        particle.add(this.uniforms.uSpeed, 'value').min(0).max(3).step(0.0001).name('uSpeed')
+        particle.add(this.uniforms.uSize, 'value').min(0).max(40).step(0.0001).name('uSize')       
+        particle.addColor( this.params, 'color').onChange( () =>{
+            this.uniforms.uColor.value.set(this.params.color)
+        }).name('uColor')
         particle.add(this.material, 'wireframe').name('wireframe')
         particle.add(this.material, 'transparent').name('transparent')
-        // particle.add( this.)
+ 
 
         // particle.addColor(this.degugObj, 'color').onChange( () =>{
         //     this.outerMaterial.uniforms.uColor = new THREE.Uniform(new THREE.Color(this.degugObj.color))

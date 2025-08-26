@@ -1,4 +1,7 @@
 import * as THREE  from 'three'
+import plumeVert from '../Shaders/Ship/Plume/vertex.glsl'
+import plumeFrag from '../Shaders/Ship/Plume/fragment.glsl'
+
 import App from "../App";
 
 
@@ -22,19 +25,22 @@ export default class Ship{
         // this.setAnimation()
 
         if ( this.debug.active){
-            this.shipPosition = this.debugFolder.addFolder('ship-position')
-            this.shipRoation = this.debugFolder.addFolder('ship-rotation')
+            let shipPosition = this.debugFolder.addFolder('ship-position')
+            let shipRoation = this.debugFolder.addFolder('ship-rotation')
 
-            this.shipPosition.add( this.model.position, 'x').name("x").step(0.001).max(10).min(-10)
-            this.shipPosition.add( this.model.position, 'y').name("y").step(0.001).max(10).min(-10)
-            this.shipPosition.add( this.model.position, 'z').name("z").step(0.001).max(10).min(-10)
+            shipPosition.add( this.model.position, 'x').name("x").step(0.001).max(10).min(-10)
+            shipPosition.add( this.model.position, 'y').name("y").step(0.001).max(10).min(-10)
+            shipPosition.add( this.model.position, 'z').name("z").step(0.001).max(10).min(-10)
 
-            this.shipRoation.add( this.model.rotation, 'x').name("x").step(0.001).max(10).min(-10)
-            this.shipRoation.add( this.model.rotation, 'y').name("y").step(0.001).max(10).min(-10)
-            this.shipRoation.add( this.model.rotation, 'z').name("z").step(0.001).max(10).min(-10)
+            shipRoation.add( this.model.rotation, 'x').name("x").step(0.001).max(10).min(-10)
+            shipRoation.add( this.model.rotation, 'y').name("y").step(0.001).max(10).min(-10)
+            shipRoation.add( this.model.rotation, 'z').name("z").step(0.001).max(10).min(-10)
+            
         }
 
     }
+
+
 
     setModel(){
         this.model = this.resource.scene
@@ -47,7 +53,8 @@ export default class Ship{
         //     }
         // })
         this.scene.add( this.model )
-    }
+    }    
+   
     setAnimation(){
         this.animation = {}
         this.animation.mixer = new THREE.AnimationMixer(this.model)

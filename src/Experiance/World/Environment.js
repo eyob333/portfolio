@@ -3,7 +3,7 @@ import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
-
+// import { bloom } from 'three/addons/postprocessing/';
 import App from "../App";
 
 
@@ -12,13 +12,16 @@ export default class Enviromet{
     constructor(){
         this.app = new App()
         this.scene = this.app.scene
-        this.resources = this.app.resources
+        this.camera = this.app.camera.instance
+        this.sizes = this.app.sizes
         this.renderer = this.app.renderer.instance
+    
         this.debug = this.app.debug
 
 
         this.setSunLight()
         this.setAmbientLight()
+        // this.setPostProcess()
 
         if( this.debug.active){
             this.debugFolder = this.debug.ui.addFolder('Enviromet')
@@ -30,6 +33,8 @@ export default class Enviromet{
             this.debugFolder.add( this.sunLight.position, 'z' ).name('SunLightPositionZ').min(-10).max(10).step( 0.001)
 
             this.debugFolder.add(this.ambient, 'intensity').name("AmbientLightIntesity").min(0).max(4).step(.001)
+
+            // this.setPostProcessDebug()
         }
 
     }
@@ -45,38 +50,67 @@ export default class Enviromet{
         this.scene.add(this.ambient)
     }
 
-    setPostProcess(){
-        this.params = {}
-        const renderScene = new RenderPass( scene, camera );
+     setPostProcess(){
+        this.params = {
+            threshold: 0,
+            strength: 1,
+            radius: 0,
+            exposure: 1,
+            clearColor: '#000000'
+        }
 
-        const bloomPass = new UnrealBloomPass( new THREE.Vector2( window.innerWidth, window.innerHeight ));
-        bloomPass.threshold = this.params.threshold;
-        bloomPass.strength = this.params.strength;
-        bloomPass.radius = this.params.radius;
+        const renderScene = new RenderPass( this.scene, this.camera );
+
+        this.bloomPass = new UnrealBloomPass( new THREE.Vector2( this.sizes.width, this.sizes.height ));
+        this.bloomPass.threshold = this.params.threshold;
+        this.bloomPass.strength = this.params.strength;
+        this.bloomPass.radius = this.params.radius;
         
         const outputPass = new OutputPass();
 
-        composer = new EffectComposer( renderer);
-        composer.addPass(renderScene)
-        composer.addPass(bloomPass)
-        composer.addPass(outputPass)
+        this.composer = new EffectComposer( this.renderer);
+        this.composer.addPass(renderScene) 
+        this.composer.addPass(this.bloomPass)
+        this.composer.addPass(outputPass)
+       
+        
         
     }
-    setPostProcessDebug(){
-        const bloomGui = gui.addFolder( 'bloom' );
-        bloomGui.add( this.params, 'threshold', 0.0, 1.0 ).onChange( function ( value ) {
-            bloomPass.threshold = Number( value );
-        } );
-        bloomGui.add( this.params, 'strength', 0.0, 3.0 ).onChange( function ( value ) {
-            bloomPass.strength = Number( value );
-        } );
-        bloomGui.add( this.params, 'radius', 0.0, 1.0 ).step( 0.01 ).onChange( function ( value ) {
-            bloomPass.radius = Number( value );
-        } );
-        bloomGui.add( this.params, 'exposure', 0.1, 2 ).onChange( function ( value ) {
-            renderer.toneMappingExposure = Math.pow( value, 4.0 );
-        } );
-    }
     
+    setPostProcessDebug(){
+        const bloomGui = this.debugFolder.addFolder( 'bloom' );
+        bloomGui.add( this.params, 'threshold', 0.0, 3.0 ).onChange( () => {
+            this.bloomPass.threshold = this.params.threshold;
+        } );
+        bloomGui.add( this.params, 'strength', 0.0, 3.0 ).onChange( () =>{
+            this.bloomPass.strength = this.params.strength;
+        } );
+        bloomGui.add( this.params, 'radius', 0.0, 1.0 ).step( 0.01 ).onChange(  () => {
+            this.bloomPass.radius = this.params.radius;
+        } );
+        bloomGui.add( this.params, 'exposure', 0.1, 2 ).onChange(  () => {
+            this.renderer.toneMappingExposure = Math.pow( this.params.exposure, 4.0 );
+        } );
+        const render = this.debugFolder.addFolder('render')
+        render.addColor( this.params, 'clearColor').onChange(  () => {
+            this.renderer.setClearColor(this.params.clearColor)
+        } );
+        render.add( this.renderer, 'toneMapping',{
+            no: THREE.NoToneMapping,
+            Liner: THREE.LinearToneMapping,
+            Reinhard: THREE.ReinhardToneMapping,
+            Cineon: THREE.CineonToneMapping,
+            ACESFilmic: THREE.ACESFilmicToneMapping,
+            })
+
+        
+    }
+
+    update(){
+        if (this.composer){
+            this.composer.render()
+        }
+    
+    }
 
 }
