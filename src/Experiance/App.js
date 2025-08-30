@@ -40,7 +40,13 @@ export default class App{
         this.renderer = new Renderer()
         this.world = new World()
         this.debug = new Debug
-        // this.animation = new Animation()
+
+        this.resources.on('ready', () =>{
+                setTimeout( () =>{
+                    this.animation = new Animation()
+                }, 4000)   
+            })    
+        
 
 
         if(this.debug.active){

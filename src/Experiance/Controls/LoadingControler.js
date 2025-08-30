@@ -1,8 +1,6 @@
 import * as THREE from 'three'
 import gsap from 'gsap';
 
-
-const sectionContainingElement = document.querySelector("div.section-container-div");
 const loadingTExtElement = document.querySelector("div.loading-text");
 const loadingElement = document.querySelector("div.loading-bar");
 const loadingNumberElement = document.querySelector("p.loading-number");
@@ -12,38 +10,44 @@ export default class LoadingManager{
     constructor(overlay){
         this.overlay = overlay
         this.overlaymaterial = this.overlay.material
+        
+        this.sectionContainingElement = document.querySelector("div.section-container-div");
   
         this.loadingManager =  new THREE.LoadingManager(
             () =>{
                 window.setTimeout( () => {
-                gsap.to(this.overlaymaterial.uniforms.uAlpha, {duration: 4, value:0, delay: 1}) 
-                loadingElement.classList.add('enabled');
-                loadingElement.style.transform = '';
-                gsap.to(loadingTExtElement, {
-                    scaleY: 0, 
-                    transformOrigin: 'top',
-                    duration: 3,
-                    delay: 1,
-                    ease: 'power2.out'
-                })
-                setTimeout( () =>{
-                    sectionContainingElement.style.visibility= 'visible';
-                    sectionContainingElement.style.maxHeight = '100%';
-                    sectionContainingElement.style.maxWidth = '100%';
-                    sectionContainingElement.style.overflow = 'auto';
-                    bodyElement.style.padding = '0 2%'
-                    bodyElement.style.overflowX = 'hidden'
-                    bodyElement.style.overflowY = 'auto'
-                    this.overlay.destroy()
-                }, [3000])
+                    gsap.to( this.overlaymaterial.uniforms.uAlpha, {
+                            duration: 5, value: .0, delay: 1, ease: 'expo.out', onComplete: () =>{
+                            this.overlay.destroy()
+                        }
+                    }) 
+                    loadingElement.classList.add('enabled');
+                    loadingElement.style.transform = '';
+                    gsap.to(loadingTExtElement, {
+                        scaleY: 0, 
+                        transformOrigin: 'top',
+                        duration: 3,
+                        delay: 1,
+                        ease: 'power2.out'
+                    })
+                    setTimeout( () =>{
+                        // this.sectionContainingElement.style.visibility= 'visible';
+                        // this.sectionContainingElement.style.maxHeight = '100%';
+                        // this.sectionContainingElement.style.maxWidth = '100%';
+                        // this.sectionContainingElement.style.overflow = 'auto';
+                        bodyElement.style.padding = '0 2%'
+                        bodyElement.style.overflowX = 'hidden'
+                        bodyElement.style.overflowY = 'auto'
+                    }, [3000])
                 
                 }, 1000)  
-                
+                this.isReady = true;
             },
             (itemUrl, itemLoaded, itemTotal) => {
                 loadingNumberElement.innerHTML = `${Math.round((itemLoaded/itemTotal * 100) * 10)/10}%`;
                 loadingElement.style.transform =  `scaleX( ${(itemLoaded/itemTotal)})`;
             }
         );
+
     }
 }

@@ -18,7 +18,6 @@ export default class Enviromet{
     
         this.debug = this.app.debug
 
-
         this.setSunLight()
         this.setAmbientLight()
         this.setParams()
@@ -106,10 +105,9 @@ export default class Enviromet{
             Cineon: THREE.CineonToneMapping,
             ACESFilmic: THREE.ACESFilmicToneMapping,
             })
-        render.add(this.params, 'alpha').min(0).max(1).step(0.001).name('clear alpha')
-        
-
-        
+        render.add(this.params, 'alpha').min(0).max(1).step(0.001).name('clear alpha').onChange( () =>{
+            this.renderer.setClearAlpha(this.params.alpha)
+        })
     }
 
     update(){
