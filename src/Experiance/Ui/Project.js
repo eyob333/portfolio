@@ -3,9 +3,9 @@ import projects from "../../assets/porojectCards";
 export default class Project{
     constructor(root){
         this.container = root
-        this.setParent()
         this.array = projects;
-        this.setInstance();
+        // this.setParent()
+        // this.setInstance();
 
     }
     setParent(){

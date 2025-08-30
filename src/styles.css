@@ -4,6 +4,7 @@ body{
   padding: 0;
   border: 0;
   overflow: hidden;
+  background-color: #111111;
 }
 
 canvas{
@@ -57,8 +58,10 @@ h1, h2, h3, h4, h5, h6, p{
 
 .section-container-div{
    visibility: hidden;
+   /* position: absolute; */
    max-height: 0;
    max-width: 0;
+   z-index: 2;
    overflow: hidden;
 }
 
@@ -88,13 +91,12 @@ section#heading{
 }
 
 #heading h1{
-  
   font-family: 'Smooch Sans', sans-serif;   
   font-weight: 100;                                                                                
-  font-size: 5rem;
-  max-width: 50%;
+  font-size: 7rem;
+  /* max-width: 50%; */
   margin: 0;
-  color: #fff;                                                                             
+  color: #7c7c7c;                                                                             
 }
 #heading h4{
   font-family: 'Jura', sans-serif; 

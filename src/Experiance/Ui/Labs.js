@@ -4,8 +4,8 @@ export default class Labs{
     constructor(root){
         this.container = root
         this.array = LabsCards;
-        this.setParent()
-        this.setInstance()
+        // this.setParent()
+        // this.setInstance()
     }
     setParent(){
         let parent = document.createElement('section')

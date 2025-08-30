@@ -2,7 +2,7 @@
 export default class About{
     constructor(root){  
         this.container = root;
-        this.setParent()
+        // this.setParent()
     }
 
     setParent(){

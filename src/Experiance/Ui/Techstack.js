@@ -3,8 +3,8 @@ import icons from "../../assets/techStackIcons";
 export default class TechStack {
     constructor(root) {
         this.container = root;
-        this.setParent()
-        this.setInstance()
+        // this.setParent()
+        // this.setInstance()
     }
     setParent(){
         let parent = document.createElement('section')

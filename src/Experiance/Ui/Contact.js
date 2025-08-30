@@ -4,8 +4,8 @@ export default class Contact{
     constructor(root){
         this.continer = root
         this.array = ContactIcons;
-        this.setParent();
-        this.setInstance();
+        // this.setParent();
+        // this.setInstance();
 
     }
     setParent(){
