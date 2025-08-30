@@ -2,12 +2,12 @@ export default [
     {
         name: 'Ship',
         type: 'gltfModel',
-        path: '/models/mojir.glb',
+        path: '/models/shipTail.glb',
     },
     {
         name: 'Nomad',
         type: 'gltfModel',
-        path: '/models/someT.glb',
+        path: '/models/nomad.glb',
     },
     {
         name: 'Streak',

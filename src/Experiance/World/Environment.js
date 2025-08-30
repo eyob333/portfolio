@@ -21,6 +21,7 @@ export default class Enviromet{
 
         this.setSunLight()
         this.setAmbientLight()
+        this.setParams()
         // this.setPostProcess()
 
         if( this.debug.active){
@@ -34,30 +35,35 @@ export default class Enviromet{
 
             this.debugFolder.add(this.ambient, 'intensity').name("AmbientLightIntesity").min(0).max(4).step(.001)
 
-            // this.setPostProcessDebug()
+            this.setPostProcessDebug()
         }
 
     }
 
     setSunLight(){
-        this.sunLight = new THREE.DirectionalLight('#ffffff', 3.993)
+        this.sunLight = new THREE.DirectionalLight('#ffffff', 1.232)
         this.sunLight.position.set( -0.999, 2.047, -1.761)
         this.scene.add( this.sunLight )
     }
 
     setAmbientLight(){
-        this.ambient = new THREE.AmbientLight('#ffffff', 1.44)
+        this.ambient = new THREE.AmbientLight('#ffffff', .5)
         this.scene.add(this.ambient)
     }
 
-     setPostProcess(){
+    setParams(){
         this.params = {
             threshold: 0,
             strength: 1,
             radius: 0,
             exposure: 1,
-            clearColor: '#000000'
-        }
+            clearColor: '#000000',
+            alpha: 1
+        }  
+    }
+
+    setPostProcess(){
+
 
         const renderScene = new RenderPass( this.scene, this.camera );
 
@@ -73,24 +79,22 @@ export default class Enviromet{
         this.composer.addPass(this.bloomPass)
         this.composer.addPass(outputPass)
        
-        
-        
     }
     
     setPostProcessDebug(){
-        const bloomGui = this.debugFolder.addFolder( 'bloom' );
-        bloomGui.add( this.params, 'threshold', 0.0, 3.0 ).onChange( () => {
-            this.bloomPass.threshold = this.params.threshold;
-        } );
-        bloomGui.add( this.params, 'strength', 0.0, 3.0 ).onChange( () =>{
-            this.bloomPass.strength = this.params.strength;
-        } );
-        bloomGui.add( this.params, 'radius', 0.0, 1.0 ).step( 0.01 ).onChange(  () => {
-            this.bloomPass.radius = this.params.radius;
-        } );
-        bloomGui.add( this.params, 'exposure', 0.1, 2 ).onChange(  () => {
-            this.renderer.toneMappingExposure = Math.pow( this.params.exposure, 4.0 );
-        } );
+        // const bloomGui = this.debugFolder.addFolder( 'bloom' );
+        // bloomGui.add( this.params, 'threshold', 0.0, 3.0 ).onChange( () => {
+        //     this.bloomPass.threshold = this.params.threshold;
+        // } );
+        // bloomGui.add( this.params, 'strength', 0.0, 3.0 ).onChange( () =>{
+        //     this.bloomPass.strength = this.params.strength;
+        // } );
+        // bloomGui.add( this.params, 'radius', 0.0, 1.0 ).step( 0.01 ).onChange(  () => {
+        //     this.bloomPass.radius = this.params.radius;
+        // } );
+        // bloomGui.add( this.params, 'exposure', 0.1, 2 ).onChange(  () => {
+        //     this.renderer.toneMappingExposure = Math.pow( this.params.exposure, 4.0 );
+        // } );
         const render = this.debugFolder.addFolder('render')
         render.addColor( this.params, 'clearColor').onChange(  () => {
             this.renderer.setClearColor(this.params.clearColor)
@@ -102,6 +106,8 @@ export default class Enviromet{
             Cineon: THREE.CineonToneMapping,
             ACESFilmic: THREE.ACESFilmicToneMapping,
             })
+        render.add(this.params, 'alpha').min(0).max(1).step(0.001).name('clear alpha')
+        
 
         
     }

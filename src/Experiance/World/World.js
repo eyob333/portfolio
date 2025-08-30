@@ -28,7 +28,7 @@ export default class World{
         // this.scene.add( testMesh )
         
         this.resorces.on( 'ready', ()=>{ 
-            // this.Nomad = new Nomad()          
+            this.Nomad = new Nomad()          
             this.Ship = new Ship()
             // this.HyperDirve = new HyperDrive()
             // this.Star = new Star()

@@ -32,7 +32,7 @@ export default class Nomad{
             this.nomScale = this.debugFolder.addFolder('nom-scale')
 
             this.nomPosition.add( this.app.nomad.scene.position, 'x').name("x").step(0.001).max(20).min(-20)
-            this.nomPosition.add( this.app.nomad.scene.position, 'y').name("y").step(0.001).max(20).min(-80)
+            this.nomPosition.add( this.app.nomad.scene.position, 'y').name("y").step(0.001).max(20).min(-20)
             this.nomPosition.add( this.app.nomad.scene.position, 'z').name("z").step(0.001).max(20).min(-20)
 
             this.nomRotation.add( this.app.nomad.scene.rotation, 'x').name("x").step(0.001).max(10).min(-10)
@@ -48,10 +48,10 @@ export default class Nomad{
 
     setModel(){
         this.scaleFactor = {};
-        this.scaleFactor.value = 0.03;
+        this.scaleFactor.value = 1;
         this.app.nomad.scene.scale.set(this.scaleFactor.value, this.scaleFactor.value, this.scaleFactor.value)
-        this.app.nomad.scene.position.set(20, 5.734,20)
-        this.app.nomad.scene.rotation.set(1.422, 0.139,-0.745)
+        this.app.nomad.scene.position.set(0, 10, 0)
+        this.app.nomad.scene.rotation.set(0, Math.PI, 0)
         this.scene.add(  this.app.nomad.scene )
     }
 
