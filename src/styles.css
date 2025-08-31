@@ -4,7 +4,7 @@ body{
   padding: 0;
   border: 0;
   overflow: hidden;
-  background-color: #111111;
+  background-color: #353434;
 }
 
 canvas{
@@ -85,26 +85,34 @@ section{
 
 /***************************************heading section *******************************/
 section#heading{
-  margin-top: 20vh;
+  margin-top: 15vh;
   /* padding-left: 50px; */
+  padding: 0 20vh;
   max-height: 100vh;
 }
 
 #heading h1{
   font-family: 'Smooch Sans', sans-serif;   
-  font-weight: 100;                                                                                
-  font-size: 7rem;
-  /* max-width: 50%; */
+  font-weight: 400;                                                                                
+  font-size: 11rem;
+  /* max-width: 100%; */
+  letter-spacing: 1rem;
   margin: 0;
-  color: #7c7c7c;                                                                             
+  color: #ffffff;    
+  padding: 0;
+  text-align: center;                                                                         
 }
 #heading h4{
   font-family: 'Jura', sans-serif; 
-  font-family: 'Adventure Alphabet', sans-serif;                                                                                 
+  /* font-family: 'Adventure Alphabet', sans-serif;  */
+                                                                                                                                
   font-size: 1.5rem;
   font-weight: 200;
-  max-width: 30%;
+  /* max-width: 30%; */
   margin: 0;
+  text-align: right;
+  padding-right: 40px;
+  letter-spacing: .1rem;
                                               
 }
 

@@ -11,7 +11,7 @@ export default class Home{
         element.id = 'heading';
         element.classList.add('page');
         element.innerHTML = `
-            <h1> Hi, Am Winter Nomad</h1>
+            <h1>Winter Nomad</h1>
             <h4> a Software Engineer</h4>
         `;
         this.container.appendChild(element);

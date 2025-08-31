@@ -40,13 +40,13 @@ export default class Enviromet{
     }
 
     setSunLight(){
-        this.sunLight = new THREE.DirectionalLight('#ffffff', 1.232)
+        this.sunLight = new THREE.DirectionalLight('#ffffff', 1.641)
         this.sunLight.position.set( -0.999, 2.047, -1.761)
         this.scene.add( this.sunLight )
     }
 
     setAmbientLight(){
-        this.ambient = new THREE.AmbientLight('#ffffff', .5)
+        this.ambient = new THREE.AmbientLight('#ffffff', .9)
         this.scene.add(this.ambient)
     }
 
