@@ -532,6 +532,9 @@ i {
 }*/
 
 @media (width < 412px ){
+  .loading-text h1, .loading-text p{
+    font-size: 1rem;
+  }
   /* .loading-text h1, .loading-text p{
     display: block;
     margin: 0;
