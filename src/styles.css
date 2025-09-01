@@ -533,7 +533,7 @@ i {
 
 @media (width < 412px ){
   .loading-text h1, .loading-text p{
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
   /* .loading-text h1, .loading-text p{
     display: block;
