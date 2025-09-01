@@ -1,3 +1,7 @@
+@font-face {
+  font-family: 'glacto'; 
+  src: url('/Galactico-Basic.otf') format('opentype'); 
+}
 
 body{
   margin: 0;
@@ -28,34 +32,57 @@ h1, h2, h3, h4, h5, h6, p{
 .loading-bar{
   position: absolute;
   z-index: 3;
-  top: 50%;
-  width: 100%;
+  top: 60%;
+  left: 35%;
+  /* width: 10px; */
   height: 2px;
   background-color: #ffffff;
   transform: scaleX(0);
-  transform-origin: top left;
+  transform-origin: top center;
   transition: transform 1s;
   will-change: transform;
+  padding: 0 15%;
 }
 .loading-bar.enabled{
   transform: scaleX(0);
-  transform-origin: top right;
+  transform-origin: top center;
   transition: transform 3.5s ease-in-out;
 }
 
 .loading-text{
   position: fixed;
-  top: 50%;
-  right: 0%;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   color: #ffffff;
   z-index: 3;
   will-change: transform;
 }
+
+
+
 .loading-text h1, .loading-text p{
   display: inline;
-  font-size: 6rch;
+  /* padding-left: 40%; */
+  /* width: 10%; */
+  /* align-items: center;
+  text-align: center; */
+  font-size: 2rem;
 }
+.navigaton-bar{
+  position: fixed;
+  /* display: none; */
+  top: 50%;
+  left: 4%;
+  transform: translate(-50%, -50%) scaleY(0);
+  height: 80vh;
+  width: 2px;
+  z-index: 4;
+  background-color: #4da18c46;
+}
+/* .loading-text h1{
 
+} */
 .section-container-div{
    visibility: hidden;
    /* position: absolute; */
@@ -87,14 +114,16 @@ section{
 section#heading{
   margin-top: 15vh;
   /* padding-left: 50px; */
-  padding: 0 20vh;
+  /* padding: 0 10vw; */
   max-height: 100vh;
 }
 
 #heading h1{
   font-family: 'Smooch Sans', sans-serif;   
-  font-weight: 400;                                                                                
+  font-weight: 400;
+  /* font-size: clamp(5.5rem, 12vw, 20rem);                                                                              */
   font-size: 11rem;
+  /* font-size: 10vw; */
   /* max-width: 100%; */
   letter-spacing: 1rem;
   margin: 0;
@@ -104,14 +133,13 @@ section#heading{
 }
 #heading h4{
   font-family: 'Jura', sans-serif; 
-  /* font-family: 'Adventure Alphabet', sans-serif;  */
-                                                                                                                                
+  font-family: 'Adventure Alphabet', sans-serif;                                                                                                          
   font-size: 1.5rem;
   font-weight: 200;
   /* max-width: 30%; */
   margin: 0;
   text-align: right;
-  padding-right: 40px;
+  padding-right: 12vw;
   letter-spacing: .1rem;
                                               
 }
@@ -479,17 +507,35 @@ i {
 
 
 /*************************************** responsive *******************************/
+@media (810px > width) {
+  #heading h1{
+    font-size: clamp(3.5rem, 7vw, 12rem);
+    letter-spacing: clamp(0.05rem, 0.5vw, 0.5rem);;
+  }
+     
+}
+/*@media (810px > width > 412px ){
+  /* #heading h1{
+    font-size: clamp(1.5rem, 8vw, 11rem);                                                                             
+    padding: 0 3vww;
+    letter-spacing: .4rem;
+  } */
+  /* #heading p{
+    font-size: .4rem;
+  } * needs /
+}*/
 
-@media (width < 550px ){
-  .loading-text h1, .loading-text p{
+@media (width < 412px ){
+  /* .loading-text h1, .loading-text p{
     display: block;
     margin: 0;
-  }
-  #heading h1{                                                                                  
-    font-size: 3rem;
-    max-width: 80%;
+  } */
+  /* #heading h1{                                                                                  
+    font-size: 2.5rem;
+    letter-spacing: .1rem;
+    padding: 0;
     margin: 0;                                                                                       
-  }
+  } */
 
   #heading h4{
     max-width: 40%;

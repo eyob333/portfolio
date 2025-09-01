@@ -4,6 +4,7 @@ import App from "../App";
 import Ui from '../Ui/Ui';
 
 let container = document.querySelector("div.section-container-div");
+let scrollNav = document.querySelector('div.navigaton-bar')
 
 export default class Animation{
 
@@ -23,13 +24,14 @@ export default class Animation{
         t1
             .to(this.app.camera.controls.target, {
                 y: 9.5,
-                duration: 4,
+                duration: 2,
                 ease: 'power2.out',
                 onComplete: () =>{
                     container.style.visibility= 'visible';
                     container.style.maxHeight = '100vh';
                     container.style.maxWidth = '100%';
-                    // container.style.overflow = 'auto';
+                    container.style.overflow = 'auto';
+                    container.style.scrollbarWidth= 'none';
                     this.ui.home.setInstance();
                 }
             })
@@ -40,12 +42,20 @@ export default class Animation{
                 }
             })
             .to(this.app.camera.instance.position, {
-                x:1.7451, y: 10.9374, z:-2.2750
-
+                x:1.7451, y: 10.9374, z:-2.2750,
+                duration: 4,
+                ease: 'power4.out'
             }, '>-2')
              .to(this.app.camera.controls.target, {
                 y: 10.3,
-                ease: 'power1.inOut'
+                ease: 'power1.inOut',
+                onComplete: () =>{
+                    gsap.to( scrollNav, {
+                        scaleY: 1,
+                        duration: 1.5,
+                        ease: "expoScale(0.5,7,none)"
+                    })
+                }
             }, '<')
             
 

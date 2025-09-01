@@ -24,8 +24,8 @@ export default class LoadingManager{
                     loadingElement.classList.add('enabled');
                     loadingElement.style.transform = '';
                     gsap.to(loadingTExtElement, {
-                        scaleY: 0, 
-                        transformOrigin: 'top',
+                        opacity: 0, 
+                        transformOrigin: 'center',
                         duration: 3,
                         delay: 1,
                         ease: 'power2.out'
