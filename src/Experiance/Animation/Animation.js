@@ -53,7 +53,8 @@ export default class Animation{
                     gsap.to( scrollNav, {
                         scaleY: 1,
                         duration: 1.5,
-                        ease: "expoScale(0.5,7,none)"
+                        opacity: .5,
+                        ease: "power3.out"
                     })
                 }
             }, '<')

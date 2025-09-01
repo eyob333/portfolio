@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'glacto'; 
-  src: url('/Galactico-Basic.otf') format('opentype'); 
+  src: url('/fonts/Galactico-Basic.otf') format('opentype'); 
 }
 
 body{
@@ -8,7 +8,7 @@ body{
   padding: 0;
   border: 0;
   overflow: hidden;
-  background-color: #353434;
+  background-color: #2a2a2a;
 }
 
 canvas{
@@ -75,10 +75,11 @@ h1, h2, h3, h4, h5, h6, p{
   top: 50%;
   left: 4%;
   transform: translate(-50%, -50%) scaleY(0);
-  height: 80vh;
+  height: 70vh;
   width: 2px;
   z-index: 4;
-  background-color: #4da18c46;
+  background-color: #ffffff;
+  opacity: 0;
 }
 /* .loading-text h1{
 
@@ -133,14 +134,15 @@ section#heading{
 }
 #heading h4{
   font-family: 'Jura', sans-serif; 
-  font-family: 'Adventure Alphabet', sans-serif;                                                                                                          
-  font-size: 1.5rem;
+  font-family: 'glacto', sans-serif;                                                                                                        
+  font-size: 1.3rem;
   font-weight: 200;
   /* max-width: 30%; */
   margin: 0;
   text-align: right;
   padding-right: 12vw;
-  letter-spacing: .1rem;
+  letter-spacing: .09rem;
+  color: #d8d8d8;
                                               
 }
 
@@ -509,8 +511,12 @@ i {
 /*************************************** responsive *******************************/
 @media (810px > width) {
   #heading h1{
-    font-size: clamp(4rem, 10vw, 12rem);
-    letter-spacing: clamp(0.05rem, 0.8vw, 1rem);;
+    font-size: clamp(4rem, 16vw, 13rem);
+    letter-spacing: clamp(0.04rem, 0.7vw, 1rem);
+  }
+  #heading h4{
+    font-size: clamp(.2rem, 2vw, 1.5rem);
+    letter-spacing: clamp(0.02rem, 0.15vw, .8rem);
   }
      
 }
@@ -538,9 +544,8 @@ i {
   } */
 
   #heading h4{
-    max-width: 40%;
-    margin: 0;
-                                                
+     padding-right: 1vw;
+                                              
   }
   #page2{
     width: 60%;
