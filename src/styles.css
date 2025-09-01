@@ -509,7 +509,7 @@ i {
 /*************************************** responsive *******************************/
 @media (810px > width) {
   #heading h1{
-    font-size: clamp(3.5rem, 7vw, 12rem);
+    font-size: clamp(4rem, 7vw, 12rem);
     letter-spacing: clamp(0.05rem, 0.5vw, 0.5rem);;
   }
      
