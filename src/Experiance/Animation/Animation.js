@@ -184,11 +184,24 @@ export default class Animation{
             }, '<');
 
 
+
+        const t3 = gsap.timeline()
+        t3
+            .to(this.app.camera.controls.target, {
+                y: 0,
+                duration: 3,
+                ease: 'power4.inOut'
+            })
+            .to(this.app.camera.instance.position, {
+                x: 2.94563, y:2.13268, z: 2.63683,
+                duration: 5,
+                ease: 'power4.out'
+            }, '<')
+
         this.master = gsap.timeline()
         this.master
             .add(t1)
-
-        console.log(this.master)
+            .add(t3, '+=5')
 
     }
 
