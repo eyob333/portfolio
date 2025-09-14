@@ -1,8 +1,3 @@
-@font-face {
-  font-family: 'glacto'; 
-  src: url('/fonts/Galactico-Basic.otf') format('opentype'); 
-}
-
 body{
   margin: 0;
   padding: 0;
@@ -118,15 +113,19 @@ section#heading{
   /* padding: 0 10vw; */
   max-height: 100vh;
 }
-
+.mask{
+  /* height: 40px; */
+  line-height: 2.2rem;
+  overflow: hidden;
+}
 #heading h1{
-  font-family: 'Smooch Sans', sans-serif;   
+  font-family: 'Smooch Sans', sans-serif; 
+  font-family: 'Anurati', sans-serif;           
   font-weight: 400;
   /* font-size: clamp(5.5rem, 12vw, 20rem);                                                                              */
-  font-size: 11rem;
-  /* font-size: 10vw; */
-  /* max-width: 100%; */
-  letter-spacing: 1rem;
+  font-size: 6rem;
+  transform: scaleY(1.35) scaleX(1.35);
+  letter-spacing: .1rem;
   margin: 0;
   color: #ffffff;    
   padding: 0;
@@ -134,7 +133,8 @@ section#heading{
 }
 #heading h4{
   font-family: 'Jura', sans-serif; 
-  font-family: 'glacto', sans-serif;                                                                                                        
+  font-family: 'Anurati', sans-serif; 
+  font-family: 'Jura', sans-serif;                                                                                                                    
   font-size: 1.3rem;
   font-weight: 200;
   /* max-width: 30%; */
@@ -511,8 +511,9 @@ i {
 /*************************************** responsive *******************************/
 @media (810px > width) {
   #heading h1{
-    font-size: clamp(4rem, 16vw, 13rem);
-    letter-spacing: clamp(0.04rem, 0.7vw, 1rem);
+    font-size: clamp(1rem, 5vw, 9rem);
+    transform: scaleY(2.1) scaleX(2.1);
+    letter-spacing: clamp(0.01rem, 0.2vw, .5rem);
   }
   #heading h4{
     font-size: clamp(.2rem, 2vw, 1.5rem);
