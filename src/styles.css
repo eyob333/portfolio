@@ -75,7 +75,7 @@ h1, h2, h3, h4, h5, h6, p{
   top: 54%;
   left: 3.7%;
   transform: translate(-50%, -50%) scaleY(0);
-  height: 70vh;
+  height: 60vh;
   width: 2.6px;
   z-index: 4;
   background-color: #ffffff;

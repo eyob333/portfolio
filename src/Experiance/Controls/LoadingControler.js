@@ -28,13 +28,10 @@ export default class LoadingManager{
                         transformOrigin: 'center',
                         duration: 3,
                         delay: 1,
-                        ease: 'power2.out'
+                        ease: 'power2.out',
+                        display: 'none'
                     })
                     setTimeout( () =>{
-                        // this.sectionContainingElement.style.visibility= 'visible';
-                        // this.sectionContainingElement.style.maxHeight = '100%';
-                        // this.sectionContainingElement.style.maxWidth = '100%';
-                        // this.sectionContainingElement.style.overflow = 'auto';
                         bodyElement.style.padding = '0 2%'
                         bodyElement.style.overflowX = 'hidden'
                         bodyElement.style.overflowY = 'auto'
