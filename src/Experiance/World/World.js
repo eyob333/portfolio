@@ -55,5 +55,8 @@ export default class World{
         if (this.Enviromet){
             this.Enviromet.update()
         }
+        if (this.Nomad){
+            this.Nomad.update()
+        }
     }
 }

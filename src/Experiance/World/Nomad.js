@@ -1,4 +1,5 @@
-import * as THREE  from 'three'
+// main.js or main.ts
+import * as THREE from 'three';
 import App from "../App";
 import Skeleton from "./Skeletons/Skeleton";
 
@@ -19,12 +20,8 @@ export default class Nomad{
         }
 
         this.setModel()
-        // this.setAnimation()
-
+        this.setPod()
         this.Skeleton = new Skeleton(this.debugFolder)
-        // this.Skeleton.setFlyingPose()
-        // this.pose = new Pose(this.skel);
-        // this.Skeleton.getBones()
 
         if ( this.debug.active){
             this.nomPosition = this.debugFolder.addFolder('nom-position')
@@ -54,48 +51,70 @@ export default class Nomad{
         this.app.nomad.scene.rotation.set(0, Math.PI, 0)
         this.scene.add(  this.app.nomad.scene )
     }
+    makeTextSprite(message, parameters = {}) {
+        const fontFace = parameters.fontFace || "Anurati";   // use your CDN font
+        const fontSize = parameters.fontSize || 256;          // render big for sharpness
+        const textColor = parameters.color || "white";
 
-    setAnimation(){
-        this.animation = {}
-        this.animation.mixer = new THREE.AnimationMixer(this.app.nomad.scene)
+        // Create high-res canvas
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
 
-        this.animation.actions = {}
-        this.animation.actions.rotate = this.animation.mixer.clipAction( this.app.nomad.animations[0])
-        this.animation.actions.current = this.animation.actions.rotate
-        this.animation.actions.current.play()
+        // Bigger canvas = sharper text
+        canvas.width = 4096;
+        canvas.height = 2048;
 
-        // debug 
+        ctx.font = `${fontSize}px '${fontFace}'`;
+        ctx.fillStyle = textColor;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(message, canvas.width / 2, canvas.height / 2);
+
+        // Make texture
+        const texture = new THREE.CanvasTexture(canvas);
+        texture.minFilter = THREE.LinearMipMapLinearFilter;
+        texture.magFilter = THREE.LinearFilter;
+        texture.anisotropy =  this.app.renderer.instance.capabilities.getMaxAnisotropy();
+
+        const material = new THREE.SpriteMaterial({
+            map: texture,
+            transparent: true,
+            depthTest: true,
+            depthWrite: false
+        });
+
+        const sprite = new THREE.Sprite(material);
+
+        // Scale sprite to match aspect ratio
+        const scaleFactor = parameters.scale || 3;
+        //   const baseScale = options.scale || 4;  // world units
+        sprite.scale.set(
+            (canvas.width / canvas.height) * scaleFactor,
+            1 * scaleFactor,
+            1
+        );
+
+        return sprite;
+    }
+
+
+    async setPod(){
+        this.podScale = {}
+        this.pod = this.resources.item.Pod
+        this.pod.scene.position.set(.1, 9.7, 1)
+        this.pod.scene.scale.set(.1, .1, .1)
+        this.scene.add(this.pod.scene)
+
         
-        if (this.debug.active){
-            let clicked_float = true;
-            let clicked_flying = true;
+        // const label = this.makeTextSprite("WINTER NOMAD", { fontFace: "Anurati", fontSize: 128, scale: 3.5 });
+        // label.position.set(-.3, 11, .5);
+        // // label.scale.set(5.2, 5.2, 5.2)
+        // this.scene.add(label);
 
-            const debugObject = {
-            float_pose: () => {
-                if (clicked_float) {
-                    this.Skeleton.setFloatPose();
-                    clicked_float = !clicked_float;
-                } 
-                // else {
-                //     this.Skeleton.delete_float_pose();
-                // }
-            },
-
-            flying_pose: () => {
-                if (clicked_flying) {
-                    console.log("flying_pose");
-                    this.Skeleton.setFlyingPose();
-                    clicked_flying = !clicked_flying;
-                }
-               
-            }
-            };
-
-            this.debugFolder.add( debugObject,  'float_pose')
-            this.debugFolder.add( debugObject,  'flying_pose')
-       }}
+    }
 
     update(){
-        this.animation.mixer.update( this.time.delta * 0.0005 )
+        // this.animation.mixer.update( this.time.delta * 0.0005 )
+        // this.labelRenderer.render(this.scene, this.app.camera.instance);
     }
 }

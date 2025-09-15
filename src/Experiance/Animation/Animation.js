@@ -114,7 +114,7 @@ export default class Animation{
                     gsap.to( scrollNav, {
                             scaleY: 1,
                             duration: 1.5,
-                            opacity: .5,
+                            opacity: .1,
                             ease: "power3.Out",
                             repeat: 0
                         })
@@ -201,7 +201,7 @@ export default class Animation{
         this.master = gsap.timeline()
         this.master
             .add(t1)
-            .add(t3, '+=5')
+            // .add(t3, '+=5')
 
     }
 

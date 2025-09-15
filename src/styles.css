@@ -1,9 +1,28 @@
+@font-face {
+  font-family: 'Kapiler'; 
+  src: url('/fonts/kapilar/kapiler.regular.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Digital-Card'; /* Choose a name for your font */
+  src: url('/fonts/digital-card/digital-cards-demo.regular.ttf') format('truetype');
+  /* Add other formats if needed */
+}
+@font-face {
+  font-family: 'Deltha'; /* Choose a name for your font */
+  src: url('/fonts/deltha/deltha.regular.ttf') format('truetype');
+  /* Add other formats if needed */
+}
+@font-face {
+  font-family: 'Automata'; 
+  src: url('/fonts/automata/automata.display.ttf') format('truetype');
+  /* Add other formats if needed */
+}
 body{
   margin: 0;
   padding: 0;
   border: 0;
   overflow: hidden;
-  background-color: #2a2a2a;
+  background-color: #202020;
 }
 
 canvas{
@@ -67,14 +86,44 @@ h1, h2, h3, h4, h5, h6, p{
 .navigaton-bar{
   position: fixed;
   /* display: none; */
-  top: 50%;
-  left: 4%;
+  top: 54%;
+  left: 3.7%;
   transform: translate(-50%, -50%) scaleY(0);
   height: 70vh;
-  width: 2px;
+  width: 2.6px;
   z-index: 4;
   background-color: #ffffff;
   opacity: 0;
+}
+.navigatior{
+  position: absolute;
+  top: 40%;
+  left: 3.7%;
+  display: grid;
+  grid-template-columns: 15% 50%;
+  align-items: center;
+  gap: 4px;
+}
+.nav-indicate{
+  background-color: #ffffff;
+  width: 100%;
+  height: 2px;
+  border: 0;
+  opacity: .2;
+}
+.navigatior ul{
+  padding: 0;
+  margin: 0;
+
+}
+.navigatior li{
+  font-family: 'Jura', sans-serif;  
+  line-height: 2rem;
+  font-weight: 100;
+  list-style-type: none;
+  color: #95c2ec;
+  opacity: .3;
+
 }
 /* .loading-text h1{
 
@@ -85,7 +134,7 @@ h1, h2, h3, h4, h5, h6, p{
    max-height: 0;
    max-width: 0;
    z-index: 2;
-   overflow: hidden;
+   overflow: hidden; 
 }
 
 /*sections */
@@ -120,9 +169,12 @@ section#heading{
 }
 #heading h1{
   font-family: 'Smooch Sans', sans-serif; 
-  font-family: 'Anurati', sans-serif;           
-  font-weight: 400;
-  /* font-size: clamp(5.5rem, 12vw, 20rem);                                                                              */
+  font-family: 'Anurati', sans-serif;   
+  font-family: 'Kapiler';        
+  /* font-weight: 900; */
+  text-overflow: ellipsis;
+  text-transform:uppercase ;
+  font-size: clamp(5.5rem, 12vw, 20rem);                                                                             
   font-size: 6rem;
   transform: scaleY(1.35) scaleX(1.35);
   letter-spacing: .1rem;
