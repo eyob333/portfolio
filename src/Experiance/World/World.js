@@ -2,8 +2,9 @@ import * as THREE from 'three'
 
 import App from "../App"
 import Ship from './Ship'
-import Enviromet from './Environment'
 import Nomad from './Nomad'
+import Enviromet from './Environment'
+import Station from './Station'
 import HyperDrive from './HyperDrive'
 import Star from './Star'
 import ParticleDrive from './ParticleDrive'
@@ -30,6 +31,7 @@ export default class World{
         this.resorces.on( 'ready', ()=>{ 
             this.Nomad = new Nomad()          
             this.Ship = new Ship()
+            this.Station = new Station()
             // this.HyperDirve = new HyperDrive()
             // this.Star = new Star()
             // this.Particle = new ParticleDrive()
