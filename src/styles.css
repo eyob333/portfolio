@@ -2,21 +2,12 @@
   font-family: 'Kapiler'; 
   src: url('/fonts/kapilar/kapiler.regular.otf') format('opentype');
 }
-@font-face {
-  font-family: 'Digital-Card'; /* Choose a name for your font */
-  src: url('/fonts/digital-card/digital-cards-demo.regular.ttf') format('truetype');
-  /* Add other formats if needed */
-}
-@font-face {
-  font-family: 'Deltha'; /* Choose a name for your font */
+
+/* @font-face {
+  font-family: 'Deltha';
   src: url('/fonts/deltha/deltha.regular.ttf') format('truetype');
-  /* Add other formats if needed */
-}
-@font-face {
-  font-family: 'Automata'; 
-  src: url('/fonts/automata/automata.display.ttf') format('truetype');
-  /* Add other formats if needed */
-}
+} */
+
 body{
   margin: 0;
   padding: 0;
@@ -77,15 +68,10 @@ h1, h2, h3, h4, h5, h6, p{
 
 .loading-text h1, .loading-text p{
   display: inline;
-  /* padding-left: 40%; */
-  /* width: 10%; */
-  /* align-items: center;
-  text-align: center; */
   font-size: 2rem;
 }
 .navigaton-bar{
   position: fixed;
-  /* display: none; */
   top: 54%;
   left: 3.7%;
   transform: translate(-50%, -50%) scaleY(0);
@@ -168,11 +154,7 @@ section#heading{
   overflow: hidden;
 }
 #heading h1{
-  font-family: 'Smooch Sans', sans-serif; 
-  font-family: 'Anurati', sans-serif;   
   font-family: 'Kapiler';        
-  /* font-weight: 900; */
-  text-overflow: ellipsis;
   text-transform:uppercase ;
   font-size: clamp(5.5rem, 12vw, 20rem);                                                                             
   font-size: 6rem;
@@ -184,8 +166,6 @@ section#heading{
   text-align: center;                                                                         
 }
 #heading h4{
-  font-family: 'Jura', sans-serif; 
-  font-family: 'Anurati', sans-serif; 
   font-family: 'Jura', sans-serif;                                                                                                                    
   font-size: 1.3rem;
   font-weight: 200;
