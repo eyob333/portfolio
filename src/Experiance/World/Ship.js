@@ -12,6 +12,8 @@ export default class Ship{
         this.time = this.app.time
 
         this.resource = this.resources.item.Ship
+        this.app.Ship = this.resource
+        this.app.Dval = {x: 0, y: 1}
         this.debug = this.app.debug
         
         if (this.debug.active){

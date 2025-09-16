@@ -11,7 +11,7 @@ export default class Home{
         element.id = 'heading';
         element.classList.add('page');
         element.innerHTML = `
-            <h1>eyob Jemane</h1>
+            <h1>winter nomad</h1>
             <div class="mask">
                 <h4 class="primary">Software Engnieer</h4>
                 <h4 class="secondary">Fullstack Developer</h4>

@@ -64,8 +64,6 @@ h1, h2, h3, h4, h5, h6, p{
   will-change: transform;
 }
 
-
-
 .loading-text h1, .loading-text p{
   display: inline;
   font-size: 2rem;

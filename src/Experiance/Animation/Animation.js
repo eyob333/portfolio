@@ -16,8 +16,8 @@ export default class Animation{
     constructor(){
         this.app = new App();
         this.ui = new Ui();
-        this.bones = this.app.nomad.bones
-        this.angles = this.app.nomad.angles  
+        // this.bones = this.app.nomad.bones
+        // this.angles = this.app.nomad.angles  
 
 
         const t1 = gsap.timeline({
@@ -27,17 +27,16 @@ export default class Animation{
             }
         })
 
-
         t1
             .to(this.app.camera.controls.target, {
-                y: 9.5,
+                x: this.app.nomad.scene.position.x, y: this.app.nomad.scene.position.y, z: this.app.nomad.scene.position.z,
                 duration: 2,
-                ease: 'power2.out',
+                ease: 'sine',
                 onComplete: () =>{
                     container.style.visibility= 'visible';
                     container.style.maxHeight = '100vh';
                     container.style.maxWidth = '100%';
-                    container.style.overflow = 'auto';
+                    container.style.overflow = 'none';
                     container.style.scrollbarWidth= 'none';
                     this.ui.home.setInstance();
                     let prime = document.querySelector('h4.primary')
@@ -55,23 +54,16 @@ export default class Animation{
                     thiWord = new SplitType(third)
                     fouWord = new SplitType(forth)
 
-                    gsap
-                        .set("h4.primary", {
+                    gsap.set("h4.primary", {
                             yPercent: 100,
                         })
-    
-                        // .set("h4.secondary", {
-                        //     // opacity: 0,
-                        //     yPercent: -100,
-                        //     // stagger: .3
+
+                    // gsap.set("h4.secondary", {
                         // })
                     gsap.set("h4.teritiary", {
-                            // opacity: 0,
                             yPercent: -100,
-                            // stagger: .3
                         })
                     gsap.set("h4.fourth", {
-                            // opacity: 0,
                             yPercent: -200,
                         })
                     gsap.set([primeWord.chars, secWord.chars, thiWord.chars, fouWord.chars], {
@@ -89,19 +81,18 @@ export default class Animation{
                 }
             })
             .to(this.app.camera.instance.position, {
-                x:1.7451, y: 10.9374, z:-2.2750,
+                x:1.7451, y: 7.9374, z:-2.2750,
                 duration: 4,
                 ease: 'power4.out'
             }, '>-2')
             .to(this.app.camera.controls.target, {
-                y: 10.3,
+                y: 7.3,
                 ease: 'power1.inOut',
                 onComplete: () =>{
 
                     const t2 = gsap.timeline({
                         defaults: {
                             ease: 'power1.inOut',
-                            // yoyo: true,
                             duration: 1,
                             yPercent: -100,
                             stagger: .04,
@@ -119,7 +110,6 @@ export default class Animation{
                             repeat: 0
                         })
             
-                    // console.log(primeWord)
                     t2  
                         .to(primeWord.chars, {
 
@@ -159,26 +149,6 @@ export default class Animation{
                             ease: 'power2.in'
                             
                         })
-                        // .to("h4.primary", {
-                        //     // opacity: 0,
-                        //     yPercent: -100,
-                        //     // stagger: .3
-                        // })
-                        // .to("h4.secondary", {
-                        //     // opacity: 0,
-                        //     yPercent: -100,
-                        //     // stagger: .3
-                        // }, '>')
-                        // .to("h4.teritiary", {
-                        //     // opacity: 0,
-                        //     yPercent: -200,
-                        //     // stagger: .3
-                        // }, '>')
-                        // .to("h4.fourth", {
-                        //     // opacity: 0,
-                        //     yPercent: -300,
-                        // }, '>')
-                        // .pause()
                     
                 }
             }, '<');
@@ -187,21 +157,39 @@ export default class Animation{
 
         const t3 = gsap.timeline()
         t3
-            .to(this.app.camera.controls.target, {
-                y: 0,
-                duration: 3,
-                ease: 'power4.inOut'
-            })
             .to(this.app.camera.instance.position, {
-                x: 2.94563, y:2.13268, z: 2.63683,
-                duration: 5,
+                 x:1.0547, y:1.0451, z: 1.0744,
+                duration: 4,
                 ease: 'power4.out'
             }, '<')
+            .to(this.app.nomad.scene.position,{
+                y: .5, z: .3,
+                duration: 3,
+                ease: 'power1.Out',
+                onUpdate: () =>{
+                    this.app.camera.controls.target.copy(this.app.nomad.scene.position)
+                }
+            },'<')
+            .to(this.app.nomad.scene.scale, {
+                x: .1, y: .1, z: .1,
+                ease: 'power4.out',
+                duration: 3
+            }, '<')
+            .to(this.app.camera.instance.position, {
+                x:-1.27256, y:3.39687, z:3.93120,
+                duration: 3.5,
+
+            }, '-=2.8')
+            .to(this.app.camera.controls.target, {
+                x: this.app.Ship.scene.position.x, y: this.app.Ship.scene.position.y, z: this.app.Ship.scene.position.z,
+                duration: 2,
+            }, '-=.5')
+            console.log(this.app)
 
         this.master = gsap.timeline()
         this.master
             .add(t1)
-            // .add(t3, '+=5')
+            .add(t3, '+=5')
 
     }
 

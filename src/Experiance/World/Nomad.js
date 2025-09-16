@@ -47,7 +47,7 @@ export default class Nomad{
         this.scaleFactor = {};
         this.scaleFactor.value = 1;
         this.app.nomad.scene.scale.set(this.scaleFactor.value, this.scaleFactor.value, this.scaleFactor.value)
-        this.app.nomad.scene.position.set(0, 10, 0)
+        this.app.nomad.scene.position.set(0, 7, 0)
         this.app.nomad.scene.rotation.set(0, Math.PI, 0)
         this.scene.add(  this.app.nomad.scene )
     }
@@ -101,7 +101,7 @@ export default class Nomad{
     async setPod(){
         this.podScale = {}
         this.pod = this.resources.item.Pod
-        this.pod.scene.position.set(.1, 9.7, 1)
+        this.pod.scene.position.set(.1, 6.7, 1)
         this.pod.scene.scale.set(.1, .1, .1)
         this.scene.add(this.pod.scene)
 

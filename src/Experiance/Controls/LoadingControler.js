@@ -18,7 +18,7 @@ export default class LoadingManager{
                 window.setTimeout( () => {
                     gsap.to( this.overlaymaterial.uniforms.uAlpha, {
                             duration: 5, value: .0, delay: 1, ease: 'expo.out', onComplete: () =>{
-                            this.overlay.destroy()
+                            // this.overlay.destroy()
                         }
                     }) 
                     loadingElement.classList.add('enabled');
@@ -31,11 +31,13 @@ export default class LoadingManager{
                         ease: 'power2.out',
                         display: 'none'
                     })
-                    setTimeout( () =>{
-                        bodyElement.style.padding = '0 2%'
-                        bodyElement.style.overflowX = 'hidden'
-                        bodyElement.style.overflowY = 'auto'
-                    }, [3000])
+                    gsap.set( bodyElement, {
+                        delay: 3,
+                        padding:'0 2%',
+                        overflowX:'hidden',
+                        overflowY: 'auto',
+
+                    })
                 
                 }, 1000)  
                 this.isReady = true;

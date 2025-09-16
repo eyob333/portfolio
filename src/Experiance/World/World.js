@@ -19,19 +19,16 @@ export default class World{
         this.resorces = this.experiance.resources
 
         // test mesh 
-
         // const testMesh = new THREE.Mesh( 
         //     new THREE.BoxGeometry(),
         //     new THREE.MeshStandardMaterial({color: '#ffffff',})
         // )
-        // testMesh.castShadow  = true
-
         // this.scene.add( testMesh )
         
         this.resorces.on( 'ready', ()=>{ 
             this.Nomad = new Nomad()          
             this.Ship = new Ship()
-            this.Station = new Station()
+            // this.Station = new Station()
             // this.HyperDirve = new HyperDrive()
             // this.Star = new Star()
             // this.Particle = new ParticleDrive()
@@ -50,6 +47,9 @@ export default class World{
         // }
         // if( this.Star){
         //     this.Star.update()
+        // }        
+        // if (this.Nomad){
+        //     this.Nomad.update()
         // }
         if(this.Particle){
             this.Particle.update()
@@ -57,8 +57,6 @@ export default class World{
         if (this.Enviromet){
             this.Enviromet.update()
         }
-        if (this.Nomad){
-            this.Nomad.update()
-        }
+
     }
 }

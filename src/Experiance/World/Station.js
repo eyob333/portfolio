@@ -19,7 +19,6 @@ export default class Station{
             .close()
         }
         this.setInstance()
-        // this.setAnimation()
 
         if ( this.debug.active){
             let stationPosition = this.debugFolder.addFolder('station-position')
@@ -40,7 +39,6 @@ export default class Station{
 
     setInstance(){
         this.instance = this.resource.scene
-        // console.log(this.model)
         this.instance.scale.set( 2., 2., 2.)
         // this.model.rotation.set(0, Math.PI, 0,)
         // this.model.traverse( child =>{
