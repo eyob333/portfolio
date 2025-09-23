@@ -41,11 +41,12 @@ export default class Station{
         this.instance = this.resource.scene
         this.instance.scale.set( 2., 2., 2.)
         // this.model.rotation.set(0, Math.PI, 0,)
-        // this.model.traverse( child =>{
-        //     if ( child instanceof THREE.Mesh){
-        //         child.castShadow = false
-        //     }
-        // })
+        this.instance.traverse( child =>{
+            if ( child instanceof THREE.Mesh){
+                child.castShadow = false
+                child.material.side = THREE.FrontSide
+            }
+        })
         this.scene.add( this.instance )
     }    
 

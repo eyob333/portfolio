@@ -29,9 +29,8 @@ export default class World{
             this.Nomad = new Nomad()          
             this.Ship = new Ship()
             // this.Station = new Station()
-            // this.HyperDirve = new HyperDrive()
             // this.Star = new Star()
-            // this.Particle = new ParticleDrive()
+            this.Particle = new ParticleDrive()
             this.Enviromet = new Enviromet()
             
         })

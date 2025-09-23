@@ -24,7 +24,7 @@ void main(){
     col = mix( col, col * .0,  uStrength);
 
     gl_FragColor = vec4(col, d);
-    gl_FragColor = vec4(0.47, 0.33, 0.24, 1.0);
+    // gl_FragColor = vec4(0.47, 0.33, 0.24, 1.0);
     #include <tonemapping_fragment>
     #include <colorspace_fragment>
 }

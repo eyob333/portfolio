@@ -59,7 +59,6 @@ export default class ParticleDrive{
                     if (distance >= 0.3 && distance <= 1) {
                         break;
                     }
-
                 }
 
 

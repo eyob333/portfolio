@@ -43,11 +43,12 @@ export default class Ship{
         console.log(this.instance)
         this.instance.scale.set( 1., 1., 1.)
         this.instance.rotation.set(0, Math.PI, 0,)
-        // this.model.traverse( child =>{
-        //     if ( child instanceof THREE.Mesh){
-        //         child.castShadow = false
-        //     }
-        // })
+        this.instance.traverse( child =>{
+            if ( child instanceof THREE.Mesh){
+                child.castShadow = false
+                child.material.side = THREE.FrontSide
+            }
+        })
         console.log(this.instance)
         this.scene.add( this.instance )
     }    
