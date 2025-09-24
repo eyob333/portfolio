@@ -11,7 +11,6 @@ import LoadingManager from './Controls/LoadingControler.js';
 import Overlay from './Ui/Overlay.js';
 import Animation from './Animation/Animation.js';
 import Stats from 'stats-js';
-import { overlay } from 'three/tsl';
 // import Lenis from 'lenis';
 
 let instance = null;
@@ -49,8 +48,6 @@ export default class App{
                 }, 4000)   
             })    
         
-
-
         if(this.debug.active){
             stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
             document.body.appendChild( stats.dom );

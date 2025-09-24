@@ -148,12 +148,9 @@ export default class Animation{
                             opacity: 0,
                             skewX: 10,
                             ease: 'power2.in'
-                            
                         })
-                    
                 }
             }, '<');
-
 
 
         const t3 = gsap.timeline()
@@ -187,20 +184,31 @@ export default class Animation{
             }, '-=.5')
             .to(this.overlay.material.uniforms.uAlpha, {
                 value: 1,
-                duration: 1
+                duration: 1.5,
+                onComplete: () =>{
+                    this.app.world.Cockpit.instance.rotation.y = Math.PI
+                    this.app.world.Cockpit.instance.position.set(4, 0, 3)
+                }
             }, '<')
-            // .pause()
+            .to(this.overlay.material.uniforms.uAlpha, {
+                value: 0,
+                duration: 1,
+                onUpdate: () =>{
+                    this.app.camera.controls.target.copy(this.app.world.Cockpit.instance.position)
+                },
+                onComplete: () =>{
+                    this.app.camera.controls.target.y = -.13
+                    this.app.camera.controls.target.z = 3.21
+                    this.app.camera.instance.position.set(4.00314,-0.1449,3.27645)
+                }
+            })
 
-        // const t4 = gsap.timeline({
-
-        // })
-        
 
         const nomT1 = gsap.timeline({
             yoyo: true,
             repeat: -1,
             repeatDelay: 3.2,
-            // paused: true
+            paused: true
         })
 
         nomT1   
@@ -228,7 +236,7 @@ export default class Animation{
         this.master = gsap.timeline()
         this.master
             .add(t1)
-            .add(nomT1)
+            // .add(nomT1)
             .add(t3, '+=5')
 
     }

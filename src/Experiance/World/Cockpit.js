@@ -39,7 +39,8 @@ export default class Cockpit{
         video.loop = true;
         video.muted = true;
         video.playsInline = true;
-
+        video.width = this.app.sizes.width
+        video.height = this.app.sizes.height
         video.play().catch(err => {
         console.warn("Autoplay prevented, waiting for user interaction");
         // Optional: add a click handler to resume
@@ -49,8 +50,8 @@ export default class Cockpit{
         });
 
         this.videoT = new THREE.VideoTexture(video);
-        this.videoT.minFilter = THREE.LinearFilter;
-        this.videoT.magFilter = THREE.LinearFilter;
+        // this.videoT.minFilter = THREE.LinearFilter;
+        // this.videoT.magFilter = THREE.LinearFilter;
         this.videoT.format = THREE.RGBAFormat
 
     }
