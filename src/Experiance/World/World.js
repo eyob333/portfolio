@@ -5,7 +5,6 @@ import Ship from './Ship'
 import Nomad from './Nomad'
 import Enviromet from './Environment'
 import Station from './Station'
-import HyperDrive from './HyperDrive'
 import Star from './Star'
 import ParticleDrive from './ParticleDrive'
 
@@ -30,7 +29,7 @@ export default class World{
             this.Ship = new Ship()
             // this.Station = new Station()
             // this.Star = new Star()
-            this.Particle = new ParticleDrive()
+            // this.Particle = new ParticleDrive()
             this.Enviromet = new Enviromet()
             
         })
@@ -38,18 +37,10 @@ export default class World{
     }
 
     update(){
-        // if ( this.Ship ){
-        //     this.Ship.update()
-        // }
-        // if( this.HyperDirve){
-        //     this.HyperDirve.update()
-        // }
         // if( this.Star){
         //     this.Star.update()
         // }        
-        // if (this.Nomad){
-        //     this.Nomad.update()
-        // }
+
         if(this.Particle){
             this.Particle.update()
         }

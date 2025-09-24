@@ -16,8 +16,8 @@ export default class Animation{
     constructor(){
         this.app = new App();
         this.ui = new Ui();
-        // this.bones = this.app.nomad.bones
-        // this.angles = this.app.nomad.angles  
+        this.bones = this.app.nomad.bones
+        this.angles = this.app.nomad.angles  
 
 
         const t1 = gsap.timeline({
@@ -184,11 +184,41 @@ export default class Animation{
                 x: this.app.Ship.scene.position.x, y: this.app.Ship.scene.position.y, z: this.app.Ship.scene.position.z,
                 duration: 2,
             }, '-=.5')
-            console.log(this.app)
+            .pause()
 
+        
+        const nomT1 = gsap.timeline({
+            yoyo: true,
+            repeat: -1,
+            repeatDelay: 3.2
+        })
+
+        nomT1   
+            .to(this.bones.head.rotation, {
+               x: -0.1191,
+                y: -0.3471,
+                z: -0.0051,
+                duration: 5.5,
+                ease: 'power3.inOut'
+            })
+            .to(this.bones.head.rotation, {
+                x: -0.0963,
+                y: 0.48657,
+                z: -0.2559,
+                duration: 6,
+                ease: 'power2.inOut'
+            })
+            .to(this.bones.head.rotation, {
+                x: -0.0507,
+                y: -0.1191,
+                z: 0.08610,
+                duration: 7,
+                ease: 'power4.inOut'
+            })
         this.master = gsap.timeline()
         this.master
             .add(t1)
+            // .add(nomT1, '+=5')
             .add(t3, '+=5')
 
     }
