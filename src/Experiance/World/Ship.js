@@ -40,7 +40,6 @@ export default class Ship{
 
     setInstance(){
         this.instance = this.resource.scene
-        console.log(this.instance)
         this.instance.scale.set( 1., 1., 1.)
         this.instance.rotation.set(0, Math.PI, 0,)
         this.instance.traverse( child =>{
@@ -49,12 +48,8 @@ export default class Ship{
                 child.material.side = THREE.FrontSide
             }
         })
-        console.log(this.instance)
+        // console.log(this.instance)
         this.scene.add( this.instance )
     }    
    
-
-    update(){
-        // this.animation.mixer.update( this.time.delta * 0.00002 )
-    }
 }

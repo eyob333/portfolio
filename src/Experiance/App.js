@@ -11,6 +11,7 @@ import LoadingManager from './Controls/LoadingControler.js';
 import Overlay from './Ui/Overlay.js';
 import Animation from './Animation/Animation.js';
 import Stats from 'stats-js';
+import { overlay } from 'three/tsl';
 // import Lenis from 'lenis';
 
 let instance = null;
@@ -34,7 +35,8 @@ export default class App{
         this.sizes  = new Sizes()            
         this.time = new Time()
         this.scene = new THREE.Scene()
-        this.LoadingManager = new LoadingManager( new Overlay(this.scene));
+        this.Overlay = new Overlay(this.scene)
+        this.LoadingManager = new LoadingManager( this.Overlay);
         this.resources = new Resources( sources, this.LoadingManager.loadingManager)          
         this.camera = new Camera(this)
         this.renderer = new Renderer()
@@ -43,7 +45,7 @@ export default class App{
 
         this.resources.on('ready', () =>{
                 setTimeout( () =>{
-                    this.animation = new Animation()
+                    this.animation = new Animation(this.Overlay)
                 }, 4000)   
             })    
         

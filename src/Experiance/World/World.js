@@ -7,6 +7,7 @@ import Enviromet from './Environment'
 import Station from './Station'
 import Star from './Star'
 import ParticleDrive from './ParticleDrive'
+import Cockpit from './Cockpit'
 
 
 
@@ -30,6 +31,7 @@ export default class World{
             // this.Station = new Station()
             // this.Star = new Star()
             // this.Particle = new ParticleDrive()
+            this.Cockpit = new Cockpit()
             this.Enviromet = new Enviromet()
             
         })
@@ -40,7 +42,6 @@ export default class World{
         // if( this.Star){
         //     this.Star.update()
         // }        
-
         if(this.Particle){
             this.Particle.update()
         }

@@ -13,11 +13,12 @@ let fouWord;
 
 export default class Animation{
 
-    constructor(){
+    constructor(overlay){
         this.app = new App();
         this.ui = new Ui();
         this.bones = this.app.nomad.bones
         this.angles = this.app.nomad.angles  
+        this.overlay = overlay
 
 
         const t1 = gsap.timeline({
@@ -184,13 +185,22 @@ export default class Animation{
                 x: this.app.Ship.scene.position.x, y: this.app.Ship.scene.position.y, z: this.app.Ship.scene.position.z,
                 duration: 2,
             }, '-=.5')
-            .pause()
+            .to(this.overlay.material.uniforms.uAlpha, {
+                value: 1,
+                duration: 1
+            }, '<')
+            // .pause()
 
+        // const t4 = gsap.timeline({
+
+        // })
         
+
         const nomT1 = gsap.timeline({
             yoyo: true,
             repeat: -1,
-            repeatDelay: 3.2
+            repeatDelay: 3.2,
+            // paused: true
         })
 
         nomT1   
@@ -218,7 +228,7 @@ export default class Animation{
         this.master = gsap.timeline()
         this.master
             .add(t1)
-            // .add(nomT1, '+=5')
+            .add(nomT1)
             .add(t3, '+=5')
 
     }
