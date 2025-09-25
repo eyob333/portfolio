@@ -27,7 +27,6 @@ export default class Cockpit{
             cockPitRotaion.add( this.instance.rotation, 'x').name("x").step(0.001).max(10).min(-10)
             cockPitRotaion.add( this.instance.rotation, 'y').name("y").step(0.001).max(10).min(-10)
             cockPitRotaion.add( this.instance.rotation, 'z').name("z").step(0.001).max(10).min(-10)
-            
         }
     
     
@@ -39,8 +38,6 @@ export default class Cockpit{
         video.loop = true;
         video.muted = true;
         video.playsInline = true;
-        video.width = this.app.sizes.width
-        video.height = this.app.sizes.height
         video.play().catch(err => {
         console.warn("Autoplay prevented, waiting for user interaction");
         // Optional: add a click handler to resume
@@ -50,9 +47,15 @@ export default class Cockpit{
         });
 
         this.videoT = new THREE.VideoTexture(video);
-        // this.videoT.minFilter = THREE.LinearFilter;
-        // this.videoT.magFilter = THREE.LinearFilter;
+        this.videoT.minFilter = THREE.LinearFilter;
+        this.videoT.magFilter = THREE.LinearFilter;
         this.videoT.format = THREE.RGBAFormat
+        this.videoT.colorSpace = THREE.SRGBColorSpace
+        this.videoT.wrapS = THREE.ClampToEdgeWrapping;
+        this.videoT.wrapT = THREE.ClampToEdgeWrapping;
+        this.videoT.flipY = false
+        this.videoT.repeat.set(1, 1);
+        this.videoT.offset.set(0, 0);
 
     }
 
@@ -67,10 +70,15 @@ export default class Cockpit{
             }
         })
         let screenM = this.instance.children.find( child => child.name === 'screenM')
-        let screenR = this.instance.children.find( child => child.name === 'screenM')
-        let screenL = this.instance.children.find( child => child.name === 'screenM')
-        let screenS = this.instance.children.find( child => child.name === 'screenM')
+        let screenR = this.instance.children.find( child => child.name === 'screenR')
+        let screenL = this.instance.children.find( child => child.name === 'screenL')
+        let screenS = this.instance.children.find( child => child.name === 'screenS')
+        let screenS1 = this.instance.children.find( child => child.name === 'screenS1')
         screenM.material = material
+        screenS.material = material
+        screenS1.material = material
+        screenL.material = material
+        screenR.material = material
         console.log(this.instance)
         this.instance.scale.set(.5, .5, .5)
         this.scene.add(this.instance)

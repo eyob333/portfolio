@@ -1,4 +1,6 @@
 import * as THREE from 'three';
+import Stats from 'stats-js';
+// import Lenis from 'lenis';
 import Sizes from "./Utils/Sizes.js"
 import Time from "./Utils/Time.js"
 import Camera from "./Camera.js"
@@ -10,8 +12,8 @@ import sources from './Sources.js'
 import LoadingManager from './Controls/LoadingControler.js';
 import Overlay from './Ui/Overlay.js';
 import Animation from './Animation/Animation.js';
-import Stats from 'stats-js';
-// import Lenis from 'lenis';
+import RayCaster from './Utils/RayCaster.js';
+
 
 let instance = null;
 // const lenis = new Lenis({
@@ -45,6 +47,7 @@ export default class App{
         this.resources.on('ready', () =>{
                 setTimeout( () =>{
                     this.animation = new Animation(this.Overlay)
+                    this.rayCast = new RayCaster()
                 }, 4000)   
             })    
         
@@ -69,8 +72,6 @@ export default class App{
         }
 
     update(){
-
-        
         this.camera.update()
         this.renderer.update()
         this.world.update()

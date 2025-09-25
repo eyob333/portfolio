@@ -3,6 +3,8 @@ import gsap from "gsap";
 import SplitType from 'split-type';
 import App from "../App";
 import Ui from '../Ui/Ui';
+import Event from '../Utils/Event';
+// import RayCaster from '../Utils/RayCaster';
 
 let container = document.querySelector("div.section-container-div");
 let scrollNav = document.querySelector('div.navigaton-bar')
@@ -19,6 +21,24 @@ export default class Animation{
         this.bones = this.app.nomad.bones
         this.angles = this.app.nomad.angles  
         this.overlay = overlay
+
+        this.event = new Event()
+        // this.raycast = new RayCaster()
+
+        let cA = gsap.timeline()
+
+        this.event.on('keyPress', () => {
+            switch (this.event.key){
+                case 'a':
+                    // cA.kill()
+                    cA.to( this.app.ship.rotation, {
+                        z: -this.event.count/this.event.maxCount,
+                        reversed: true,
+                    })
+                    break;
+            }
+            console.log("yup", this.event.key)
+        })
 
 
         const t1 = gsap.timeline({
@@ -179,7 +199,7 @@ export default class Animation{
 
             }, '-=2.8')
             .to(this.app.camera.controls.target, {
-                x: this.app.Ship.scene.position.x, y: this.app.Ship.scene.position.y, z: this.app.Ship.scene.position.z,
+                x: this.app.ship.position.x, y: this.app.ship.position.y, z: this.app.ship.position.z,
                 duration: 2,
             }, '-=.5')
             .to(this.overlay.material.uniforms.uAlpha, {
@@ -200,6 +220,7 @@ export default class Animation{
                     this.app.camera.controls.target.y = -.13
                     this.app.camera.controls.target.z = 3.21
                     this.app.camera.instance.position.set(4.00314,-0.1449,3.27645)
+                    this.app.world.Particle.instance.layers.set(0)
                 }
             })
 

@@ -30,7 +30,7 @@ export default class World{
             this.Ship = new Ship()
             // this.Station = new Station()
             // this.Star = new Star()
-            // this.Particle = new ParticleDrive()
+            this.Particle = new ParticleDrive()
             this.Cockpit = new Cockpit()
             this.Enviromet = new Enviromet()
             
