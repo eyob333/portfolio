@@ -16,7 +16,6 @@ export default class Event extends EventEmitter{
             
         //     this.trigger('resize')
         // })
-
         this.count = 0;
         this.maxCount = 30;
 
@@ -31,7 +30,6 @@ export default class Event extends EventEmitter{
         // --- Handle keydown ---
         window.addEventListener("keydown", (e) => {
             if (e.repeat) return; // ignore auto-repeat from holding key
-
             switch (e.key.toLowerCase()) {
                 case "a":
                     clearInterval(tiltInterval);
@@ -71,8 +69,8 @@ export default class Event extends EventEmitter{
                 if (tiltTween) tiltTween.kill();
                 tiltTween = gsap.to(this.ship.rotation, {
                     z: tiltTarget,
-                    duration: 0.6,
-                    ease: "power2.inOut",
+                    duration: 1,
+                    ease: "power4.out",
                     overwrite: "auto"
                 });
             }

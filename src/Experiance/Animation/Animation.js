@@ -228,16 +228,41 @@ export default class Animation{
             .to(this.overlay.material.uniforms.uAlpha, {
                 value: 0,
                 duration: 1,
-                onUpdate: () =>{
-                    this.app.camera.controls.target.copy(this.app.world.Cockpit.instance.position)
-                },
-                onComplete: () =>{
-                    this.app.camera.controls.target.y = -.13
-                    this.app.camera.controls.target.z = 3.21
+                onStart: () =>{
                     this.app.camera.instance.position.set(4.00314,-0.1449,3.27645)
-                    this.app.world.Particle.instance.layers.set(0)
-                }
+                    // this.app.world.Particle.instance.layers.set(0)
+                    this.app.camera.controls.target.copy(this.app.world.Cockpit.instance.position)                    
+                    gsap.to(this.app.camera.controls.target, {
+                        y: -.13,
+                        z: 3.21,
+                        duration: 1.4
+                    })
+                },
             })
+
+
+            const t4 = gsap.timeline()
+
+            t4.
+                to(this.overlay.material.uniforms.uAlpha, {
+                    duration: 1,
+                    value: 1.3, 
+                    onComplete: () =>{
+                       this.app.camera.controls.target.copy(this.app.ship.position) 
+                       gsap.to( this.app.camera.instance.position, {
+                        x: -3.6886066371413606, y:4.48666707896768, z: 5.34525,
+                        duration: 2.3
+                       })      
+                    }
+                
+                })
+                // .to(this.app.camera.controls.target, {
+
+                // })
+                .to(this.overlay.material.uniforms.uAlpha,{
+                    value: 0,
+                    duration: 1.3
+                })
 
 
         const nomT1 = gsap.timeline({
@@ -274,6 +299,7 @@ export default class Animation{
             .add(t1)
             // .add(nomT1)
             .add(t3, '+=5')
+            .add(t4, '+=5')
 
     }
 
