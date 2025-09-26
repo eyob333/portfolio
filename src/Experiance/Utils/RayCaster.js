@@ -11,4 +11,8 @@ export default class RayCaster extends EventEmitter{
         })
 
     }
+    setInstance(){
+        this.instance = new THREE.Raycaster()
+        this.instance.setFromCamera()
+    }
 }

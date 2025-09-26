@@ -17,7 +17,7 @@ export default [
     {
         name: 'Pod',
         type: 'gltfModel',
-        path: '/models/thePodInTest.glb',
+        path: '/models/cable.glb',
     },
     {
         name: 'Cockpit',

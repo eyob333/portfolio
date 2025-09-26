@@ -22,23 +22,38 @@ export default class Animation{
         this.angles = this.app.nomad.angles  
         this.overlay = overlay
 
-        this.event = new Event()
+        this.event = new Event(this.app.ship)
         // this.raycast = new RayCaster()
 
-        let cA = gsap.timeline()
+       let cA = gsap.timeline()
+       let remap = null;
 
-        this.event.on('keyPress', () => {
-            switch (this.event.key){
-                case 'a':
-                    // cA.kill()
-                    cA.to( this.app.ship.rotation, {
-                        z: -this.event.count/this.event.maxCount,
-                        reversed: true,
-                    })
-                    break;
-            }
-            console.log("yup", this.event.key)
-        })
+
+        // this.event.on('keyPress', () => {
+            
+        //     switch (this.event.key){
+        //         case 'a':
+        //             cA.kill(); 
+        //             remap = -1.5 * (this.event.count / this.event.maxCount);
+        //             cA = gsap.timeline()
+        //             cA.to( this.app.ship.rotation, {
+        //                 z: remap,
+        //                 reversed: true,
+        //                 // onComplete: () =>{
+        //                 //     // gsap.to ( this.app.ship.rotation, {
+        //                 //     //     z: 0,
+        //                 //     //     overwrite
+        //                 //     // })
+        //                 // }
+        //             })
+        //             console.log("foo cout", this.event.count , this.event.maxCount, -this.event.count/this.event.maxCount)
+        //             break;
+        //     }
+        //     console.log("yup", this.event.key)
+        // })
+        // this.event.off('keyPress', () =>{
+        //     console.log("this is off key press")
+        // })
 
 
         const t1 = gsap.timeline({
