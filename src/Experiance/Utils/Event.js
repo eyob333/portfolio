@@ -38,7 +38,7 @@ export default class Event extends EventEmitter{
                         if (tiltTween) tiltTween.kill();
                         tiltTween = gsap.to(this.ship.rotation, {
                             z: tiltTarget,
-                            duration: 0.1,
+                            duration: 0.3,
                             ease: "power1.out",
                             overwrite: "auto"
                         });
@@ -52,7 +52,7 @@ export default class Event extends EventEmitter{
                         if (tiltTween) tiltTween.kill();
                         tiltTween = gsap.to(this.ship.rotation, {
                             z: tiltTarget,
-                            duration: 0.1,
+                            duration: 0.3,
                             ease: "power1.out",
                             overwrite: "auto"
                         });
@@ -69,8 +69,8 @@ export default class Event extends EventEmitter{
                 if (tiltTween) tiltTween.kill();
                 tiltTween = gsap.to(this.ship.rotation, {
                     z: tiltTarget,
-                    duration: 1,
-                    ease: "power4.out",
+                    duration: 1.5,
+                    ease: "power3.out",
                     overwrite: "auto"
                 });
             }

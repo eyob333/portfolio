@@ -251,7 +251,8 @@ export default class Animation{
                        this.app.camera.controls.target.copy(this.app.ship.position) 
                        gsap.to( this.app.camera.instance.position, {
                         x: -3.6886066371413606, y:4.48666707896768, z: 5.34525,
-                        duration: 2.3
+                        duration: 3,
+                        ease: 'power4.Out'
                        })      
                     }
                 
