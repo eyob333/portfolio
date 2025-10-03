@@ -79,8 +79,8 @@ export default class Cockpit{
         screenS1.material = material
         screenL.material = material
         screenR.material = material
-        console.log(this.instance)
+        // console.log(this.instance)
         this.instance.scale.set(.5, .5, .5)
-        this.scene.add(this.instance)
+        // this.scene.add(this.instance)
     }
 }

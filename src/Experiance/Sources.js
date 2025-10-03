@@ -23,5 +23,15 @@ export default [
         name: 'Cockpit',
         type: 'gltfModel',
         path: '/models/cockpit.glb'
+    },
+     {
+        name: 'Hangar',
+        type: 'gltfModel',
+        path: '/models/hangar.glb'
+    },
+    {
+        name: 'HangarT',
+        type: 'texture',
+        path: '/textures/g1.png'
     }
 ]

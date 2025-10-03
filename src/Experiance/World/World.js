@@ -8,7 +8,7 @@ import Station from './Station'
 import Star from './Star'
 import ParticleDrive from './ParticleDrive'
 import Cockpit from './Cockpit'
-
+import Hangar from './Hangar'
 
 
 export default class World{
@@ -32,6 +32,7 @@ export default class World{
             // this.Star = new Star()
             this.Particle = new ParticleDrive()
             this.Cockpit = new Cockpit()
+            this.Hangar = new Hangar()
             this.Enviromet = new Enviromet()
             
         })

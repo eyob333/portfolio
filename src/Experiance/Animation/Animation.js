@@ -193,6 +193,9 @@ export default class Animation{
             .to(this.app.camera.instance.position, {
                  x:1.0547, y:1.0451, z: 1.0744,
                 duration: 4,
+                onStart: () =>{
+                    this.app.scene.add(this.app.ship)
+                },
                 ease: 'power4.out'
             }, '<')
             .to(this.app.nomad.scene.position,{
@@ -201,6 +204,10 @@ export default class Animation{
                 ease: 'power1.Out',
                 onUpdate: () =>{
                     this.app.camera.controls.target.copy(this.app.nomad.scene.position)
+                },
+                onComplete: () => {
+                    this.app.scene.remove(this.app.nomad.scene)
+                    this.app.scene.add( this.app.world.Cockpit.instance)
                 }
             },'<')
             .to(this.app.nomad.scene.scale, {
@@ -243,8 +250,8 @@ export default class Animation{
 
             const t4 = gsap.timeline()
 
-            t4.
-                to(this.overlay.material.uniforms.uAlpha, {
+            t4
+                .to(this.overlay.material.uniforms.uAlpha, {
                     duration: 1,
                     value: 1.3, 
                     onComplete: () =>{
@@ -253,17 +260,23 @@ export default class Animation{
                         x: -3.6886066371413606, y:4.48666707896768, z: 5.34525,
                         duration: 3,
                         ease: 'power4.Out'
-                       })      
+                       })   
+                       this.app.scene.remove(this.app.world.Cockpit.instance)   
                     }
                 
                 })
-                // .to(this.app.camera.controls.target, {
-
-                // })
+                .to(this.app.ship.position, { y: 1})
+                .to(this.app.ship.rotation, {x:-.2, y: .557, z:0 }, '<')
+                .to(this.app.camera.instance,{
+                    onStart: () =>{
+                        this.app.camera.controls.target.set(7.009, 0.745, 3.836)
+                        this.app.scene.add(this.app.world.Hangar.instance)
+                    },
+                })
                 .to(this.overlay.material.uniforms.uAlpha,{
                     value: 0,
                     duration: 1.3
-                })
+                }, "-=1")
 
 
         const nomT1 = gsap.timeline({

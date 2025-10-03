@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Kapiler'; 
-  src: url('/fonts/kapilar/kapiler.regular.otf') format('opentype');
+  src: url('/fonts/kapiler.regular.woff2') format('woff2');
   font-display: swap;
 }
 

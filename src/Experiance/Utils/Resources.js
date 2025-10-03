@@ -53,9 +53,9 @@ export default class Resources extends EventEmitter{
                 this.loaders.textureLoader.load(
                     source.path,
                     (file) =>{
-                        file.repeat.set(8, 8)
-                        file.wrapS = THREE.RepeatWrapping
-                        file.wrapT= THREE.RepeatWrapping
+                        // file.repeat.set(8, 8)
+                        // file.wrapS = THREE.RepeatWrapping
+                        // file.wrapT= THREE.RepeatWrapping
                         this.sourceLoaded(source, file)
                     }
                 )

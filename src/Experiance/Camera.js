@@ -42,6 +42,7 @@ export default class Camera{
                 .close();
             this.posGui = this.debugFolder.addFolder('cam-position');
             this.rotGui = this.debugFolder.addFolder('cam-rotation');
+            this.posTar = this.debugFolder.addFolder('cam-target');
 
             this.posGui.add(this.instance.position, 'x', -20,20).step(0.00001).name('x').listen();
             this.posGui.add(this.instance.position, 'y', -20,20).step(0.00001).name('y').listen();
@@ -50,6 +51,10 @@ export default class Camera{
             this.rotGui .add(this.instance.rotation, 'x', -Math.PI * .5, Math.PI * .5).step(0.01).name('x').listen();
             this.rotGui .add(this.instance.rotation, 'y', -Math.PI * .5, Math.PI * .5).step(0.01).name('y').listen();
             this.rotGui .add(this.instance.rotation, 'z', -Math.PI * .5, Math.PI * .5).step(0.01).name('z').listen();
+
+            this.posTar.add(this.controls.target, 'x', -20,20).step(0.00001).name('x').listen();
+            this.posTar.add(this.controls.target, 'y', -20,20).step(0.00001).name('y').listen();
+            this.posTar.add(this.controls.target, 'z', -20,20).step(0.00001).name('z').listen();
         }
     }
 

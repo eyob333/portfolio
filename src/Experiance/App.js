@@ -47,7 +47,7 @@ export default class App{
         this.resources.on('ready', () =>{
                 setTimeout( () =>{
                     this.animation = new Animation(this.Overlay)
-                    this.rayCast = new RayCaster()
+                    // this.rayCast = new RayCaster()
                 }, 4000)   
             })    
         
