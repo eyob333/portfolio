@@ -258,19 +258,29 @@ export default class Animation{
                        this.app.camera.controls.target.copy(this.app.ship.position) 
                        gsap.to( this.app.camera.instance.position, {
                         x: -3.6886066371413606, y:4.48666707896768, z: 5.34525,
-                        duration: 3,
-                        ease: 'power4.Out'
+                        duration: 1,
                        })   
                        this.app.scene.remove(this.app.world.Cockpit.instance)   
                     }
                 
                 })
                 .to(this.app.ship.position, { y: 1})
-                .to(this.app.ship.rotation, {x:-.2, y: .557, z:0 }, '<')
-                .to(this.app.camera.instance,{
+                .to(this.app.ship.rotation, {x:-.2, y: .557, z:0,
                     onStart: () =>{
-                        this.app.camera.controls.target.set(7.009, 0.745, 3.836)
                         this.app.scene.add(this.app.world.Hangar.instance)
+                    }
+                 }, '<', )
+                .to(this.app.camera.controls.target,{
+                    x: 7.009, y: 0.745, z: 3.836,
+                    onStart: () =>{
+                        
+                        // this.app.camera.controls.target.set(7.009, 0.745, 3.836)
+                        gsap.to(this.app.camera.instance.position,
+                            { x: 7.685, y: 0.8362, z: 4.1846,
+                                duration: 4,
+                                ease: 'power2.out'
+                            })
+                        
                     },
                 })
                 .to(this.overlay.material.uniforms.uAlpha,{
@@ -278,7 +288,32 @@ export default class Animation{
                     duration: 1.3
                 }, "-=1")
 
-
+        const t5 = gsap.timeline({})
+        t5.to (this.app.camera.controls.target, {
+            x: 0, y:1, z: 0,
+            duration: 3
+        })
+        t5.to( this.app.ship.rotation, {
+            x:0.228, y: Math.PI, z: 0,
+            duration: 3,
+            onStart: () =>{
+                // let {x, y, z} = this.app.ship.position
+                // console.log(x, y, z)
+                // gsap.to(this.app.camera.controls.target, {
+                //     x, y, z,
+                // })
+            }
+        })
+        t5.to(this.app.ship.position,{
+            x: -4, y: 4,
+            duration: 3,
+            onUpdate: () =>{
+                this.app.camera.controls.target.copy( this.app.ship.position)
+            }
+        }, '<')
+        t5.to(this.app.camera.instance.position, {
+            x: -4.665, y: 5.3846, z: 12.716
+        })
         const nomT1 = gsap.timeline({
             yoyo: true,
             repeat: -1,
@@ -314,6 +349,7 @@ export default class Animation{
             // .add(nomT1)
             .add(t3, '+=5')
             .add(t4, '+=5')
+            .add(t5, '+=5')
 
     }
 

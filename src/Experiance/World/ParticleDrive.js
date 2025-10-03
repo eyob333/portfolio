@@ -84,14 +84,15 @@ export default class ParticleDrive{
             opacity: .5
         }); 
         
-        this.instance = new THREE.Points( this.geometry, this.material); 
-        this.instance.layers.set(4)
+        this.instance = new THREE.Points( this.geometry, this.material);
+        this.instance.position.set(-4, 4, 0) 
+        // this.instance.layers.set(4)
         this.scene.add( this.instance )
     }
 
     setDebug(){
         let particle = this.degug.ui.addFolder("Particle Drive")
-            // .close();
+            .close();
         particle.add(this.params,  'count').min(10).max(100000).step(1).name('count').onFinishChange( () =>{
             this.setAttr()
         })
