@@ -207,6 +207,7 @@ export default class Animation{
                 },
                 onComplete: () => {
                     this.app.scene.remove(this.app.nomad.scene)
+                    this.app.scene.remove(this.app.world.Nomad.pod.scene)
                     this.app.scene.add( this.app.world.Cockpit.instance)
                 }
             },'<')
@@ -269,51 +270,78 @@ export default class Animation{
                     onStart: () =>{
                         this.app.scene.add(this.app.world.Hangar.instance)
                     }
-                 }, '<', )
-                .to(this.app.camera.controls.target,{
-                    x: 7.009, y: 0.745, z: 3.836,
-                    onStart: () =>{
-                        
-                        // this.app.camera.controls.target.set(7.009, 0.745, 3.836)
-                        gsap.to(this.app.camera.instance.position,
-                            { x: 7.685, y: 0.8362, z: 4.1846,
-                                duration: 4,
-                                ease: 'power2.out'
-                            })
-                        
-                    },
-                })
-                .to(this.overlay.material.uniforms.uAlpha,{
+                 }, '<', )                
+                 .to(this.overlay.material.uniforms.uAlpha,{
                     value: 0,
-                    duration: 1.3
-                }, "-=1")
+                    delay: .5,
+                    duration: 1.5,
+                    ease: 'power1.in'
+                })
+                .to(this.app.camera.instance.position,{ 
+                    x: 7.685, y: 0.8362, z: 4.1846,
+                    duration: 3.5,
+                    ease: 'power2.out',
+                    onStart: () =>{
+                        this.app.camera.controls.target.set(7.009, 0.745, 3.836)
+                        // gsap.to(this.app.camera.instance.position,
+                        //     { x: 7.685, y: 0.8362, z: 4.1846,
+                        //         duration: 3.5,
+                        //         ease: 'power2.out'
+                        //     })
+                    },
+                }, '-=1.5')
 
         const t5 = gsap.timeline({})
-        t5.to (this.app.camera.controls.target, {
-            x: 0, y:1, z: 0,
-            duration: 3
-        })
-        t5.to( this.app.ship.rotation, {
-            x:0.228, y: Math.PI, z: 0,
-            duration: 3,
-            onStart: () =>{
-                // let {x, y, z} = this.app.ship.position
-                // console.log(x, y, z)
-                // gsap.to(this.app.camera.controls.target, {
-                //     x, y, z,
-                // })
-            }
-        })
-        t5.to(this.app.ship.position,{
-            x: -4, y: 4,
-            duration: 3,
-            onUpdate: () =>{
-                this.app.camera.controls.target.copy( this.app.ship.position)
-            }
-        }, '<')
-        t5.to(this.app.camera.instance.position, {
-            x: -4.665, y: 5.3846, z: 12.716
-        })
+        t5
+            .to( this.app.ship.rotation, {
+                x:0.228, y: Math.PI, z: 0,
+                duration: 3,
+                onStart: () =>{
+                    this.app.camera.controls.target.set(0, 1, 0)
+                }
+            })
+            .to(this.app.ship.position,{
+                x: -4, y: 4,
+                duration: 3,
+                onUpdate: () =>{
+                    this.app.camera.controls.target.copy( this.app.ship.position)
+                }
+            }, '<')
+            .to(this.app.camera.instance.position, {
+                x: -4.665, y: 5.3846, z: 12.716,
+                duration: 5,
+                ease: 'power2.inOut'
+            }, '<')
+
+            .to(this.app.ship.rotation, {
+                x: .04,
+                duration: 3,
+                onStart: ()=>{
+                    this.app.scene.add(this.app.world.Particle.instance)
+                },
+                onComplete: () =>{
+                    this.app.scene.remove(this.app.world.Hangar.instance)
+                }
+            })
+            .to( this.app.camera.instance.position, {
+                x: -4.26165, y: 4.545, z: 5.006,
+                duration: 2,
+                ease: 'power3.inOut'
+            }, '<')
+            .to(this.app.world.Particle.uniforms.uSpeed, {
+                value: .3,
+                delay: 1.2,
+                duration: 3,
+                ease: 'power4.out'
+            }, '<')
+
+            .to (this.app.camera.instance.position, {
+                 x: -4.4351, y: 4.906, z: 8.324,
+                 duration: 2,
+                 ease: 'power1.out'
+            }, '-=2.5')
+
+
         const nomT1 = gsap.timeline({
             yoyo: true,
             repeat: -1,

@@ -26,7 +26,7 @@ export default class ParticleDrive{
 
         this.uniforms = {}
         this.uniforms.uTime = new THREE.Uniform(0)
-        this.uniforms.uSpeed =  new THREE.Uniform(.1)
+        this.uniforms.uSpeed =  new THREE.Uniform(.001)
         this.uniforms.uSize = new THREE.Uniform(35.)
         this.uniforms.uResolution = new THREE.Uniform( new THREE.Vector2(this.app.sizes.width, this.app.sizes.height))
         this.uniforms.uColor = new THREE.Uniform( new THREE.Color(this.params.color))
@@ -87,7 +87,7 @@ export default class ParticleDrive{
         this.instance = new THREE.Points( this.geometry, this.material);
         this.instance.position.set(-4, 4, 0) 
         // this.instance.layers.set(4)
-        this.scene.add( this.instance )
+        // this.scene.add( this.instance )
     }
 
     setDebug(){
