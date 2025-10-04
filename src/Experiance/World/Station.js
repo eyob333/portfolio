@@ -47,10 +47,8 @@ export default class Station{
                 child.material.side = THREE.FrontSide
             }
         })
-        this.scene.add( this.instance )
+        this.instance.position.set(0, 10, -20)
+        // this.scene.add( this.instance )
     }    
 
-    update(){
-        // this.animation.mixer.update( this.time.delta * 0.00002 )
-    }
 }

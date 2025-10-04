@@ -32,6 +32,6 @@ export default [
     {
         name: 'HangarT',
         type: 'texture',
-        path: '/textures/g1.png'
+        path: '/textures/g2.png'
     }
 ]

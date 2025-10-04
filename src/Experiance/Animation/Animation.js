@@ -209,6 +209,13 @@ export default class Animation{
                     this.app.scene.remove(this.app.nomad.scene)
                     this.app.scene.remove(this.app.world.Nomad.pod.scene)
                     this.app.scene.add( this.app.world.Cockpit.instance)
+                    gsap.to(this.app.world.Enviromet.params, {
+                        alpha: 1,
+                        onUpdate: () =>{
+                            this.app.renderer.instance.setClearAlpha(this.app.world.Enviromet.params.alpha)
+                        }
+                    })
+                    
                 }
             },'<')
             .to(this.app.nomad.scene.scale, {
@@ -318,9 +325,10 @@ export default class Animation{
                 duration: 3,
                 onStart: ()=>{
                     this.app.scene.add(this.app.world.Particle.instance)
+                    this.app.scene.remove(this.app.world.Hangar.instance)
                 },
                 onComplete: () =>{
-                    this.app.scene.remove(this.app.world.Hangar.instance)
+                    
                 }
             })
             .to( this.app.camera.instance.position, {
@@ -330,7 +338,7 @@ export default class Animation{
             }, '<')
             .to(this.app.world.Particle.uniforms.uSpeed, {
                 value: .3,
-                delay: 1.2,
+                delay: 1.3,
                 duration: 3,
                 ease: 'power4.out'
             }, '<')
@@ -340,6 +348,24 @@ export default class Animation{
                  duration: 2,
                  ease: 'power1.out'
             }, '-=2.5')
+
+        const t6 =  gsap.timeline({})    
+        
+        t6
+            .to(this.app.world.Particle.instance.scale, {
+                x: .1, y: .5, x: .5,
+                duration: 4
+            })
+            .to(this.app.world.Particle.instance.position, {
+                z: 20,
+                duration: 4,
+                onComplete: () =>{
+                    this.app.scene.add(this.app.world.Station.instance)
+                }
+            }, '<')
+
+
+
 
 
         const nomT1 = gsap.timeline({
@@ -378,6 +404,7 @@ export default class Animation{
             .add(t3, '+=5')
             .add(t4, '+=5')
             .add(t5, '+=5')
+            .add(t6, '+=5')
 
     }
 

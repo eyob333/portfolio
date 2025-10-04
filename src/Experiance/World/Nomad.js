@@ -72,6 +72,7 @@ export default class Nomad{
                 child.material.side = THREE.FrontSide
             }
         })
+    
         this.scene.add(this.pod.scene)
 
     }

@@ -28,7 +28,7 @@ export default class World{
         this.resorces.on( 'ready', ()=>{ 
             this.Nomad = new Nomad()          
             this.Ship = new Ship()
-            // this.Station = new Station()
+            this.Station = new Station()
             // this.Star = new Star()
             this.Particle = new ParticleDrive()
             this.Cockpit = new Cockpit()
