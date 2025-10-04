@@ -55,7 +55,7 @@ export default class Ship{
             }
         })
         // console.log(this.instance)
-        // this.scene.add( this.instance )
+        this.scene.add( this.instance )
     }    
    
 }

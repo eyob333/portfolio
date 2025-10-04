@@ -50,7 +50,7 @@ export default class Hangar{
         this.instance.scale.set( .5, .5, .5)
         this.instance.traverse( child =>{ child.material = material })
         console.log(this.instance)
-        // this.scene.add( this.instance )
+        this.scene.add( this.instance )
     }   
 
 }

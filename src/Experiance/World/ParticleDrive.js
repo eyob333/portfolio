@@ -88,7 +88,7 @@ export default class ParticleDrive{
         this.instance.position.set(-4, 4, 0) 
         this.instance.frustumCulled = false
         // this.instance.layers.set(4)
-        // this.scene.add( this.instance )
+        this.scene.add( this.instance )
     }
 
     setDebug(){

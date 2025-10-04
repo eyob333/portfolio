@@ -48,7 +48,7 @@ export default class Station{
             }
         })
         this.instance.position.set(0, 10, -20)
-        // this.scene.add( this.instance )
+        this.scene.add( this.instance )
     }    
 
 }

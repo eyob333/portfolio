@@ -68,6 +68,13 @@ export default class Animation{
                 x: this.app.nomad.scene.position.x, y: this.app.nomad.scene.position.y, z: this.app.nomad.scene.position.z,
                 duration: 2,
                 ease: 'sine',
+                onStart: () =>{
+                    this.app.ship.visible = false
+                    this.app.world.Cockpit.instance.visible = false
+                    this.app.world.Station.instance.visible = false
+                    this.app.world.Particle.instance.visible = false
+                    this.app.world.Hangar.instance.visible = false
+                },
                 onComplete: () =>{
                     container.style.visibility= 'visible';
                     container.style.maxHeight = '100vh';
@@ -194,7 +201,8 @@ export default class Animation{
                  x:1.0547, y:1.0451, z: 1.0744,
                 duration: 4,
                 onStart: () =>{
-                    this.app.scene.add(this.app.ship)
+                    this.app.ship.visible = true
+                    // this.app.scene.add(this.app.ship)
                 },
                 ease: 'power4.out'
             }, '<')
@@ -206,9 +214,12 @@ export default class Animation{
                     this.app.camera.controls.target.copy(this.app.nomad.scene.position)
                 },
                 onComplete: () => {
-                    this.app.scene.remove(this.app.nomad.scene)
-                    this.app.scene.remove(this.app.world.Nomad.pod.scene)
-                    this.app.scene.add( this.app.world.Cockpit.instance)
+                    // this.app.scene.remove(this.app.nomad.scene)
+                    this.app.nomad.scene.visible = false
+                    // this.app.scene.remove(this.app.world.Nomad.pod.scene)
+                    this.app.world.Nomad.pod.scene.visibility = false
+                    // this.app.scene.add( this.app.world.Cockpit.instance)
+                    this.app.world.Cockpit.instance.visible =true
                     gsap.to(this.app.world.Enviromet.params, {
                         alpha: 1,
                         onUpdate: () =>{
@@ -235,6 +246,9 @@ export default class Animation{
             .to(this.overlay.material.uniforms.uAlpha, {
                 value: 1,
                 duration: 1.5,
+                onStart: () =>{
+                    this.app.ship.visible = false
+                },
                 onComplete: () =>{
                     this.app.world.Cockpit.instance.rotation.y = Math.PI
                     this.app.world.Cockpit.instance.position.set(4, 0, 3)
@@ -252,7 +266,9 @@ export default class Animation{
                         z: 3.21,
                         duration: 1.4
                     })
+                    this.app.ship.visible = false
                 },
+                
             })
 
 
@@ -268,14 +284,16 @@ export default class Animation{
                         x: -3.6886066371413606, y:4.48666707896768, z: 5.34525,
                         duration: 1,
                        })   
-                       this.app.scene.remove(this.app.world.Cockpit.instance)   
+                       this.app.world.Cockpit.instance.visibility = false
                     }
                 
                 })
                 .to(this.app.ship.position, { y: 1})
                 .to(this.app.ship.rotation, {x:-.2, y: .557, z:0,
                     onStart: () =>{
-                        this.app.scene.add(this.app.world.Hangar.instance)
+                        this.app.world.Hangar.instance.visible = true
+                        this.app.ship.visible = true
+
                     }
                  }, '<', )                
                  .to(this.overlay.material.uniforms.uAlpha,{
@@ -324,8 +342,8 @@ export default class Animation{
                 x: .04,
                 duration: 3,
                 onStart: ()=>{
-                    this.app.scene.add(this.app.world.Particle.instance)
-                    this.app.scene.remove(this.app.world.Hangar.instance)
+                    this.app.world.Particle.instance.visible = true
+                    this.app.world.Hangar.instance.visible = false
                 },
                 onComplete: () =>{
                     
@@ -353,17 +371,17 @@ export default class Animation{
         
         t6
             .to(this.app.world.Particle.instance.scale, {
-                x: .1, y: .5, x: .5,
+                x: .5, y: .5, x: .5,
                 duration: 4
             })
             .to(this.app.world.Particle.instance.position, {
-                z: 20,
-                duration: 4,
+                z: 100,
+                duration: 6,
                 onComplete: () =>{
-                    this.app.scene.add(this.app.world.Station.instance)
+                    this.app.world.Station.instance.visible = true
+                    this.app.world.Particle.instance.visible = false
                 }
             }, '<')
-
 
 
 

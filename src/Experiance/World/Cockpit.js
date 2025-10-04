@@ -81,6 +81,6 @@ export default class Cockpit{
         screenR.material = material
         // console.log(this.instance)
         this.instance.scale.set(.5, .5, .5)
-        // this.scene.add(this.instance)
+        this.scene.add(this.instance)
     }
 }
