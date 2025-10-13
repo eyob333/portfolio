@@ -25,35 +25,6 @@ export default class Animation{
         this.event = new Event(this.app.ship)
         // this.raycast = new RayCaster()
 
-    //    let cA = gsap.timeline()
-    //    let remap = null;
-
-
-        // this.event.on('keyPress', () => {
-            
-        //     switch (this.event.key){
-        //         case 'a':
-        //             cA.kill(); 
-        //             remap = -1.5 * (this.event.count / this.event.maxCount);
-        //             cA = gsap.timeline()
-        //             cA.to( this.app.ship.rotation, {
-        //                 z: remap,
-        //                 reversed: true,
-        //                 // onComplete: () =>{
-        //                 //     // gsap.to ( this.app.ship.rotation, {
-        //                 //     //     z: 0,
-        //                 //     //     overwrite
-        //                 //     // })
-        //                 // }
-        //             })
-        //             console.log("foo cout", this.event.count , this.event.maxCount, -this.event.count/this.event.maxCount)
-        //             break;
-        //     }
-        //     console.log("yup", this.event.key)
-        // })
-        // this.event.off('keyPress', () =>{
-        //     console.log("this is off key press")
-        // })
 
 
         const t1 = gsap.timeline({
@@ -207,7 +178,6 @@ export default class Animation{
                 onComplete: () => {
                     // this.app.scene.remove(this.app.nomad.scene)
                     this.app.nomad.scene.visible = false
-                    this.app.world.Nomad.pod.visible = false
                     // this.app.scene.remove(this.app.world.Nomad.pod.scene)
                     this.app.world.Station.instance.visible = true
 
