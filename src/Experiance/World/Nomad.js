@@ -20,7 +20,6 @@ export default class Nomad{
         }
 
         this.setModel()
-        this.setPod()
         this.Skeleton = new Skeleton(this.debugFolder)
 
         if ( this.debug.active){
@@ -60,22 +59,6 @@ export default class Nomad{
     }
 
 
-    setPod(){
-        this.podScale = {}
-        this.pod = this.resources.item.Pod
-
-        this.pod.scene.position.set(.1, 6.7, 1)
-        this.pod.scene.scale.set(.1, .1, .1)
-        this.pod.scene.traverse( child =>{
-            if ( child instanceof THREE.Mesh){
-                child.castShadow = false
-                child.material.side = THREE.FrontSide
-            }
-        })
-    
-        this.scene.add(this.pod.scene)
-
-    }
 
     update(){
         // this.animation.mixer.update( this.time.delta * 0.0005 )

@@ -12,7 +12,7 @@ export default [
     {
         name: 'Station',
         type: 'gltfModel',
-        path: '/models/station.glb',
+        path: '/models/stationL2.glb',
     },
     {
         name: 'Pod',

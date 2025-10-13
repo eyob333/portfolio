@@ -25,8 +25,8 @@ export default class Animation{
         this.event = new Event(this.app.ship)
         // this.raycast = new RayCaster()
 
-       let cA = gsap.timeline()
-       let remap = null;
+    //    let cA = gsap.timeline()
+    //    let remap = null;
 
 
         // this.event.on('keyPress', () => {
@@ -68,13 +68,6 @@ export default class Animation{
                 x: this.app.nomad.scene.position.x, y: this.app.nomad.scene.position.y, z: this.app.nomad.scene.position.z,
                 duration: 2,
                 ease: 'sine',
-                onStart: () =>{
-                    this.app.ship.visible = false
-                    this.app.world.Cockpit.instance.visible = false
-                    this.app.world.Station.instance.visible = false
-                    this.app.world.Particle.instance.visible = false
-                    this.app.world.Hangar.instance.visible = false
-                },
                 onComplete: () =>{
                     container.style.visibility= 'visible';
                     container.style.maxHeight = '100vh';
@@ -114,7 +107,6 @@ export default class Animation{
                         skewX: -10,
                     })
                 
-
                 }
             })
             .to(this.app.world.Enviromet.params, {
@@ -202,7 +194,6 @@ export default class Animation{
                 duration: 4,
                 onStart: () =>{
                     this.app.ship.visible = true
-                    // this.app.scene.add(this.app.ship)
                 },
                 ease: 'power4.out'
             }, '<')
@@ -216,10 +207,10 @@ export default class Animation{
                 onComplete: () => {
                     // this.app.scene.remove(this.app.nomad.scene)
                     this.app.nomad.scene.visible = false
+                    this.app.world.Nomad.pod.visible = false
                     // this.app.scene.remove(this.app.world.Nomad.pod.scene)
-                    this.app.world.Nomad.pod.scene.visibility = false
-                    // this.app.scene.add( this.app.world.Cockpit.instance)
-                    this.app.world.Cockpit.instance.visible =true
+                    this.app.world.Station.instance.visible = true
+
                     gsap.to(this.app.world.Enviromet.params, {
                         alpha: 1,
                         onUpdate: () =>{
@@ -243,147 +234,6 @@ export default class Animation{
                 x: this.app.ship.position.x, y: this.app.ship.position.y, z: this.app.ship.position.z,
                 duration: 2,
             }, '-=.5')
-            .to(this.overlay.material.uniforms.uAlpha, {
-                value: 1,
-                duration: 1.5,
-                onStart: () =>{
-                    this.app.ship.visible = false
-                },
-                onComplete: () =>{
-                    this.app.world.Cockpit.instance.rotation.y = Math.PI
-                    this.app.world.Cockpit.instance.position.set(4, 0, 3)
-                }
-            }, '<')
-            .to(this.overlay.material.uniforms.uAlpha, {
-                value: 0,
-                duration: 1,
-                onStart: () =>{
-                    this.app.camera.instance.position.set(4.00314,-0.1449,3.27645)
-                    // this.app.world.Particle.instance.layers.set(0)
-                    this.app.camera.controls.target.copy(this.app.world.Cockpit.instance.position)                    
-                    gsap.to(this.app.camera.controls.target, {
-                        y: -.13,
-                        z: 3.21,
-                        duration: 1.4
-                    })
-                    this.app.ship.visible = false
-                },
-                
-            })
-
-
-            const t4 = gsap.timeline()
-
-            t4
-                .to(this.overlay.material.uniforms.uAlpha, {
-                    duration: 1,
-                    value: 1.3, 
-                    onComplete: () =>{
-                       this.app.camera.controls.target.copy(this.app.ship.position) 
-                       gsap.to( this.app.camera.instance.position, {
-                        x: -3.6886066371413606, y:4.48666707896768, z: 5.34525,
-                        duration: 1,
-                       })   
-                       this.app.world.Cockpit.instance.visibility = false
-                    }
-                
-                })
-                .to(this.app.ship.position, { y: 1})
-                .to(this.app.ship.rotation, {x:-.2, y: .557, z:0,
-                    onStart: () =>{
-                        this.app.world.Hangar.instance.visible = true
-                        this.app.ship.visible = true
-
-                    }
-                 }, '<', )                
-                 .to(this.overlay.material.uniforms.uAlpha,{
-                    value: 0,
-                    delay: .5,
-                    duration: 1.5,
-                    ease: 'power1.in'
-                })
-                .to(this.app.camera.instance.position,{ 
-                    x: 7.685, y: 0.8362, z: 4.1846,
-                    duration: 3.5,
-                    ease: 'power2.out',
-                    onStart: () =>{
-                        this.app.camera.controls.target.set(7.009, 0.745, 3.836)
-                        // gsap.to(this.app.camera.instance.position,
-                        //     { x: 7.685, y: 0.8362, z: 4.1846,
-                        //         duration: 3.5,
-                        //         ease: 'power2.out'
-                        //     })
-                    },
-                }, '-=1.5')
-
-        const t5 = gsap.timeline({})
-        t5
-            .to( this.app.ship.rotation, {
-                x:0.228, y: Math.PI, z: 0,
-                duration: 3,
-                onStart: () =>{
-                    this.app.camera.controls.target.set(0, 1, 0)
-                }
-            })
-            .to(this.app.ship.position,{
-                x: -4, y: 4,
-                duration: 3,
-                onUpdate: () =>{
-                    this.app.camera.controls.target.copy( this.app.ship.position)
-                }
-            }, '<')
-            .to(this.app.camera.instance.position, {
-                x: -4.665, y: 5.3846, z: 12.716,
-                duration: 5,
-                ease: 'power2.inOut'
-            }, '<')
-
-            .to(this.app.ship.rotation, {
-                x: .04,
-                duration: 3,
-                onStart: ()=>{
-                    this.app.world.Particle.instance.visible = true
-                    this.app.world.Hangar.instance.visible = false
-                },
-                onComplete: () =>{
-                    
-                }
-            })
-            .to( this.app.camera.instance.position, {
-                x: -4.26165, y: 4.545, z: 5.006,
-                duration: 2,
-                ease: 'power3.inOut'
-            }, '<')
-            .to(this.app.world.Particle.uniforms.uSpeed, {
-                value: .3,
-                delay: 1.3,
-                duration: 3,
-                ease: 'power4.out'
-            }, '<')
-
-            .to (this.app.camera.instance.position, {
-                 x: -4.4351, y: 4.906, z: 8.324,
-                 duration: 2,
-                 ease: 'power1.out'
-            }, '-=2.5')
-
-        const t6 =  gsap.timeline({})    
-        
-        t6
-            .to(this.app.world.Particle.instance.scale, {
-                x: .5, y: .5, x: .5,
-                duration: 4
-            })
-            .to(this.app.world.Particle.instance.position, {
-                z: 100,
-                duration: 6,
-                onComplete: () =>{
-                    this.app.world.Station.instance.visible = true
-                    this.app.world.Particle.instance.visible = false
-                }
-            }, '<')
-
-
 
 
         const nomT1 = gsap.timeline({
@@ -420,9 +270,6 @@ export default class Animation{
             .add(t1)
             // .add(nomT1)
             .add(t3, '+=5')
-            .add(t4, '+=5')
-            .add(t5, '+=5')
-            .add(t6, '+=5')
 
     }
 

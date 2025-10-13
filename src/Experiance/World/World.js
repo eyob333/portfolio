@@ -18,21 +18,15 @@ export default class World{
         this.scene = this.experiance.scene
         this.resorces = this.experiance.resources
 
-        // test mesh 
-        // const testMesh = new THREE.Mesh( 
-        //     new THREE.BoxGeometry(),
-        //     new THREE.MeshStandardMaterial({color: '#ffffff',})
-        // )
-        // this.scene.add( testMesh )
-        
+
         this.resorces.on( 'ready', ()=>{ 
             this.Nomad = new Nomad()          
             this.Ship = new Ship()
             this.Station = new Station()
             // this.Star = new Star()
-            this.Particle = new ParticleDrive()
-            this.Cockpit = new Cockpit()
-            this.Hangar = new Hangar()
+            // this.Particle = new ParticleDrive()
+            // this.Cockpit = new Cockpit()
+            // this.Hangar = new Hangar()
             this.Enviromet = new Enviromet()
             
         })
@@ -48,6 +42,10 @@ export default class World{
         }
         if (this.Enviromet){
             this.Enviromet.update()
+        }
+        if(this.Hangar && this.Hangar.cssRenderer && this.Hangar.screen ){
+            this.Hangar.update()
+            
         }
 
     }

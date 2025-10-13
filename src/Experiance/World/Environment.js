@@ -15,6 +15,7 @@ export default class Enviromet{
         this.camera = this.app.camera.instance
         this.sizes = this.app.sizes
         this.renderer = this.app.renderer.instance
+        this.renderer.outputColorSpace = THREE.SRGBColorSpace
     
         this.debug = this.app.debug
 

@@ -1,7 +1,8 @@
 import * as THREE  from 'three'
+import { CSS3DRenderer, CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
+import icons from '../../assets/techStackIcons';
+
 import App from "../App";
-
-
 
 export default class Hangar{
     
@@ -50,7 +51,86 @@ export default class Hangar{
         this.instance.scale.set( .5, .5, .5)
         this.instance.traverse( child =>{ child.material = material })
         console.log(this.instance)
+        this.instance.visble = false
         this.scene.add( this.instance )
     }   
 
+    setScreen(element) {
+        function divToCanvas(div, callback) {
+            const data = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="${div.offsetWidth}" height="${div.offsetHeight}">
+                <foreignObject width="100%" height="100%">
+                    ${new XMLSerializer().serializeToString(div)}
+                </foreignObject>
+                </svg>
+            `;
+            const svg = new Blob([data], { type: "image/svg+xml;charset=utf-8" });
+            const url = URL.createObjectURL(svg);
+
+            const img = new Image();
+            img.crossOrigin = "anonymous";  // ✅ prevents tainting
+            img.onload = () => {
+                const canvas = document.createElement("canvas");
+                canvas.width = div.offsetWidth;
+                canvas.height = div.offsetHeight;
+                const ctx = canvas.getContext("2d");
+                ctx.drawImage(img, 0, 0);
+                URL.revokeObjectURL(url);
+                callback(canvas);
+            };
+            img.src = url;
+        }
+
+        // Take our div and put it on a 3D plane
+        const div = element;
+        divToCanvas(div, (canvas) => {
+            const texture = new THREE.CanvasTexture(canvas);
+            const material = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide });
+            this.screen.material = material;
+        })
+    }
+
+    setScreen1() {
+
+        // 3. CSS3D renderer (for iframe)
+        this.cssRenderer = new CSS3DRenderer();
+        this.cssRenderer.setSize(this.app.sizes.width, this.app.sizes.height);
+        this.cssRenderer.domElement.style.position = 'absolute';
+        this.cssRenderer.domElement.style.top = '0';
+        document.body.appendChild(this.cssRenderer.domElement);
+
+
+        // 5. Create iframe with div inside
+        const iframe = document.createElement('iframe');
+        iframe.srcdoc = `
+                <section>
+                <h1>Tech Stack</h1>
+                <div class="techStack-container">
+                    ${icons.map(icon => `
+                    <div class="icons-container">
+                        <div class="svg-container">${icon.svg}</div>
+                        <p>${icon.name}</p>
+                    </div>
+                    `).join('')}
+                </div> 
+                </section> 
+        `;
+        console.log(iframe)
+        iframe.style.width = '400px';
+        iframe.style.height = '300px';
+        iframe.style.border = '0';
+
+        const cssObject = new CSS3DObject(iframe);
+        // cssObject.position.copy(this.screen.position); 
+        // cssObject.rotation.copy(this.screen.rotation)
+        this.app.scene.add(cssObject);
+
+
+    }
+
+    update(){
+        this.cssRenderer.render(this.app.scene, this.app.camera);
+    }
+
+    
 }

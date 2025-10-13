@@ -55,6 +55,7 @@ export default class Ship{
             }
         })
         // console.log(this.instance)
+        this.instance.visible = false
         this.scene.add( this.instance )
     }    
    
