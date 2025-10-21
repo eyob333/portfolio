@@ -78,6 +78,7 @@ export default class App{
         if (this.debug.active){
             stats.update();
         }
+
   
     }
 

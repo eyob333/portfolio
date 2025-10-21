@@ -7,7 +7,6 @@ import Event from '../Utils/Event';
 // import RayCaster from '../Utils/RayCaster';
 
 let container = document.querySelector("div.section-container-div");
-let scrollNav = document.querySelector('div.navigaton-bar')
 let primeWord;
 let secWord ;
 let thiWord;
@@ -22,7 +21,7 @@ export default class Animation{
         this.angles = this.app.nomad.angles  
         this.overlay = overlay
 
-        this.event = new Event(this.app.ship)
+        this.event = new Event(this.app.ship, this.app.camera.instance, this.app.camera.controls)
         // this.raycast = new RayCaster()
 
 
@@ -108,13 +107,6 @@ export default class Animation{
                         repeat: -1,
                         // yoyo: true
                     })
-                    gsap.to( scrollNav, {
-                            scaleY: 1,
-                            duration: 1.5,
-                            opacity: .1,
-                            ease: "power3.Out",
-                            repeat: 0
-                        })
             
                     t2  
                         .to(primeWord.chars, {
@@ -241,6 +233,12 @@ export default class Animation{
             // .add(nomT1)
             .add(t3, '+=5')
 
+    }
+
+    update(){
+        if(this.event){
+            this.event.updateK()
+        }
     }
 
 }

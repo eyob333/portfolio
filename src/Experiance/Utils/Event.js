@@ -1,107 +1,113 @@
+import * as THREE from 'three'
 import EventEmitter from "./EventEmitter"
 import gsap from "gsap";
 
 export default class Event extends EventEmitter {
-    constructor(ship) {
+    constructor(ship, camera, controls) {
         super()
         this.ship = ship
+        this.camera = camera
+        this.controls = controls
         this.count = 0;
         this.maxCount = 30;
 
+// ================= CONFIG =================
+const maxSpeed = 0.3;
+const accelRate = 0.009;
+const decelRate = 0.05;
+const rotationSpeed = 0.003;
+const bankAmount = 0.4;
 
-        const maxTilt = 1.3;      // maximum tilt in either direction
-        let tiltTarget = 0;       // where we want to tilt
-        let tiltTween = null;     // gsap tween reference
-        let rotMovtTween = null
-        let tiltInterval = null; // interval for "building up" strength
-        let posiInterval = null; // interval for "building up" strength
-        const tiltStep = 0.05;    // how much tilt adds per step
-        const stepTime = 50;      // ms per step (lower = faster build-up)
+const cameraOffset = new THREE.Vector3(0, .3, -1.);
+const cameraLerp = 0.1;
 
-        let position = {};
-        position.x = this.ship.position.x;
-        position.y = this.ship.position.y;
-        position.z = this.ship.position.z;
+let keysPressed = { w: false };
+let mouseX = window.innerWidth / 2;
+let mouseY = window.innerHeight / 2;
+let mouseInside = true;
 
-        let speed;
+const borderThreshold = 100;
+const edgeYawSpeed = 0.02;
+const edgePitchSpeed = 0.01;
 
-        // --- Handle keydown ---
-        window.addEventListener("keydown", (e) => {
-            if (e.repeat) return; // ignore auto-repeat from holding key
-            switch (e.key.toLowerCase()) {
-                case "a":
-                    clearInterval(tiltInterval);
-                    tiltInterval = setInterval(() => {
-                        tiltTarget = Math.max(tiltTarget - tiltStep, -maxTilt);
-                        if (tiltTween) tiltTween.kill();
-                        if (rotMovtTween) rotMovtTween.kill();
-                        tiltTween = gsap.to(this.ship.rotation, {
-                            z: tiltTarget,
-                            y: this.ship.rotation.y + .08,
-                            duration: 0.3,
-                            ease: "power1.out",
-                            overwrite: "auto"
-                        });
-                        rotMovtTween = gsap.to(this.ship.position, {
-                            z: this.ship.position.z - .3,
-                            x: this.ship.position.x - .5,
-                            overwrite: "auto"
-                        })
-                    }, stepTime);
-                    break;
+// Rotation targets
+let targetPitch = 0;
+let targetYaw = 0;
 
-                case "d":
-                    clearInterval(tiltInterval);
-                    tiltInterval = setInterval(() => {
-                        tiltTarget = Math.min(tiltTarget + tiltStep, maxTilt);
-                        if (tiltTween) tiltTween.kill();
-                        if (rotMovtTween) rotMovtTween.kill();
-                        tiltTween = gsap.to(this.ship.rotation, {
-                            z: tiltTarget,
-                            y: this.ship.rotation.y - .08,
-                            duration: 0.3,
-                            ease: "power1.out",
-                            overwrite: "auto"
-                        });
-                        rotMovtTween = gsap.to(this.ship.position, {
-                            z: this.ship.position.z - .3,
-                            x: this.ship.position.x + .5,
-                            overwrite: "auto"
-                        })
-                    }, stepTime);
-                    break;
-                case "w":
-                    clearInterval(posiInterval);
-                    posiInterval = setInterval(() => {
-                        if (rotMovtTween) rotMovtTween.kill();
-                        rotMovtTween = gsap.to(this.ship.position, {
-                            z: this.ship.position.z - 1,
-                            ease : 'power2.out',
-                            overwrite: "auto"
-                        })
-                    }, stepTime - 10);
-                    break;
-            }
-        });
+// Ship speed
+let currentSpeed = 0;
 
-        // --- Handle keyup ---
-        window.addEventListener("keyup", (e) => {
-            if (["a", "d", "w"].includes(e.key.toLowerCase())) {
-                clearInterval(tiltInterval); // stop buildup
-                clearInterval(posiInterval)
-                tiltTarget = 0; // reset to neutral
-                if (tiltTween) tiltTween.kill();
-                tiltTween = gsap.to(this.ship.rotation, {
-                    z: tiltTarget,
-                    duration: 1.5,
-                    ease: "power3.out",
-                    overwrite: "auto"
-                });
-            }
-        });
+// ================= INPUT =================
+window.addEventListener("mousemove", (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+
+  // Update target rotation based on mouse movement
+  targetYaw -= e.movementX * rotationSpeed;     // left/right
+  targetPitch -= e.movementY * rotationSpeed;   // up/down
+  targetPitch = THREE.MathUtils.clamp(targetPitch, -Math.PI/2, Math.PI/2);
+});
+
+window.addEventListener("keydown", (e) => {
+  if (e.key.toLowerCase() === "w") keysPressed.w = true;
+});
+
+window.addEventListener("keyup", (e) => {
+  if (e.key.toLowerCase() === "w") keysPressed.w = false;
+});
+
+window.addEventListener("mouseenter", () => { mouseInside = true; });
+window.addEventListener("mouseleave", () => {
+  mouseInside = false;
+  mouseX = window.innerWidth/2;
+  mouseY = window.innerHeight/2;
+});
+
+// ================= MAIN LOOP =================
+gsap.to({}, {
+  duration: 0.016, // ~60fps
+  repeat: -1,
+  onRepeat: () => {
+    if (!ship) return;
+
+    // --- Edge rotation ---
+    if (mouseInside) {
+      if (mouseX < borderThreshold) targetYaw += edgeYawSpeed;
+      else if (mouseX > window.innerWidth - borderThreshold) targetYaw -= edgeYawSpeed;
+
+      if (mouseY < borderThreshold) targetPitch += edgePitchSpeed;
+      else if (mouseY > window.innerHeight - borderThreshold) targetPitch -= edgePitchSpeed;
+    }
+
+    // --- Smooth rotation ---
+    const desiredRoll = THREE.MathUtils.clamp(-(targetYaw - ship.rotation.y) * 0.5, -bankAmount, bankAmount);
+    ship.rotation.y = THREE.MathUtils.lerp(ship.rotation.y, targetYaw, 0.08);   // yaw
+    ship.rotation.x = THREE.MathUtils.lerp(ship.rotation.x, targetPitch, 0.08); // pitch
+    ship.rotation.z = THREE.MathUtils.lerp(ship.rotation.z, desiredRoll, 0.08); // roll/bank
+
+    // --- Smooth forward speed ---
+    if (keysPressed.w) currentSpeed = Math.min(currentSpeed + accelRate, maxSpeed);
+    else currentSpeed = Math.max(currentSpeed - decelRate, 0);
+
+    // --- Move ship forward along nose (-Z) ---
+    const forward = new THREE.Vector3(0,0,1).applyQuaternion(ship.quaternion);
+    ship.position.addScaledVector(forward, currentSpeed);
+
+    // --- Camera follow ---
+    const offset = cameraOffset.clone().applyQuaternion(ship.quaternion);
+    const desiredCamPos = ship.position.clone().add(offset);
+    camera.position.lerp(desiredCamPos, cameraLerp);
+
+    if (controls) {
+      controls.target.copy(ship.position);
+      controls.update();
+    }
+  }
+});
 
 
-
-
+    }
+    updateK(){
+        // this.update()
     }
 }

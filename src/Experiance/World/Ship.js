@@ -44,7 +44,7 @@ export default class Ship{
 
     setInstance(){
         this.scaleFactor = {}
-        this.scaleFactor.value = 1
+        this.scaleFactor.value = .1
         this.instance = this.resource.scene
         this.instance.scale.set(this.scaleFactor.value, this.scaleFactor.value, this.scaleFactor.value)
         this.instance.rotation.set(0, Math.PI, 0,)

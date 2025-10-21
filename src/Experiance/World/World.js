@@ -1,15 +1,9 @@
 import * as THREE from 'three'
-
 import App from "../App"
 import Ship from './Ship'
 import Nomad from './Nomad'
 import Enviromet from './Environment'
 import Station from './Station'
-import Star from './Star'
-import ParticleDrive from './ParticleDrive'
-import Cockpit from './Cockpit'
-import Hangar from './Hangar'
-
 
 export default class World{
 
