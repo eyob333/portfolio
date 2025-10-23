@@ -39,7 +39,7 @@ export default class Station{
 
     setInstance(){
         this.instance = this.resource.scene
-        this.instance.scale.set( .2, .2, .2)
+        this.instance.scale.set( .1, .1, .1)
         // this.model.rotation.set(0, Math.PI, 0,)
         this.instance.traverse( child =>{
             if ( child instanceof THREE.Mesh){
@@ -47,7 +47,7 @@ export default class Station{
                 child.material.side = THREE.FrontSide
             }
         })
-        this.instance.position.set(0, 10, -20)
+        this.instance.position.set(0, 1, -1)
         this.scene.add( this.instance )
     }    
 

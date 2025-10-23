@@ -21,7 +21,7 @@ export default class Animation{
         this.angles = this.app.nomad.angles  
         this.overlay = overlay
 
-        this.event = new Event(this.app.ship, this.app.camera.instance, this.app.camera.controls)
+        // this.event = new Event(this.app.ship, this.app.camera.instance, this.app.camera.controls)
         // this.raycast = new RayCaster()
 
 
@@ -232,13 +232,8 @@ export default class Animation{
             .add(t1)
             // .add(nomT1)
             .add(t3, '+=5')
+            .pause()
 
-    }
-
-    update(){
-        if(this.event){
-            this.event.updateK()
-        }
     }
 
 }

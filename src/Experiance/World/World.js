@@ -4,6 +4,8 @@ import Ship from './Ship'
 import Nomad from './Nomad'
 import Enviromet from './Environment'
 import Station from './Station'
+import Planet from './Planet'
+
 
 export default class World{
 
@@ -17,7 +19,7 @@ export default class World{
             this.Nomad = new Nomad()          
             this.Ship = new Ship()
             this.Station = new Station()
-            // this.Star = new Star()
+            this.Planet = new Planet()
             // this.Particle = new ParticleDrive()
             // this.Cockpit = new Cockpit()
             // this.Hangar = new Hangar()

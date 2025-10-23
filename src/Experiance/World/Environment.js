@@ -21,6 +21,7 @@ export default class Enviromet{
 
         this.setSunLight()
         this.setAmbientLight()
+        this.setBackground()
         this.setParams()
         // this.setPostProcess()
 
@@ -109,6 +110,12 @@ export default class Enviromet{
         render.add(this.params, 'alpha').min(0).max(1).step(0.001).name('clear alpha').onChange( () =>{
             this.renderer.setClearAlpha(this.params.alpha)
         })
+    }
+
+    setBackground(){
+        let background = this.app.resources.item.StarT
+        background.mapping = THREE.EquirectangularReflectionMapping
+        this.scene.background = background
     }
 
     update(){
