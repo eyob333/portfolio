@@ -1,6 +1,9 @@
 
+uniform sampler2D uAlbedo;
 
+varying vec2 vUv;
+varying vec3 vCheck;
 
 void main(){
-    gl_Position = vec4(1., .0, .0, 1.);
+    gl_FragColor = vec4(vCheck, 1.);
 }

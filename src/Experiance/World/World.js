@@ -16,13 +16,10 @@ export default class World{
 
 
         this.resorces.on( 'ready', ()=>{ 
-            this.Nomad = new Nomad()          
-            this.Ship = new Ship()
-            this.Station = new Station()
+            // this.Nomad = new Nomad()          
+            // this.Ship = new Ship()
+            // this.Station = new Station()
             this.Planet = new Planet()
-            // this.Particle = new ParticleDrive()
-            // this.Cockpit = new Cockpit()
-            // this.Hangar = new Hangar()
             this.Enviromet = new Enviromet()
             
         })

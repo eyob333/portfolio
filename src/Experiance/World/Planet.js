@@ -1,5 +1,8 @@
 import * as THREE  from 'three'
 import App from "../App";
+import planetVertex from '../Shaders/Planet/vertex.glsl'
+import planetFragment from '../Shaders/Planet/fragment.glsl'
+
 
 export default class Planet{
     constructor(){
@@ -39,12 +42,20 @@ export default class Planet{
     setInstance(){
         this.scaleFactor = {}
         this.scaleFactor.value = 15
-        const material = new THREE.MeshStandardMaterial({ map: this.planetT})
+        const material = new THREE.ShaderMaterial({ 
+            vertexShader: planetVertex,
+            fragmentShader: planetFragment,
+            uniforms: {
+                uAlbedo: new THREE.Uniform(this.planetT)
+                // uTime: 
+            }
+        })
         const earthGeometry = new THREE.SphereGeometry(2, 64, 64)
         this.instance = new THREE.Mesh(earthGeometry, material)
         this.instance.scale.set(this.scaleFactor.value, this.scaleFactor.value, this.scaleFactor.value)
-        this.instance.frustumCulled = false
+        // this.instance.frustumCulled = false
         this.instance.position.set(-40, -19, -20)
+        this.app.camera.controls.target.copy(this.instance.position)
         this.scene.add( this.instance )
     }    
    
