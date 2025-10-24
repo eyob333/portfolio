@@ -18,14 +18,19 @@ varying vec3 vPosition;
 
 vec3 directionalLight( vec3 normal, float intensity, vec3 lightColor, vec3 lightPosition, vec3 viewDirection){
     vec3 lightDirection = normalize(lightPosition);
-    vec3 lightReflection = reflect(normal, lightPosition);
-
-    // specular
-    float specular = - dot(lightReflection, viewDirection);
+    vec3 lightReflection = reflect(-lightDirection, normal);
 
     float shading = dot(lightDirection, normal);
     shading = max(.0, shading);
-    return lightColor * intensity * shading * specular;
+    
+    // specular
+    float specular = -dot(lightReflection, viewDirection);
+    specular = max(.0, specular);
+    specular = pow(specular, 20.);
+    
+
+
+    return lightColor * intensity * shading ;
     // return vec3(specular);
 }
 
@@ -63,7 +68,7 @@ void main(){
         viewDirection
     );
     color *= albedoD;
-    // color = mix(color, vec3(1.), specular.r);
+    color = mix(color, vec3(1.), specular.r);
     
 
     // color = mix(albedoN, albedoD, lightOrientation);

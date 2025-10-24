@@ -64,10 +64,10 @@ uAmbientColor
                 uAlbedoNight: new THREE.Uniform(this.albedoN),
                 uSpecular: new THREE.Uniform(this.specular),
                 uDisplacement: new THREE.Uniform(this.displacement),
-                uDirectionalIntensity: new THREE.Uniform(.04),
+                uDirectionalIntensity: new THREE.Uniform(.7),
                 uDirectionalColor: new THREE.Uniform( new THREE.Color(this.params.directionalColor)),
                 uLightDirection: new THREE.Uniform( new THREE.Vector3(.0, .0, .3)),
-                uAmbientIntesity: new THREE.Uniform(.3),
+                uAmbientIntesity: new THREE.Uniform(.29),
                 uAmbientColor: new THREE.Uniform(new THREE.Color(this.params.ambientColor)),
             }
         })
