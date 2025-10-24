@@ -36,9 +36,8 @@ export default class World{
         if (this.Enviromet){
             this.Enviromet.update()
         }
-        if(this.Hangar && this.Hangar.cssRenderer && this.Hangar.screen ){
-            this.Hangar.update()
-            
+        if(this.Planet){
+            this.Planet.update()
         }
 
     }

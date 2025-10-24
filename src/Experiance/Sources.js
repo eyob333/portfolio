@@ -14,14 +14,29 @@ export default [
         type: 'gltfModel',
         path: '/models/stationL.glb',
     },
+    // {
+    //     name: 'StarT',
+    //     type: 'texture',
+    //     path: '/textures/k.png'
+    // },
     {
-        name: 'StarT',
-        type: 'texture',
-        path: '/textures/k.png'
-    },
-    {
-        name: "planetT",
+        name: "PlanetAlbedo",
         type: 'texture',
         path: '/textures/2k_haumea_fictional.jpg'
-    }
+    },
+    {
+        name: "PlanetSpecular",
+        type: 'texture',
+        path: '/textures/Scifi-cloud_rougghness.png'
+    },
+        {
+        name: "PlanetDisplacement",
+        type: 'texture',
+        path: '/textures/Displacement-map.png'
+    },
+    {
+        name: "PlanetAlbedoNight",
+        type: 'texture',
+        path: '/textures/2k_haumea_fictional_night.jpg'
+    },
 ]
