@@ -1,8 +1,8 @@
 
 uniform sampler2D uAlbedo;
-uniform sampler2D uAlbedoNight;
+uniform sampler2D uRoughness;
 uniform sampler2D uSpecular;
-uniform sampler2D uDisplacement;
+uniform sampler2D uNormal;
 uniform float uDirectionalIntensity;
 uniform vec3 uDirectionalColor;
 uniform vec3 uLightDirection;
@@ -29,8 +29,7 @@ vec3 directionalLight( vec3 normal, float intensity, vec3 lightColor, vec3 light
     specular = pow(specular, 20.);
     
 
-
-    return lightColor * intensity * shading ;
+    return lightColor * intensity * shading;
     // return vec3(specular);
 }
 
@@ -39,14 +38,15 @@ vec3 ambientLight( vec3 lightColor, float intensitY){
 }
 
 void main(){
-    vec3 normal = normalize(vNormal);
+    // vec3 normal = normalize(vNormal);
     vec3 viewDirection = normalize(vPosition - cameraPosition);
 
     vec3 color = vec3(.0);
 
     // albedo
-    vec3 albedoD = texture(uAlbedo, vUv).rgb;
-    vec3 albedoN = texture(uAlbedoNight, vUv).rgb;
+    vec3 albedo = texture(uAlbedo, vUv).rgb;
+    vec3 roughness = texture(uRoughness, vUv).rgb;
+    vec3 normal = normalize(texture2D(uNormal, vUv).xyz * 2.0 - 1.0);
     vec3 specular = texture(uSpecular, vUv).rgb;
 
 
@@ -67,8 +67,13 @@ void main(){
         vec3(.0, .0, .3),
         viewDirection
     );
-    color *= albedoD;
-    color = mix(color, vec3(1.), specular.r);
+    color *= albedo;
+
+    // cloud mix
+    float cloudMix = smoothstep(.5, .1, roughness.r);
+
+    // color = mix(color, vec3(1.), cloudMix);
+    // color =  normal ;
     
 
     // color = mix(albedoN, albedoD, lightOrientation);

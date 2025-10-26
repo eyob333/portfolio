@@ -10,10 +10,17 @@ export default class Planet{
         this.scene = this.app.scene
 
         this.albedo = this.app.resources.item.PlanetAlbedo
-        this.displacement = this.app.resources.item.PlanetDisplacement
-        this.albedoN = this.app.resources.item.PlanetAlbedoNight
+        this.normal = this.app.resources.item.PlanetNormal
+        this.roughness = this.app.resources.item.PlanetRoughness
         this.specular = this.app.resources.item.PlanetSpecular
         this.albedo.colorSpace = THREE.SRGBColorSpace
+        this.albedo.wrapS = THREE.RepeatWrapping
+        this.albedo.wrapT = THREE.RepeatWrapping
+        this.normal.wrapS = THREE.RepeatWrapping
+        this.roughness.wrapS = THREE.RepeatWrapping
+        this.normal.wrapT = THREE.RepeatWrapping
+        this.roughness.wrapT = THREE.RepeatWrapping
+
         this.debug = this.app.debug
         
         if (this.debug.active){
@@ -45,12 +52,11 @@ export default class Planet{
                 this.material.uniforms.uDirectionalColor.value.set(this.params.directionalColor)}
             )
             this.debugFolder.add( this.material.uniforms.uAmbientIntesity, 'value').min(0).max(1).step(.001).name('ambeint-intensity')
-            this.debugFolder.add( this.material.uniforms.uDirectionalIntensity, 'value').min(0).max(1).step(.001).name('directional-intensity')
+            this.debugFolder.add( this.material.uniforms.uDirectionalIntensity, 'value').min(0).max(3).step(.001).name('directional-intensity')
             // this.debugFolder.add( this.material.uniforms.u)
         }
 
     }
-uAmbientColor
     setInstance(){
         this.params = {}
         this.params.ambientColor = '#ffffff'
@@ -61,15 +67,18 @@ uAmbientColor
             fragmentShader: planetFragment,
             uniforms: {
                 uAlbedo: new THREE.Uniform(this.albedo),
-                uAlbedoNight: new THREE.Uniform(this.albedoN),
+                uRoughness: new THREE.Uniform(this.roughness),
                 uSpecular: new THREE.Uniform(this.specular),
-                uDisplacement: new THREE.Uniform(this.displacement),
+                uNormal: new THREE.Uniform(this.normal),
                 uDirectionalIntensity: new THREE.Uniform(.7),
                 uDirectionalColor: new THREE.Uniform( new THREE.Color(this.params.directionalColor)),
                 uLightDirection: new THREE.Uniform( new THREE.Vector3(.0, .0, .3)),
                 uAmbientIntesity: new THREE.Uniform(.29),
                 uAmbientColor: new THREE.Uniform(new THREE.Color(this.params.ambientColor)),
             }
+        })
+        this.atmosphereMaterial = new THREE.ShaderMaterial({
+
         })
         const earthGeometry = new THREE.SphereGeometry(2, 64, 64)
         this.instance = new THREE.Mesh(earthGeometry, this.material)
@@ -78,6 +87,13 @@ uAmbientColor
         this.instance.position.set(-40, -19, -20)
         this.app.camera.controls.target.copy(this.instance.position)
         this.scene.add( this.instance )
+
+        this.atmosphere = new THREE.Mesh(earthGeometry, this.atmosphereMaterial)
+        this.atmosphere.position.copy(this.instance.position)
+        this.atmosphere.scale.set(this.params.scaleF * 1.04, this.params.scaleF * 1.04, this.params.scaleF * 1.04)
+        this.scene.add(this.atmosphere)
+
+        
     }  
     
     update(){

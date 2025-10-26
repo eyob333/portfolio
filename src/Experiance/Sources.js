@@ -22,7 +22,7 @@ export default [
     {
         name: "PlanetAlbedo",
         type: 'texture',
-        path: '/textures/2k_haumea_fictional.jpg'
+        path: '/textures/bake_planet_albedo+ao_2k.png'
     },
     {
         name: "PlanetSpecular",
@@ -30,13 +30,14 @@ export default [
         path: '/textures/Scifi-cloud_rougghness.png'
     },
         {
-        name: "PlanetDisplacement",
+        name: "PlanetNormal",
         type: 'texture',
-        path: '/textures/Displacement-map.png'
+        path: '/textures/bake_planet_normal_2k.png'
     },
     {
-        name: "PlanetAlbedoNight",
+        name: "PlanetRoughness",
         type: 'texture',
-        path: '/textures/2k_haumea_fictional_night.jpg'
+        path: '/textures/bake_planet_roughness_2k.png'
     },
+
 ]
