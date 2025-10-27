@@ -27,7 +27,7 @@ export default [
     {
         name: "PlanetCloud",
         type: 'texture',
-        path: '/textures/clouds_albedo2.jpg'
+        path: '/textures/clouds_albedo4k.png'
     },
         {
         name: "PlanetNormal",
