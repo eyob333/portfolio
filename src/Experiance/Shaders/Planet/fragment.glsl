@@ -44,10 +44,12 @@ vec3 ambientLight( vec3 lightColor, float intensitY){
 void main(){
     // textures
     vec3 albedo = texture(uAlbedo, vUv).rgb;
-    vec3 roughness = texture2D(uRoughness, vUv).rgb;
+    float roughness = texture2D(uRoughness, vUv).r;
     vec3 normalT = normalize(texture2D(uNormal, vUv).xyz  * 2. - 1.);
-    vec3 cloud = texture(uCloud, vUv).rgb;
+    float cloud = texture(uCloud, vUv).r;
     vec3 ao = texture2D(uAo, vUv).rgb;
+
+    albedo = albedo * (1.0 - roughness * 0.5);
 
     vec3 normal = normalize(vNormal);
     vec3 viewDirection = normalize(vPosition - cameraPosition);
@@ -56,7 +58,7 @@ void main(){
 
     // light Direction 
     vec3 lightDirection = uLightDirection;
-    float lightOrientation = dot(lightDirection,  normal * normalT);
+    float lightOrientation = dot(lightDirection,  normal + normalT);
 
     float lightfac = smoothstep(-.25, .5, lightOrientation);
     vec3 darkSide = ambientLight(
@@ -66,7 +68,7 @@ void main(){
     color = mix( darkSide , albedo, lightfac);
 
     //cloud
-    float cloudFac = smoothstep(.4, 1., cloud.r);
+    float cloudFac = smoothstep(.4, 1., cloud);
     cloudFac *= lightfac;
     color = mix(color, vec3(1.), cloudFac);
 
@@ -83,35 +85,10 @@ void main(){
     vec3 reflection = reflect(- lightDirection, normal );
     float specular = -dot(reflection, viewDirection);
     specular = max(specular, .0);
-    specular = pow(specular, 30.0);
+    specular = pow(specular, 32.0); 
 
     vec3 specularColor = mix(vec3(1.0), atmosphereColor, fresnel);
     color += specular * specularColor;
-
-    // color += directionalLight( 
-    //     normalT.r * normal,
-    //     uDirectionalIntensity,
-    //     uDirectionalColor,
-    //     vec3(.0, .0, .3),
-    //     viewDirection
-    // );
-
-    // color = vec3(lightOrientation);
-
-
-
-    // cloud mix
-    float cloudMix = smoothstep(.5, .1, roughness.r);
-
-    // color = mix(color, vec3(1.), cloudMix);
-    // color =  normal ;
-    
-
-    // color = mix(albedoN, albedoD, lightOrientation);
-
-    
-
-
-
+ 
     gl_FragColor = vec4(color, 1.);
 }

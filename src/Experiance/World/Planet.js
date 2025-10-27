@@ -4,7 +4,7 @@ import planetVertex from '../Shaders/Planet/vertex.glsl'
 import planetFragment from '../Shaders/Planet/fragment.glsl'
 import atmospehereVertex from '../Shaders/Atomsphere/vertex.glsl'
 import atmospehereFragment from '../Shaders/Atomsphere/Fragment.glsl'
-
+import { ThreeMFLoader } from 'three/examples/jsm/Addons.js';
 
 export default class Planet{
     constructor(){
@@ -98,7 +98,11 @@ export default class Planet{
         this.params.directionalColor = '#ffffff'
         this.params.scaleF = 15
         this.params.sunSpherical = new THREE.Spherical(1, Math.PI * .5, .5)
-        this.params.sunDirection = new THREE.Vector3(.0, .0, .3)
+        this.params.sunSpherical.phi = .98
+        this.params.sunSpherical.theta = .67
+
+        this.params.sunDirection = new THREE.Vector3()
+        this.params.sunDirection.setFromSpherical(this.params.sunSpherical)
         this.params.atmosphereDayColor = '#00aaff'
         this.params.atmosphereTwilightColor = '#ff6600'
 
@@ -114,7 +118,7 @@ export default class Planet{
                 uDirectionalIntensity: new THREE.Uniform(.7),
                 uDirectionalColor: new THREE.Uniform( new THREE.Color(this.params.directionalColor)),
                 uLightDirection: new THREE.Uniform(this.params.sunDirection),
-                uAmbientIntesity: new THREE.Uniform(.29),
+                uAmbientIntesity: new THREE.Uniform(.18),
                 uAmbientColor: new THREE.Uniform(new THREE.Color(this.params.ambientColor)),
                 uAtmosphereTwilightColor: new THREE.Uniform(new THREE.Color(this.params.atmosphereTwilightColor)),
                 uAtmosphereDayColor: new THREE.Uniform(new THREE.Color(this.params.atmosphereDayColor))
