@@ -1,8 +1,10 @@
 
 uniform sampler2D uAlbedo;
 uniform sampler2D uRoughness;
-uniform sampler2D uSpecular;
+uniform sampler2D uCloud;
 uniform sampler2D uNormal;
+uniform sampler2D uAo;
+
 uniform float uDirectionalIntensity;
 uniform vec3 uDirectionalColor;
 uniform vec3 uLightDirection;
@@ -18,7 +20,7 @@ varying vec3 vPosition;
 
 vec3 directionalLight( vec3 normal, float intensity, vec3 lightColor, vec3 lightPosition, vec3 viewDirection){
     vec3 lightDirection = normalize(lightPosition);
-    vec3 lightReflection = reflect(-lightDirection, normal);
+    vec3 lightReflection = reflect(lightDirection, normal);
 
     float shading = dot(lightDirection, normal);
     shading = max(.0, shading);
@@ -38,15 +40,14 @@ vec3 ambientLight( vec3 lightColor, float intensitY){
 }
 
 void main(){
-    // vec3 normal = normalize(vNormal);
+    vec3 normal = normalize(vNormal);
     vec3 viewDirection = normalize(vPosition - cameraPosition);
-
     vec3 color = vec3(.0);
 
     // albedo
     vec3 albedo = texture(uAlbedo, vUv).rgb;
     vec3 roughness = texture(uRoughness, vUv).rgb;
-    vec3 normal = normalize(texture2D(uNormal, vUv).xyz * 2.0 - 1.0);
+    vec3 vnormal = normalize(texture2D(uNormal, vUv).xyz * 2.0 - 1.0);
     vec3 specular = texture(uSpecular, vUv).rgb;
 
 
@@ -61,12 +62,13 @@ void main(){
     );
 
     color += directionalLight( 
-        normal,
+        normal ,
         uDirectionalIntensity,
         uDirectionalColor,
         vec3(.0, .0, .3),
         viewDirection
     );
+    // color = ve);
     color *= albedo;
 
     // cloud mix

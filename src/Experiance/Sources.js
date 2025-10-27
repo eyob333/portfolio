@@ -14,30 +14,30 @@ export default [
         type: 'gltfModel',
         path: '/models/stationL.glb',
     },
-    // {
-    //     name: 'StarT',
-    //     type: 'texture',
-    //     path: '/textures/k.png'
-    // },
     {
         name: "PlanetAlbedo",
         type: 'texture',
-        path: '/textures/bake_planet_albedo+ao_2k.png'
+        path: '/textures/frozen_planet3_Albedo_4k.png'
     },
     {
-        name: "PlanetSpecular",
+        name: "PlanetAo",
         type: 'texture',
-        path: '/textures/Scifi-cloud_rougghness.png'
+        path: '/textures/frozen_planet3_Albedo_4k.png'
+    },
+    {
+        name: "PlanetCloud",
+        type: 'texture',
+        path: '/textures/clouds_albedo2.jpg'
     },
         {
         name: "PlanetNormal",
         type: 'texture',
-        path: '/textures/bake_planet_normal_2k.png'
+        path: '/textures/frozen_planet3_Normal.png'
     },
     {
         name: "PlanetRoughness",
         type: 'texture',
-        path: '/textures/bake_planet_roughness_2k.png'
+        path: '/textures/frozen_planet3_Roughness_4k.png'
     },
 
 ]

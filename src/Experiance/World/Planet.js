@@ -2,6 +2,9 @@ import * as THREE  from 'three'
 import App from "../App";
 import planetVertex from '../Shaders/Planet/vertex.glsl'
 import planetFragment from '../Shaders/Planet/fragment.glsl'
+import atmospehereVertex from '../Shaders/Atomsphere/vertex.glsl'
+import atmospehereFragment from '../Shaders/Atomsphere/Fragment.glsl'
+
 
 
 export default class Planet{
@@ -11,15 +14,27 @@ export default class Planet{
 
         this.albedo = this.app.resources.item.PlanetAlbedo
         this.normal = this.app.resources.item.PlanetNormal
+        this.ao = this.app.resources.item.PlanetAo
         this.roughness = this.app.resources.item.PlanetRoughness
-        this.specular = this.app.resources.item.PlanetSpecular
+        this.cloud = this.app.resources.item.PlanetCloud
+
         this.albedo.colorSpace = THREE.SRGBColorSpace
-        this.albedo.wrapS = THREE.RepeatWrapping
-        this.albedo.wrapT = THREE.RepeatWrapping
-        this.normal.wrapS = THREE.RepeatWrapping
-        this.roughness.wrapS = THREE.RepeatWrapping
-        this.normal.wrapT = THREE.RepeatWrapping
-        this.roughness.wrapT = THREE.RepeatWrapping
+        this.albedo.wrapS = this.albedo.wrapT = THREE.RepeatWrapping
+        this.normal.wrapS = this.normal.wrapT = THREE.RepeatWrapping
+        this.roughness.wrapS = this.roughness.wrapT = THREE.RepeatWrapping
+        this.normal.wrapS = this.normal.wrapT = THREE.RepeatWrapping
+        this.ao.wrapS = this.ao.wrapT = THREE.RepeatWrapping
+
+        this.normal.encoding = THREE.LinearEncoding;
+        this.roughness.encoding = THREE.LinearEncoding;
+        this.ao.encoding = THREE.LinearEncoding
+        this.cloud.LinearEncoding = THREE.LinearEncoding
+
+
+
+
+
+        
 
         this.debug = this.app.debug
         
@@ -68,8 +83,9 @@ export default class Planet{
             uniforms: {
                 uAlbedo: new THREE.Uniform(this.albedo),
                 uRoughness: new THREE.Uniform(this.roughness),
-                uSpecular: new THREE.Uniform(this.specular),
+                uCloud: new THREE.Uniform(this.cloud),
                 uNormal: new THREE.Uniform(this.normal),
+                uAo: new THREE.Uniform(this.ao),
                 uDirectionalIntensity: new THREE.Uniform(.7),
                 uDirectionalColor: new THREE.Uniform( new THREE.Color(this.params.directionalColor)),
                 uLightDirection: new THREE.Uniform( new THREE.Vector3(.0, .0, .3)),
@@ -78,7 +94,7 @@ export default class Planet{
             }
         })
         this.atmosphereMaterial = new THREE.ShaderMaterial({
-
+            side: THREE.BackSide
         })
         const earthGeometry = new THREE.SphereGeometry(2, 64, 64)
         this.instance = new THREE.Mesh(earthGeometry, this.material)
