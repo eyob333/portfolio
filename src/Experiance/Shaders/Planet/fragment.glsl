@@ -88,7 +88,7 @@ void main(){
     specular = pow(specular, 32.0); 
 
     vec3 specularColor = mix(vec3(1.0), atmosphereColor, fresnel);
-    color += specular * specularColor;
+    color += specular * specularColor * .6;
  
     gl_FragColor = vec4(color, 1.);
 }
