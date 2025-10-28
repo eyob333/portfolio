@@ -12,7 +12,7 @@ export default [
     {
         name: 'Station',
         type: 'gltfModel',
-        path: '/models/stationL.glb',
+        path: '/models/station.glb',
     },
     {
         name: "PlanetAlbedo",

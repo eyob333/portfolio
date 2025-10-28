@@ -49,9 +49,15 @@ export default class Planet{
             let planetRoation = this.debugFolder.addFolder('planet-rotation')
             let planetScale = this.debugFolder.addFolder("planet-Scale")
 
-            planetPosition.add(this.instance.position, 'x').name("x").step(0.001).max(40).min(-40)
-            planetPosition.add(this.instance.position, 'y').name("y").step(0.001).max(40).min(-40)
-            planetPosition.add(this.instance.position, 'z').name("z").step(0.001).max(40).min(-40)
+            planetPosition.add(this.instance.position, 'x').name("x").step(0.001).max(40).min(-40).onChange( () =>{
+                this.atmosphere.position.copy(this.instance.position)
+            })
+            planetPosition.add(this.instance.position, 'y').name("y").step(0.001).max(40).min(-40).onChange( () =>{
+                this.atmosphere.position.copy(this.instance.position)
+            })
+            planetPosition.add(this.instance.position, 'z').name("z").step(0.001).max(40).min(-40).onChange( () =>{
+                this.atmosphere.position.copy(this.instance.position)
+            })
 
             planetRoation.add(this.instance.rotation, 'x').name("x").step(0.001).max(40).min(-40)
             planetRoation.add(this.instance.rotation, 'y').name("y").step(0.001).max(40).min(-40)
@@ -59,6 +65,7 @@ export default class Planet{
             planetScale.add(this.params, 'scaleF').name("params.scaleF").step(0.00001).max(40).min(0)
                 .onChange(() => {
                     this.instance.scale.set(this.params.scaleF, this.params.scaleF, this.params.scaleF)
+                    this.atmosphere.scale.set(this.params.scaleF, this.params.scaleF, this.params.scaleF)
                 })
             this.debugFolder.addColor(this.params, 'ambientColor').onChange(() => {
                 this.material.uniforms.uAmbientColor.value.set(this.params.ambientColor)
