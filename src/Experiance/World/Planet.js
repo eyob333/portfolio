@@ -4,7 +4,7 @@ import planetVertex from '../Shaders/Planet/vertex.glsl'
 import planetFragment from '../Shaders/Planet/fragment.glsl'
 import atmospehereVertex from '../Shaders/Atomsphere/vertex.glsl'
 import atmospehereFragment from '../Shaders/Atomsphere/Fragment.glsl'
-import { ThreeMFLoader } from 'three/examples/jsm/Addons.js';
+
 
 export default class Planet{
     constructor(){
