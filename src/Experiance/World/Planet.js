@@ -65,7 +65,7 @@ export default class Planet{
             planetScale.add(this.params, 'scaleF').name("params.scaleF").step(0.00001).max(40).min(0)
                 .onChange(() => {
                     this.instance.scale.set(this.params.scaleF, this.params.scaleF, this.params.scaleF)
-                    this.atmosphere.scale.set(this.params.scaleF, this.params.scaleF, this.params.scaleF)
+                    this.atmosphere.scale.set(this.params.scaleF * 1.04, this.params.scaleF  * 1.04, this.params.scaleF  * 1.04)
                 })
             this.debugFolder.addColor(this.params, 'ambientColor').onChange(() => {
                 this.material.uniforms.uAmbientColor.value.set(this.params.ambientColor)
@@ -103,7 +103,7 @@ export default class Planet{
         this.params = {}
         this.params.ambientColor = '#ffffff'
         this.params.directionalColor = '#ffffff'
-        this.params.scaleF = 15
+        this.params.scaleF = 7
         this.params.sunSpherical = new THREE.Spherical(1, Math.PI * .5, .5)
         this.params.sunSpherical.phi = .98
         this.params.sunSpherical.theta = .67
@@ -136,7 +136,7 @@ export default class Planet{
         this.instance.scale.set(this.params.scaleF, this.params.scaleF, this.params.scaleF)
         // this.instance.frustumCulled = false
         this.instance.position.set(-40, -19, -20)
-        this.app.camera.controls.target.copy(this.instance.position)
+        // this.app.camera.controls.target.copy(this.instance.position)
         this.scene.add( this.instance )
 
         this.atmosphereMaterial = new THREE.ShaderMaterial({

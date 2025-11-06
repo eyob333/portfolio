@@ -1,4 +1,7 @@
 import * as THREE  from 'three'
+import plumeVet from '../Shaders/Plume/vertex.glsl'
+import plumeFrag from '../Shaders/Plume/fragment.glsl'
+7
 import App from "../App";
 
 
@@ -39,16 +42,33 @@ export default class Station{
 
     setInstance(){
         this.instance = this.resource.scene
-        this.instance.scale.set( .1, .1, .1)
+        this.instance.scale.set( .1 * 10, .1 * 10 , .1 * 10)
         // this.model.rotation.set(0, Math.PI, 0,)
+
+        const plumeOuterMat = new THREE.ShaderMaterial({
+            transparent: true,
+            fragmentShader: plumeFrag,
+            vertexShader: plumeVet,
+            side: THREE.DoubleSide
+            // wireframe: true
+        })
+
         this.instance.traverse( child =>{
             if ( child instanceof THREE.Mesh){
                 child.castShadow = false
                 child.material.side = THREE.FrontSide
             }
         })
+        console.log(this.instance.children)
+        let plume = this.instance.children.find( child => child.name === 'plume_outer' )
+        plume.material = plumeOuterMat
+        console.log(plume)
+        
+        
         this.instance.position.set(0, 1, -1)
         this.scene.add( this.instance )
+        this.app.camera.instance.position.set(-91.90,-44.72,-102.01)
+        this.app.camera.controls.target.set(-74.31,-36.49,-38.18)
     }    
 
 }
