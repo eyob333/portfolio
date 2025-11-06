@@ -17,7 +17,7 @@ void main(){
     float k = ClassicPerlin3D(vec3(uv.x * 15., sin(uv.y * 10.), uTime * .006));
     k = clamp(k, .0, 1.);
     k = smoothstep(.1, .5, k);
-    flame = vec3(1.);
+    flame = vec3(1. - vUv.y);
     k *= smoothstep( .5, .8, 1. - clamp(vUv.y, .0, 1.));
     gl_FragColor = vec4(flame, k);
 }

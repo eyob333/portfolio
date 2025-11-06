@@ -57,6 +57,7 @@ export default class Station{
             uniforms: this.uniforms,
             side: THREE.DoubleSide,
             depthWrite: false,
+            blending: THREE.AdditiveBlending
             // wireframe: true
         })
 
