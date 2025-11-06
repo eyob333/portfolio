@@ -3,6 +3,7 @@ import plumeVet from '../Shaders/Plume/vertex.glsl'
 import plumeFrag from '../Shaders/Plume/fragment.glsl'
 7
 import App from "../App";
+import { depth } from 'three/tsl';
 
 
 
@@ -54,7 +55,8 @@ export default class Station{
             fragmentShader: plumeFrag,
             vertexShader: plumeVet,
             uniforms: this.uniforms,
-            side: THREE.DoubleSide
+            side: THREE.DoubleSide,
+            depthWrite: false,
             // wireframe: true
         })
 
@@ -77,7 +79,7 @@ export default class Station{
     }    
 
     update(){
-        this.uniforms.uTime = this.app.time.elapsed 
+        this.uniforms.uTime.value = this.app.time.elapsed 
     }
 
 }
