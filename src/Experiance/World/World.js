@@ -39,6 +39,9 @@ export default class World{
         if(this.Planet){
             this.Planet.update()
         }
+        if(this.Station){
+            this.Station.update()
+        }
 
     }
 }

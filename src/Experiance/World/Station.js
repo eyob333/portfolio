@@ -45,10 +45,15 @@ export default class Station{
         this.instance.scale.set( .1 * 10, .1 * 10 , .1 * 10)
         // this.model.rotation.set(0, Math.PI, 0,)
 
+        this.uniforms = {}
+        this.uniforms.uTime = new THREE.Uniform(0)
+        this.uniforms.uSpeed = new THREE.Uniform(0.1)
+
         const plumeOuterMat = new THREE.ShaderMaterial({
             transparent: true,
             fragmentShader: plumeFrag,
             vertexShader: plumeVet,
+            uniforms: this.uniforms,
             side: THREE.DoubleSide
             // wireframe: true
         })
@@ -70,5 +75,9 @@ export default class Station{
         this.app.camera.instance.position.set(-91.90,-44.72,-102.01)
         this.app.camera.controls.target.set(-74.31,-36.49,-38.18)
     }    
+
+    update(){
+        this.uniforms.uTime = this.app.time.elapsed 
+    }
 
 }
