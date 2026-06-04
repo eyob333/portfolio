@@ -44,7 +44,7 @@ export default class Ship{
 
     setInstance(){
         this.scaleFactor = {}
-        this.scaleFactor.value = .1
+        this.scaleFactor.value = 1
         this.instance = this.resource.scene
         this.instance.scale.set(this.scaleFactor.value, this.scaleFactor.value, this.scaleFactor.value)
         this.instance.rotation.set(0, Math.PI, 0,)
@@ -55,7 +55,7 @@ export default class Ship{
             }
         })
         // console.log(this.instance)
-        this.instance.visible = false
+        // this.instance.visible = false
         this.scene.add( this.instance )
     }    
    

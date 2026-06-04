@@ -1,6 +1,5 @@
 import * as THREE from 'three';
 import Stats from 'stats-js';
-// import Lenis from 'lenis';
 import Sizes from "./Utils/Sizes.js"
 import Time from "./Utils/Time.js"
 import Camera from "./Camera.js"

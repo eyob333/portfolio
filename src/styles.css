@@ -68,6 +68,91 @@ h1, h2, h3, h4, h5, h6, p{
   display: inline;
   font-size: 2rem;
 }
+
+
+/* Main-icon */
+.main-icon{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 50px;
+  margin: 0;
+  border: 0;
+  padding: 0;
+
+}
+.main-icon .icon-mask{
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  margin: 0;
+  border: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+.icon-mask svg{
+  width: 100%;
+  height: 100%;
+}
+
+/* Nav */
+.nav{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 500px;
+  height: 50px;
+}
+
+/* .nav *{
+  width: 100%;
+  height: 100%;
+} */
+.nav-item{
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  /* width: 100%; */
+  height: 44px;
+  /* transform: scale(.7) scaley(.65); */
+  transform-origin:left;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+
+}
+.nav-mask svg{
+  background-color: transparent;
+}
+
+
+/* Util */
+.util{
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100px;
+  height: 50px;
+}
+
+.util *{
+  padding: 0;
+  border: 0;
+  margin: 0;
+}
+.theme{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.theme svg{
+  /* transform: t; */
+  width: 60%;
+  height: 60%;
+}
+
+
+
 .navigaton-bar{
   position: fixed;
   top: 54%;
@@ -113,12 +198,12 @@ h1, h2, h3, h4, h5, h6, p{
 
 } */
 .section-container-div{
-   visibility: hidden;
-   /* position: absolute; */
-   max-height: 0;
-   max-width: 0;
-   z-index: 2;
-   overflow: hidden; 
+   /* visibility: hidden; */
+   position: absolute;
+   /* max-height: 0; */
+   /* max-width: 0; */
+   z-index: 3;
+   /* overflow: hidden;  */
 }
 
 /*sections */

@@ -2,6 +2,8 @@
 #include ../includes/ClassicPerlin3D.glsl
 
 uniform float uTime;
+uniform float uBottomCenter;
+
 varying vec2 vUv;
 varying vec3 vPosition;
 
@@ -17,7 +19,9 @@ void main(){
     float k = ClassicPerlin3D(vec3(uv.x * 15., sin(uv.y * 10.), uTime * .006));
     k = clamp(k, .0, 1.);
     k = smoothstep(.1, .5, k);
+    k = 1.;
     flame = vec3(1. - vUv.y);
+    flame = vec3(1.);
     k *= smoothstep( .5, .8, 1. - clamp(vUv.y, .0, 1.));
-    gl_FragColor = vec4(flame, k);
+    gl_FragColor = vec4(vec3(uv, 1.), k);
 }

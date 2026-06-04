@@ -1,9 +1,8 @@
 import * as THREE  from 'three'
 import plumeVet from '../Shaders/Plume/vertex.glsl'
 import plumeFrag from '../Shaders/Plume/fragment.glsl'
-7
 import App from "../App";
-import { depth } from 'three/tsl';
+
 
 
 
@@ -46,9 +45,22 @@ export default class Station{
         this.instance.scale.set( .1 * 10, .1 * 10 , .1 * 10)
         // this.model.rotation.set(0, Math.PI, 0,)
 
+        // this.instance.geometry.computeBoundingBox();
+        console.log(this.instance)
+
+        const min = this.instance.geometry.boundingBox.min;
+        const max = this.instance.geometry.boundingBox.max;
+
+        const bottomCenter = new THREE.Vector3(
+            (min.x + max.x) * 0.5,
+            min.y,
+            (min.z + max.z) * 0.5
+        );
+
         this.uniforms = {}
         this.uniforms.uTime = new THREE.Uniform(0)
         this.uniforms.uSpeed = new THREE.Uniform(0.1)
+        this.uniforms.uBottomCenter = new THREE.Uniform(bottomCenter)
 
         const plumeOuterMat = new THREE.ShaderMaterial({
             transparent: true,

@@ -3,7 +3,7 @@ export default class Home{
 
     constructor(root){
         this.container = root
-        // this.setInstance();
+        this.setInstance();
     }
 
     setInstance(){

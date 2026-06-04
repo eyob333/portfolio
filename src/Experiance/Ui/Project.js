@@ -4,8 +4,8 @@ export default class Project{
     constructor(root){
         this.container = root
         this.array = projects;
-        // this.setParent()
-        // this.setInstance();
+        this.setParent()
+        this.setInstance();
 
     }
     setParent(){

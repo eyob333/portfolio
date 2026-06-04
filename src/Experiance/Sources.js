@@ -2,7 +2,7 @@ export default [
     {
         name: 'Ship',
         type: 'gltfModel',
-        path: '/models/ship.glb',
+        path: '/models/starFurry.glb',
     },
     {
         name: 'Nomad',
