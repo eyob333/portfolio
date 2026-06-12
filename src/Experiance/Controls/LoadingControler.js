@@ -4,7 +4,6 @@ import gsap from 'gsap';
 const loadingTExtElement = document.querySelector("div.loading-text");
 const loadingElement = document.querySelector("div.loading-bar");
 const loadingNumberElement = document.querySelector("p.loading-number");
-const bodyElement = document.querySelector("body")
 
 export default class LoadingManager{
     constructor(overlay){
@@ -30,15 +29,7 @@ export default class LoadingManager{
                         delay: 1,
                         ease: 'power2.out',
                         display: 'none'
-                    })
-                    gsap.set( bodyElement, {
-                        delay: 3,
-                        padding:'0 2%',
-                        overflowX:'hidden',
-                        overflowY: 'auto',
-
-                    })
-                
+                    })   
                 }, 1000)  
                 this.isReady = true;
             },

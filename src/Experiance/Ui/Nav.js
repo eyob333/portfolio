@@ -1,6 +1,4 @@
-
-
-
+import ContactIcons from "../../assets/contactIcons";
 
 
 export default class Nav{
@@ -26,53 +24,88 @@ export default class Nav{
             </div>
 
             <div class="util"> 
+                <div class="social">
+                </div>
                 <div class="theme">
-                    <svg viewBox="0 0 85 161" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M81 1.5C81.0671 1.5 81.1341 1.49984 81.2012 1.5L82.9053 159.477C82.272 159.491 81.6369 159.5 81 159.5C37.0846 159.5 1.5 124.122 1.5 80.5C1.5 36.8782 37.0846 1.5 81 1.5Z" fill="white" stroke="#F9F3F3" stroke-width="3"/>
-                    </svg>
+                    <div class="icons icons-t">
+                        <svg viewBox="0 0 85 161" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M81 1.5C81.0671 1.5 81.1341 1.49984 81.2012 1.5L82.9053 159.477C82.272 159.491 81.6369 159.5 81 159.5C37.0846 159.5 1.5 124.122 1.5 80.5C1.5 36.8782 37.0846 1.5 81 1.5Z" fill="white" stroke="#F9F3F3" stroke-width="3"/>
+                        </svg>
+                    </div>
                 </div>
 
             </div>
+
             <div class="nav">
                 <div class="nav-item">
                     <div class="nav-mask">
-                        <svg width="42" height="57" viewBox="0 0 42 57" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M16 40H2.5V2.5H5.5L39 55" stroke="white" stroke-width="5"/>
-                        </svg>
+                        <div class="svg-cont"> 
+                            <svg width="42" height="57" viewBox="0 0 42 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 40H2.5V2.5H5.5L39 55" stroke="white" stroke-width="5"/>
+                            </svg>
+                        </div>
+                        <div class="title-cont">
+                            <p>home</p>
+                        </div>
+                    </div>
+
+
+                    <div class="nav-mask">
+                        <div class="svg-cont"> 
+                            <svg width="32" height="44" viewBox="0 0 32 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 41H2.5V19H29V0" stroke="white" stroke-width="5"/>
+                            </svg>
+                        </div>
+                        <div class="title-cont">
+                            <p>home</p>
+                        </div>
                     </div>
 
                     <div class="nav-mask">
-                        <svg width="32" height="44" viewBox="0 0 32 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M16 41H2.5V19H29V0" stroke="white" stroke-width="5"/>
-                        </svg>
+                        <div class="svg-cont"> 
+                            <svg width="42" height="57" viewBox="0 0 42 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 40H2.5V2.5H5.5L39 55" stroke="white" stroke-width="5"/>
+                            </svg>
+                        </div>
+                        <div class="title-cont">
+                            <p>home</p>
+                        </div>
                     </div>
 
                     <div class="nav-mask">
-                        <svg width="42" height="57" viewBox="0 0 42 57" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M16 40H2.5V2.5H5.5L39 55" stroke="white" stroke-width="5"/>
-                        </svg>
-                    </div>
-
-                    <div class="nav-mask">
-                        <svg width="32" height="44" viewBox="0 0 32 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M16 41H2.5V19H29V0" stroke="white" stroke-width="5"/>
-                        </svg>
+                        <div class="svg-cont"> 
+                            <svg width="32" height="44" viewBox="0 0 32 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 41H2.5V19H29V0" stroke="white" stroke-width="5"/>
+                            </svg>
+                        </div>
+                        <div class="title-cont">
+                            <p>home</p>
+                        </div>
                     </div>
                     
                     <div class="nav-mask">
-                        <svg width="42" height="57" viewBox="0 0 42 57" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M16 40H2.5V2.5H5.5L39 55" stroke="white" stroke-width="5"/>
-                        </svg>
-                    </div>
-
-                    <div class="nav-mask">
-                        <svg width="32" height="44" viewBox="0 0 32 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M16 41H2.5V19H29V0" stroke="white" stroke-width="5"/>
-                        </svg>
+                        <div class="svg-cont"> 
+                            <svg width="42" height="57" viewBox="0 0 42 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 40H2.5V2.5H5.5L39 55" stroke="white" stroke-width="5"/>
+                            </svg>
+                        </div>
+                        <div class="title-cont">
+                            <p>home</p>
+                        </div>
                     </div>
                 </div>
             </div>
         `;
         this.container.appendChild(element);
+
+        let socialI = document.querySelector('.social')
+        let injectSocial = ContactIcons.map( d =>`
+            <div class="icons icons-s">
+                ${d.icon}
+            </div>
+            `).join('')
+        socialI.innerHTML = injectSocial
+
+
     }
 }

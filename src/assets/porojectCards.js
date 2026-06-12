@@ -1,5 +1,7 @@
+const img = 'https://picsum.photos/seed/picsum/200/300'
+
 const gojoHomes = {
-    img: 'https://res.cloudinary.com/dufjxw9zz/image/upload/f_webp/v1747926434/Screenshot_2025-05-22_180428_bcpeo1.webp',
+    img,
     name: 'Gojo-Homes',
     link: 'https://gojo-home.vercel.app/',
     role: 'fullstack developer',
@@ -7,21 +9,21 @@ const gojoHomes = {
 }
 
 const flowFileds = {
-    img: 'https://res.cloudinary.com/dufjxw9zz/image/upload/f_webp/v1747926001/Screenshot_2025-05-22_174214_sjnku5.webp',
+    img,
     name: 'gpgpu flow fields',
     link: 'https://gpgpu-flowfields-shaders.vercel.app/',
     role: 'frontend developer, shader artist',
 }
 
 const ragingSea = {
-    img: 'https://res.cloudinary.com/dufjxw9zz/image/upload/f_webp/v1747926000/Screenshot_2025-05-18_142102_kz3cwd.webp',
+    img,
     name: 'raging sea',
     link: 'https://three-ragingsea-shaders.vercel.app/',
     role: 'frontend developer, shader artist',
 }
 
 const wobbleSphere = {
-    img: 'https://res.cloudinary.com/dufjxw9zz/image/upload/f_webp/v1747926001/Screenshot_2025-05-18_141904_qxhd1t.webp',
+    img,
     name: 'wobble sphere',
     link: 'https://wobble-sphere-shaders.vercel.app/',
     role: 'frontend developer, shader artist',
@@ -30,7 +32,7 @@ const wobbleSphere = {
 }
 
 const proceduralTerrian = {
-    img: 'https://res.cloudinary.com/dufjxw9zz/image/upload/f_webp/v1747926001/Screenshot_2025-05-22_173923_jybtr5.webp',
+    img,
     name: 'procedural terrain',
     link: 'https://procedural-terrain-shaders.vercel.app/',
     role: 'frontend developer, shader artist',

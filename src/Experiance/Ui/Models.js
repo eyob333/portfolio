@@ -1,6 +1,6 @@
 import projects from "../../assets/porojectCards";
 
-export default class Project{
+export default class Models{
     constructor(root){
         this.container = root
         this.array = projects;
@@ -10,15 +10,15 @@ export default class Project{
     }
     setParent(){
         parent = document.createElement('section')
-        parent.id = "project" 
+        parent.id = "models" 
         parent.classList.add('page')
         // parent.classList.add('project')
         parent.innerHTML= `
-                        <div class="intro-header header-proj"> 
-                            <h1>Projects</h1>
+                        <div class="intro-header header-mod"> 
+                            <h1>Models</h1>
                             <p>Ideas, Experiments, Tweeks</p>
                         </div>
-                        <div class="slider slider-proj">
+                        <div class="slider slider-mod">
                             <div class="sliders">
                             </div>
                         </div>
@@ -26,7 +26,8 @@ export default class Project{
         this.container.appendChild(parent)
     }
     setInstance(){
-        let projectElement = document.querySelector('div.slider-proj .sliders');
+        let projectElement = document.querySelector('div.slider-mod .sliders');
+        let i=1
         let injectElement = this.array.map( d => `
             <div class="slider-cont"> 
                 <div class="s-name"> 

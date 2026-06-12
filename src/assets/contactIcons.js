@@ -57,7 +57,7 @@ const ContactIcons = [
     {name: 'telegram', link: 'https://t.me/chasingShadows4', icon: telegram},
     {name: 'discord', link: 'https://discord.gg/someting', icon: discord},
     {name: 'github', link: 'https://github.com/eyob333',icon: github},
-    {name: 'email', link: 'mailto:jemijobs224@gmail.com?subject=Hello&body=I wanted to reach out...', icon: email, acc: 'jemijobs@gmail.com'},
+    // {name: 'email', link: 'mailto:jemijobs224@gmail.com?subject=Hello&body=I wanted to reach out...', icon: email, acc: 'jemijobs@gmail.com'},
 ]
 
 export default ContactIcons

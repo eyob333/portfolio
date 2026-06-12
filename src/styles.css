@@ -11,8 +11,9 @@ body{
   margin: 0;
   padding: 0;
   border: 0;
-  overflow: hidden;
+  /* overflow: hidden; */
   background-color: #202020;
+  overflow-x: hidden;
 }
 
 canvas{
@@ -95,7 +96,9 @@ h1, h2, h3, h4, h5, h6, p{
   height: 100%;
 }
 
-/* Nav */
+
+
+/***************************************Nav section *******************************/
 .nav{
   position: fixed;
   left: 0;
@@ -114,13 +117,32 @@ h1, h2, h3, h4, h5, h6, p{
   align-items: flex-start;
   /* width: 100%; */
   height: 44px;
-  /* transform: scale(.7) scaley(.65); */
+  transform: scale(.7) scaley(.65);
   transform-origin:left;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  /* clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); */
 
 }
 .nav-mask svg{
   background-color: transparent;
+}
+.nav-mask{
+  display: grid;
+  justify-content: center;
+  align-items: flex-start;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 100% 100%;
+  min-width: fit-content;
+}
+.nav-mask p{
+  color: #d8d8d8;
+  background-color: #202020;
+   width: fit-content;
+  height: fit-content;
+  font-size: 1.2rem; 
+  padding: 0;
+  border: 0;
+  margin: 0;
+  
 }
 
 
@@ -129,8 +151,10 @@ h1, h2, h3, h4, h5, h6, p{
   position: fixed;
   right: 0;
   top: 0;
-  width: 100px;
+  width: 200px;
   height: 50px;
+  display: grid;
+  grid-template-columns: 70% 30%;
 }
 
 .util *{
@@ -143,58 +167,31 @@ h1, h2, h3, h4, h5, h6, p{
   height: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+.social{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .theme svg{
   /* transform: t; */
-  width: 60%;
-  height: 60%;
+  width: 35px;
+  height: 35px;
 }
 
+.social svg{
+  width: 30px;
+  height: 30px;
+}
 
-
-.navigaton-bar{
-  position: fixed;
-  top: 54%;
-  left: 3.7%;
-  transform: translate(-50%, -50%) scaleY(0);
-  height: 60vh;
-  width: 2.6px;
-  z-index: 4;
-  background-color: #ffffff;
-  opacity: 0;
-}
-.navigatior{
-  position: absolute;
-  top: 40%;
-  left: 3.7%;
-  display: grid;
-  grid-template-columns: 15% 50%;
-  align-items: center;
-  gap: 4px;
-}
-.nav-indicate{
-  background-color: #ffffff;
-  width: 100%;
-  height: 2px;
-  border: 0;
-  opacity: .2;
-}
-.navigatior ul{
-  padding: 0;
-  margin: 0;
-
-}
-.navigatior li{
-  font-family: 'Jura', sans-serif;  
-  line-height: 2rem;
-  font-weight: 100;
-  list-style-type: none;
-  color: #95c2ec;
-  opacity: .3;
-
-}
 /* .loading-text h1{
+
+
+
 
 } */
 .section-container-div{
@@ -202,8 +199,11 @@ h1, h2, h3, h4, h5, h6, p{
    position: absolute;
    /* max-height: 0; */
    /* max-width: 0; */
-   z-index: 3;
-   /* overflow: hidden;  */
+   z-index: 3;   
+   border: 0;
+   margin: 0;
+   padding: 0;
+
 }
 
 /*sections */
@@ -220,23 +220,26 @@ h1, h2, h3, h4, h5, h6, p{
 }
 
 section{
-  height: 100vh;
-  min-height:fit-content;
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 
-/***************************************heading section *******************************/
-section#heading{
-  margin-top: 15vh;
-  /* padding-left: 50px; */
-  /* padding: 0 10vw; */
-  max-height: 100vh;
+
+
+/*************************************** Home section *******************************/
+
+.sec{
+  min-height: 100vh;
 }
-.mask{
-  /* height: 40px; */
-  line-height: 2.2rem;
-  overflow: hidden;
+
+
+.header-home, .contact{
+  max-width: 100vw;
 }
-#heading h1{
+
+
+#home h1{
   font-family: 'Kapiler';        
   text-transform:uppercase ;
   font-size: clamp(5.5rem, 12vw, 20rem);                                                                             
@@ -248,97 +251,107 @@ section#heading{
   padding: 0;
   text-align: center;                                                                         
 }
-#heading h4{
+#home h4{
   font-family: 'Jura', sans-serif;                                                                                                                    
   font-size: 1.3rem;
   font-weight: 200;
-  /* max-width: 30%; */
   margin: 0;
-  text-align: right;
-  padding-right: 12vw;
   letter-spacing: .09rem;
   color: #d8d8d8;
                                               
 }
-
-/*************************************** project section *******************************/
-
-
-/***************************************tech stack *******************************/
-#page2{
-  width: 50%;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+.title-cont{
+  margin-top: 20%;
+  height: fit-content;
 }
-.techStack-container{
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-
-}
-.icons-container {
+.subhead-cont{
   display: grid;
-  justify-content: center;
-  text-align: center;
+  grid-template-columns: 80% 30%;
 }
-.icons-container svg{
-  width: 50px;
-  height: 50px;
-  padding: 0;
-  margin: 0;
+
+.mask{
+  /* line-height: 2.2rem; */
+  height: 100%;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
+.primary{
+  position: relative;
+}
+.secondary, .fourth, .teritiary{
+  position: absolute;
+}
+
+
+.slider-hom{
+
+  .slide-hom {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+  
+      .slide {
+        width: 100vw;
+      }
+      .tech{
+        display: grid;
+        grid-template-columns: 40% 60%;
+
+        .title-cont{
+          font-size: 2.5rem;
+        }
+
+
+        .icon-cont{
+          display: flex;
+          flex-wrap:wrap;
+          justify-content: center;
+          align-items: center;
+          gap: 20px;
+          width: 100%;
+          height: 100%;
+          .tech-i{
+            width: 80px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
+            .svg-cont{
+              width: 50px;
+              height: 50px;
+            }
+          }
+        }
+      }
+    }
+}
+
+  .tech svg{
+    width: 100%;
+    height: 100%;
+  }
 /*************************************** labs *******************************/
-#page3 h1{
-  margin-bottom: 0;
+.intro-header{
+ height: 100vh;
 }
 
+.slider{
+  /* height: 100vh; */
+  /* overflow-x:auto; */
+  overflow: hidden;
 
-
-/*************************************** about me *******************************/
-
-#page4{
-  max-width: 50%;
-}
-
-/********************************** contacts ******************/
-#page5 hr{
-  border-style:outset;
-  border-color: #fff;  
-  border-radius: 12px;
-  border-width: .3px;
-  border-bottom: 0;
-}
-#page5 h4{
-  font-family: 'Jura', sans-serif;
-  font-weight: 800;
-  font-size: 1.1rem;
-
-}
-.contact-container{
-  max-width: 100%;
-  display: flex;
-  gap: 20px;
-}
-.contact-container button{
-  background-color: transparent;
-  border-style: none;
-  cursor: pointer;
-}
-.contact-icons svg{
-  width: 50px;
-}
-.contact-icons.last{
-  display: inline;
-  padding: 0;
-  margin: 0;
-
+  .sliders{
+    width: 500vw;
+    display: flex;
+    
+      .slider-cont{
+        width: 100vw;
+      }
+  }
 }
 
-.contact-icons.last p{
-  float: right;
-  /* padding-top: 10%; */
-  font-size: 1rem;
-  font-weight: 800;
-}
 
 /*************************************** footer *******************************/
 
@@ -349,73 +362,4 @@ section#heading{
   text-align: center;
   font-size: 0.875rem; /* equivalent to text-sm */
 }
-#page6{
-	height: auto;
-}
 
-
-
-/*************************************** responsive *******************************/
-@media (810px > width) {
-  #heading h1{
-    font-size: clamp(1rem, 5vw, 9rem);
-    transform: scaleY(2.1) scaleX(2.1);
-    letter-spacing: clamp(0.01rem, 0.2vw, .5rem);
-  }
-  #heading h4{
-    font-size: clamp(.2rem, 2vw, 1.5rem);
-    letter-spacing: clamp(0.02rem, 0.15vw, .8rem);
-  }
-     
-}
-
-
-@media (width < 412px ){
-  .loading-text h1, .loading-text p{
-    font-size: 1.2rem;
-  }
-
-
-  #heading h4{
-     padding-right: 1vw;
-                                              
-  }
-  #page2{
-    width: 60%;
-  }
-  .icons-container p{
-    font-size: .9rem;
-  }
-  .icons-container svg{
-    width: 30px;
-    height: 30px;
-  }
-  #page3 p{
-    margin: 0; 
-
-  }
-
-  #page4{
-    max-width: 100%;
-  }
-  .contact-icons svg{
-    width: 40px;
-  }
-
-  #page5 h4{
-    font-family: 'Jura', sans-serif;
-    font-weight: 800;
-    font-size: .8rem;
-    overflow: hidden;
-  }
-  .contact-container{
-    display: flex;
-    justify-content: center;
-    flex-wrap:wrap;
-    max-width: 100%;
-  }
-
-  .contact-icons.last p{
-    font-size: .9rem;
-  }
-}
