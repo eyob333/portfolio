@@ -27,8 +27,10 @@ export default class Labs{
 
     setInstance(){
         let element = document.querySelector('div.slider-lab .sliders');
+        let i=0
         let injectElement = this.array.map( d => `
-            <div class="slider-cont">
+            <!-- ${i++} -->
+            <div class="slider-cont i-${i} ${i>3 ? 'tab-overflow':''}"> 
                 <div class="s-name">
                     <h2>${d.name}</h2>
                 </div>

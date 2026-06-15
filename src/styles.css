@@ -13,7 +13,8 @@ body{
   border: 0;
   /* overflow: hidden; */
   background-color: #202020;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
+  /* zoom: .2; */
 }
 
 canvas{
@@ -115,11 +116,11 @@ h1, h2, h3, h4, h5, h6, p{
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
-  /* width: 100%; */
+  width: fit-content;
   height: 44px;
   transform: scale(.7) scaley(.65);
   transform-origin:left;
-  /* clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); */
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 
 }
 .nav-mask svg{
@@ -132,13 +133,19 @@ h1, h2, h3, h4, h5, h6, p{
   grid-template-columns: 50% 50%;
   grid-template-rows: 100% 100%;
   min-width: fit-content;
+
+  .title-cont{
+    height: 100%;
+    width: 100%;
+  }
 }
 .nav-mask p{
   color: #d8d8d8;
   background-color: #202020;
    width: fit-content;
   height: fit-content;
-  font-size: 1.2rem; 
+  font-size: 1.4rem; 
+  font-weight: 700;
   padding: 0;
   border: 0;
   margin: 0;
@@ -203,7 +210,6 @@ h1, h2, h3, h4, h5, h6, p{
    border: 0;
    margin: 0;
    padding: 0;
-
 }
 
 /*sections */
@@ -223,6 +229,7 @@ section{
   margin: 0;
   padding: 0;
   border: 0;
+  width: fit-content;
 }
 
 
@@ -310,6 +317,7 @@ section{
           gap: 20px;
           width: 100%;
           height: 100%;
+          
           .tech-i{
             width: 80px;
             height: 100px;
@@ -343,17 +351,27 @@ section{
   overflow: hidden;
 
   .sliders{
-    width: 500vw;
+    /* width: 500vw; */
+    height: 100vh;
     display: flex;
     
       .slider-cont{
         width: 100vw;
       }
   }
-}
 
+}
+/* .slide .slider-cont.tab-overflow{
+  width: 0;
+  height: 0;
+  visibility:hidden;
+} */
 
 /*************************************** footer *******************************/
+
+#contact{
+  height: 100vh;
+}
 
 .footer {
   color: white;
@@ -361,5 +379,5 @@ section{
   padding-bottom: 2px; /* equivalent to py-6 */
   text-align: center;
   font-size: 0.875rem; /* equivalent to text-sm */
-}
 
+}

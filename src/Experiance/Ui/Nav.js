@@ -1,4 +1,5 @@
 import ContactIcons from "../../assets/contactIcons";
+import navIcon from "../../assets/navIcon";
 
 
 export default class Nav{
@@ -20,7 +21,6 @@ export default class Nav{
                             <path  class="path" d="M2.84616 88L81.8462 8L85.7505 4.87653C86.4598 4.30912 87.341 4 88.2493 4H106.346V88" stroke="white" stroke-width="8"/>
                         </svg>
                     </div>
-
             </div>
 
             <div class="util"> 
@@ -38,65 +38,24 @@ export default class Nav{
 
             <div class="nav">
                 <div class="nav-item">
-                    <div class="nav-mask">
-                        <div class="svg-cont"> 
-                            <svg width="42" height="57" viewBox="0 0 42 57" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M16 40H2.5V2.5H5.5L39 55" stroke="white" stroke-width="5"/>
-                            </svg>
-                        </div>
-                        <div class="title-cont">
-                            <p>home</p>
-                        </div>
-                    </div>
-
-
-                    <div class="nav-mask">
-                        <div class="svg-cont"> 
-                            <svg width="32" height="44" viewBox="0 0 32 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M16 41H2.5V19H29V0" stroke="white" stroke-width="5"/>
-                            </svg>
-                        </div>
-                        <div class="title-cont">
-                            <p>home</p>
-                        </div>
-                    </div>
-
-                    <div class="nav-mask">
-                        <div class="svg-cont"> 
-                            <svg width="42" height="57" viewBox="0 0 42 57" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M16 40H2.5V2.5H5.5L39 55" stroke="white" stroke-width="5"/>
-                            </svg>
-                        </div>
-                        <div class="title-cont">
-                            <p>home</p>
-                        </div>
-                    </div>
-
-                    <div class="nav-mask">
-                        <div class="svg-cont"> 
-                            <svg width="32" height="44" viewBox="0 0 32 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M16 41H2.5V19H29V0" stroke="white" stroke-width="5"/>
-                            </svg>
-                        </div>
-                        <div class="title-cont">
-                            <p>home</p>
-                        </div>
-                    </div>
-                    
-                    <div class="nav-mask">
-                        <div class="svg-cont"> 
-                            <svg width="42" height="57" viewBox="0 0 42 57" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M16 40H2.5V2.5H5.5L39 55" stroke="white" stroke-width="5"/>
-                            </svg>
-                        </div>
-                        <div class="title-cont">
-                            <p>home</p>
-                        </div>
-                    </div>
+            
                 </div>
             </div>
         `;
         this.container.appendChild(element);
+
+        let navI = document.querySelector('.nav-item')
+        let navInject = navIcon.map( d =>`
+            <div class="nav-mask">
+                <div class="svg-cont"> 
+                    ${d.icon}
+                 </div>
+                <div class="title-cont">
+                     <p>${d.text}</p>
+                </div>
+            </div>
+            `).join('')
+        navI.innerHTML = navInject;
 
         let socialI = document.querySelector('.social')
         let injectSocial = ContactIcons.map( d =>`
@@ -104,7 +63,7 @@ export default class Nav{
                 ${d.icon}
             </div>
             `).join('')
-        socialI.innerHTML = injectSocial
+        socialI.innerHTML = injectSocial;
 
 
     }
