@@ -46,8 +46,8 @@ const LabsCards = [
     slicedModel,
     sortingVizualizer,
     particlesMorphing,
-    particlescursor,
-    earthShader
+    // particlescursor,
+    // earthShader
 ]
 
 export default LabsCards

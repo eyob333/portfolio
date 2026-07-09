@@ -114,13 +114,15 @@ h1, h2, h3, h4, h5, h6, p{
 } */
 .nav-item{
   display: flex;
-  justify-content: space-around;
+  justify-content:space-between;
   align-items: flex-start;
-  width: fit-content;
+  /* min-width: fit-content; */
   height: 44px;
-  transform: scale(.7) scaley(.65);
+  /* transform: scale(.7) scaley(.65); */
   transform-origin:left;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  gap: 0;
+  /* overflow-wrap: anywhere; */
 
 }
 .nav-mask svg{
@@ -130,7 +132,7 @@ h1, h2, h3, h4, h5, h6, p{
   display: grid;
   justify-content: center;
   align-items: flex-start;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 30% 70%;
   grid-template-rows: 100% 100%;
   min-width: fit-content;
 
@@ -142,7 +144,7 @@ h1, h2, h3, h4, h5, h6, p{
 .nav-mask p{
   color: #d8d8d8;
   background-color: #202020;
-   width: fit-content;
+  width: fit-content;
   height: fit-content;
   font-size: 1.4rem; 
   font-weight: 700;

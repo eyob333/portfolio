@@ -27,14 +27,13 @@ export default class Project{
     }
     setInstance(){
         let projectElement = document.querySelector('div.slider-proj .sliders');
-        let i = 0;
-        let injectElement = this.array.map( d => `
-            <!-- ${i++} -->
-            <div class="slider-cont i-${i} ${i>3 ? 'tab-overflow':''}"> 
-                
+        let injectElement = this.array.map( (d, i) => `
+            <div class="slider-cont i-${i}"> 
                 <div class="s-name" > 
                     <h2> ${d.name}</h2>
                 </div>
+                <div clsss="s-img> ${d.img}</div>
+                <div class="s-video">${d.vid} </div>
             </div>`).join('');
         projectElement.innerHTML = injectElement;
     }
