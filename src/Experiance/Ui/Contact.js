@@ -11,28 +11,37 @@ export default class Contact{
         element.classList.add('page');
         element.innerHTML = `
             <div class="contacts">
-                <div class="ks">
-                    <h4>Say hi, I'd love to hear from you</h4>
-                    <div class="forms">
-                        <form action="https://formspree.io/f/your_formspree_id">
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" id="name" name="name" placeholder="Your Name" required>
-                            </div>
+                <div class="form-wrapper">
+                    <h1 class="form-title">System Inquiry / Submission Form</h1>
 
-                            <div class="form-group">
-                                <label for="email">Email Address</label>
-                                <input type="email" id="email" name="_replyto" placeholder="your.email@example.com" required>
-                            </div>
+                    <form>
+                        <div class="form-field">
+                        <label for="name">Operator Name:</label>
+                        <div class="input-border-wrap name-border-wrap">
+                            <input type="text" id="name" name="name" value="Commander Elara Vance">
+                        </div>
+                        </div>
 
-                            <div class="form-group">
-                                <label for="message">Message</label>
-                                <textarea id="message" name="message" rows="5" placeholder="Type your message here..." required></textarea>
-                            </div>
-                            <button type="button" class="smthin">Send Message</button>
-                        </form>
+                        <div class="form-field">
+                        <label for="email">Encryption Email:</label>
+                        <div class="input-border-wrap email-border-wrap">
+                            <input type="text" id="email" name="email" value="e.vance.01@starfleet.network">
+                        </div>
+                        </div>
+
+                        <div class="form-field">
+                        <label for="subject">Subject Inquiry Text Area:</label>
+                        <div class="subject-border-wrap">
+                            <textarea id="subject" name="subject" rows="8">RE: Spatial Anomaly Report (Quadrant 9).
+                                Data logs indicate unusual energy readings near the nebula cluster. requesting immediate analysis of quantum fluctuations. (Timestamp: 3145.753) // Awaiting further directives.</textarea>
+                        </div>
+                        </div>
+
+                        <div class="submit-wrapper">
+                            <button type="submit" class="submit-button">Submit Inquiry</button>
+                        </div>
+                    </form>
                     </div>
-                </div>
             </div>
             `;
         this.container.appendChild(element);

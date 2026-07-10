@@ -32,8 +32,12 @@ export default class Project{
                 <div class="s-name" > 
                     <h2> ${d.name}</h2>
                 </div>
-                <div clsss="s-img> ${d.img}</div>
-                <div class="s-video">${d.vid} </div>
+
+                <div class="s-video">   
+                    <video autoplay muted loop >
+                        <source src="${d.vid}" type="video/mp4">
+                    </video> 
+                </div>
             </div>`).join('');
         projectElement.innerHTML = injectElement;
     }

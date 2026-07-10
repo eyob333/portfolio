@@ -28,8 +28,9 @@ export default class Nav{
                 </div>
                 <div class="theme">
                     <div class="icons icons-t">
-                        <svg viewBox="0 0 85 161" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M81 1.5C81.0671 1.5 81.1341 1.49984 81.2012 1.5L82.9053 159.477C82.272 159.491 81.6369 159.5 81 159.5C37.0846 159.5 1.5 124.122 1.5 80.5C1.5 36.8782 37.0846 1.5 81 1.5Z" fill="white" stroke="#F9F3F3" stroke-width="3"/>
+                       <svg width="170" height="162" viewBox="0 0 170 162" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M81 1.5C81.0671 1.5 81.1341 1.49984 81.2012 1.5L82.9053 159.477C82.272 159.491 81.6369 159.5 81 159.5C37.0846 159.5 1.5 124.122 1.5 80.5C1.5 36.8782 37.0846 1.5 81 1.5Z" fill="white" stroke="#FFFEFE" stroke-width="3"/>
+                        <path d="M88.5494 160.083C88.4823 160.083 88.4152 160.083 88.3482 160.083L86.4358 2.10898C87.069 2.09335 87.7041 2.08387 88.341 2.08303C132.256 2.02512 167.888 37.3564 167.945 80.9781C168.003 124.6 132.465 160.025 88.5494 160.083Z" fill="black" stroke="black" stroke-width="3"/>
                         </svg>
                     </div>
                 </div>
@@ -46,7 +47,7 @@ export default class Nav{
 
         let navI = document.querySelector('.nav-item')
         let navInject = navIcon.map( d =>`
-            <div class="nav-mask">
+            <div class="nav-mask ${d.text}-nav-t">
                 <div class="svg-cont"> 
                     ${d.icon}
                  </div>

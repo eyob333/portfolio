@@ -6,6 +6,7 @@ import SplitType from 'split-type';
 import App from "../App";
 import Ui from '../Ui/Ui';
 import Event from '../Utils/Event';
+import { element } from 'three/tsl';
 // import RayCaster from '../Utils/RayCaster';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
@@ -17,24 +18,36 @@ export default class Animation{
         this.app = new App();
         this.ui = new Ui();
         this.slide();
-        // this.bones = this.app.nomad.bones
-        // this.angles = this.app.nomad.angles  
+        this.setUi();
+        let nav = {
+            prev_sv: '',
+            prev_p: '',
+            prev_tp: ''
+        }
+        this.app.event = {
+            nav
+        }
+
+        this.nav = this.app.event.nav
+        this.nav_select();
+        this.scroll_trig()
+
         this.overlay = overlay
 
         // this.event = new Event(this.app.ship, this.app.camera.instance, this.app.camera.controls)
         // this.raycast = new RayCaster()
 
 
-        let btn = document.querySelector('.smthin')
-        btn.addEventListener('click', () =>{
-            history.replaceState(null, "", `#${"home"}`);
-            let targetDiv = document.querySelector('#lab')
-            targetDiv.scrollIntoView({
-                behavior: "smooth", // Options: "smooth" (animated) or "auto" (instant snap)
-                block: "start",     // Aligns the top of the div to the top of the window
-                inline: "nearest"   // Handles horizontal alignment if necessary
-            });
-        })
+        // let btn = document.querySelector('.smthin')
+        // btn.addEventListener('click', () =>{
+        //     history.replaceState(null, "", `#${"home"}`);
+        //     let targetDiv = document.querySelector('#lab')
+        //     targetDiv.scrollIntoView({
+        //         behavior: "smooth", // Options: "smooth" (animated) or "auto" (instant snap)
+        //         block: "start",     // Aligns the top of the div to the top of the window
+        //         inline: "nearest"   // Handles horizontal alignment if necessary
+        //     });
+        // })
 
     }
 
@@ -146,6 +159,132 @@ export default class Animation{
         // })
 
 
+    }
+
+
+    nav_change(sp, p1, pa, to_view) {
+        let spar = sp;
+        let p = p1;
+        let par = pa;
+
+        let prev_p = this.nav.prev_p
+        let prev_spar = this.nav.prev_spar
+        let prev_par = this.nav.prev_par
+
+
+        if (prev_p && prev_par  && prev_spar ) {
+            gsap.to(prev_spar, {
+                width: '50px',
+                height: '20px'
+            })
+            gsap.to(prev_par, {
+                width: '0%'
+            })
+            gsap.to(prev_p, {
+                fontSize: '0rem'
+            })
+        }
+
+        gsap.to(spar, {
+            width: '70px',
+            height: '30px'
+        })
+        gsap.to(par, {
+            width: '100%'
+        })
+        gsap.to(p, {
+            fontSize: '1.4rem'
+        })
+
+        this.nav.prev_p = p;
+        this.nav.prev_spar = spar;
+        this.nav.prev_par = par;
+
+
+        if (to_view){
+            let target = to_view.target;
+            // target.scrollIntoView({
+            //     behavior: "smooth", // Options: "smooth" (animated) or "auto" (instant snap)
+            //     block: "start",     // Aligns the top of the div to the top of the window
+            //     inline: "nearest"   // Handles horizontal alignment if necessary
+            // });
+            gsap.to( window, {
+                scrollTo: `#${target}`,
+                scrollBehavior: 'smooth',
+            })
+
+        }
+    }
+
+
+    nav_select() {
+        let element = document.querySelectorAll('.nav-mask')
+        element.forEach(e => {
+            e.addEventListener('click', e => {
+                console.log(e.target)
+
+                let spar = e.target.children[0].children[0]
+                let par = e.target.children[1]
+                let p = par.children[0]
+
+                let k = e.target.classList[1].split('-')[0]
+                console.log(k)
+                let to_view = {
+                    target: k
+                }
+
+                this.nav_change(spar, p, par, to_view);
+
+            })
+        });
+
+    }
+
+   
+    scroll_trig(){
+        let scrollArr = gsap.utils.toArray('section')
+        console.log(scrollArr);
+
+        // console.log(sc)
+
+
+
+        scrollArr.forEach( arr =>{
+            console.log(arr.id)
+
+            let elK = document.querySelector(`.${arr.id}-nav-to`)
+            console.log("foo", elK)
+
+            let spar = elK.children[0].children[0]
+            let par = elK.children[1]
+            let p = par.children[0]
+
+            ScrollTrigger.create({
+                trigger: arr,
+                // markers: true,
+                start: 'top 5.3%',
+                end: "bottom 60%",
+                onEnter: ()=>{
+                    this.nav_change(spar, p, par)
+                },
+                onEnterBack: () =>{
+                    this.nav_change(spar,p, par)
+                }
+            })
+        })
+
+    }
+
+
+    setUi(){
+        let element = document.querySelector('.main-icon svg');
+        gsap.to(element, {
+            y: 20
+        })
+    }
+
+    setEvent(){
+        let element = document.querySelector(".")
     }
 
 }

@@ -1,6 +1,6 @@
 const img = 'https://picsum.photos/400'
 const desc = 'Webgl, Godot, Three.js'
-const vid = ""
+const vid = "/videos/smt.mp4"
 
 const gojoHomes = {
     img,

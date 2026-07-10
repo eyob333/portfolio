@@ -13,7 +13,7 @@ body{
   border: 0;
   /* overflow: hidden; */
   background-color: #202020;
-  /* overflow-x: hidden; */
+  overflow-x: hidden;
   /* zoom: .2; */
 }
 
@@ -77,8 +77,8 @@ h1, h2, h3, h4, h5, h6, p{
   position: fixed;
   top: 0;
   left: 0;
-  width: 100px;
-  height: 50px;
+  width: 140px;
+  height: 60px;
   margin: 0;
   border: 0;
   padding: 0;
@@ -106,6 +106,7 @@ h1, h2, h3, h4, h5, h6, p{
   bottom: 0;
   width: 500px;
   height: 50px;
+  z-index: 4;
 }
 
 /* .nav *{
@@ -115,43 +116,75 @@ h1, h2, h3, h4, h5, h6, p{
 .nav-item{
   display: flex;
   justify-content:space-between;
-  align-items: flex-start;
+  /* pointer-events:fill; */
+  /* align-items: flex-start; */
   /* min-width: fit-content; */
   height: 44px;
   /* transform: scale(.7) scaley(.65); */
-  transform-origin:left;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  /* transform-origin:left; */
+  /* clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); */
   gap: 0;
   /* overflow-wrap: anywhere; */
 
 }
-.nav-mask svg{
-  background-color: transparent;
-}
+
 .nav-mask{
-  display: grid;
+  display: flex;
   justify-content: center;
-  align-items: flex-start;
-  grid-template-columns: 30% 70%;
-  grid-template-rows: 100% 100%;
-  min-width: fit-content;
+  /* align-items: stretch; */
+
+  .svg-cont{
+    width: fit-content;
+    height: 100%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    pointer-events: none;
+    padding: 0;
+    margin: 0;
+  border: 0;
+
+    svg{
+      /* transform: scale(.5); */
+      width: 50px;
+      height: 20px;
+      pointer-events: none;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      /* transform-origin: left; */
+    }
+  }
 
   .title-cont{
     height: 100%;
-    width: 100%;
+    /* width: 100%; */
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    display: flex;
+    /* justify-content:; */
+    /* align-items:; */
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    
+    p{
+      color: #d8d8d8;
+      width: fit-content;
+      height: fit-content;
+      font-size: 1.4rem; 
+      font-weight: 400;
+      padding: 0;
+      border: 0;
+      margin: 0;
+      font-family: 'Jura', sans-serif;
+      font-size: 0;
+      /* height: 100%; */
+      pointer-events: none;
+    }
+
   }
-}
-.nav-mask p{
-  color: #d8d8d8;
-  background-color: #202020;
-  width: fit-content;
-  height: fit-content;
-  font-size: 1.4rem; 
-  font-weight: 700;
-  padding: 0;
-  border: 0;
-  margin: 0;
-  
 }
 
 
@@ -269,10 +302,10 @@ section{
   color: #d8d8d8;
                                               
 }
-.title-cont{
+/* .title-cont{
   margin-top: 20%;
   height: fit-content;
-}
+} */
 .subhead-cont{
   display: grid;
   grid-template-columns: 80% 30%;
@@ -342,7 +375,7 @@ section{
     width: 100%;
     height: 100%;
   }
-/*************************************** labs *******************************/
+/*************************************** proj & labs *******************************/
 .intro-header{
  height: 100vh;
 }
@@ -363,6 +396,23 @@ section{
   }
 
 }
+
+
+
+/*************************************** proj *******************************/
+
+/* s.img{} */
+.s-video{
+  width: 400px;
+  height: 400px;
+
+  video{
+    width: 100%;
+    height: 100%;
+  }
+
+}
+
 /* .slide .slider-cont.tab-overflow{
   width: 0;
   height: 0;
@@ -383,3 +433,126 @@ section{
   font-size: 0.875rem; /* equivalent to text-sm */
 
 }
+
+
+
+
+.form-wrapper {
+    width: 400px;
+    background-color: transparent;
+    /* position: relative; */
+    padding: 20px;
+    box-sizing: border-box;
+    transform: scale(1);
+    height: min-content;
+  }
+
+  /* The primary form background shape */
+  .form-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0px; /* Offset for the side border */
+    right: 0;
+    bottom: 0;
+    background-color: rgba(13, 18, 23, 0.95);
+    border: 1px solid #c9d1d9;
+    border-radius: 4px;
+    z-index: -1;
+  }
+
+  h1.form-title {
+    color: #c9d1d9;
+    font-size: 1.8rem;
+    font-weight: normal;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    padding-left: 20px;
+  }
+
+  .form-field {
+    margin-bottom: 25px;
+    padding-left: 20px;
+  }
+
+  .form-field label {
+    display: block;
+    color: #c9d1d9;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    padding-left: 5px;
+  }
+
+  /* Styling for the angled text areas */
+  input[type="text"], textarea {
+    width: calc(100% - 25px);
+    padding: 12px;
+    box-sizing: border-box;
+    background-color: transparent;
+    color: white;
+    font-family: inherit;
+    font-size: 1rem;
+    position: relative;
+    outline: none;
+  }
+
+  /* Shared styling for input/textarea borders and cutouts */
+  .input-border-wrap {
+    position: relative;
+    border: 1px solid transparent;
+    overflow: hidden;
+  }
+
+  input[type="text"] {
+    background-color: transparent;
+  }
+
+
+
+  /* Styling the input text specifically to match image colors */
+  input#name {
+    color: rgba(255, 255, 255, 0.9);
+  }
+  input#email {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  /* Style for Textarea field */
+  .subject-border-wrap {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+  
+  textarea#subject {
+    width: calc(100% - 10px); /* Adjust to fit inside inner border */
+    background-color: transparent;
+    resize: none;
+    line-height: 1.5;
+    padding: 15px;
+    z-index: 1; /* In front of borders */
+    font-family: inherit;
+    color: white;
+  }
+
+  /* Glowing cyan text styling inside textarea */
+  .glowing-text {
+    color: #8af8f8;
+    text-shadow: 0 0 5px #8af8f8;
+  }
+
+
+  button.submit-button {
+    background-color: #0d1217;
+    color: white;
+    font-family: inherit;
+    font-size: 1rem;
+    text-transform: uppercase;
+    border: 1px solid #c9d1d9;
+    border-radius: 2px;
+    padding: 12px 30px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }

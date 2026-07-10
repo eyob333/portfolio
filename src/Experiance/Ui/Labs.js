@@ -9,7 +9,7 @@ export default class Labs{
     }
     setParent(){
         let parent = document.createElement('section')
-        parent.id = 'lab'
+        parent.id = 'labs'
         parent.classList.add('page')
         // parent.classList.add('labs')
         parent.innerHTML =  `
