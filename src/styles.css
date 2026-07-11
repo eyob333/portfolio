@@ -13,7 +13,7 @@ body{
   border: 0;
   /* overflow: hidden; */
   background-color: #202020;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   /* zoom: .2; */
 }
 
@@ -82,6 +82,7 @@ h1, h2, h3, h4, h5, h6, p{
   margin: 0;
   border: 0;
   padding: 0;
+  z-index: 3;
 
 }
 .main-icon .icon-mask{
@@ -106,7 +107,7 @@ h1, h2, h3, h4, h5, h6, p{
   bottom: 0;
   width: 500px;
   height: 50px;
-  z-index: 4;
+  z-index: 3;
 }
 
 /* .nav *{
@@ -197,6 +198,8 @@ h1, h2, h3, h4, h5, h6, p{
   height: 50px;
   display: grid;
   grid-template-columns: 70% 30%;
+  z-index: 3;
+  margin-top: 10px;
 }
 
 .util *{
@@ -219,10 +222,19 @@ h1, h2, h3, h4, h5, h6, p{
   align-items: center;
 }
 
+.theme .icons{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .theme svg{
   /* transform: t; */
-  width: 35px;
-  height: 35px;
+  width: fit-content;
+  height: 36px;
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 
 .social svg{
@@ -423,65 +435,58 @@ section{
 
 #contact{
   height: 100vh;
+  /* padding: 90px; */
 }
-
-.footer {
-  color: white;
-  padding: 1.5rem 0;
-  padding-bottom: 2px; /* equivalent to py-6 */
-  text-align: center;
-  font-size: 0.875rem; /* equivalent to text-sm */
-
-}
-
-
 
 
 .form-wrapper {
-    width: 400px;
-    background-color: transparent;
+    width: 300px;
+    background-color: black;
     /* position: relative; */
-    padding: 20px;
+    padding: 10px;
     box-sizing: border-box;
     transform: scale(1);
-    height: min-content;
+    height: 75vh;
   }
 
   /* The primary form background shape */
-  .form-wrapper::before {
+  /* .form-wrapper::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 0px; /* Offset for the side border */
+    left: 0px;
+
     right: 0;
     bottom: 0;
     background-color: rgba(13, 18, 23, 0.95);
     border: 1px solid #c9d1d9;
     border-radius: 4px;
     z-index: -1;
-  }
+  } */
 
   h1.form-title {
     color: #c9d1d9;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-weight: normal;
     text-transform: uppercase;
-    margin-bottom: 40px;
-    padding-left: 20px;
+    margin-bottom: 10px;
+    padding-left: 17px;
+    
   }
 
   .form-field {
-    margin-bottom: 25px;
-    padding-left: 20px;
+    margin-bottom: 10px;
+    padding-left: 15px;
   }
 
   .form-field label {
     display: block;
     color: #c9d1d9;
     font-size: 0.9rem;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     margin-bottom: 8px;
     padding-left: 5px;
+      font-family: 'Smooch Sans', sans-serif; 
   }
 
   /* Styling for the angled text areas */
@@ -491,18 +496,18 @@ section{
     box-sizing: border-box;
     background-color: transparent;
     color: white;
-    font-family: inherit;
+      font-family: 'Smooch Sans', sans-serif; 
     font-size: 1rem;
     position: relative;
     outline: none;
+    border: 0px solid;
   }
 
-  /* Shared styling for input/textarea borders and cutouts */
   .input-border-wrap {
     position: relative;
-    border: 1px solid transparent;
+    border: 0px solid transparent;
     overflow: hidden;
-  }
+  } 
 
   input[type="text"] {
     background-color: transparent;
@@ -522,36 +527,28 @@ section{
   .subject-border-wrap {
     position: relative;
     width: 100%;
-    height: auto;
+    /* height: auto; */
   }
   
   textarea#subject {
-    width: calc(100% - 10px); /* Adjust to fit inside inner border */
+    /* width: calc(100% - 10px);  */
     background-color: transparent;
     resize: none;
-    line-height: 1.5;
+    line-height: 1.2;
     padding: 15px;
     z-index: 1; /* In front of borders */
-    font-family: inherit;
-    color: white;
+    font-family: 'Smooch Sans', sans-serif;     color: white;
   }
-
-  /* Glowing cyan text styling inside textarea */
-  .glowing-text {
-    color: #8af8f8;
-    text-shadow: 0 0 5px #8af8f8;
-  }
-
 
   button.submit-button {
     background-color: #0d1217;
     color: white;
-    font-family: inherit;
-    font-size: 1rem;
+    font-family: 'Smooch Sans', sans-serif; 
+    font-size: 1.2rem;
     text-transform: uppercase;
-    border: 1px solid #c9d1d9;
+    border: 0px solid #c9d1d9;
     border-radius: 2px;
-    padding: 12px 30px;
+    padding: 3px 30px;
     cursor: pointer;
     position: relative;
     overflow: hidden;

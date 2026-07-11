@@ -31,6 +31,7 @@ export default class Animation{
         this.nav = this.app.event.nav
         this.nav_select();
         this.scroll_trig()
+        this.setEvent()
 
         this.overlay = overlay
 
@@ -247,10 +248,8 @@ export default class Animation{
 
         // console.log(sc)
 
-
-
-        scrollArr.forEach( arr =>{
-            console.log(arr.id)
+        scrollArr.forEach( (arr, j) =>{
+            console.log(`foo ${j}`, arr)
 
             let elK = document.querySelector(`.${arr.id}-nav-to`)
             console.log("foo", elK)
@@ -284,7 +283,15 @@ export default class Animation{
     }
 
     setEvent(){
-        let element = document.querySelector(".")
+        let element = document.querySelector(".util .theme .icons-t")
+        console.log(element)
+
+        element.addEventListener('click', (e) =>{
+            console.log("yo")
+            gsap.to( element, {
+                rotate: '+=180deg'
+            })
+        })
     }
 
 }

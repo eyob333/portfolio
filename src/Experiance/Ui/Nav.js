@@ -47,7 +47,7 @@ export default class Nav{
 
         let navI = document.querySelector('.nav-item')
         let navInject = navIcon.map( d =>`
-            <div class="nav-mask ${d.text}-nav-t">
+            <div class="nav-mask ${d.text}-nav-to">
                 <div class="svg-cont"> 
                     ${d.icon}
                  </div>
