@@ -86,55 +86,59 @@ export default class Animation{
             .to(slider, {
                 xPercent: -66
             }, "<")
+            .to('.slider-line', {
+                scaleX: 1,
+
+            },"<")
 
 
 
-        let s1Elements = document.querySelectorAll('.sliders');
-        let k = gsap.utils.toArray(".tab-overflow")
+        // let s1Elements = document.querySelectorAll('.sliders');
+        // let k = gsap.utils.toArray(".tab-overflow")
 
-        k.forEach( e =>{
-            gsap.set(e, {
-                minWidth: 0,
-                minHeight: 0
-            })
-        })
+        // k.forEach( e =>{
+        //     gsap.set(e, {
+        //         minWidth: 0,
+        //         minHeight: 0
+        //     })
+        // })
 
-        // 2. Loop through each individual slider element
-        s1Elements.forEach((s1) => {
-            let sliderT2 = gsap.timeline({
-                defaults: {
-                    ease: 'none'
-                },
-                scrollTrigger: {
-                    trigger: s1,       // Tracks this specific element
-                    pin: true,         // Pins this specific element
-                    scrub: 1,
-                    end: () => "+=" + s1.offsetWidth,
-                    onEnter: () =>{
-                        k.forEach( e =>{
-                            gsap.to(e, {
-                                minWidth: '100vw',
-                                height: '100vh',
-                                })
-                            })
+        // // 2. Loop through each individual slider element
+        // s1Elements.forEach((s1) => {
+        //     let sliderT2 = gsap.timeline({
+        //         defaults: {
+        //             ease: 'none'
+        //         },
+        //         scrollTrigger: {
+        //             trigger: s1,       // Tracks this specific element
+        //             pin: true,         // Pins this specific element
+        //             scrub: 1,
+        //             end: () => "+=" + s1.offsetWidth,
+        //             onEnter: () =>{
+        //                 k.forEach( e =>{
+        //                     gsap.to(e, {
+        //                         minWidth: '100vw',
+        //                         height: '100vh',
+        //                         })
+        //                     })
 
-                        },
-                    onLeave: () =>{
-                        k.forEach( e =>{
-                            gsap.to(e, {
-                                minWidth: '0vw',
-                                height: '0vh',
-                                })
-                            })
-                        }
-                    }
+        //                 },
+        //             onLeave: () =>{
+        //                 k.forEach( e =>{
+        //                     gsap.to(e, {
+        //                         minWidth: '0vw',
+        //                         height: '0vh',
+        //                         })
+        //                     })
+        //                 }
+        //             }
                 
-            });
+        //     });
 
-            sliderT2.to(s1, {
-                xPercent: -66
-            }, "<");
-        });
+        //     sliderT2.to(s1, {
+        //         xPercent: -66
+        //     }, "<");
+        // });
 
 
         // let s2 = document.querySelector('.slider-cont')

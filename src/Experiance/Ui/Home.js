@@ -66,7 +66,8 @@ export default class Home{
                         <div class="icon-cont"> 
                         </div>
                     </div>   
-                </div>   
+                </div>
+                <div class="slider-line"> </div>
             </div>
 
 
