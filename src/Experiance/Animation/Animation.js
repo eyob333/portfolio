@@ -2,14 +2,16 @@ import * as THREE from 'three'
 import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/all';
 import { ScrollToPlugin } from 'gsap/all';
+import { TextPlugin } from 'gsap/all';
+
 import SplitType from 'split-type';
 import App from "../App";
 import Ui from '../Ui/Ui';
 import Event from '../Utils/Event';
-import { element } from 'three/tsl';
+
 // import RayCaster from '../Utils/RayCaster';
 
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, TextPlugin)
 let container = document.querySelector("div.section-container-div");
 
 export default class Animation{
@@ -19,6 +21,7 @@ export default class Animation{
         this.ui = new Ui();
         this.slide();
         this.setUi();
+
         let nav = {
             prev_sv: '',
             prev_p: '',
@@ -78,13 +81,14 @@ export default class Animation{
                 trigger: slider,
                 pin: true,
                 scrub: 1,
-                end: () => "+=" + slider.offsetWidth,
+                end: () => "+=" + (slider.scrollWidth - window.innerWidth * 1.3),
+                invalidateOnRefresh: true
             }
         })
 
         sliderTl
             .to(slider, {
-                xPercent: -66
+                x: () => -(slider.scrollWidth - window.innerWidth)
             }, "<")
             .to('.slider-line', {
                 scaleX: 1,
@@ -93,52 +97,49 @@ export default class Animation{
 
 
 
-        // let s1Elements = document.querySelectorAll('.sliders');
-        // let k = gsap.utils.toArray(".tab-overflow")
 
-        // k.forEach( e =>{
-        //     gsap.set(e, {
-        //         minWidth: 0,
-        //         minHeight: 0
-        //     })
-        // })
+        let s1Elements = document.querySelectorAll('.slider');
+   
 
-        // // 2. Loop through each individual slider element
-        // s1Elements.forEach((s1) => {
-        //     let sliderT2 = gsap.timeline({
-        //         defaults: {
-        //             ease: 'none'
-        //         },
-        //         scrollTrigger: {
-        //             trigger: s1,       // Tracks this specific element
-        //             pin: true,         // Pins this specific element
-        //             scrub: 1,
-        //             end: () => "+=" + s1.offsetWidth,
-        //             onEnter: () =>{
-        //                 k.forEach( e =>{
-        //                     gsap.to(e, {
-        //                         minWidth: '100vw',
-        //                         height: '100vh',
-        //                         })
-        //                     })
+        s1Elements.forEach((s1) => {
+            let lockedE = s1.querySelector('.wo-am')
+            let sliderT2 = gsap.timeline({
+                defaults: {
+                    ease: 'none'
+                },
+                scrollTrigger: {
+                    trigger: s1,       // Tracks this specific element
+                    pin: true,         // Pins this specific element
+                    scrub: 1,
+                    end: () => "+=" + (s1.scrollWidth - window.innerWidth * 1.3),
+                    invalidateOnRefresh: true,
+                    onUpdate: (self) =>{
+                        console.log(Math.round(self.progress * 100 * 10)/ 10)
+                        if (lockedE)
+                        gsap.to(lockedE.querySelector('h3'),{
+                            ease: "none",
+                            innerText: `${Math.round(self.progress * 100)}%`,
+                            snap: 'innerText',
+                            duration: .4
+                        });
 
-        //                 },
-        //             onLeave: () =>{
-        //                 k.forEach( e =>{
-        //                     gsap.to(e, {
-        //                         minWidth: '0vw',
-        //                         height: '0vh',
-        //                         })
-        //                     })
-        //                 }
-        //             }
+                    }
+                }
                 
-        //     });
+            });
 
-        //     sliderT2.to(s1, {
-        //         xPercent: -66
-        //     }, "<");
-        // });
+            sliderT2.to(s1, {
+                x: () => -(s1.scrollWidth - window.innerWidth)
+            }, "<");
+
+            if( lockedE){
+                sliderT2.to(lockedE, {
+                    x: () =>(s1.scrollWidth -window.innerWidth),
+                }, '<')                
+            }
+
+        });
+
 
 
         // let s2 = document.querySelector('.slider-cont')
@@ -297,5 +298,8 @@ export default class Animation{
             })
         })
     }
+
+
+
 
 }
