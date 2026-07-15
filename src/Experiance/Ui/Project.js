@@ -21,7 +21,7 @@ export default class Project{
                         <div class="slider slider-proj">
                             <div class="wo-info"> 
                                 <div class="wo-line"> </div>
-                                <div class="wo-am"> <h3>0%</h3></div>
+                                <div class="wo-am"> <h3>0</h3></div>
                             </div>
                             <div class="sliders">
                             </div>
@@ -34,7 +34,7 @@ export default class Project{
         let injectElement = this.array.map( (d, i) => `
         
             <div class="slider-cont i-${i}"> 
-                <span class="emptyj"> </span>
+                <span class="s-empty"> </span>
                 <div class="cont-frac"> 
                     <div class="s-video">   
                         <video autoplay muted loop >
@@ -53,8 +53,13 @@ export default class Project{
                 </div>
 
                 <div class="s-title" > 
-                    <h2> ${d.name}</h2>
+                    <span class="empty"> </span>
+                    <div class="frac-cont"> 
+                        <h2> ${d.name}</h2>
+                        <div class="title-line"> </div>
+                    </div>
                 </div>
+                <span class="s-empty"> </span>
 
 
             </div>`).join('');

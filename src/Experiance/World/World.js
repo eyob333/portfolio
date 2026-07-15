@@ -1,10 +1,8 @@
 import * as THREE from 'three'
 import App from "../App"
 import Ship from './Ship'
-import Nomad from './Nomad'
 import Enviromet from './Environment'
-import Station from './Station'
-import Planet from './Planet'
+
 
 
 export default class World{
@@ -15,33 +13,20 @@ export default class World{
         this.resorces = this.experiance.resources
 
 
-        this.resorces.on( 'ready', ()=>{ 
-            // this.Nomad = new Nomad()          
+        this.resorces.on( 'ready', ()=>{        
             this.Ship = new Ship()
-            // this.Station = new Station()
-            // this.Planet = new Planet()
             this.Enviromet = new Enviromet()
             
         })
 
     }
 
-    update(){
-        // if( this.Star){
-        //     this.Star.update()
-        // }        
-        if(this.Particle){
-            this.Particle.update()
-        }
+    update(){   
         if (this.Enviromet){
             this.Enviromet.update()
         }
         if(this.Planet){
             this.Planet.update()
         }
-        if(this.Station){
-            this.Station.update()
-        }
-
     }
 }

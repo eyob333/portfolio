@@ -32,6 +32,7 @@ export default class Home{
             <div class="slider-hom sec"> 
                 <div class="slide-hom">
                     <div class="slide abt a1" >
+                        <span class="empty"> </span>
                         <div class="detail-cont">
                             <p>
                                 Hi, <strong>Winter-Nomad</strong>, a software engineer, web developer and musician based in Ethiopia.
@@ -57,6 +58,7 @@ export default class Home{
                                 <strong>“Make it work, make it right, make it fast.” – Kent Beck</strong>
                             </p> 
                         </div>
+                         <span class="empty"> </span>
                     </div>
                             
                     <div class="slide tech"> 

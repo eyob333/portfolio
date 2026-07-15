@@ -184,7 +184,8 @@ export default class Animation{
                 height: '20px'
             })
             gsap.to(prev_par, {
-                width: '0%'
+                // width: '0%'
+               scale: 0
             })
             gsap.to(prev_p, {
                 fontSize: '0rem'
@@ -196,7 +197,8 @@ export default class Animation{
             height: '30px'
         })
         gsap.to(par, {
-            width: '100%'
+            // width: '100%'
+            scale: 1
         })
         gsap.to(p, {
             fontSize: '1.4rem'

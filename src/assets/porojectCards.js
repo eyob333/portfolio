@@ -3,13 +3,16 @@ import icons from "./techStackIcons"
 
 
 const img = 'https://picsum.photos/400'
-// const desc = 'Webgl, Godot, Three.js'
+const desc = 'lourem ipsum, ipsum lourem lot set, scou'
 const vid = "/videos/smt.mp4"
 const rid = [
     icons[1],
     icons[2],
     icons[4],
     icons[0],
+    icons[5],
+    icons[1],
+    icons[7]
 
 ]
 
