@@ -11,7 +11,7 @@ import sources from './Sources.js'
 import LoadingManager from './Controls/LoadingControler.js';
 import Overlay from './Ui/Overlay.js';
 import Animation from './Animation/Animation.js';
-import RayCaster from './Utils/RayCaster.js';
+
 
 
 let instance = null;
@@ -46,7 +46,6 @@ export default class App{
         this.resources.on('ready', () =>{
                 setTimeout( () =>{
                     this.animation = new Animation(this.Overlay)
-                    // this.rayCast = new RayCaster()
                 }, 4000)   
             })    
         

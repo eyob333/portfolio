@@ -1,7 +1,4 @@
 import * as THREE  from 'three'
-import plumeVert from '../Shaders/Ship/Plume/vertex.glsl'
-import plumeFrag from '../Shaders/Ship/Plume/fragment.glsl'
-
 import App from "../App";
 
 export default class Ship{

@@ -2,7 +2,6 @@ import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { DRACOLoader} from 'three/examples/jsm/loaders/DRACOLoader.js';
 import EventEmitter from "./EventEmitter";
-import { ThreeMFLoader } from 'three/examples/jsm/Addons.js';
 
 export default class Resources extends EventEmitter{
 
