@@ -1,4 +1,5 @@
 import LabsCards from "../../assets/labsCards";
+import "../Styles/Labs.css"
 
 export default class Labs{
     constructor(root){

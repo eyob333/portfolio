@@ -9,6 +9,14 @@
 }
 
 
+@font-face {
+  font-family: 'Nebula'; 
+  src: url('/fonts/next_sphere/Next Sphere Thin.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 
 
 body{
@@ -34,8 +42,8 @@ canvas{
   /* pointer-events: none; */
 }
 h1, h2, h3, h4, h5, h6, p{
-  font-family: 'Tracer', sans-serif;
   color: #ffffffea;
+  margin: 0;
 }
 
 
@@ -340,9 +348,8 @@ section{
 
 .header-home{
   max-width: 100vw;
-  position: relative;
 
-  .watermark{
+  /* .watermark{
     position: relative;
     top: 50vh;
     left: 10vw;
@@ -351,7 +358,7 @@ section{
       position: absolute;
       z-index: -2;
     }
-  }
+  } */
 }
 
 
@@ -383,6 +390,10 @@ section{
           display: grid;
           grid-template-columns: 50% 50%;
           padding: 60px 0;
+        }
+
+        .slide.abt.a2{
+          align-items: end;
         }
         .slide.tech{
           padding: 60px 0;
@@ -432,16 +443,25 @@ section{
 }
 
 
-/*************************************** proj & labs *******************************/
+/*************************************** proj & labs & models *******************************/
 .intro-header{
+ max-height: 100vh;
  height: 100vh;
+
+ h1{
+  font-family: 'Nebula', sans-serif;
+  font-weight: 100;
+  font-size: 5rem;
+  color: #ffffff;
+ }
+  
 }
 
 .slider{
   .sliders{
     height: 100vh;
     display: flex;
-    
+
       .slider-cont{
         width: 100vw;
       }
@@ -453,66 +473,82 @@ section{
 
 /*************************************** proj *******************************/
 
-.slider-proj{
+#project{
 
-  .wo-info{
-    width: 100%;
-    position: relative;
+  .intro-header{
+    margin: 0 10px;
+    /* padding-top: 30vh; */
+    /* height: 80vh; */
 
-    .wo-line{
-      width: 100%;
-      height: 2px;
-      background-color: #ffffff;
-    }
-
-    .wo-am{
-      position: absolute;
-      top: 60px;
-      left: 92vw;
-      text-align:justify;
-      z-index: -1;
-
-      h3{
-        font-size: 4rem;
-        margin: 0;
-      }
+    h1{
+      padding-top: 30vh;
     }
   }
+
+}
+
+#project {
+  .slider-proj {
+
+    .wo-info {
+      width: 100%;
+      position: relative;
+
+      .wo-line {
+        width: 100%;
+        height: 2px;
+        background-color: #ffffff;
+      }
+
+      .wo-am {
+        position: absolute;
+        top: 60px;
+        left: 92vw;
+        text-align: justify;
+        z-index: -1;
+
+        h3 {
+          font-size: 4rem;
+          margin: 0;
+        }
+      }
+    }
 
     .sliders {
       .slider-cont {
         display: grid;
-        align-items:safe ;
+        align-items: safe;
         grid-template-rows: 20% 60% 20%;
         /* grid-template-columns: 100%; */
 
-        .s-empty{
+        .s-empty {
           height: auto;
         }
 
         .s-title {
           display: grid;
           grid-template-columns: 50% 50%;
-            .frac-cont {
-              h2 {
-                /* height: 0; */
-                /* margin: 0; */
-                text-align: right;
-                font-size: 2rem;
-                margin-bottom: 0;
-              }
-              .title-line {
-                background-color: #ffffff;
-                width: 100%;
-                height: 3px;
-              }
+
+          .frac-cont {
+            h2 {
+              text-align: right;
+              font-size: 2rem;
+              margin-bottom: 0;
             }
-        
+
+            .title-line {
+              background-color: #ffffff;
+              width: 100%;
+              height: 3px;
+            }
           }
+
+        }
+
         .cont-frac {
           display: grid;
           justify-content: center;
-          align-items:center;
+          align-items: center;
           grid-template-columns: 60% 40%;
 
           .s-video {
@@ -528,20 +564,21 @@ section{
               width: 97%;
               height: auto;
             }
-  
+
           }
-  
+
           .s-desc {
             display: grid;
             grid-template-rows: .5fr .5fr;
             align-items: center;
             justify-content: start;
 
-            .icons{
+            .icons {
               display: flex;
               flex-wrap: wrap;
               gap: 10px;
-              .icon{
+
+              .icon {
                 width: 40px;
                 height: 40px;
               }
@@ -549,14 +586,13 @@ section{
 
           }
         }
-  
-  
+
+
       }
-  
+
     }
 
-
-
+  }
 }
 
 /*************************************** footer *******************************/

@@ -70,7 +70,7 @@ export default class Project{
                         <div class="title-line"> </div>
                     </div>
                 </div>
-                // <span class="s-empty"> </span>
+                <!-- <span class="s-empty"> </span> -->
 
 
             </div>`).join('');
