@@ -21,7 +21,6 @@ export default class Animation{
         this.ui = new Ui();
         this.slide();
         this.setUi();
-        console.log("somee")
         let nav = {
             prev_sv: '',
             prev_p: '',

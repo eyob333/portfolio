@@ -1,4 +1,4 @@
- /* @import url('https://fonts.cdnfonts.com/css/rogan'); */
+ @import url('https://fonts.cdnfonts.com/css/rogan');
 
 @font-face {
   font-family: 'Kapiler'; 
@@ -419,6 +419,11 @@ section{
             .svg-cont{
               width: 50px;
               height: 50px;
+
+              svg{
+                width: 100%;
+                height: 100%;
+              }
             }
           }
         }
@@ -426,22 +431,14 @@ section{
     }
 }
 
-  .tech svg{
-    width: 100%;
-    height: 100%;
-  }
+
 /*************************************** proj & labs *******************************/
 .intro-header{
  height: 100vh;
 }
 
 .slider{
-  /* height: 100vh; */
-  /* overflow-x:auto; */
-  /* overflow: hidden; */
-
   .sliders{
-    /* width: 500vw; */
     height: 100vh;
     display: flex;
     
@@ -469,7 +466,6 @@ section{
     }
 
     .wo-am{
-      color: white;
       position: absolute;
       top: 60px;
       left: 92vw;
@@ -480,14 +476,12 @@ section{
         font-size: 4rem;
         margin: 0;
       }
-      /* font-size: .5rem; */
     }
   }
 
     .sliders {
       .slider-cont {
         display: grid;
-        /* justify-content: center; */
         align-items:safe ;
         grid-template-rows: 20% 60% 20%;
         /* grid-template-columns: 100%; */
@@ -497,7 +491,6 @@ section{
         }
 
         .s-title {
-          
           display: grid;
           grid-template-columns: 50% 50%;
             .frac-cont {
@@ -508,7 +501,6 @@ section{
                 font-size: 2rem;
                 margin-bottom: 0;
               }
-        
               .title-line {
                 background-color: #ffffff;
                 width: 100%;
@@ -516,53 +508,45 @@ section{
               }
             }
         
-        
           }
         .cont-frac {
           display: grid;
           justify-content: center;
           align-items:center;
-          grid-template-columns: 80% 20%;
-          /* gap: 0%; */
-          /* padding: 0 5%; */
+          grid-template-columns: 60% 40%;
 
           .s-video {
-            /* width: 100%; */
-            width: 50%;
+            width: 100%;
             display: flex;
             align-items: center;
-            /* justify-content:end; */
             justify-content: center;
-            /* height: ; */
             max-height: 100%;
-             aspect-ratio: 16 / 9;
-            /* height: 30%; */
+            aspect-ratio: 16 / 9;
             margin: 0;
-  
+
             video {
               width: 97%;
               height: auto;
-              /* max-height: 100px; */
-  
             }
   
           }
   
-          .s-icon {
-            display: flex;
-            flex-direction: column;
+          .s-desc {
+            display: grid;
+            grid-template-rows: .5fr .5fr;
             align-items: center;
-            justify-content: center;
-            width: 100%;
-            .mo-ic {
-              /* padding: 4px; */
-              width: 50px;
-              height: 50px;
-              svg{
-                width: 100%;
-                height: 100%;
+            justify-content: start;
+
+            .icons{
+              display: flex;
+              flex-wrap: wrap;
+              gap: 10px;
+              .icon{
+                width: 40px;
+                height: 40px;
               }
             }
+
           }
         }
   
@@ -575,26 +559,15 @@ section{
 
 }
 
-
-
-/* .slide .slider-cont.tab-overflow{
-  width: 0;
-  height: 0;
-  visibility:hidden;
-} */
-
 /*************************************** footer *******************************/
 
 #contact{
   height: 100vh;
-  /* padding: 90px; */
 }
 
 
 .form-wrapper {
     width: 300px;
-    /* background-color: black; */
-    /* position: relative; */
     padding: 10px;
     box-sizing: border-box;
     transform: scale(1);
@@ -607,21 +580,6 @@ section{
     -webkit-backdrop-filter: blur(4.1px);
     border: 1px solid rgba(255, 255, 255, 0.44);
   }
-
-  /* The primary form background shape */
-  /* .form-wrapper::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0px;
-
-    right: 0;
-    bottom: 0;
-    background-color: rgba(13, 18, 23, 0.95);
-    border: 1px solid #c9d1d9;
-    border-radius: 4px;
-    z-index: -1;
-  } */
 
   h1.form-title {
     color: #c9d1d9;

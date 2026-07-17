@@ -3,7 +3,11 @@ import icons from "./techStackIcons"
 
 
 const img = 'https://picsum.photos/400'
-const desc = 'lourem ipsum, ipsum lourem lot set, scou'
+const desc = 'lourem ipsum,ipsum lourem lot set,scout ament,bala bal secundus'
+
+// let k = desc.split(',')
+// console.log("foo", k)
+
 const vid = "/videos/smt.mp4"
 const rid = [
     icons[1],
@@ -23,7 +27,8 @@ const gojoHomes = {
     link: 'https://gojo-home.vercel.app/',
     role: 'fullstack developer',
     vid,
-    rid
+    rid,
+    desc: desc.split(',')
 }
 
 const flowFileds = {
@@ -32,7 +37,9 @@ const flowFileds = {
     link: 'https://gpgpu-flowfields-shaders.vercel.app/',
     role: 'frontend developer, shader artist',
     vid,
-    rid
+    rid,
+    desc: desc.split(',')
+
 }
 
 const ragingSea = {
@@ -41,7 +48,9 @@ const ragingSea = {
     link: 'https://three-ragingsea-shaders.vercel.app/',
     role: 'frontend developer, shader artist',
     vid,
-    rid
+    rid,
+     desc: desc.split(',')
+
 }
 
 const wobbleSphere = {
@@ -50,7 +59,9 @@ const wobbleSphere = {
     link: 'https://wobble-sphere-shaders.vercel.app/',
     role: 'frontend developer, shader artist',
     vid,
-    rid
+    rid,
+    desc: desc.split(',')
+
 }
 
 const proceduralTerrian = {
@@ -59,7 +70,9 @@ const proceduralTerrian = {
     link: 'https://procedural-terrain-shaders.vercel.app/',
     role: 'frontend developer, shader artist',
     vid,
-    rid
+    rid,
+    desc: desc.split(',')
+
 }
 
 

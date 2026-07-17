@@ -36,18 +36,29 @@ export default class Project{
             <div class="slider-cont i-${i}"> 
                 <span class="s-empty"> </span>
                 <div class="cont-frac"> 
-                    <div class="s-video">   
+                    <div class="s-video">    
                         <video autoplay muted loop >
                             <source src="${d.vid}" type="video/mp4">
                         </video> 
-
                     </div>
 
-                    <div class="s-icon"> 
-                        ${d.rid.map( v => `
-                            <div class="mo-ic"> 
-                                ${v.svg}
-                            </div>`).join('')}
+                    <div class="s-desc"> 
+                        <div class="icons"> 
+                            ${d.rid.map( v => `
+                                <div class="icon"> 
+                                    ${v.svg}
+                                </div>`).join('')
+                            }
+                        </div>
+                        
+                        <div class="desc"> 
+                            <div class="dec-item">
+                                ${d.desc.map( d =>`
+                                    <p>${d}</p>
+                                    `).join('')
+                                }
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -59,7 +70,7 @@ export default class Project{
                         <div class="title-line"> </div>
                     </div>
                 </div>
-                <span class="s-empty"> </span>
+                // <span class="s-empty"> </span>
 
 
             </div>`).join('');
