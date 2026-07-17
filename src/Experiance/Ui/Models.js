@@ -28,8 +28,8 @@ export default class Models{
     setInstance(){
         let projectElement = document.querySelector('div.slider-mod .sliders');
         let i=1
-        let injectElement = this.array.map( (d) => `
-            <div class="slider-cont sli-${}"> 
+        let injectElement = this.array.map( (d, i) => `
+            <div class="slider-cont sli-${i}"> 
                 <div class="s-name"> 
                     <h2> ${d.name}</h2>
                 </div>

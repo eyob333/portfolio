@@ -1,9 +1,13 @@
+import App from "../App";
+
 import Nav from "./Nav";
 import Home from "./Home";
 import Project from "./Project";
 import Labs from "./Labs";
 import Contact from "./Contact";
-import App from "../App";
+import Models from "./Models";
+
+
 
 export default class Ui{
     constructor(){
@@ -18,6 +22,7 @@ export default class Ui{
         this.home = new Home(this.container, this.ui);
         this.project = new Project(this.container, this.ui);
         this.labs = new Labs(this.container, this.ui);
+        this.models = new Models(this.container, this.ui)
         this.contact = new Contact(this.container, this.ui)
 
 

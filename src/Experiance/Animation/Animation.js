@@ -54,6 +54,10 @@ export default class Animation{
 
     }
 
+    nav_hash(){
+
+    }
+
     slide() {
         // let wk = document.querySelector('now');
         // ScrollTrigger.create({

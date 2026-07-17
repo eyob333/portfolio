@@ -1,6 +1,6 @@
 
 const imageLinks = [
-    ""
+    "",
 ]
 
 
@@ -39,7 +39,7 @@ const proceduralMat = {
     role: 'sefsfe'
 }
 
-const earthShader =  {
+const human =  {
     img: 'https://res.cloudinary.com/dufjxw9zz/image/upload/f_webp/v1747926000/Screenshot_2025-05-22_174133_hxgeci.webp',
     link: 'https://earth-shaders-b4.vercel.app/',
     name: 'earth shader',
