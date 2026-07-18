@@ -4,11 +4,10 @@ const imageLinks = [
 ]
 
 
-
 const spaceShip = {
     tumbnail: 'https://res.cloudinary.com/dufjxw9zz/image/upload/f_webp/v1747926000/Screenshot_2025-05-22_174008_qqbg0f.webp',
     link: 'https://sliced-model-shaders.vercel.app/',
-    name: 'sliced model',
+    name: 'space ship',
     description: '',
     role: 'ffsd'
 }
@@ -26,9 +25,8 @@ const portalScene = {
 const surge = {
     img: 'https://res.cloudinary.com/dufjxw9zz/image/upload/f_webp/v1747926004/Screenshot_2025-05-22_174626_m9z1c1.webp',
     link: 'https://particles-morphing-shader-beige.vercel.app/',
-    name: 'particle morphing',
+    name: 'alien',
     description: '',
-    role: 'sdfse'
 }
 
 const proceduralMat = {
@@ -44,15 +42,14 @@ const human =  {
     link: 'https://earth-shaders-b4.vercel.app/',
     name: 'earth shader',
     description: '',
-    role: 'sfseft'
 }
 
 const ModelCards = [
-    slicedModel,
-    sortingVizualizer,
-    particlesMorphing,
-    // particlescursor,
-    // earthShader
+    spaceShip,
+    portalScene,
+    surge,
+    proceduralMat,
+    human
 ]
 
 export default ModelCards

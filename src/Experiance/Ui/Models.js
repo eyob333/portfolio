@@ -1,9 +1,9 @@
-import projects from "../../assets/porojectCards";
+import ModelCards from "../../assets/modelCards";
 
 export default class Models{
     constructor(root){
         this.container = root
-        this.array = projects;
+        this.array = ModelCards;
         this.setParent()
         this.setInstance();
 

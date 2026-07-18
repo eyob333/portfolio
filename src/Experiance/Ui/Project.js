@@ -1,3 +1,4 @@
+import '../Styles/Projects.css'
 import projects from "../../assets/porojectCards";
 
 export default class Project{

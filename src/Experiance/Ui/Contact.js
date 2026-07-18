@@ -1,4 +1,6 @@
 
+import '../Styles/Contact.css'
+
 export default class Contact{
     constructor(root){
         this.container = root

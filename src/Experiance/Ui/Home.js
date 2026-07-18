@@ -1,6 +1,5 @@
+import '../Styles/Home.css'
 import icons from "../../assets/techStackIcons";
-
-
 
 export default class Home{
 

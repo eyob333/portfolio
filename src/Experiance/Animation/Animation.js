@@ -26,8 +26,12 @@ export default class Animation{
             prev_p: '',
             prev_tp: ''
         }
+        let hash = {
+            prevH: '',
+        }
         this.app.event = {
-            nav
+            nav,
+            hash
         }
 
         this.nav = this.app.event.nav
@@ -171,7 +175,7 @@ export default class Animation{
     }
 
 
-    nav_change(sp, p1, pa, to_view) {
+    nav_change(sp, p1, pa, to_view, hash) {
         let spar = sp;
         let p = p1;
         let par = pa;
@@ -179,6 +183,10 @@ export default class Animation{
         let prev_p = this.nav.prev_p
         let prev_spar = this.nav.prev_spar
         let prev_par = this.nav.prev_par
+
+
+        history.replaceState(null, "", `#${hash}`);
+        // console.log("foo hash", hash)
 
 
         if (prev_p && prev_par  && prev_spar ) {
@@ -239,12 +247,13 @@ export default class Animation{
                 let p = par.children[0]
 
                 let k = e.target.classList[1].split('-')[0]
-                console.log(k)
+                // console.log("rru",k)
+                // this.app.event.hash = k
                 let to_view = {
                     target: k
                 }
 
-                this.nav_change(spar, p, par, to_view);
+                this.nav_change(spar, p, par, to_view, k);
 
             })
         });
@@ -259,14 +268,16 @@ export default class Animation{
         // console.log(sc)
 
         scrollArr.forEach( (arr, j) =>{
-            console.log(`foo ${j}`, arr)
+            // console.log(`foo ${j}`, arr)
 
             let elK = document.querySelector(`.${arr.id}-nav-to`)
-            console.log("foo", elK)
+            // console.log("foo elk", arr.id)
 
             let spar = elK.children[0].children[0]
             let par = elK.children[1]
             let p = par.children[0]
+            
+            // let k = par.classList[1].split('-')[0]
 
             ScrollTrigger.create({
                 trigger: arr,
@@ -274,10 +285,10 @@ export default class Animation{
                 start: 'top 5.3%',
                 end: "bottom 60%",
                 onEnter: ()=>{
-                    this.nav_change(spar, p, par)
+                    this.nav_change(spar, p, par, null, arr.id)
                 },
                 onEnterBack: () =>{
-                    this.nav_change(spar,p, par)
+                    this.nav_change(spar,p, par, null, arr.id)
                 }
             })
         })
