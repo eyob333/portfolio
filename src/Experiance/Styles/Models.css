@@ -4,3 +4,53 @@
         
     }
 }
+
+
+#models{
+    .slider.slider-mod{
+        .slider-cont{
+            width: 33vw;
+            .empty{
+                height: 40px;
+                display: block;
+            }
+            .side-m{
+                padding: 30px;
+                /* width: 80%; */
+                .s-image{
+                    img{
+                        width: 100%;
+                        object-fit: contain;
+                        box-sizing: border-box;
+                    }
+                }
+                .s-disc{
+                    .s-line{
+                        width: 100%;
+                        height: 2px;
+                        background-color: #fff;
+                    }
+                    .s-det{
+                        display: grid;
+                        grid-template-columns: 20% 80%;
+
+                        .s-index{
+                            color: #fff;
+                            /* text-align:; */
+                            display: grid;
+                            align-items: end;
+                            justify-content: start;
+                            p{
+                                font-size: 1.5rem;
+                            }
+                        }
+                        .s-name{
+                            text-align: right;
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+}

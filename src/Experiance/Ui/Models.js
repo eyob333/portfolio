@@ -1,5 +1,5 @@
 import ModelCards from "../../assets/modelCards";
-
+import '../Styles/Models.css'
 export default class Models{
     constructor(root){
         this.container = root
@@ -30,9 +30,23 @@ export default class Models{
         let i=1
         let injectElement = this.array.map( (d, i) => `
             <div class="slider-cont sli-${i}"> 
-                <div class="s-name"> 
-                    <h2> ${d.name}</h2>
-                    <img src="${d.img}" />
+                <span class="empty"> </span>
+                <div class="side-m"> 
+                    <div class="s-image">
+                        <img src="${d.img}" />
+                    </div>
+                    <div class="s-disc">
+                        <div class="s-line">
+                        </div>
+                        <div class="s-det"> 
+                            <div class="s-index">
+                                <p>0${i}</p>
+                            </div>
+                            <div class="s-name"> 
+                                <h2> ${d.name}</h2>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>`).join('');
         projectElement.innerHTML = injectElement;

@@ -230,6 +230,7 @@ export default class Animation{
             gsap.to( window, {
                 scrollTo: `#${target}`,
                 scrollBehavior: 'smooth',
+
             })
 
         }

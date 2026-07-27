@@ -3,7 +3,7 @@ const imageLinks = [
     "",
 ]
 
-let img = '/images/0001.png'
+let img = '/images/some.png'
 
 
 const spaceShip = {
@@ -16,7 +16,7 @@ const spaceShip = {
 const portalScene = {
     img,
     link: 'https://sort-visualizer-zeta.vercel.app/',
-    name: 'sorting vizualizer',
+    name: 'portal_scene',
 
 }
 
@@ -30,14 +30,14 @@ const surge = {
 const proceduralMat = {
     img,
     link: 'https://particle-cursor-shaders.vercel.app/',
-    name: 'particles cursor',
+    name: 'procidural mat',
 
 }
 
 const human =  {
     img,
     link: 'https://earth-shaders-b4.vercel.app/',
-    name: 'earth shader',
+    name: 'face',
 }
 
 const ModelCards = [
