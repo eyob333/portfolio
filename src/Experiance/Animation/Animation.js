@@ -301,6 +301,15 @@ export default class Animation{
         gsap.to(element, {
             y: 20
         })
+
+        let title_c = gsap.utils.toArray('.nav-mask .title-cont')
+        title_c.forEach(e => {
+                    gsap.to( e, {
+                        scale: 0,
+                    } )
+                        
+        });
+
     }
 
     setEvent(){

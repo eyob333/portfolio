@@ -32,6 +32,7 @@ export default class Models{
             <div class="slider-cont sli-${i}"> 
                 <div class="s-name"> 
                     <h2> ${d.name}</h2>
+                    <img src="${d.img}" />
                 </div>
             </div>`).join('');
         projectElement.innerHTML = injectElement;

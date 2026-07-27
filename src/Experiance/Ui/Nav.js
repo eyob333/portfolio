@@ -1,3 +1,4 @@
+import '../Styles/Nav.css'
 import ContactIcons from "../../assets/contactIcons";
 import navIcon from "../../assets/navIcon";
 
