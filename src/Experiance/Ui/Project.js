@@ -16,8 +16,10 @@ export default class Project{
         // parent.classList.add('project')
         parent.innerHTML= `
                         <div class="intro-header header-proj"> 
-                            <h1>Projects</h1>
-                            <p>Ideas, Experiments, Tweeks</p>
+                            <div class="title-cont"> 
+                                <h1>Projects</h1>
+                                <p>Ideas, Experiments, Tweeks</p>
+                            </div>
                         </div>
                         <div class="slider slider-proj">
                             <div class="wo-info"> 

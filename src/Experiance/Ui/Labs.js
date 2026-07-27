@@ -14,9 +14,11 @@ export default class Labs{
         parent.classList.add('page')
         // parent.classList.add('labs')
         parent.innerHTML =  `
-                <div class="intro-header header-labs">  
-                    <h1>Labs </h1>
-                    <p>Ideas, Experiments, Tweeks</p>
+                <div class="intro-header header-labs">
+                    <div class="title-cont">  
+                        <h1>Labs </h1>
+                        <p>Ideas, Experiments, Tweeks</p>
+                    </div> 
                 </div>
                 <div class="slider slider-lab">
                     <div class="sliders">

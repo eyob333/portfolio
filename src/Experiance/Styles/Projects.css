@@ -1,13 +1,16 @@
 #project{
 
   .intro-header{
-    margin: 0 10px;
-    /* padding-top: 30vh; */
-    /* height: 80vh; */
-
-    h1{
-      padding-top: 30vh;
+    /* margin: 0 10px; */
+    display: grid;
+    align-items: center;
+    .title-cont{
+      width: fit-content;
     }
+
+    /* h1{
+      padding-top: 30vh;
+    } */
   }
 
 }

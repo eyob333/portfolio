@@ -15,11 +15,14 @@ export default class Models{
         // parent.classList.add('project')
         parent.innerHTML= `
                         <div class="intro-header header-mod"> 
-                            <h1>Models</h1>
-                            <p>Ideas, Experiments, Tweeks</p>
+                            <div class="title-cont">
+                                <h1>Models</h1>
+                                <p>Ideas, Experiments, Tweeks</p>
+                            </div>
                         </div>
                         <div class="slider slider-mod">
                             <div class="sliders">
+
                             </div>
                         </div>
             `;

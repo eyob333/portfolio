@@ -1,7 +1,12 @@
 #models{
 
     .intro-header{
-        
+        display: grid;
+        align-items: center;
+        .title-cont{
+            width: fit-content;
+        }
+
     }
 }
 
