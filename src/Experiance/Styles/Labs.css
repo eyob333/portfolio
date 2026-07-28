@@ -27,3 +27,49 @@
     }
 
 }
+
+#labs {
+    .slider.slider-lab {
+        .sliders {
+            .slider-cont {
+                width: 50vw;
+                .cont-frac {
+                    padding: 0 70px;
+                    .s-empty{
+                        height: 70px;
+                        display: block;
+                    }
+                    .s-vis {
+                        position: relative;
+
+                        .s-image {
+                            /* display: flex;
+                            justify-content: center; */
+                            img {
+                                width: 100%;
+                                object-fit: cover;
+                                
+                            }
+                        }
+                        .s-icon{
+                            position: absolute;
+                            bottom: 0px;
+                            width: 100%;
+                            display: flex;
+                            justify-content:center;
+                            gap: 10px;
+                            /* padding: 0 20px; */
+                            /* flex-direction:row; */
+                            .icon-cont{
+                                svg{
+                                    width: 30px;
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
