@@ -24,7 +24,7 @@ export default class Project{
                         <div class="slider slider-proj">
                             <div class="wo-info"> 
                                 <div class="wo-line"> </div>
-                                <div class="wo-am"> <h3>0</h3></div>
+                                <div class="wo-am"> <h3>000</h3></div>
                             </div>
                             <div class="sliders">
                             </div>

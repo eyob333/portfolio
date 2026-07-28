@@ -109,7 +109,7 @@ export default class Animation{
    
 
         s1Elements.forEach((s1) => {
-            let lockedE = s1.querySelector('.wo-am')
+            let lockedE = s1.querySelector('.wo-am h3')
             let sliderT2 = gsap.timeline({
                 defaults: {
                     ease: 'none'
@@ -121,14 +121,13 @@ export default class Animation{
                     end: () => "+=" + (s1.scrollWidth - window.innerWidth * 1.3),
                     invalidateOnRefresh: true,
                     onUpdate: (self) =>{
-                        console.log(Math.round(self.progress * 100 * 10)/ 10)
-                        if (lockedE)
-                        gsap.to(lockedE.querySelector('h3'),{
-                            ease: "none",
-                            innerText: `${Math.round(self.progress * 100)}%`,
-                            snap: 'innerText',
-                            duration: .4
-                        });
+                        let pl = '000'.split('')
+                        console.log(pl)
+                        let prog = `${Math.round(self.progress * 100)}`.split('')
+                        prog.forEach( (e, j) =>{
+                            pl[(pl.length) - (prog.length- j)] = e
+                        })
+                        lockedE.textContent = pl.join('');
 
                     }
                 }
