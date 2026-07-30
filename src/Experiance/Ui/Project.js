@@ -2,11 +2,14 @@ import '../Styles/Projects.css'
 import projects from "../../assets/porojectCards";
 
 export default class Project{
-    constructor(root){
+    constructor(root, ui){
         this.container = root
-        this.array = projects;
         this.setParent()
         this.setInstance();
+
+        if(ui){
+            this.debug = ui.addFolder('project')
+        }
 
     }
     setParent(){
@@ -23,7 +26,6 @@ export default class Project{
                         </div>
                         <div class="slider slider-proj">
                             <div class="wo-info"> 
-                                <div class="wo-line"> </div>
                                 <div class="wo-am"> <h3>000</h3></div>
                             </div>
                             <div class="sliders">
@@ -34,7 +36,7 @@ export default class Project{
     }
     setInstance(){
         let projectElement = document.querySelector('div.slider-proj .sliders');
-        let injectElement = this.array.map( (d, i) => `
+        let injectElement = projects.map( (d, i) => `
         
             <div class="slider-cont i-${i}"> 
                 <span class="s-empty"> </span>
@@ -78,6 +80,10 @@ export default class Project{
 
             </div>`).join('');
         projectElement.innerHTML += injectElement;
+    }
+
+    setDebug(){
+
     }
 
 }

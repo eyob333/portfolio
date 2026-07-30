@@ -13,11 +13,12 @@ export default class Ui{
     constructor(){
         this.app = new App()
         this.ui = null
+        this.container = document.querySelector("div.section-container-div");
         if(this.app.debug.active){
-            this.ui = this.app.debug.ui.addFolder("Ui");
+            this.ui = this.app.debug.ui.addFolder("Ui")
+            this.setDebug()
         }
 
-        this.container = document.querySelector("div.section-container-div");
         this.nav = new Nav(this.container, this.ui)
         this.home = new Home(this.container, this.ui);
         this.project = new Project(this.container, this.ui);
@@ -25,13 +26,12 @@ export default class Ui{
         this.models = new Models(this.container, this.ui)
         this.contact = new Contact(this.container, this.ui)
 
-
     }
 
 
-    // setDebug(){
-    //     this.ui = this.debug.ui.addFolder("Ui")
-    // }
+    setDebug(){
+        this.ui.addFolder("body")
+    }
 
 }
 

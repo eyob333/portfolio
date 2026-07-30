@@ -78,7 +78,6 @@ export default class Animation{
 
 
         let slider = document.querySelector('.slider-hom')  //.sliders
-        let sliderSections = gsap.utils.toArray('.slider-cont') // .slider-cont
 
         let sliderTl = gsap.timeline({
             defaults: {
@@ -109,7 +108,7 @@ export default class Animation{
    
 
         s1Elements.forEach((s1) => {
-            let lockedE = s1.querySelector('.wo-am h3')
+            let lockedE = s1.querySelector('.wo-am')
             let sliderT2 = gsap.timeline({
                 defaults: {
                     ease: 'none'
@@ -121,13 +120,15 @@ export default class Animation{
                     end: () => "+=" + (s1.scrollWidth - window.innerWidth * 1.3),
                     invalidateOnRefresh: true,
                     onUpdate: (self) =>{
-                        let pl = '000'.split('')
-                        console.log(pl)
-                        let prog = `${Math.round(self.progress * 100)}`.split('')
-                        prog.forEach( (e, j) =>{
-                            pl[(pl.length) - (prog.length- j)] = e
-                        })
-                        lockedE.textContent = pl.join('');
+                        if(lockedE){
+                            let pl = '000'.split('')
+                            let prog = `${Math.round(self.progress * 100)}`.split('')
+                            prog.forEach( (e, j) =>{
+                                pl[(pl.length) - (prog.length- j)] = e
+                            })
+                            let lockedEe = lockedE.querySelector('h3')
+                            lockedEe.textContent = pl.join('');
+                        }
 
                     }
                 }
@@ -322,9 +323,20 @@ export default class Animation{
                 rotate: '+=180deg'
             })
         })
+        // window.addEventListener('scroll', () => {
+        //     let scrollT1 = gsap.timeline({defaults: {
+
+        //     }})
+        //     scrollT1.to('#nav .util', {
+        //         y: '-60px',
+        //         duration: 1.5
+        //     })
+        //     scrollT1.to('.wo-am', {
+        //         y: '-60px'
+        //     })
+        //     console.log("scrolled")
+        // })
     }
-
-
 
 
 }

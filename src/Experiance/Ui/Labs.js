@@ -2,11 +2,14 @@ import LabsCards from "../../assets/labsCards";
 import "../Styles/Labs.css"
 
 export default class Labs{
-    constructor(root){
+    constructor(root, ui){
         this.container = root
-        this.array = LabsCards;
         this.setParent()
         this.setInstance()
+
+        if(ui){
+            this.debug = ui.addFolder('lab')
+        }
     }
     setParent(){
         let parent = document.createElement('section')
@@ -30,7 +33,7 @@ export default class Labs{
     setInstance(){
         let element = document.querySelector('div.slider-lab .sliders');
         let i=0
-        let injectElement = this.array.map( (d,j) => `
+        let injectElement = LabsCards.map( (d,j) => `
             <div class="slider-cont i-${j}"> 
                 <div class="cont-frac"> 
                     <span class="s-empty"> 
@@ -44,7 +47,7 @@ export default class Labs{
                                 <div class='icon-cont'> 
                                     ${k.svg}
                                 </div>
-                                `)}
+                                `).join('')}
                         </div> 
                     </div>
                     <div class="s-desc"> 

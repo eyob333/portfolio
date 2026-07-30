@@ -11,11 +11,11 @@
     height: 75vh;
     background: rgba(255, 255, 255, 0.06);
     /*glass morph*/
-    border-radius: 16px;
+    /* border-radius: 16px; */
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(4.1px);
     -webkit-backdrop-filter: blur(4.1px);
-    border: 1px solid rgba(255, 255, 255, 0.44);
+    border: .5px groove rgba(255, 255, 255, 0.169);
   }
 
   h1.form-title {
@@ -28,7 +28,7 @@
     
   }
 
-  .form-field {
+  .form-field, .submit-wrapper {
     margin-bottom: 10px;
     padding-left: 15px;
   }
@@ -41,10 +41,8 @@
     margin-bottom: 8px;
     padding-left: 5px;
     font-weight: 900;
-      font-family: 'Smooch Sans', sans-serif; 
   }
 
-  /* Styling for the angled text areas */
   input[type="text"], textarea {
     width: calc(100% - 25px);
     padding: 12px;
@@ -65,7 +63,7 @@
 
 /* From https://css.glass */
     background: rgba(255, 255, 255, 0.05);
-    border-radius: 16px;
+    /* border-radius: 16px; */
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(3.2px);
     -webkit-backdrop-filter: blur(3.2px);
@@ -81,14 +79,12 @@
   input[type="text"] {
     background-color: transparent;
     background-color: #0d1217;
-
-/* From https://css.glass */
-background: rgba(255, 255, 255, 0.05);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(3.2px);
--webkit-backdrop-filter: blur(3.2px);
-border: 1px solid rgba(255, 255, 255, 0.5);
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.05);
+    /* border-radius: 16px; */
+    backdrop-filter: blur(3.2px);
+    -webkit-backdrop-filter: blur(3.2px);
+    border: .3px solid rgba(255, 255, 255, 0.5);
   }
 
 
@@ -117,29 +113,26 @@ border: 1px solid rgba(255, 255, 255, 0.5);
     z-index: 1; /* In front of borders */
     /* font-family: 'Smooch Sans', sans-serif;      */
     color: white;
-                                                                        font-family: 'Rogan', sans-serif;
+    /* font-family: 'Rogan', sans-serif; */
                                                 
   }
 
   button.submit-button {
     background-color: #0d1217;
+    width: calc(100% - 25px);
     color: white;
     font-family: 'Smooch Sans', sans-serif; 
     font-size: 1.2rem;
     text-transform: uppercase;
     border: 0px solid #c9d1d9;
-    border-radius: 2px;
+    /* border-radius: 2px; */
     padding: 3px 30px;
     cursor: pointer;
     position: relative;
-    overflow: hidden;
-
-
-    /* From https://css.glass */
     background: rgba(255, 255, 255, 0.19);
     /* border-radius: 16px; */
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(6.8px);
     -webkit-backdrop-filter: blur(6.8px);
-    border: 1px solid rgba(255, 255, 255, 0.28);
+    border: .5px solid rgba(255, 255, 255, 0.28);
   }

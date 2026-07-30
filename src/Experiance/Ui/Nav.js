@@ -4,9 +4,13 @@ import navIcon from "../../assets/navIcon";
 
 
 export default class Nav{
-    constructor(root){
+    constructor(root, ui){
         this.container = root
         this.setInstance();
+
+        if(ui){
+            this.debug = ui.addFolder('nav')
+        }
     }
 
     setInstance(){
@@ -66,7 +70,9 @@ export default class Nav{
             </div>
             `).join('')
         socialI.innerHTML = injectSocial;
+    }
 
+    setDebug(){
 
     }
 }

@@ -3,9 +3,13 @@ import icons from "../../assets/techStackIcons";
 
 export default class Home{
 
-    constructor(root){
+    constructor(root, ui){
         this.container = root
         this.setInstance();
+        if(ui){
+            this.debug = ui.addFolder('home')
+        }
+
     }
 
     setInstance(){
@@ -77,7 +81,6 @@ export default class Home{
 
         this.container.appendChild(element);
 
-
         let techE =document.querySelector('.icon-cont');
         techE.innerHTML = icons.map(icon => `
           <div class="icon tech-i">
@@ -89,6 +92,17 @@ export default class Home{
             </div>
           </div>
         `).join('')
+    }
+
+
+    setDebug(){
+        // title section
+        this.debug.addFolder('h1')
+        this.debug.addFolder('p')
+        this.debug.addFolder('water-m')
+
+        // slider section
+
     }
           
 }
