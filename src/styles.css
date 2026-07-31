@@ -95,15 +95,13 @@ h1, h2, h3, h4, h5, h6, p{
    padding: 0;
 }
 
-/*sections */
-/* .page{
-  min-width: 100vh;
-} */
-.page h1{
+
+
+/* .page h1{
   font-family: 'Smooch Sans', sans-serif; 
   font-size: 3rem;
   color: #ffffffa9;    
-}
+} */
 .page p{
   font-family: 'Jura', sans-serif;
 }
