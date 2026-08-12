@@ -46,9 +46,15 @@ export default class Labs{
 
     setInstance(){
         let element = document.querySelector('div.slider-lab .sliders');
-        let injectElement = LabsCards.map( (d,i) => `
+        console.log("foo end",LabsCards.length)
+        let injectElement = LabsCards.map( (d,i) => {
 
-          <div class="slider-cont sli-${i}"> 
+        if( i == 0){
+            return  `<div> something </div>`
+        }
+
+        else if (i !==0 && i < LabsCards.length-1){
+            return ` <div class="slider-cont sli-${i}"> 
                 <div class="side-m"> 
                     <div class="s-vis">
                         <div class="s-image">
@@ -74,33 +80,19 @@ export default class Labs{
                         </div>
                     </div>
                 </div>
-            </div>`).join('');
-            // <div class="slider-cont i-${j}"> 
-            //     <div class="cont-frac"> 
-            //         <span class="s-empty"> 
-            //         </span>
-            //         <div class="s-vis"> 
-            //             <div class="s-image"> 
-            //                 <img src="${d.img}" >
-            //             </div>
-            //             <div class="s-icon"> 
-            //                 ${d.icon.map( k =>`
-            //                     <div class='icon-cont'> 
-            //                         ${k.svg}
-            //                     </div>
-            //                     `).join('')}
-            //             </div> 
-            //         </div>
-            //             <div class="s-det"> 
-            //                 <div class="s-index">
-            //                     <p>0${j}</p>
-            //                 </div>
-            //                 <div class="s-name"> 
-            //                     <h2> ${d.name}</h2>
-            //                 </div>
-            //             </div>
-            //     </div>
-            // </div>`).join('');
+            </div> `
+        }
+
+        else{
+            return `<div> something else </div>`
+        }
+
+
+        // ( i >= LabsCards.length ) && `<div> something else </div>`
+        
+    }).join('')
+            
+
         element.innerHTML = injectElement;
         
     }

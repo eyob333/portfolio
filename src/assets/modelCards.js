@@ -45,7 +45,8 @@ const ModelCards = [
     portalScene,
     surge,
     proceduralMat,
-    human
+    human,
+    "spawn"
 ]
 
 export default ModelCards

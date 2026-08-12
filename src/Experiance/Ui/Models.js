@@ -3,7 +3,6 @@ import '../Styles/Models.css'
 export default class Models{
     constructor(root){
         this.container = root
-        this.array = ModelCards;
         this.setParent()
         this.setInstance();
 
@@ -45,27 +44,37 @@ export default class Models{
     }
     setInstance(){
         let projectElement = document.querySelector('div.slider-mod .sliders');
-        let i=1
-        let injectElement = this.array.map( (d, i) => `
-            <div class="slider-cont sli-${i}"> 
-                <div class="side-m"> 
-                    <div class="s-image">
-                        <img src="${d.img}" />
-                    </div>
-                    <div class="s-disc">
-                        <div class="s-line">
-                        </div>
-                        <div class="s-det"> 
-                            <div class="s-index">
-                                <p>0${i}</p>
+        let injectElement = ModelCards.map( (d, i) => {
+            if( i == 0){
+                return  `<div> something </div>`
+            }
+            else if (i !==0 && i < ModelCards.length-1){
+                return`
+                    <div class="slider-cont sli-${i}"> 
+                        <div class="side-m"> 
+                            <div class="s-image">
+                                <img src="${d.img}" />
                             </div>
-                            <div class="s-name"> 
-                                <h2> ${d.name}</h2>
+                            <div class="s-disc">
+                                <div class="s-line">
+                                </div>
+                                <div class="s-det"> 
+                                    <div class="s-index">
+                                        <p>0${i}</p>
+                                    </div>
+                                    <div class="s-name"> 
+                                        <h2> ${d.name}</h2>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>`).join('');
+                    </div>`
+             }
+            else{
+                return  `<div> something else</div>`
+            }
+
+        }).join('');
         projectElement.innerHTML = injectElement;
     }
 

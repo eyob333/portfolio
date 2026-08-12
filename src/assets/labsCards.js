@@ -63,7 +63,8 @@ const LabsCards = [
     sortingVizualizer,
     particlesMorphing,
     particlescursor,
-    earthShader
+    earthShader,
+    "spawn"
 ]
 
 export default LabsCards

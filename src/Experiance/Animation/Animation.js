@@ -117,7 +117,7 @@ export default class Animation{
                     trigger: s1,       // Tracks this specific element
                     pin: true,         // Pins this specific element
                     scrub: 1,
-                    end: () => "+=" + (s1.scrollWidth - window.innerWidth * 1.3),
+                    end: () => "+=" + (s1.scrollWidth - window.innerWidth * .7),
                     invalidateOnRefresh: true,
                     onUpdate: (self) =>{
                         if(lockedE){

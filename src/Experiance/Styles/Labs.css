@@ -27,134 +27,109 @@
     }
 
 }
-
 #labs {
-.slider.slider-lab{
+    .slider.slider-lab {
         display: grid;
         grid-template-rows: 9% 91%;
-        .wo-am{
+
+        .wo-am {
             /* overflow: hidden; */
             position: relative;
             max-width: 100vw;
-            .wo-spacer{
+
+            .wo-spacer {
                 display: grid;
                 justify-content: center;
                 /* background-color:blueviolet; */
                 width: fit-content;
                 position: absolute;
-                bottom: 0;
+                bottom: 5px;
                 right: 200px;
-                svg{
-                    width: 350px;
-                    height: 40px;
-                    /* background-color: beige; */
-                }    
+                display: grid;
+                align-items:end;
+
+                svg {
+                    width: 280px;
+                    height: 35.5px;
+                }
             }
-  
+
         }
 
-        .slider-cont{
+        .slider-cont {
             width: 33vw;
-            .empty{
+
+            .empty {
                 height: 40px;
                 display: block;
             }
-            .side-m{
+
+            .side-m {
                 padding: 30px;
                 padding-top: 20px;
                 /* width: 80%; */
 
                 .s-vis {
-                        position: relative;
+                    position: relative;
 
-                        .s-image{
-                            img{
-                                width: 100%;
-                                object-fit: contain;
-                                box-sizing: border-box;
-                            }
-                        }
-
-                        .s-icon{
-                            position: absolute;
-                            bottom: 0px;
+                    .s-image {
+                        img {
                             width: 100%;
-                            display: flex;
-                            justify-content:center;
-                            gap: 10px;
-
-                            .icon-cont{
-                                svg{
-                                    width: 30px;
-                                }
-                            }
-
+                            object-fit: contain;
+                            box-sizing: border-box;
                         }
                     }
-                
+
+                    .s-icon {
+                        position: absolute;
+                        bottom: 0px;
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+                        gap: 10px;
+
+                        .icon-cont {
+                            svg {
+                                width: 30px;
+                            }
+                        }
+
+                    }
+                }
 
 
-                
-                .s-disc{
-                    .s-line{
+
+
+                .s-disc {
+                    .s-line {
                         width: 100%;
                         height: 2px;
                         background-color: #fff;
                     }
-                    .s-det{
+
+                    .s-det {
                         display: grid;
                         grid-template-columns: 20% 80%;
 
-                        .s-index{
+                        .s-index {
                             color: #fff;
                             /* text-align:; */
                             display: grid;
                             align-items: end;
                             justify-content: start;
-                            p{
+
+                            p {
                                 font-size: 1.5rem;
                             }
                         }
-                        .s-name{
+
+                        .s-name {
                             text-align: right;
                         }
                     }
                 }
             }
         }
-        
+
     }
-}                
-/* .cont-frac {
-                    padding: 0 70px;
-                    .s-empty{
-                        height: 70px;
-                        display: block;
-                    }
-                    .s-vis {
-                        position: relative;
-
-                        .s-image {
-                            img {
-                                width: 100%;
-                                object-fit: cover;
-                                
-                            }
-                        }
-                        .s-icon{
-                            position: absolute;
-                            bottom: 0px;
-                            width: 100%;
-                            display: flex;
-                            justify-content:center;
-                            gap: 10px;
-
-                            .icon-cont{
-                                svg{
-                                    width: 30px;
-                                }
-                            }
-
-                        }
-                    }
-                } */
+}

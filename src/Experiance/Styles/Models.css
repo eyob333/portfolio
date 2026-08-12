@@ -25,12 +25,11 @@
                 /* background-color:blueviolet; */
                 width: fit-content;
                 position: absolute;
-                bottom: 0;
+                bottom: 10px;
                 right: 200px;
                 svg{
-                    width: 350px;
-                    height: 40px;
-                    /* background-color: beige; */
+                    width: 280px;
+                    height: 27px;
                 }    
             }
   
