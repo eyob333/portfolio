@@ -21,9 +21,10 @@ export default class Ui{
 
         this.nav = new Nav(this.container, this.ui)
         this.home = new Home(this.container, this.ui);
-        this.project = new Project(this.container, this.ui);
-        this.labs = new Labs(this.container, this.ui);
+        this.project = new Project(this.container, this.ui);        
         this.models = new Models(this.container, this.ui)
+        this.labs = new Labs(this.container, this.ui);
+
         this.contact = new Contact(this.container, this.ui)
 
     }
