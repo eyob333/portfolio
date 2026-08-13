@@ -74,6 +74,11 @@
                         }
                         .s-name{
                             text-align: right;
+                            h2{
+                                font-family: 'Radenes', sans-serif;
+                                font-weight: 100;
+                            }
+
                         }
                     }
                 }
