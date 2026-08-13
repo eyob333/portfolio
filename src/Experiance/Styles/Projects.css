@@ -38,6 +38,7 @@
         h3 {
           font-size: 4rem;
           margin: 0;
+          /* font-family: 'FnT_BasicShapes1', sans-serif; */
         }
       }
     }
@@ -67,6 +68,8 @@
               margin-bottom: 0;
               font-family: 'Radenes', sans-serif;
               font-weight: 300;
+              text-transform: capitalize;
+              letter-spacing: .08rem;
             }
 
             .title-line {
