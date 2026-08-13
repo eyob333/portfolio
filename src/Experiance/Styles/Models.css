@@ -55,8 +55,8 @@
                 .s-disc{
                     .s-line{
                         width: 100%;
-                        height: 2px;
-                        background-color: #fff;
+                        height: .7px;
+                        background-color: #ffffff;
                     }
                     .s-det{
                         display: grid;

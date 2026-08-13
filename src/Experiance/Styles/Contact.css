@@ -1,5 +1,6 @@
 #contact{
   height: 100vh;
+  width: 100vw;
 }
 
 
@@ -135,4 +136,16 @@
     backdrop-filter: blur(6.8px);
     -webkit-backdrop-filter: blur(6.8px);
     border: .5px solid rgba(255, 255, 255, 0.28);
+  }
+
+  .contacts{
+    display: grid;
+    width: 100%;
+    grid-template-columns: 95% 5%;
+    .footer-mark{
+      display: flex;
+      /* justify-content: ; */
+      flex-direction: column;
+      /* flex-direction: ; */
+    }
   }

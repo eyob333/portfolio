@@ -47,7 +47,10 @@ export default class Contact{
                             <button type="submit" class="submit-button">Submit Inquiry</button>
                         </div>
                     </form>
-                    </div>
+                </div>
+
+                <div class="footer-mark"> <p>something something </p> </div> 
+                
             </div>
             `;
         this.container.appendChild(element);

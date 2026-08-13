@@ -65,12 +65,14 @@
               text-align: right;
               font-size: 2.5rem;
               margin-bottom: 0;
+              font-family: 'Radenes', sans-serif;
+              font-weight: 300;
             }
 
             .title-line {
               background-color: #ffffff;
               width: 100%;
-              height: 3px;
+              height: 1px;
             }
           }
 
@@ -105,7 +107,7 @@
             display: grid;
             grid-template-rows: .5fr .5fr;
             align-items: center;
-            justify-content: start;
+            justify-content: end;
 
             .icons {
               display: flex;
