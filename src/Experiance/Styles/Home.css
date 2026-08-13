@@ -97,8 +97,12 @@
       grid-template-columns: 40% 60%;
 
       .title-cont {
-        font-size: 2.5rem;
-        font-family: 'Nebula', sans-serif;
+        h2{
+          font-size: 2.5rem;
+          font-family: 'Nebula', sans-serif;
+          font-weight: 100;
+        }
+
       }
 
 

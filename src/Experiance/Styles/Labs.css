@@ -130,6 +130,8 @@
                             h2{
                                 font-family: 'Radenes', sans-serif;
                                 font-weight: 100;
+                                text-transform: capitalize;
+                                letter-spacing: .08rem;
                             }
                         }
                     }

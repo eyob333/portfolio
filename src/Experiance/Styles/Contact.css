@@ -1,5 +1,5 @@
 #contact{
-  height: 100vh;
+  height: 120vh;
   width: 100vw;
 }
 
@@ -21,11 +21,14 @@
 
   h1.form-title {
     color: #c9d1d9;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     font-weight: normal;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     margin-bottom: 10px;
     padding-left: 17px;
+    /* font-family: 'Jura', sans-serif; */
+    font-weight: 100;
+
     
   }
 
@@ -41,7 +44,8 @@
     /* text-transform: uppercase; */
     margin-bottom: 8px;
     padding-left: 5px;
-    font-weight: 900;
+    font-weight: 300;
+    font-family: 'Jura', sans-serif;
   }
 
   input[type="text"], textarea {
@@ -52,8 +56,10 @@
     color: white;
     font-family: 'Smooch Sans', sans-serif; 
     font-family: 'Qualio', sans-serif;
-    font-family: 'Rogan', sans-serif;
-
+    /* font-family: 'Rogan', sans-serif; */
+    font-family: 'Radenes', sans-serif;
+    font-weight: 100;
+    letter-spacing: .06rem;
                                                 
                                               
     font-size: .7rem;
@@ -122,7 +128,7 @@
     background-color: #0d1217;
     width: calc(100% - 25px);
     color: white;
-    font-family: 'Smooch Sans', sans-serif; 
+    font-family: 'Jura', sans-serif;
     font-size: 1.2rem;
     text-transform: uppercase;
     border: 0px solid #c9d1d9;
@@ -138,10 +144,24 @@
     border: .5px solid rgba(255, 255, 255, 0.28);
   }
 
+  #contact{
+    .s-empty{
+      height: 20vh;
+      width: 100%;
+      display: block;
+    }
+
+  }
   .contacts{
     display: grid;
     width: 100%;
+    height: 100vh;
     grid-template-columns: 95% 5%;
+
+    .form-wrapper{
+      display: grid;
+      justify-self: end;
+    }
     .footer-mark{
       display: flex;
       /* justify-content: ; */

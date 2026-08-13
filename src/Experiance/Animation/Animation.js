@@ -212,7 +212,7 @@ export default class Animation{
             scale: 1
         })
         gsap.to(p, {
-            fontSize: '1.4rem'
+            fontSize: '1.1rem'
         })
 
         this.nav.prev_p = p;

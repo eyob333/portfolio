@@ -58,10 +58,12 @@ export default class Project{
                         
                         <div class="desc"> 
                             <div class="dec-item">
-                                ${d.desc.map( d =>`
-                                    <p>${d}</p>
-                                    `).join('')
-                                }
+                                <p>
+                                    ${d.desc.map( d =>`
+                                        <p>${d}</p>
+                                        `).join('')
+                                    }
+                                </p>
                             </div>
                         </div>
                     </div>

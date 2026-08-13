@@ -106,6 +106,7 @@
           .s-desc {
             display: grid;
             grid-template-rows: .5fr .5fr;
+            gap: 50px;
             align-items: center;
             justify-content: end;
 
@@ -117,6 +118,12 @@
               .icon {
                 width: 40px;
                 height: 40px;
+              }
+            }
+            .dec-item{
+              text-align: right;
+              p{
+                line-height: 1.5rem;
               }
             }
 

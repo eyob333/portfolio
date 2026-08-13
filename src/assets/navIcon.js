@@ -50,7 +50,7 @@ let navIcon;
 export default navIcon =[
     h,
     p,
-    l,
     m,
+    l,
     c
 ]
