@@ -119,18 +119,18 @@ export default class Animation{
                     scrub: 1,
                     end: () => "+=" + (s1.scrollWidth - window.innerWidth * .7),
                     invalidateOnRefresh: true,
-                    onUpdate: (self) =>{
-                        if(lockedE){
-                            let pl = '000'.split('')
-                            let prog = `${Math.round(self.progress * 100)}`.split('')
-                            prog.forEach( (e, j) =>{
-                                pl[(pl.length) - (prog.length- j)] = e
-                            })
-                            let lockedEe = lockedE.querySelector('h3')
-                            lockedEe.textContent = pl.join('');
-                        }
+                    // onUpdate: (self) =>{
+                    //     if(lockedE){
+                    //         let pl = '000'.split('')
+                    //         let prog = `${Math.round(self.progress * 100)}`.split('')
+                    //         prog.forEach( (e, j) =>{
+                    //             pl[(pl.length) - (prog.length- j)] = e
+                    //         })
+                    //         let lockedEe = lockedE.querySelector('h3')
+                    //         lockedEe.textContent = pl.join('');
+                    //     }
 
-                    }
+                    // }
                 }
                 
             });

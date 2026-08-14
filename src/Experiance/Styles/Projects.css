@@ -17,42 +17,37 @@
 
 #project {
   .slider-proj {
+        display: grid;
+        grid-template-rows: 10% 90%;
+        .wo-am {
+            max-width: 100vw;
+            position: relative;
 
-    .wo-info {
-      width: 100%;
-      position: relative;
+            .wo-spacer{
+                display: grid;
+                justify-content: center;
+                /* background-color:blueviolet; */
+                width: fit-content;
+                position: absolute;
+                bottom: 5px;
+                right: 200px;
+                display: grid;
+                align-items:end;
 
-      .wo-line {
-        width: 100%;
-        height: 2px;
-        background-color: #ffffff;
-      }
+                svg {
+                    width: 280px;
+                    height: 35.5px;
+                }
+            }
 
-      .wo-am {
-        position: absolute;
-        top: 60px;
-        left: 92vw;
-        text-align: justify;
-        z-index: -1;
-
-        h3 {
-          font-size: 4rem;
-          margin: 0;
-          /* font-family: 'FnT_BasicShapes1', sans-serif; */
         }
-      }
-    }
 
     .sliders {
       .slider-cont {
         display: grid;
         align-items: safe;
-        grid-template-rows: 20% 55% 25%;
+        grid-template-rows: 65% 35%;
         /* grid-template-columns: 100%; */
-
-        .s-empty {
-          height: auto;
-        }
 
         .s-title {
           display: grid;
