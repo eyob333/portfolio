@@ -6,14 +6,16 @@
 
   .text-cont {
     width: fit-content;
-    margin-bottom: 50px;
+    margin-bottom: 100px;
     margin-left: 10px;
     .heading-cont {
 
       h1 {
         font-family: 'Kapiler';
+        font-family: 'Nebula', sans-serif;
         text-transform: uppercase;
-        font-size: 2rem;
+        font-weight: 100;
+        font-size: 2.6rem;
         margin: 0;
         color: #ffffff;
       }
@@ -29,9 +31,10 @@
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 
         h4 {
-          font-family: 'Jura', sans-serif;
-          font-size: 1.3rem;
-          font-weight: 200;
+          font-family: 'Radenes', sans-serif;
+          font-weight: 500;
+          font-size: 1.2rem;
+          /* font-weight: 100; */
           margin: 0;
           letter-spacing: .09rem;
           color: #d8d8d8;
