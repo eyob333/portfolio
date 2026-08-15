@@ -17,19 +17,22 @@ export default class Home{
         element.id = 'home';
         element.classList.add('page');
         element.innerHTML = `
-            <div class="header-home sec">
-                <div class="heading-cont" >
-                    <h1>winter nomad</h1>
-                </div>
-                <div class="subhead-cont">
-                    <span> </span>
-                    <div class="mask">
-                        <h4 class="primary">Software Engnieer</h4>
-                        <h4 class="secondary">Fullstack Developer</h4>
-                        <h4 class="teritiary">Shader Artist</h4> 
-                        <h4 class="fourth">Createive Developer</h4>
+            <div class="page-home sec">
+                <div class="text-cont"> 
+                    <div class="heading-cont" >
+                        <h1>winter nomad</h1>
                     </div>
-                 </div>
+
+                    <div class="subhead-cont">
+                        <span> </span>
+                        <div class="mask">
+                            <h4 class="primary">Software Engnieer</h4>
+                            <h4 class="secondary">Fullstack Developer</h4>
+                            <h4 class="teritiary">Shader Artist</h4> 
+                            <h4 class="fourth">Createive Developer</h4>
+                        </div>
+                    </div>
+                 </div> 
             </div>
 
             <div class="slider-hom sec"> 

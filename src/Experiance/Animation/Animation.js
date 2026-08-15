@@ -264,9 +264,7 @@ export default class Animation{
    
     scroll_trig(){
         let scrollArr = gsap.utils.toArray('section')
-        console.log(scrollArr);
-
-        // console.log(sc)
+        // console.log(scrollArr);
 
         scrollArr.forEach( (arr, j) =>{
             // console.log(`foo ${j}`, arr)
@@ -293,6 +291,26 @@ export default class Animation{
                 }
             })
         })
+
+        let introTrig = gsap.utils.toArray('section .intro-header')
+        // let introTimel = gsap.timeline( {defaults: {
+        //     scrollTrigger: {
+        //         trigger: introTrig,
+        //         markers: true
+        //     }
+        // }})
+
+        introTrig.forEach( e => {
+            const t = gsap.timeline( {defaults: {
+                trigger: e,
+                marker: true,
+                start: 'top 5.3%',
+                end: "bottom 60%",
+            }})
+        });
+        console.log(introTrig)
+
+
 
     }
 

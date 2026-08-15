@@ -6,6 +6,7 @@ import Project from "./Project";
 import Labs from "./Labs";
 import Contact from "./Contact";
 import Models from "./Models";
+import HUnderlay from "./HUnderlay";
 
 
 
@@ -14,6 +15,8 @@ export default class Ui{
         this.app = new App()
         this.ui = null
         this.container = document.querySelector("div.section-container-div");
+        this.underlay = document.querySelector("div.underlay-container-div")
+
         if(this.app.debug.active){
             this.ui = this.app.debug.ui.addFolder("Ui")
             this.setDebug()
@@ -24,8 +27,9 @@ export default class Ui{
         this.project = new Project(this.container, this.ui);        
         this.models = new Models(this.container, this.ui)
         this.labs = new Labs(this.container, this.ui);
-
         this.contact = new Contact(this.container, this.ui)
+
+        this.homeUnderlay = new HUnderlay(this.underlay, this.ui);
 
     }
 

@@ -31,8 +31,8 @@ body{
   padding: 0;
   border: 0;
   /* overflow: hidden; */
-  background-color: #202020;
-  overflow-x: hidden;
+  background-color: #000000;
+  /* overflow-x: hidden; */
   /* zoom: .5; */
 }
 
@@ -102,6 +102,10 @@ h1, h2, h3, h4, h5, h6, p{
    padding: 0;
 }
 
+.under-container-div{
+  z-index: 1;
+  position: absolute;
+}
 
 
 /* .page h1{

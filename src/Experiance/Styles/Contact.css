@@ -156,16 +156,23 @@
     display: grid;
     width: 100%;
     height: 100vh;
-    grid-template-columns: 95% 5%;
+    grid-template-columns: 90% 10%;
 
     .form-wrapper{
       display: grid;
       justify-self: end;
     }
     .footer-mark{
-      display: flex;
-      /* justify-content: ; */
-      flex-direction: column;
-      /* flex-direction: ; */
+      /* transform: scaleY(-1); */
+      transform: rotateX(90deg);
+      transform-origin: right;
+      width: 100%;
+      height: fit-content;
+
+      p{
+        background-color: aliceblue;
+        color: #0d1217;
+      width: 100%;
+      }
     }
   }
