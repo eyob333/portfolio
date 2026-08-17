@@ -32,7 +32,7 @@ body{
   border: 0;
   /* overflow: hidden; */
   background-color: #000000;
-  /* overflow-x: hidden; */
+  overflow-x: hidden; 
   /* zoom: .5; */
 }
 

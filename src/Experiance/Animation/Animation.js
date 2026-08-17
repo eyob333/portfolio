@@ -332,6 +332,7 @@ export default class Animation{
     }
 
     setEvent(){
+        let device = this.app.sizes.device;
         let element = document.querySelector(".util .theme .icons-t")
         console.log(element)
 
