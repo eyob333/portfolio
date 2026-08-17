@@ -68,7 +68,6 @@
     width: calc(100% - 75px);
     transform: scaleX(0);
     transform-origin: left;
-    /* padding-left: 20px; */
     margin: 0 25px;
   }
 
@@ -97,9 +96,10 @@
       }
     }
 
-    .slide.abt.a1{
+    .slide.abt.a1 {
       grid-template-columns: 30% 60%;
-      .detail-cont{
+
+      .detail-cont {
         max-width: 90%;
         justify-self: end;
       }
@@ -107,7 +107,8 @@
 
     .slide.abt.a2 {
       align-items: end;
-      .detail-cont{
+
+      .detail-cont {
         max-width: 90%;
         justify-self: end;
       }
@@ -116,22 +117,24 @@
     .slide.tech {
       padding: 60px 0;
       display: grid;
-      grid-template-columns: 40%  40%;
+      grid-template-columns: 40% 40%;
       gap: 15%;
 
       .title-cont {
         margin-top: 150px;
-        
+
         h2 {
           font-size: 3.3rem;
           font-family: 'Nebula', sans-serif;
           font-weight: 100;
           margin-bottom: 10px;
         }
-        .sub-h-cont{
+
+        .sub-h-cont {
           max-width: 75%;
-          p{
-            font-weight:300;
+
+          p {
+            font-weight: 300;
           }
         }
       }
@@ -139,7 +142,7 @@
 
       .icon-cont {
         display: flex;
-        flex-wrap:wrap;
+        flex-wrap: wrap;
         flex-shrink: 4;
         justify-content: center;
         align-items: center;
@@ -165,7 +168,7 @@
             }
           }
 
-          .icon-name{
+          .icon-name {
             font-size: .8rem;
             font-weight: 400;
           }
@@ -176,4 +179,58 @@
     }
 
   }
+}
+
+
+
+@media (width < 440px) {
+  #home .page-home {
+    .text-cont {
+      margin-bottom: 200px;
+
+      .heading-cont {
+
+        h1 {
+          font-size: 1.7rem;
+          font-weight: 100;
+        }
+
+      }
+
+      .subhead-cont {
+
+        .mask {
+          h4 {
+            font-weight: 100;
+            font-size: .8rem;
+          }
+        }
+      }
+
+    }
+
+
+  }
+}
+
+@media (width < 440px) {
+
+  #home .slider-hom {
+    .slide-hom {
+
+      .slide.abt.a1,
+      .slide.abt.a2 {
+        display: grid;
+        grid-template-columns: 10% 80%;
+        padding: 50px 0;
+
+        p {
+          font-weight: 300;
+          font-size: .7rem;
+          /* letter-spacing: .1rem; */
+        }
+      }
+    }
+  }
+
 }
