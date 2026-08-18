@@ -24,11 +24,7 @@
         }
 
         .slider-cont{
-            width: 33vw;
-            .empty{
-                height: 40px;
-                display: block;
-            }
+
             .side-m{
                 padding: 30px;
                 padding-top: 20px;

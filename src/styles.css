@@ -189,7 +189,7 @@ section {
     }
 
     .sliders {
-      height: 100vh;
+      height: 100%;
       display: flex;
 
       .slider-cont {
@@ -202,7 +202,17 @@ section {
 
 }
 
-
+#labs,
+#models {
+  .slider{
+    .sliders {
+      .slider-cont {
+        width: 33vw;
+        height: fit-content;
+      }
+    }
+  }
+}
 
 
 @media (width < 440px) {
@@ -245,15 +255,26 @@ section {
       }
 
       .sliders {
-        height: 100vh;
-        display: flex;
-
         .slider-cont {
           width: 100vw;
         }
       }
 
     }
+
+  }
+
+  #labs, #models{
+    .slider{
+      .sliders{
+        .slider-cont {
+          width: 97vw;
+          height: fit-content;
+        }
+      }
+      
+    }
+
 
   }
 }
