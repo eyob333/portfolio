@@ -14,6 +14,7 @@
 #models{
     .slider.slider-mod{
         .wo-am{
+            /* overflow: hidden; */
             /*.wo-spacer{
                 svg{
                     width: 280px;
@@ -24,7 +25,10 @@
         }
 
         .slider-cont{
-
+            .empty{
+                height: 40px;
+                display: block;
+            }
             .side-m{
                 padding: 30px;
                 padding-top: 20px;

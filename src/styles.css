@@ -25,29 +25,27 @@
   src: url('/fonts/identidad-cdnfonts/Identidad-ExtraLight.otf') format('truetype');
 }
 
-html,body{
+html,
+body {
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
-  position: relative;
 }
 
 body {
   margin: 0;
-  padding: 0;
   border: 0;
   background-color: #000000;
-
   /* zoom: .5; */
 }
 
 canvas {
   margin: 0;
   border: 0;
-  padding: 0;
   position: fixed;
   top: 0;
   left: 0;
+
   z-index: 2;
   outline: none;
   background-color: transparent;
@@ -167,121 +165,131 @@ section {
 
   }
 
-  .slider {
-    display: grid;
-    grid-template-rows: 9% 91%;
+  .slide-wrapper {
+    .slider {
+      display: grid;
+      grid-template-rows: 9% 91%;
 
-    .wo-am {
-      /* overflow: hidden; */
-      position: relative;
-      max-width: 100vw;
+      .wo-am {
+        /* overflow: hidden; */
+        position: relative;
+        max-width: 100vw;
 
-      .wo-spacer {
-        display: grid;
-        justify-content: center;
-        /* background-color:blueviolet; */
-        width: fit-content;
-        position: absolute;
-        bottom: 10px;
-        right: 200px;
+        .wo-spacer {
+          display: grid;
+          justify-content: center;
+          /* background-color:blueviolet; */
+          width: fit-content;
+          position: absolute;
+          bottom: 10px;
+          right: 200px;
 
-        svg {
-          width: 280px;
-          height: 27px;
+          svg {
+            width: 280px;
+            height: 27px;
+          }
         }
       }
-    }
 
-    .sliders {
-      height: 100dvh;
-      display: flex;
+      .sliders {
+        height: 100dvh;
+        display: flex;
 
-      .slider-cont {
-        width: 100vw;
+        .slider-cont {
+          width: 100vw;
+        }
       }
+
     }
 
   }
-
 
 }
 
 #labs,
 #models {
-  .slider {
-    .sliders {
-      .slider-cont {
-        width: 33dvw;
-        height: fit-content;
+  .slide-wrapper {
+    width: 100%;
+    max-width: 100vw;
+    overflow: hidden; /* Clips GSAP track overflow from native scrollbar */
+    position: relative;
+    touch-action: pan-y;
+
+    .slider {
+      .sliders {
+        .slider-cont {
+          width: 33dvw;
+          height: fit-content;
 
 
-        .side-m {
-          padding: 30px;
-          padding-top: 20px;
-          padding-bottom: 10px;
-          /* width: 80%; */
+          .side-m {
+            padding: 30px;
+            padding-top: 20px;
+            padding-bottom: 10px;
+            /* width: 80%; */
 
-          .s-vis {
-            position: relative;
+            .s-vis {
+              position: relative;
 
-            .s-image {
-              img {
+              .s-image {
+                img {
+                  width: 100%;
+                  object-fit: contain;
+                  box-sizing: border-box;
+                }
+              }
+
+              .s-icon {
+                position: absolute;
+                bottom: 0px;
                 width: 100%;
-                object-fit: contain;
-                box-sizing: border-box;
-              }
-            }
+                display: flex;
+                justify-content: center;
+                gap: 10px;
 
-            .s-icon {
-              position: absolute;
-              bottom: 0px;
-              width: 100%;
-              display: flex;
-              justify-content: center;
-              gap: 10px;
-
-              .icon-cont {
-                svg {
-                  width: 30px;
+                .icon-cont {
+                  svg {
+                    width: 30px;
+                  }
                 }
+
+              }
+            }
+
+
+
+            .s-disc {
+              .s-line {
+                width: 100%;
+                height: .7px;
+                background-color: #ffffff;
               }
 
-            }
-          }
-
-
-
-          .s-disc {
-            .s-line {
-              width: 100%;
-              height: .7px;
-              background-color: #ffffff;
-            }
-
-            .s-det {
-              display: grid;
-              grid-template-columns: 20% 80%;
-
-              .s-index {
-                color: #fff;
-                /* text-align:; */
+              .s-det {
                 display: grid;
-                align-items: end;
-                justify-content: start;
+                grid-template-columns: 20% 80%;
 
-                p {
-                  font-size: 1.5rem;
+                .s-index {
+                  color: #fff;
+                  /* text-align:; */
+                  display: grid;
+                  align-items: end;
+                  justify-content: start;
+
+                  p {
+                    font-size: 1.5rem;
+                  }
                 }
-              }
 
-              .s-name {
-                text-align: right;
+                .s-name {
+                  text-align: right;
 
-                h2 {
-                  font-family: 'Radenes', sans-serif;
-                  font-weight: 100;
-                  text-transform: capitalize;
-                  letter-spacing: .08rem;
+                  h2 {
+                    font-family: 'Radenes', sans-serif;
+                    font-weight: 100;
+                    text-transform: capitalize;
+                    letter-spacing: .08rem;
+                  }
                 }
               }
             }
@@ -293,7 +301,7 @@ section {
 }
 
 
-@media screen and (max-width: 440px){
+@media screen and (max-width: 440px) {
 
   #project,
   #labs,
@@ -312,6 +320,7 @@ section {
       }
     }
 
+    .slide-wrapper{
     .slider {
       grid-template-rows: 15% 85%;
 
@@ -339,6 +348,7 @@ section {
       }
 
     }
+  }
 
   }
 
@@ -346,6 +356,7 @@ section {
   #models {
     .slider {
       grid-template-rows: 20% 80%;
+
       .sliders {
         .slider-cont {
           width: 100vw;
@@ -354,8 +365,7 @@ section {
 
           .side-m {
             .s-vis {
-              .s-image {
-              }
+              .s-image {}
 
               .s-icon {
 
