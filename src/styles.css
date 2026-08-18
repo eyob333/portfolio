@@ -47,7 +47,7 @@ canvas {
   z-index: 2;
   outline: none;
   background-color: transparent;
-  /* pointer-events: none; */
+  touch-action: none; /* Prevents iOS Safari elastic scroll interference */
 }
 
 h1,
@@ -151,8 +151,8 @@ section {
 #models {
 
   .intro-header {
-    max-height: 100vh;
-    height: 100vh;
+    max-height: 100dvh;
+    height: 100dvh;
 
     h1 {
       font-family: 'Nebula', sans-serif;
@@ -289,7 +289,7 @@ section {
 }
 
 
-@media (width < 440px) {
+@media screen and (max-width: 440px){
 
   #project,
   #labs,

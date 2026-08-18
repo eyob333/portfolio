@@ -1,10 +1,11 @@
-#project{
+#project {
 
-  .intro-header{
+  .intro-header {
     /* margin: 0 10px; */
     display: grid;
     align-items: center;
-    .title-cont{
+
+    .title-cont {
       width: fit-content;
     }
 
@@ -17,15 +18,14 @@
 
 #project {
   .slider.slider-proj {
-
-        .wo-am {
-            .wo-spacer{
-                svg {
-                    width: 180px;
-                }
-            }
-
+    .wo-am {
+      .wo-spacer {
+        svg {
+          width: 180px;
         }
+      }
+
+    }
 
     .sliders {
       .slider-cont {
@@ -42,6 +42,7 @@
             padding: 0 70px;
             padding-top: 20px;
             padding-left: 0;
+
             h2 {
               text-align: right;
               font-size: 2.5rem;
@@ -103,9 +104,11 @@
                 height: 40px;
               }
             }
-            .dec-item{
+
+            .dec-item {
               text-align: right;
-              p{
+
+              p {
                 line-height: 1.5rem;
               }
             }
@@ -119,4 +122,102 @@
     }
 
   }
+}
+
+
+
+@media (width < 440px) {
+
+  #project {
+    .slider.slider-proj {
+      .sliders {
+        .slider-cont {
+          grid-template-rows: 70% 30%;
+
+          .s-title {
+            grid-template-columns: 100%;
+            .s-empty{
+              width: 0;
+              height: 0;
+            }
+
+            .frac-cont {
+              padding: 0 20px;
+              padding-top: 20px;
+              padding-left: 0;
+
+              h2 {
+                text-align: right;
+                font-size: 1.8rem;
+                letter-spacing: .08rem;
+              }
+
+              .title-line {
+                width: 100%;
+                height: 1px;
+              }
+
+            }
+
+          }
+
+          .cont-frac {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            grid-template-columns: 100%;
+            padding: 0 10px;
+
+            .s-video {
+              width: 100%;
+              height: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              max-height: 100%;
+              /* aspect-ratio: 16 / 9; */
+              margin: 0;
+
+              video {
+                width: 90%;
+                height: auto;
+              }
+
+            }
+
+            .s-desc {
+              display: grid;
+              grid-template-rows: 1fr;
+              grid-template-columns: 40% 60%;
+
+              gap: 10px;
+              align-items: center;
+              justify-content: center;
+
+              .icons {
+                gap: 10px;
+
+                .icon {
+                  width: 27px;
+                  height: 27px;
+                }
+              }
+
+              .dec-item {
+
+                p {
+                  line-height: 1.5rem;
+                }
+              }
+
+            }
+          }
+
+
+
+        }
+      }
+    }
+  }
+
 }
