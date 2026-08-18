@@ -23,10 +23,8 @@
     color: #c9d1d9;
     font-size: 1.1rem;
     font-weight: normal;
-    /* text-transform: uppercase; */
     margin-bottom: 10px;
     padding-left: 17px;
-    /* font-family: 'Jura', sans-serif; */
     font-weight: 100;
 
     
@@ -151,12 +149,11 @@
       display: block;
     }
 
-  }
   .contacts{
     display: grid;
     width: 100%;
     height: 100vh;
-    grid-template-columns: 90% 10%;
+    grid-template-columns: 100%;
 
     .form-wrapper{
       display: grid;
@@ -172,7 +169,24 @@
       p{
         background-color: aliceblue;
         color: #0d1217;
-      width: 100%;
+          width: 100%;
       }
     }
   }
+}
+
+
+@media (width < 440px) {
+
+  #contact{
+
+    .contacts{
+      .form-wrapper{
+        justify-self: center;
+      }
+
+    }
+
+  }
+  
+}

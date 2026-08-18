@@ -204,11 +204,85 @@ section {
 
 #labs,
 #models {
-  .slider{
+  .slider {
     .sliders {
       .slider-cont {
         width: 33vw;
         height: fit-content;
+
+
+        .side-m {
+          padding: 30px;
+          padding-top: 20px;
+          padding-bottom: 10px;
+          /* width: 80%; */
+
+          .s-vis {
+            position: relative;
+
+            .s-image {
+              img {
+                width: 100%;
+                object-fit: contain;
+                box-sizing: border-box;
+              }
+            }
+
+            .s-icon {
+              position: absolute;
+              bottom: 0px;
+              width: 100%;
+              display: flex;
+              justify-content: center;
+              gap: 10px;
+
+              .icon-cont {
+                svg {
+                  width: 30px;
+                }
+              }
+
+            }
+          }
+
+
+
+          .s-disc {
+            .s-line {
+              width: 100%;
+              height: .7px;
+              background-color: #ffffff;
+            }
+
+            .s-det {
+              display: grid;
+              grid-template-columns: 20% 80%;
+
+              .s-index {
+                color: #fff;
+                /* text-align:; */
+                display: grid;
+                align-items: end;
+                justify-content: start;
+
+                p {
+                  font-size: 1.5rem;
+                }
+              }
+
+              .s-name {
+                text-align: right;
+
+                h2 {
+                  font-family: 'Radenes', sans-serif;
+                  font-weight: 100;
+                  text-transform: capitalize;
+                  letter-spacing: .08rem;
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -236,22 +310,22 @@ section {
 
     .slider {
       grid-template-rows: 15% 85%;
-      
-        .wo-am {
-      
-          .wo-spacer {
-            display: grid;
-            justify-content: center;
-            /* background-color:blueviolet; */
-            width: fit-content;
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-      
-            svg {
-              width: 180px;
-            }
+
+      .wo-am {
+
+        .wo-spacer {
+          display: grid;
+          justify-content: center;
+          /* background-color:blueviolet; */
+          width: fit-content;
+          position: absolute;
+          bottom: 10px;
+          right: 10px;
+
+          svg {
+            width: 180px;
           }
+        }
       }
 
       .sliders {
@@ -264,17 +338,68 @@ section {
 
   }
 
-  #labs, #models{
-    .slider{
-      .sliders{
+  #labs,
+  #models {
+    .slider {
+      grid-template-rows: 20% 80%;
+      .sliders {
         .slider-cont {
-          width: 97vw;
+          width: 100vw;
           height: fit-content;
+
+
+          .side-m {
+            .s-vis {
+              .s-image {
+              }
+
+              .s-icon {
+
+                .icon-cont {
+                  svg {
+                    width: 30px;
+                  }
+                }
+
+              }
+            }
+
+
+
+
+            .s-disc {
+              .s-line {
+                width: 100%;
+                height: .7px;
+                background-color: #ffffff;
+              }
+
+              .s-det {
+                display: grid;
+                grid-template-columns: 20% 80%;
+
+                .s-index {
+                  p {
+                    font-size: 1.2rem;
+                  }
+                }
+
+                .s-name {
+                  text-align: right;
+
+                  h2 {
+                    font-size: 1.2rem;
+                    letter-spacing: .08rem;
+                  }
+                }
+              }
+            }
+          }
         }
       }
-      
+
     }
-
-
   }
+
+
 }
