@@ -25,15 +25,19 @@
   src: url('/fonts/identidad-cdnfonts/Identidad-ExtraLight.otf') format('truetype');
 }
 
-
+html,body{
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
 
 body {
   margin: 0;
   padding: 0;
   border: 0;
-  /* overflow: hidden; */
   background-color: #000000;
-  overflow-x: hidden;
+
   /* zoom: .5; */
 }
 
