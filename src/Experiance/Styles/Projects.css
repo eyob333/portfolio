@@ -126,7 +126,7 @@
 
 
 
-@media (width < 440px) {
+@media screen and (max-width: 440px) {
 
   #project {
     .slider.slider-proj {

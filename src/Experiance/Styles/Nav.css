@@ -172,7 +172,7 @@
 
 
 
-@media (width < 440px) {
+@media screen and (max-width: 440px) {
   #nav {
     .main-icon {
       width: 100px;

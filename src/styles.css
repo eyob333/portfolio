@@ -189,7 +189,7 @@ section {
     }
 
     .sliders {
-      height: 100%;
+      height: 100dvh;
       display: flex;
 
       .slider-cont {
@@ -207,7 +207,7 @@ section {
   .slider {
     .sliders {
       .slider-cont {
-        width: 33vw;
+        width: 33dvw;
         height: fit-content;
 
 
@@ -363,7 +363,6 @@ section {
 
               }
             }
-
 
 
 
