@@ -13,8 +13,6 @@
 
 #models{
     .slider.slider-mod{
-        display: grid;
-        grid-template-rows: 9% 91%;
         .wo-am{
             /* overflow: hidden; */
             position: relative;

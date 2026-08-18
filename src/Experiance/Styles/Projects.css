@@ -16,9 +16,8 @@
 }
 
 #project {
-  .slider-proj {
-        display: grid;
-        grid-template-rows: 10% 90%;
+  .slider.slider-proj {
+
         .wo-am {
             max-width: 100vw;
             position: relative;

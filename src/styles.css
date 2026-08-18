@@ -4,7 +4,7 @@
 @import url('https://fonts.cdnfonts.com/css/enotria');
 
 @font-face {
-  font-family: 'Kapiler'; 
+  font-family: 'Kapiler';
   src: url('/fonts/kapiler.regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
@@ -13,12 +13,13 @@
 
 
 @font-face {
-  font-family: 'Nebula'; 
+  font-family: 'Nebula';
   src: url('/fonts/next_sphere/Next Sphere Thin.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: 'Jura';
   src: url('/fonts/identidad-cdnfonts/Identidad-ExtraLight.otf') format('truetype');
@@ -26,21 +27,21 @@
 
 
 
-body{
+body {
   margin: 0;
   padding: 0;
   border: 0;
   /* overflow: hidden; */
   background-color: #000000;
-  overflow-x: hidden; 
+  overflow-x: hidden;
   /* zoom: .5; */
 }
 
-canvas{
+canvas {
   margin: 0;
   border: 0;
   padding: 0;
-  position:fixed;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 2;
@@ -48,14 +49,21 @@ canvas{
   background-color: transparent;
   /* pointer-events: none; */
 }
-h1, h2, h3, h4, h5, h6, p{
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   color: #ffffffea;
   margin: 0;
 }
 
 
 /* lading configurations */
-.loading-bar{
+.loading-bar {
   position: absolute;
   z-index: 3;
   top: 60%;
@@ -69,13 +77,14 @@ h1, h2, h3, h4, h5, h6, p{
   will-change: transform;
   padding: 0 15%;
 }
-.loading-bar.enabled{
+
+.loading-bar.enabled {
   transform: scaleX(0);
   transform-origin: top center;
   transition: transform 3.5s ease-in-out;
 }
 
-.loading-text{
+.loading-text {
   position: fixed;
   top: 55%;
   left: 50%;
@@ -85,24 +94,25 @@ h1, h2, h3, h4, h5, h6, p{
   will-change: transform;
 }
 
-.loading-text h1, .loading-text p{
+.loading-text h1,
+.loading-text p {
   display: inline;
   font-size: 2rem;
 }
 
 
-.section-container-div{
-   /* visibility: hidden; */
-   position: absolute;
-   /* max-height: 0; */
-   /* max-width: 0; */
-   z-index: 3;   
-   border: 0;
-   margin: 0;
-   padding: 0;
+.section-container-div {
+  /* visibility: hidden; */
+  position: absolute;
+  /* max-height: 0; */
+  /* max-width: 0; */
+  z-index: 3;
+  border: 0;
+  margin: 0;
+  padding: 0;
 }
 
-.underlay-container-div{
+.underlay-container-div {
   z-index: 1;
   position: absolute;
   visibility: hidden;
@@ -116,7 +126,7 @@ h1, h2, h3, h4, h5, h6, p{
 } */
 
 
-section{
+section {
   margin: 0;
   border: 0;
   width: fit-content;
@@ -126,39 +136,97 @@ section{
 
 /*************************************** Home section *******************************/
 
-.sec{
+.sec {
   min-height: 100vh;
 }
 
 
 /*************************************** proj & labs & models *******************************/
-.page p{
+.page p {
   font-family: 'NeverMind Bauhaus', sans-serif;
 }
 
-.intro-header{
- max-height: 100vh;
- height: 100vh;
+#project,
+#labs,
+#models {
 
- h1{
-  font-family: 'Nebula', sans-serif;
-  font-weight: 100;
-  font-size: 5rem;
-  color: #ffffff;
- }
-  
+  .intro-header {
+    max-height: 100vh;
+    height: 100vh;
+
+    h1 {
+      font-family: 'Nebula', sans-serif;
+      font-weight: 100;
+      font-size: 5rem;
+      color: #ffffff;
+    }
+
+  }
+
 }
 
-.slider{
-  .sliders{
+.intro-header {
+  max-height: 100vh;
+  height: 100vh;
+
+  h1 {
+    font-family: 'Nebula', sans-serif;
+    font-weight: 100;
+    font-size: 5rem;
+    color: #ffffff;
+  }
+
+}
+
+.slider {
+  display: grid;
+  grid-template-rows: 9% 91%;
+
+  .sliders {
     height: 100vh;
     display: flex;
 
-      .slider-cont{
-        width: 100vw;
-      }
+    .slider-cont {
+      width: 100vw;
+    }
   }
 
 }
 
 
+@media (width < 440px) {
+
+  #project,
+  #labs,
+  #models {
+    .intro-header {
+      .title-cont {
+        margin-right: 20px;
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        p {
+          font-size: .7rem;
+        }
+      }
+    }
+
+    .slider {
+      display: grid;
+      grid-template-rows: 9% 91%;
+
+      .sliders {
+        height: 100vh;
+        display: flex;
+
+        .slider-cont {
+          width: 100vw;
+        }
+      }
+
+    }
+
+  }
+}

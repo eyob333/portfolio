@@ -29,8 +29,6 @@
 }
 #labs {
     .slider.slider-lab {
-        display: grid;
-        grid-template-rows: 9% 91%;
 
         .wo-am {
             /* overflow: hidden; */
