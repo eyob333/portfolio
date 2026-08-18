@@ -14,22 +14,12 @@
 #models{
     .slider.slider-mod{
         .wo-am{
-            /* overflow: hidden; */
-            position: relative;
-            max-width: 100vw;
-            .wo-spacer{
-                display: grid;
-                justify-content: center;
-                /* background-color:blueviolet; */
-                width: fit-content;
-                position: absolute;
-                bottom: 10px;
-                right: 200px;
+            /*.wo-spacer{
                 svg{
                     width: 280px;
                     height: 27px;
                 }    
-            }
+            } */
   
         }
 

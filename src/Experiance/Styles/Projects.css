@@ -19,23 +19,9 @@
   .slider.slider-proj {
 
         .wo-am {
-            max-width: 100vw;
-            position: relative;
-
             .wo-spacer{
-                display: grid;
-                justify-content: center;
-                /* background-color:blueviolet; */
-                width: fit-content;
-                position: absolute;
-                bottom: 5px;
-                right: 200px;
-                display: grid;
-                align-items:end;
-
                 svg {
-                    width: 280px;
-                    height: 35.5px;
+                    width: 180px;
                 }
             }
 
