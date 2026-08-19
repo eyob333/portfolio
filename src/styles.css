@@ -155,6 +155,8 @@ section {
   .intro-header {
     max-height: 100dvh;
     height: 100dvh;
+    width: 100vw;
+    max-width: 100vw;
 
     h1 {
       font-family: 'Nebula', sans-serif;
@@ -166,6 +168,7 @@ section {
   }
 
   .slide-wrapper {
+
     .slider {
       display: grid;
       grid-template-rows: 9% 91%;
@@ -192,7 +195,7 @@ section {
       }
 
       .sliders {
-        height: 100dvh;
+        height: 100%;
         display: flex;
 
         .slider-cont {
@@ -214,7 +217,6 @@ section {
     overflow: hidden; /* Clips GSAP track overflow from native scrollbar */
     position: relative;
     touch-action: pan-y;
-
     .slider {
       .sliders {
         .slider-cont {

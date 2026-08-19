@@ -74,7 +74,6 @@ export default class Home{
                             </div>
                             <span class="empty"> </span>
                         </div>
-                        <div class="slide tech"> </div>
                         <div class="slide tech"> 
                             <div class="title-cont"> 
                                 <h2>Techstack</h2>

@@ -88,7 +88,7 @@ export default class Animation{
                 pin: true,
                 scrub: 1,
                 anticipatePin: 1,
-                end: () => "+=" + (slider.scrollWidth - window.innerWidth * 1.3),
+                end: () => "+=" + (slider.scrollWidth - window.innerWidth * 1),
                 invalidateOnRefresh: true
             }
         })
@@ -121,18 +121,6 @@ export default class Animation{
                     anticipatePin: 1,
                     end: () => "+=" + (s1.scrollWidth - window.innerWidth * .7),
                     invalidateOnRefresh: true,
-                    // onUpdate: (self) =>{
-                    //     if(lockedE){
-                    //         let pl = '000'.split('')
-                    //         let prog = `${Math.round(self.progress * 100)}`.split('')
-                    //         prog.forEach( (e, j) =>{
-                    //             pl[(pl.length) - (prog.length- j)] = e
-                    //         })
-                    //         let lockedEe = lockedE.querySelector('h3')
-                    //         lockedEe.textContent = pl.join('');
-                    //     }
-
-                    // }
                 }
                 
             });
