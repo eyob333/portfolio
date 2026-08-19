@@ -195,7 +195,7 @@ section {
       }
 
       .sliders {
-        height: 100%;
+        height: 100vh;
         display: flex;
 
         .slider-cont {

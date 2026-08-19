@@ -27,7 +27,7 @@
     .wo-am {
       .wo-spacer {
         svg {
-          width: 180px;
+          width: 280px;
         }
       }
 
@@ -138,6 +138,14 @@
   #project {
     .slide-wrapper {
       .slider.slider-proj {
+        .wo-am {
+          .wo-spacer {
+            svg {
+              width: 180px;
+            }
+          }
+
+        }
         .sliders {
           .slider-cont {
             grid-template-rows: 70% 30%;

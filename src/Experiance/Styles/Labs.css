@@ -32,7 +32,7 @@
         .wo-am {
             .wo-spacer {
                 svg {
-                    width: 180px;
+                    width: 280px;
                 }
             }
         }
@@ -87,6 +87,13 @@
 @media screen and (max-width: 440px) {
     #labs {
         .slider.slider-lab {
+            .wo-am {
+                .wo-spacer {
+                    svg {
+                        width: 180px;
+                    }
+                }
+            }
             .slider-cont {
                 .side-m {
                     .s-vis {
