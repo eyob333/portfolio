@@ -67,7 +67,8 @@
     position: relative;
     touch-action: pan-y;
   .slider-hom {
-      display: flex;
+      display: grid;
+      grid-template-rows: 99% 1%;
     .slide-hom {
       display: flex;
 
@@ -192,8 +193,8 @@
       .heading-cont {
 
         h1 {
-          font-size: 1.7rem;
-          font-weight: 100;
+          font-size: 1.8rem;
+          font-weight: 300;
         }
 
       }
@@ -202,8 +203,8 @@
 
         .mask {
           h4 {
-            font-weight: 100;
-            font-size: .8rem;
+            font-weight: 500;
+            font-size: .9rem;
           }
         }
       }
@@ -218,31 +219,39 @@
       .slide.abt.a1,
       .slide.abt.a2 {
         display: grid;
-        grid-template-columns: 10% 80%;
+        grid-template-columns: 10% 85%;
         padding: 50px 0;
+        justify-content: end;
 
         p {
           font-weight: 300;
-          font-size: .7rem;
+          font-size: .77rem;
           /* letter-spacing: .1rem; */
         }
+      }
+      .slide.abt.a1{
+
       }
 
       .slide.abt.a2 {
         display: grid;
-        grid-template-columns: 80% 10%;
+        grid-template-columns: 85% 10%;
+        justify-content: start;
       }
 
       .slide.tech {
         padding: 80px 0;
         grid-template-columns: 100%;
-        gap: 15px;
-
+        grid-template-rows: 20% 60%;;
+        gap: 0;
+        align-items: start;
+        padding-left: 5px;
         .title-cont {
           margin-top: 0;
 
           h2 {
             font-size: 2.4rem;
+            font-weight: 900;
 
           }
 
@@ -258,13 +267,14 @@
 
         .icon-cont {
           justify-content: left;
-          gap: 10px;
+          padding-right: 5px;
+          gap: 15px;
 
           .tech-i {
             width: 40px;
             height: 50px;
             display: flex;
-            align-items: center;
+            align-items:stretch;
             justify-content: center;
             flex-direction: column;
 
