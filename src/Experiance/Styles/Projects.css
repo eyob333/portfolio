@@ -23,7 +23,9 @@
     overflow: hidden; /* Clips GSAP track overflow from native scrollbar */
     position: relative;
     touch-action: pan-y;
+    height: 100%;
   .slider.slider-proj {
+  
     .wo-am {
       .wo-spacer {
         svg {
@@ -36,7 +38,6 @@
     .sliders {
       .slider-cont {
         display: grid;
-        align-items: safe;
         grid-template-rows: 65% 35%;
         /* grid-template-columns: 100%; */
 

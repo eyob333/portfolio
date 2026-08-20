@@ -50,47 +50,39 @@ export default class Labs{
         let element = document.querySelector('div.slider-lab .sliders');
         console.log("foo end",LabsCards.length)
         let injectElement = LabsCards.map( (d,i) => {
-
-        if( i == 0){
-            return  `<div> something </div>`
-        }
-
-        else if (i !==0 && i < LabsCards.length-1){
-            return ` <div class="slider-cont sli-${i}"> 
-                <div class="side-m"> 
-                    <div class="s-vis">
-                        <div class="s-image">
-                            <img src="${d.img}" />
-                        </div>
-                        <div class="s-icon"> 
-                            ${d.icon.map( k =>`
-                                <div class='icon-cont'> 
-                                        ${k.svg}
-                                </div>`).join('')}
-                        </div> 
-                     </div>
-                    <div class="s-disc">
-                        <div class="s-line">
-                        </div>
-                        <div class="s-det"> 
-                            <div class="s-index">
-                                <p>0${i}</p>
+        return `<div class="slider-cont sli-${i}"> 
+            ${i == 0 ? `<div> something </div>`: `` }
+            ${ i !==0 && i < LabsCards.length-1 ? ` <div class="slider-cont sli-${i}"> 
+                    <div class="side-m"> 
+                        <div class="s-vis">
+                            <div class="s-image">
+                                <img src="${d.img}" />
                             </div>
-                            <div class="s-name"> 
-                                <h2> ${d.name}</h2>
+                            <div class="s-icon"> 
+                                ${d.icon.map( k =>`
+                                    <div class='icon-cont'> 
+                                            ${k.svg}
+                                    </div>`).join('')}
+                            </div> 
+                        </div>
+                        <div class="s-disc">
+                            <div class="s-line">
+                            </div>
+                            <div class="s-det"> 
+                                <div class="s-index">
+                                    <p>0${i}</p>
+                                </div>
+                                <div class="s-name"> 
+                                    <h2> ${d.name}</h2>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div> `
-        }
+                </div> `: ``}
+                                    
 
-        else{
-            return `<div> something else </div>`
-        }
-
-
-        // ( i >= LabsCards.length ) && `<div> something else </div>`
+            ${i == LabsCards.length-1  ? `<div> something else </div>`: ""} 
+        </div>`
         
     }).join('')
             
