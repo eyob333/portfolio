@@ -201,4 +201,31 @@
     }
   }
 
+  #nav{
+    .nav{
+      width: 130px;
+      height: 130px;
+      left: 10px;
+      bottom: 20px;
+      .nav-item{
+        flex-direction: column;
+        gap: 10px;
+
+        .nav-mask{
+          .svg-cont{
+            .svg{
+              width: 30px;
+            }
+
+          }
+          .title-cont{
+            width: 0%;
+          }
+        }
+      }
+    }
+
+  }
+
+
 }

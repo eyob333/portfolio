@@ -62,46 +62,47 @@ export default class Project{
         let injectElement = projects.map( (d, i) => `
         
             <div class="slider-cont i-${i}"> 
-                <div class="cont-frac"> 
-                    <div class="s-video">    
-                        <video autoplay muted loop >
-                            <source src="${d.vid}" type="video/mp4">
-                        </video> 
-                    </div>
-
-                    <div class="s-desc"> 
-                        <div class="icons"> 
-                            ${d.rid.map( v => `
-                                <div class="icon"> 
-                                    ${v.svg}
-                                </div>`).join('')
-                            }
+                <div class="frac-wrap">   
+                    <div class="cont-frac"> 
+                        <div class="s-video">    
+                            <video autoplay muted loop >
+                                <source src="${d.vid}" type="video/mp4">
+                            </video> 
                         </div>
-                        
-                        <div class="desc"> 
-                            <div class="dec-item">
-                                <p>
-                                    ${d.desc.map( d =>`
-                                        <p>${d}</p>
-                                        `).join('')
-                                    }
-                                </p>
+
+                        <div class="s-desc"> 
+                            <div class="icons"> 
+                                ${d.rid.map( v => `
+                                    <div class="icon"> 
+                                        ${v.svg}
+                                    </div>`).join('')
+                                }
+                            </div>
+                            
+                            <div class="desc"> 
+                                <div class="dec-item">
+                                    <p>
+                                        ${d.desc.map( d =>`
+                                            <p>${d}</p>
+                                            `).join('')
+                                        }
+                                    </p>
+                                </div>
                             </div>
                         </div>
+
                     </div>
 
-                </div>
-
-                <div class="s-title" > 
-                    <span class="empty"> </span>
-                    <div class="frac-cont"> 
-                        <h2> ${d.name}</h2>
-                        <div class="title-line"> </div>
+                    <div class="s-title" > 
+                        <span class="empty"> </span>
+                        <div class="frac-cont"> 
+                            <h2> ${d.name}</h2>
+                            <div class="title-line"> </div>
+                        </div>
                     </div>
+                    <!-- <span class="s-empty"> </span> -->
+
                 </div>
-                <!-- <span class="s-empty"> </span> -->
-
-
             </div>`).join('');
         projectElement.innerHTML += injectElement;
     }

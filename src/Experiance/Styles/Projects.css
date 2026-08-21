@@ -149,7 +149,12 @@
         }
         .sliders {
           .slider-cont {
-            grid-template-rows: 70% 30%;
+            grid-template-rows: 100%;
+            .frac-wrap{
+              display: grid;
+              width: 100vw;
+              height: 100%;
+              grid-template-rows: 70% 30%;
 
             .s-title {
               grid-template-columns: 100%;
@@ -197,7 +202,7 @@
                 margin: 0;
 
                 video {
-                  width: 90%;
+                  width: 100%;
                   height: auto;
                 }
 
@@ -208,7 +213,7 @@
                 grid-template-rows: 1fr;
                 grid-template-columns: 40% 60%;
 
-                gap: 10px;
+                gap: 0px;
                 align-items: center;
                 justify-content: center;
 
@@ -231,7 +236,7 @@
               }
             }
 
-
+            }
 
           }
         }
