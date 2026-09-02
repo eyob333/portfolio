@@ -204,7 +204,7 @@
         .mask {
           h4 {
             font-weight: 500;
-            font-size: .9rem;
+            font-size: 1.3rem;
           }
         }
       }
@@ -223,14 +223,17 @@
         padding: 50px 0;
         justify-content: end;
 
+        .detail-cont{
+          max-width: 97%;
+        }
+
         p {
-          font-weight: 300;
-          font-size: .77rem;
+          font-weight: 400;
+          font-size: .84rem;
           /* letter-spacing: .1rem; */
         }
       }
       .slide.abt.a1{
-
       }
 
       .slide.abt.a2 {
@@ -259,8 +262,8 @@
             max-width: 80%;
 
             p {
-              font-weight: 300;
-              font-size: .8rem;
+              font-weight: 400;
+              font-size: .9rem;
             }
           }
         }
@@ -289,8 +292,8 @@
             }
 
             .icon-name {
-              font-size: .5rem;
-              font-weight: 400;
+              font-size: .54rem;
+              font-weight: 700;
             }
           }
 
