@@ -211,7 +211,8 @@
       width: 130px;
       height: 130px;
       left: 10px;
-      bottom: 20px;
+      bottom: 0;
+      bottom: calc(0px + env(safe-area-inset-bottom));
       .nav-item{
         flex-direction: column;
         gap: 10px;
