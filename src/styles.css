@@ -326,7 +326,7 @@ section {
 
     .slide-wrapper{
     .slider {
-      grid-template-rows: 15% 85%;
+      grid-template-rows: 90% 10%;
 
       .wo-am {
 
@@ -346,8 +346,10 @@ section {
       }
 
       .sliders {
+        padding-top: 50px;
         .slider-cont {
           width: 130vw;
+          height: 100%;
         }
       }
 
@@ -358,16 +360,20 @@ section {
 
   #labs,
   #models {
+    
+    .slide-wrapper{ 
     .slider {
-      grid-template-rows: 20% 80%;
+
 
       .sliders {
+        align-items: center;
         .slider-cont {
-          width: 100vw;
+          width: 113vw;
           height: fit-content;
 
 
           .side-m {
+            height: 100%;
             .s-vis {
               .s-image {}
 
@@ -413,6 +419,7 @@ section {
             }
           }
         }
+      }
       }
 
     }
