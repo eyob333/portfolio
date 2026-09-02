@@ -73,6 +73,7 @@ export default class Nav{
     }
 
     setDebug(){
+        this.theme = this.debug.addFolder("theme")
 
     }
 }

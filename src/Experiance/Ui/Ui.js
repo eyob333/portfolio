@@ -14,6 +14,9 @@ export default class Ui{
     constructor(){
         this.app = new App()
         this.ui = null
+        this.device = this.app.sizes.device
+        this.themeObj = {}
+
         this.container = document.querySelector("div.section-container-div");
         this.underlay = document.querySelector("div.underlay-container-div")
 
@@ -24,9 +27,9 @@ export default class Ui{
 
         this.nav = new Nav(this.container, this.ui)
         this.home = new Home(this.container, this.ui);
-        this.project = new Project(this.container, this.ui);        
-        this.models = new Models(this.container, this.ui)
-        this.labs = new Labs(this.container, this.ui);
+        this.project = new Project(this.container, this.ui, this.device);        
+        this.models = new Models(this.container, this.ui, this.device)
+        this.labs = new Labs(this.container, this.ui, this.device);
         this.contact = new Contact(this.container, this.ui)
 
         this.homeUnderlay = new HUnderlay(this.underlay, this.ui);
@@ -35,7 +38,7 @@ export default class Ui{
 
 
     setDebug(){
-        this.ui.addFolder("body")
+        this.ui.addFolder("main")
     }
 
 }

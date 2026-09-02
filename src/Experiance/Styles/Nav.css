@@ -44,11 +44,14 @@
       justify-content: space-between;
       height: 44px;
       gap: 0;
+    
+
 
       .nav-mask {
         display: flex;
         justify-content: center;
         /* align-items: stretch; */
+
 
         .svg-cont {
           width: fit-content;
@@ -180,6 +183,7 @@
     }
   }
 
+
   #nav {
     .util {
       width: 150px;
@@ -201,6 +205,7 @@
     }
   }
 
+
   #nav{
     .nav{
       width: 130px;
@@ -210,6 +215,7 @@
       .nav-item{
         flex-direction: column;
         gap: 10px;
+        
 
         .nav-mask{
           .svg-cont{

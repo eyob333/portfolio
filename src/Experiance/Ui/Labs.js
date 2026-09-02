@@ -1,9 +1,11 @@
 import LabsCards from "../../assets/labsCards";
 import "../Styles/Labs.css"
+import { labSvg } from "../../assets/secIcons";
 
 export default class Labs{
-    constructor(root, ui){
+    constructor(root, ui, device){
         this.container = root
+        this.device = device
         this.setParent()
         this.setInstance()
 
@@ -24,22 +26,26 @@ export default class Labs{
                 </div>
                 <div class="slide-wrapper">  
                     <div class="slider slider-lab">
+                     ${ !this.device.mobile ? `
                         <div class="wo-am">
                             <div class="wo-spacer">
-                                <svg width="988" height="120" viewBox="0 0 988 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M60 10L110 60L60 110L10 60L60 10Z" fill="#FFFEFE"/>
-                                    <path d="M119.293 60L60 119.293L0.707031 60L60 0.707031L119.293 60Z" stroke="white"/>
-                                    <path d="M928 10L978 60L928 110L878 60L928 10Z" fill="white"/>
-                                    <path d="M987.293 60L928 119.293L868.707 60L928 0.707031L987.293 60Z" stroke="white"/>
-                                    <path d="M266 10L316 60L266 110L216 60L266 10Z" fill="white"/>
-                                    <path d="M712 10L762 60L712 110L662 60L712 10Z" fill="white"/>
-                                    <path d="M489 10L539 60L489 110L439 60L489 10Z" fill="white"/>
-                                    <path d="M60 60H928" stroke="white"/>
-                                </svg>
+                                ${labSvg}
                             </div>
                         </div>
+                        ` : ""}
+
                         <div class="sliders">
                         </div>
+
+                        ${ this.device.mobile ? `
+                            <div class="wo-am">
+                                <div class="wo-spacer">
+                                    ${labSvg}
+                                </div>
+                            </div>
+                        ` : ""}
+
+
                     </div>
                  </div>
             `;
