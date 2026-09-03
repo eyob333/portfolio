@@ -61,7 +61,6 @@ textarea {
   font-weight: 100;
   letter-spacing: .06rem;
 
-
   font-size: .7rem;
   font-weight: 200;
   position: relative;
@@ -181,6 +180,7 @@ button.submit-button {
 
   .swq {
     margin-top: 50px;
+
     p.sp {
       text-align: center;
       font-size: 1.5rem;
@@ -206,28 +206,41 @@ button.submit-button {
 
   #contact {
 
+    input[type="text"],
+    textarea {
+      padding: 7px;
+
+      font-size: .9rem;
+
+    }
+
     .contacts {
-      margin-top: 90px;
+      margin-top: 40px;
       height: calc(100vh - 70px);
 
       .form-wrapper {
         justify-self: center;
       }
 
-      .socials {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
+      .swq {
+        margin-top: 30px;
 
-        svg {
-          width: 35px;
-          height: 35px;
+        p.sp {
+          text-align: center;
+          font-size: 1.5rem;
+          margin-bottom: 30px;
+        }
+
+        .socials {
+
+          svg {
+            width: 28px;
+            height: 28px;
+          }
         }
       }
     }
 
   }
-
-}
 
 }
