@@ -12,16 +12,17 @@ const proSvg = `<svg width="964" height="110" viewBox="0 0 964 110" fill="none" 
 `;
 
 
-const labSvg = `<svg width="962" height="97" viewBox="0 0 962 97" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M57 50H924.5" stroke="white"/>
-<rect x="10" y="10" width="75" height="75" fill="#FFFEFE"/>
-<rect x="875" y="10" width="80" height="80" fill="#FFFEFE"/>
-<rect x="652" y="10" width="80" height="80" fill="#FFFEFE"/>
-<rect x="439" y="10" width="80" height="80" fill="#FFFEFE"/>
-<rect x="213" y="10" width="80" height="80" fill="#FFFEFE"/>
+const labSvg = `<svg width="963" height="95" viewBox="0 0 963 95" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M57 48H924.5" stroke="white"/>
+<rect x="10" y="8" width="75" height="75" fill="#FFFEFE"/>
+<rect x="875" y="8" width="80" height="80" fill="#FFFEFE"/>
+<rect x="652" y="8" width="80" height="80" fill="#FFFEFE"/>
+<rect x="439" y="8" width="80" height="80" fill="#FFFEFE"/>
+<rect x="213" y="8" width="80" height="80" fill="#FFFEFE"/>
 <rect x="0.5" y="0.5" width="94" height="94" stroke="white"/>
-<rect x="867.5" y="2.5" width="94" height="94" stroke="white"/>
+<rect x="868.5" y="0.5" width="94" height="94" stroke="white"/>
 </svg>
+
 `;
 const modSvg = ` <svg width="972" height="90" viewBox="0 0 972 90" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M85.7369 79.5H18.1861L51.9615 20.999L85.7369 79.5Z" fill="#FFFCFC" stroke="white" stroke-width="11"/>

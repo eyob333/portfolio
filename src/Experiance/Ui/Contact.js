@@ -1,4 +1,4 @@
-
+import { formIcons } from '../../assets/contactIcons'
 import '../Styles/Contact.css'
 
 export default class Contact{
@@ -47,8 +47,8 @@ export default class Contact{
                         <div class="submit-wrapper">
                             <button type="submit" class="submit-button">Submit</button>
                         </div>
-                        <div>
-                            <p>or</p>
+                        <div class="swq">
+                            <p class="sp">or</p>
                             <div class="socials"> 
                             </div>
                         
@@ -62,6 +62,14 @@ export default class Contact{
             `;
         this.container.appendChild(element);
         
+        let icons = document.querySelector("#contact .socials")
+        icons.innerHTML = formIcons.map( i =>`
+            <div class="icons"> 
+                <div class="icon-s ${i.name}"> 
+                    ${i.icon}
+                </div>
+            </div>
+            `).join("")
     }
 }
 

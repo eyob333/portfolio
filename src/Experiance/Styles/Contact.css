@@ -1,195 +1,233 @@
-#contact{
+#contact {
   height: 120vh;
   width: 100vw;
 }
 
 
 .form-wrapper {
-    width: 300px;
-    padding: 10px;
-    box-sizing: border-box;
-    transform: scale(1);
-    height: 75vh;
-    background: rgba(255, 255, 255, 0.06);
-    /*glass morph*/
-    /* border-radius: 16px; */
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(4.1px);
-    -webkit-backdrop-filter: blur(4.1px);
-    border: .5px groove rgba(255, 255, 255, 0.169);
-  }
+  width: 300px;
+  padding: 10px;
+  box-sizing: border-box;
+  transform: scale(1);
+  height: 75vh;
+  background: rgba(255, 255, 255, 0.06);
+  /*glass morph*/
+  /* border-radius: 16px; */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4.1px);
+  -webkit-backdrop-filter: blur(4.1px);
+  border: .5px groove rgba(255, 255, 255, 0.169);
+}
 
-  h1.form-title {
-    color: #c9d1d9;
-    font-size: 1.1rem;
-    font-weight: normal;
-    margin-bottom: 10px;
-    padding-left: 17px;
-    font-weight: 100;
+h1.form-title {
+  color: #c9d1d9;
+  font-size: 1.1rem;
+  font-weight: normal;
+  margin-bottom: 10px;
+  padding-left: 17px;
+  font-weight: 100;
 
-    
-  }
 
-  .form-field, .submit-wrapper {
-    margin-bottom: 10px;
-    padding-left: 15px;
-  }
+}
 
-  .form-field label {
+.form-field,
+.submit-wrapper {
+  margin-bottom: 10px;
+  padding-left: 15px;
+}
+
+.form-field label {
+  display: block;
+  color: #ffffff;
+  font-size: 0.9rem;
+  /* text-transform: uppercase; */
+  margin-bottom: 8px;
+  padding-left: 5px;
+  font-weight: 300;
+  font-family: 'Jura', sans-serif;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 12px;
+  box-sizing: border-box;
+  background-color: transparent;
+  color: white;
+  font-family: 'Smooch Sans', sans-serif;
+  font-family: 'Qualio', sans-serif;
+  /* font-family: 'Rogan', sans-serif; */
+  font-family: 'Radenes', sans-serif;
+  font-weight: 100;
+  letter-spacing: .06rem;
+
+
+  font-size: .7rem;
+  font-weight: 200;
+  position: relative;
+  outline: none;
+  border: 0px solid;
+
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.05);
+  /* border-radius: 16px; */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3.2px);
+  -webkit-backdrop-filter: blur(3.2px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.input-border-wrap {
+  position: relative;
+  border: 0px solid transparent;
+  overflow: hidden;
+}
+
+input[type="text"] {
+  background-color: transparent;
+  background-color: #0d1217;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.05);
+  /* border-radius: 16px; */
+  backdrop-filter: blur(3.2px);
+  -webkit-backdrop-filter: blur(3.2px);
+  border: .3px solid rgba(255, 255, 255, 0.5);
+}
+
+
+
+/* Styling the input text specifically to match image colors */
+input#name {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+input#email {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Style for Textarea field */
+.subject-border-wrap {
+  position: relative;
+  width: 100%;
+  /* height: auto; */
+}
+
+textarea#subject {
+  /* width: calc(100% - 10px);  */
+  /* background-color: transparent; */
+  resize: none;
+  line-height: 1.2;
+  padding: 15px;
+  z-index: 1;
+  /* In front of borders */
+  /* font-family: 'Smooch Sans', sans-serif;      */
+  color: white;
+  /* font-family: 'Rogan', sans-serif; */
+
+}
+
+button.submit-button {
+  background-color: #0d1217;
+  width: 100%;
+  color: white;
+  font-family: 'Jura', sans-serif;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  border: 0px solid #c9d1d9;
+  /* border-radius: 2px; */
+  padding: 3px 30px;
+  cursor: pointer;
+  position: relative;
+  background: rgba(255, 255, 255, 0.19);
+  /* border-radius: 16px; */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6.8px);
+  -webkit-backdrop-filter: blur(6.8px);
+  border: .5px solid rgba(255, 255, 255, 0.28);
+}
+
+#contact {
+  .s-empty {
+    height: 20vh;
+    width: 100%;
     display: block;
-    color: #ffffff;
-    font-size: 0.9rem;
-    /* text-transform: uppercase; */
-    margin-bottom: 8px;
-    padding-left: 5px;
-    font-weight: 300;
-    font-family: 'Jura', sans-serif;
   }
 
-  input[type="text"], textarea {
-    width: 100%;
-    padding: 12px;
-    box-sizing: border-box;
-    background-color: transparent;
-    color: white;
-    font-family: 'Smooch Sans', sans-serif; 
-    font-family: 'Qualio', sans-serif;
-    /* font-family: 'Rogan', sans-serif; */
-    font-family: 'Radenes', sans-serif;
-    font-weight: 100;
-    letter-spacing: .06rem;
-                                                
-                                              
-    font-size: .7rem;
-    font-weight: 200;
-    position: relative;
-    outline: none;
-    border: 0px solid;
-
-/* From https://css.glass */
-    background: rgba(255, 255, 255, 0.05);
-    /* border-radius: 16px; */
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(3.2px);
-    -webkit-backdrop-filter: blur(3.2px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-  }
-
-  .input-border-wrap {
-    position: relative;
-    border: 0px solid transparent;
-    overflow: hidden;
-  } 
-
-  input[type="text"] {
-    background-color: transparent;
-    background-color: #0d1217;
-    /* From https://css.glass */
-    background: rgba(255, 255, 255, 0.05);
-    /* border-radius: 16px; */
-    backdrop-filter: blur(3.2px);
-    -webkit-backdrop-filter: blur(3.2px);
-    border: .3px solid rgba(255, 255, 255, 0.5);
-  }
-
-
-
-  /* Styling the input text specifically to match image colors */
-  input#name {
-    color: rgba(255, 255, 255, 0.9);
-  }
-  input#email {
-    color: rgba(255, 255, 255, 0.7);
-  }
-
-  /* Style for Textarea field */
-  .subject-border-wrap {
-    position: relative;
-    width: 100%;
-    /* height: auto; */
-  }
-  
-  textarea#subject {
-    /* width: calc(100% - 10px);  */
-    /* background-color: transparent; */
-    resize: none;
-    line-height: 1.2;
-    padding: 15px;
-    z-index: 1; /* In front of borders */
-    /* font-family: 'Smooch Sans', sans-serif;      */
-    color: white;
-    /* font-family: 'Rogan', sans-serif; */
-                                                
-  }
-
-  button.submit-button {
-    background-color: #0d1217;
-    width: 100%;
-    color: white;
-    font-family: 'Jura', sans-serif;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    border: 0px solid #c9d1d9;
-    /* border-radius: 2px; */
-    padding: 3px 30px;
-    cursor: pointer;
-    position: relative;
-    background: rgba(255, 255, 255, 0.19);
-    /* border-radius: 16px; */
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(6.8px);
-    -webkit-backdrop-filter: blur(6.8px);
-    border: .5px solid rgba(255, 255, 255, 0.28);
-  }
-
-  #contact{
-    .s-empty{
-      height: 20vh;
-      width: 100%;
-      display: block;
-    }
-
-  .contacts{
+  .contacts {
     display: grid;
     width: 100%;
     height: 100vh;
     grid-template-columns: 100%;
 
-    .form-wrapper{
+    .form-wrapper {
       display: grid;
       justify-self: end;
     }
-    .footer-mark{
+
+    .footer-mark {
       /* transform: scaleY(-1); */
       transform: rotateX(90deg);
       transform-origin: right;
       width: 100%;
       height: fit-content;
 
-      p{
+      p {
         background-color: aliceblue;
         color: #0d1217;
-          width: 100%;
+        width: 100%;
       }
     }
   }
+
+  .swq {
+    margin-top: 50px;
+    p.sp {
+      text-align: center;
+      font-size: 1.5rem;
+    }
+
+    .socials {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+
+      svg {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+
+
 }
 
 
 @media screen and (max-width: 440px) {
 
-  #contact{
+  #contact {
 
-    .contacts{
-    margin-top: 90px;
-    height: calc(100vh - 70px);
+    .contacts {
+      margin-top: 90px;
+      height: calc(100vh - 70px);
 
-      .form-wrapper{
+      .form-wrapper {
         justify-self: center;
       }
 
+      .socials {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+
+        svg {
+          width: 35px;
+          height: 35px;
+        }
+      }
     }
 
   }
-  
+
+}
+
 }
