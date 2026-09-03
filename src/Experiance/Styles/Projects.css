@@ -211,11 +211,11 @@
               .s-desc {
                 display: grid;
                 grid-template-rows: 1fr;
-                grid-template-columns: 40% 60%;
+                grid-template-columns: 50% 50%;
 
                 gap: 0px;
                 align-items: center;
-                justify-content: center;
+                justify-content:end;
 
                 .icons {
                   gap: 10px;

@@ -47,7 +47,7 @@
   }
 
   input[type="text"], textarea {
-    width: calc(100% - 25px);
+    width: 100%;
     padding: 12px;
     box-sizing: border-box;
     background-color: transparent;
@@ -124,7 +124,7 @@
 
   button.submit-button {
     background-color: #0d1217;
-    width: calc(100% - 25px);
+    width: 100%;
     color: white;
     font-family: 'Jura', sans-serif;
     font-size: 1.2rem;
@@ -181,6 +181,9 @@
   #contact{
 
     .contacts{
+    margin-top: 90px;
+    height: calc(100vh - 70px);
+
       .form-wrapper{
         justify-self: center;
       }

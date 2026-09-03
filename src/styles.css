@@ -347,10 +347,10 @@ section {
       }
 
       .sliders {
-        padding-top: 50px;
         .slider-cont {
           width: 130vw;
           height: 100%;
+          padding-top: 20px;
         }
       }
 

@@ -47,6 +47,12 @@ export default class Contact{
                         <div class="submit-wrapper">
                             <button type="submit" class="submit-button">Submit</button>
                         </div>
+                        <div>
+                            <p>or</p>
+                            <div class="socials"> 
+                            </div>
+                        
+                        </div>
                     </form>
                 </div>
 
