@@ -21,6 +21,8 @@ export default class Animation{
         this.ui = new Ui();
         this.slide();
         this.setUi();
+        this.device = this.app.sizes.device.mobile;
+
         let nav = {
             prev_sv: '',
             prev_p: '',
@@ -150,6 +152,9 @@ export default class Animation{
         let prev_spar = this.nav.prev_spar
         let prev_par = this.nav.prev_par
 
+        let pk = this.device ? 35 : 50 ;
+        let pi = this.device ? 25 : 30 ;
+
 
         history.replaceState(null, "", `#${hash}`);
         // console.log("foo hash", hash)
@@ -157,29 +162,35 @@ export default class Animation{
 
         if (prev_p && prev_par  && prev_spar ) {
             gsap.to(prev_spar, {
-                width: '50px',
-                height: '20px'
+                width: `${pi}px`,
+                height: `${pi}px`
             })
             gsap.to(prev_par, {
                 // width: '0%'
                scale: 0
             })
-            gsap.to(prev_p, {
-                fontSize: '0rem'
-            })
+            if (!this.device){
+                gsap.to(prev_p, {
+                        fontSize: '0rem'
+                    })
+            }
+ 
         }
 
         gsap.to(spar, {
-            width: '70px',
-            height: '30px'
+            width: `${pk}px`,
+            height: `${pk}px`
         })
         gsap.to(par, {
             // width: '100%'
             scale: 1
         })
-        gsap.to(p, {
+        if (!this.device){
+                    gsap.to(p, {
             fontSize: '1.1rem'
         })
+        }
+
 
         this.nav.prev_p = p;
         this.nav.prev_spar = spar;

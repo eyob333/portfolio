@@ -208,20 +208,28 @@
 
   #nav{
     .nav{
-      width: 130px;
-      height: 130px;
-      left: 10px;
+      width: 50px;
+      left: 0px;
       bottom: 0;
-      bottom: calc(0px + env(safe-area-inset-bottom));
+      height: 190px;
+
+      display: grid;
+      justify-content: start;
       .nav-item{
         flex-direction: column;
-        gap: 10px;
+        align-items: flex-start;
+        justify-content: space-evenly;
+        height: 250px;
+        width: 100%;
+        gap: 25px;
         
 
         .nav-mask{
+          transform: rotate(90deg);
           .svg-cont{
-            .svg{
-              width: 30px;
+            svg{
+              width: 25px;
+              height: 25px;
             }
 
           }
