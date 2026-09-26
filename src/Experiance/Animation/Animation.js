@@ -14,10 +14,11 @@ import Event from '../Utils/Event';
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, TextPlugin)
 let container = document.querySelector("div.section-container-div");
 
-export default class Animation{
+export default class Animation {
 
-    constructor(overlay){
+    constructor(overlay) {
         this.app = new App();
+        this.setCursor();
         this.ui = new Ui();
         this.slide();
         this.setUi();
@@ -60,7 +61,7 @@ export default class Animation{
 
     }
 
-    nav_hash(){
+    nav_hash() {
 
     }
 
@@ -102,13 +103,13 @@ export default class Animation{
             .to('.slider-line', {
                 scaleX: 1,
 
-            },"<")
+            }, "<")
 
 
 
 
         let s1Elements = document.querySelectorAll('.slider');
-   
+
 
         s1Elements.forEach((s1) => {
             let lockedE = s1.querySelector('.wo-am')
@@ -121,20 +122,20 @@ export default class Animation{
                     pin: true,         // Pins this specific element
                     scrub: 1,
                     anticipatePin: 1,
-                    end: () => "+=" + (s1.scrollWidth - window.innerWidth ),
+                    end: () => "+=" + (s1.scrollWidth - window.innerWidth),
                     invalidateOnRefresh: true,
                 }
-                
+
             });
 
             sliderT2.to(s1, {
                 x: () => -(s1.scrollWidth - window.innerWidth)
             }, "<");
 
-            if( lockedE){
+            if (lockedE) {
                 sliderT2.to(lockedE, {
-                    x: () =>(s1.scrollWidth -window.innerWidth),
-                }, '<')                
+                    x: () => (s1.scrollWidth - window.innerWidth),
+                }, '<')
             }
 
         });
@@ -152,29 +153,30 @@ export default class Animation{
         let prev_spar = this.nav.prev_spar
         let prev_par = this.nav.prev_par
 
-        let pk = this.device ? 35 : 50 ;
-        let pi = this.device ? 25 : 30 ;
+        let pk = this.device ? 35 : 50;
+        let pi = this.device ? 25 : 30;
 
 
         history.replaceState(null, "", `#${hash}`);
         // console.log("foo hash", hash)
 
 
-        if (prev_p && prev_par  && prev_spar ) {
+        if (prev_p && prev_par && prev_spar) {
             gsap.to(prev_spar, {
                 width: `${pi}px`,
-                height: `${pi}px`
+                height: `${pi}px`,
+                transformOrigin: 'bottom'
             })
             gsap.to(prev_par, {
                 // width: '0%'
-               scale: 0
+                scale: 0
             })
-            if (!this.device){
+            if (!this.device) {
                 gsap.to(prev_p, {
-                        fontSize: '0rem'
-                    })
+                    fontSize: '0rem'
+                })
             }
- 
+
         }
 
         gsap.to(spar, {
@@ -185,10 +187,10 @@ export default class Animation{
             // width: '100%'
             scale: 1
         })
-        if (!this.device){
-                    gsap.to(p, {
-            fontSize: '1.1rem'
-        })
+        if (!this.device) {
+            gsap.to(p, {
+                fontSize: '1.1rem'
+            })
         }
 
 
@@ -197,14 +199,14 @@ export default class Animation{
         this.nav.prev_par = par;
 
 
-        if (to_view){
+        if (to_view) {
             let target = to_view.target;
             // target.scrollIntoView({
             //     behavior: "smooth", // Options: "smooth" (animated) or "auto" (instant snap)
             //     block: "start",     // Aligns the top of the div to the top of the window
             //     inline: "nearest"   // Handles horizontal alignment if necessary
             // });
-            gsap.to( window, {
+            gsap.to(window, {
                 scrollTo: `#${target}`,
                 scrollBehavior: 'smooth',
 
@@ -238,12 +240,12 @@ export default class Animation{
 
     }
 
-   
-    scroll_trig(){
+
+    scroll_trig() {
         let scrollArr = gsap.utils.toArray('section')
         // console.log(scrollArr);
 
-        scrollArr.forEach( (arr, j) =>{
+        scrollArr.forEach((arr, j) => {
             // console.log(`foo ${j}`, arr)
 
             let elK = document.querySelector(`.${arr.id}-nav-to`)
@@ -252,7 +254,7 @@ export default class Animation{
             let spar = elK.children[0].children[0]
             let par = elK.children[1]
             let p = par.children[0]
-            
+
             // let k = par.classList[1].split('-')[0]
 
             ScrollTrigger.create({
@@ -260,11 +262,11 @@ export default class Animation{
                 // markers: true,
                 start: 'top 5.3%',
                 end: "bottom 60%",
-                onEnter: ()=>{
+                onEnter: () => {
                     this.nav_change(spar, p, par, null, arr.id)
                 },
-                onEnterBack: () =>{
-                    this.nav_change(spar,p, par, null, arr.id)
+                onEnterBack: () => {
+                    this.nav_change(spar, p, par, null, arr.id)
                 }
             })
         })
@@ -277,13 +279,15 @@ export default class Animation{
         //     }
         // }})
 
-        introTrig.forEach( e => {
-            const t = gsap.timeline( {defaults: {
-                trigger: e,
-                marker: true,
-                start: 'top 5.3%',
-                end: "bottom 60%",
-            }})
+        introTrig.forEach(e => {
+            const t = gsap.timeline({
+                defaults: {
+                    trigger: e,
+                    marker: true,
+                    start: 'top 5.3%',
+                    end: "bottom 60%",
+                }
+            })
         });
         console.log(introTrig)
 
@@ -292,7 +296,7 @@ export default class Animation{
     }
 
 
-    setUi(){
+    setUi() {
         let element = document.querySelector('.main-icon svg');
         gsap.to(element, {
             y: 20
@@ -300,39 +304,65 @@ export default class Animation{
 
         let title_c = gsap.utils.toArray('.nav-mask .title-cont')
         title_c.forEach(e => {
-                    gsap.to( e, {
-                        scale: 0,
-                    } )
-                        
+            gsap.to(e, {
+                scale: 0,
+            })
+
         });
 
     }
 
-    setEvent(){
+    setEvent() {
         let device = this.app.sizes.device;
         let element = document.querySelector(".util .theme .icons-t")
         console.log(element)
 
-        element.addEventListener('click', (e) =>{
+        element.addEventListener('click', (e) => {
             console.log("yo")
-            gsap.to( element, {
+            gsap.to(element, {
                 rotate: '+=180deg'
             })
         })
-        // window.addEventListener('scroll', () => {
-        //     let scrollT1 = gsap.timeline({defaults: {
 
-        //     }})
-        //     scrollT1.to('#nav .util', {
-        //         y: '-60px',
-        //         duration: 1.5
-        //     })
-        //     scrollT1.to('.wo-am', {
-        //         y: '-60px'
-        //     })
-        //     console.log("scrolled")
-        // })
+
+
+        /* window.addEventListener('scroll', () => {
+
+            
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                
+            }, 250);
+      }) */
+
+        const homC = document.querySelector('#nav .main-icon .icon-mask')
+        homC.addEventListener('click', () => {
+            gsap.to(window, {
+                scrollTo: `#home`,
+                scrollBehavior: 'smooth',
+
+            })
+
+        })
     }
+    setCursor() {
+        const cursor = document.querySelector('.custom-cursor');
+
+        // Move cursor element to match mouse position
+        window.addEventListener('mousemove', (e) => {
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
+        });
+
+        // Expand cursor when hovering over interactive elements
+        document.querySelectorAll('a, button').forEach((el) => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
+        });
+
+    }
+
+
 
 
 }

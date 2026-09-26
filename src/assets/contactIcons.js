@@ -45,12 +45,12 @@ const ContactIcons = [
 ]
 
 const formIcons = [
-    {name: 'whatsapp', link: 'https://t.me/chasingShadows4', icon: whatsapp},
+    {name: 'whatsapp', link: 'https://wa.me/phone_no', icon: whatsapp},
     {name: 'discord', link: 'https://discord.gg/someting', icon: discord},
     {name: 'telegram', link: 'https://t.me/chasingShadows4', icon: telegramL},
-    {name: 'email', link: 'https://discord.gg/someting', icon: email},
-    {name: 'github', link: 'https://t.me/chasingShadows4', icon: githubL},
-    {name: 'instagram', link: 'https://t.me/chasingShadows4', icon: instagramL}
+    {name: 'email', link: 'mailto:jemijobs224@gmail.com', icon: email},
+    {name: 'github', link: 'https://github.com/eyob333', icon: githubL},
+    {name: 'instagram', link: 'instagram://user?username=jemijobs224', icon: instagramL}
 
 ]
 export default ContactIcons

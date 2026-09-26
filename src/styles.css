@@ -37,6 +37,7 @@ body {
   border: 0;
   background-color: #000000;
   /* zoom: .5; */
+  cursor: none;
 }
 
 canvas {
@@ -50,6 +51,28 @@ canvas {
   outline: none;
   background-color: transparent;
   touch-action: none; /* Prevents iOS Safari elastic scroll interference */
+}
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  background-color: #3b82f6;
+  border-radius: 50%;
+  pointer-events: none; /* Ensures clicks pass through to underlying elements */
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease-out, background-color 0.2s ease, width 0.2s ease, height 0.2s ease;
+}
+
+/* Hover state on interactive elements */
+.custom-cursor.hovered {
+  width: 48px;
+  height: 48px;
+  background-color: #ec4899;
+  opacity: 0.8;
 }
 
 h1,
