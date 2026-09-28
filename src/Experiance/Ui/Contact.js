@@ -19,7 +19,7 @@ export default class Contact{
             <div class="s-empty">  </div>
             <div class="contacts">
                 <div class="form-wrapper">
-                    <h1 class="form-title">Say Hi</h1>
+                    <h1 class="form-title">Got an idea, a project, or just want to chat? Drop a message below</h1>
 
                     <form>
                         <div class="form-field">

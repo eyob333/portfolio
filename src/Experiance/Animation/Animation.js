@@ -1,24 +1,27 @@
 import * as THREE from 'three'
+import Lenis from 'lenis'
 import gsap from "gsap";
+
 import { ScrollTrigger } from 'gsap/all';
 import { ScrollToPlugin } from 'gsap/all';
-import { TextPlugin } from 'gsap/all';
 
 import SplitType from 'split-type';
 import App from "../App";
 import Ui from '../Ui/Ui';
 import Event from '../Utils/Event';
 
-// import RayCaster from '../Utils/RayCaster';
 
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, TextPlugin)
+
+
+
+
 let container = document.querySelector("div.section-container-div");
 
 export default class Animation {
 
     constructor(overlay) {
         this.app = new App();
-        this.setCursor();
+
         this.ui = new Ui();
         this.slide();
         this.setUi();
@@ -66,19 +69,6 @@ export default class Animation {
     }
 
     slide() {
-        // let wk = document.querySelector('now');
-        // ScrollTrigger.create({
-        //     trigger: "#project",
-        //     // start: "top bottom", // Triggers when the top of the div hits the bottom of the viewport
-        //     markers: true,
-        //     onEnter: () => {
-        //         console.log("Entered the view via GSAP!");
-        //     },
-        //     onLeaveBack: () => {
-        //         console.log("Scrolled back up, left the view.");
-        //     }
-        // });
-
 
         let slider = document.querySelector('.slider-hom')  //.sliders
 
@@ -107,12 +97,14 @@ export default class Animation {
 
 
 
-
         let s1Elements = document.querySelectorAll('.slider');
 
 
         s1Elements.forEach((s1) => {
-            let lockedE = s1.querySelector('.wo-am')
+            const lockedE = s1.querySelector('.wo-am')
+            const pts = s1.querySelector('.wo-spacer svg')
+            console.log(pts);
+            
             let sliderT2 = gsap.timeline({
                 defaults: {
                     ease: 'none'
@@ -339,11 +331,54 @@ export default class Animation {
         homC.addEventListener('click', () => {
             gsap.to(window, {
                 scrollTo: `#home`,
-                scrollBehavior: 'smooth',
 
             })
 
         })
+
+        const pts = gsap.utils.toArray('.wo-spacer svg')
+        console.log(pts)
+
+        /* 
+        const dfs = document.querySelector('#labs .wo-spacer svg')    
+        const cts = document.querySelector('#project .wo-spacer svg')
+        const mts = document.querySelector('#models .wo-spacer svg')
+
+        let base;
+
+        const cs = document.querySelector('p1', 'p2');
+        base = 32;
+
+
+        const c2 = dfs.querySelector('.p3')
+        console.log('foo str', c2.attributes.getNamedItem("x").value)
+        const p2 = dfs.querySelector('.p3');
+        const m2 = mts.querySelector('.p2')
+        const targetPx = 8-436;
+        const tpc = 55 - 257;
+        const tmc = -113- 86
+
+        const calp = (tmc / m2.getBBox().width) * 100; // Result: -125
+        gsap.set(m2, {
+            xPercent: calp,
+            rotation:  360,
+    
+
+        })
+        gsap.to( m2, {
+            xPercent: 0,
+            duration: 2,
+            rotation: 0,
+            ease: 'back.in(4)',
+            transformOrigin: "50% 50%",
+            delay: 7,
+            onComplete: ()=>{
+                console.log('sdk')
+            }
+        })
+        console.log('foo svg', dfs)
+        console.log('foo svg', cts)
+        */
     }
     setCursor() {
         const cursor = document.querySelector('.custom-cursor');

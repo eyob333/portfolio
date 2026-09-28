@@ -11,13 +11,17 @@ import sources from './Sources.js'
 import LoadingManager from './Controls/LoadingControler.js';
 import Overlay from './Ui/Overlay.js';
 import Animation from './Animation/Animation.js';
+import Lenis from 'lenis';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/all';
+import { ScrollToPlugin } from 'gsap/all';
+import { TextPlugin } from 'gsap/all';
 
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, TextPlugin)
 
 
 let instance = null;
-// const lenis = new Lenis({
-//   autoRaf: true,
-// });
+
 
 var stats = new Stats();
 
@@ -31,6 +35,8 @@ export default class App{
             // global acess            
         window.experiance = this
 
+        this.initLenis()
+
         this.canvas = canvas
         this.sizes  = new Sizes()            
         this.time = new Time()
@@ -43,9 +49,15 @@ export default class App{
         this.world = new World()
         this.debug = new Debug
 
+        gsap.ticker.lagSmoothing(0);
+        
+        
+
         this.resources.on('ready', () =>{
                 setTimeout( () =>{
                     this.animation = new Animation(this.Overlay)
+                    this.lenis.resize();
+  ScrollTrigger.refresh();
                 }, 4000)   
             })    
         
@@ -62,6 +74,7 @@ export default class App{
         this.time.on( 'tick', () => {
             this.update()
         })
+
     }
             
     resize(){
@@ -76,6 +89,7 @@ export default class App{
         if (this.debug.active){
             stats.update();
         }
+        this.lenis.raf(performance.now());
   
     }
 
@@ -102,4 +116,21 @@ export default class App{
             this.debug.ui.destroy()
         }
     }
+
+    initLenis() {
+        this.lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        orientation: 'vertical', // Use 'vertical' if doing GSAP pin-scroll, or 'horizontal' if native X-scroll
+        gestureOrientation: 'both',
+        smoothWheel: true,
+        });
+
+        // Update GSAP ScrollTrigger whenever Lenis scrolls
+        this.lenis.on('scroll', ScrollTrigger.update);
+    }
+
+
+
+
 }
