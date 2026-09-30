@@ -53,11 +53,11 @@ export default class Models{
     setInstance(){
         let projectElement = document.querySelector('div.slider-mod .sliders');
         let injectElement = ModelCards.map( (d, i) => {
+            console.log(`foo i`,i)
             return ` <div class="slider-cont sli-${i}">
             ${i == 0 ? `<div> something </div>`: ""}
     
-            ${i !==0 && i < ModelCards.length-1 ?`
-                    <div class="slider-cont sli-${i}"> 
+            ${i !==0 && i < ModelCards.length -1 ?` 
                         <div class="side-m"> 
                             <div class="s-image">
                                 <img src="${d.img}" />
@@ -75,7 +75,7 @@ export default class Models{
                                 </div>
                             </div>
                         </div>
-                    </div>`: ""}
+                    `: ""}
             ${i == ModelCards.length -1 ? `<div> something else</div>`: ""}
         </div>`
         }).join('');

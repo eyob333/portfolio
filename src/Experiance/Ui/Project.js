@@ -63,8 +63,8 @@ export default class Project{
             <div class="slider-cont i-${i}"> 
                 <div class="frac-wrap">   
                     <div class="cont-frac"> 
-                        <div class="s-video">    
-                            <video autoplay muted loop >
+                        <div class="s-video" onmouseenter="this.querySelector('video').play()" onmouseleave="this.querySelector('video').pause()">
+                            <video poster="${d.thum}" muted playsinline webkit-playsinline loop preload="auto">
                                 <source src="${d.vid}" type="video/mp4">
                             </video> 
                         </div>

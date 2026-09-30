@@ -38,6 +38,7 @@ export default class Resources extends EventEmitter{
         //             console.log("some thing")
         //             this.sourceLoaded( source, file)
         //     })
+        
 
         this.sources.forEach( source => {
             if( source.type === 'gltfModel'){

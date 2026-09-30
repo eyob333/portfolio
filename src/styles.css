@@ -51,7 +51,7 @@ canvas {
   outline: none;
   background-color: transparent;
   touch-action: none; /* Prevents iOS Safari elastic scroll interference */
-  pointer-events: none;
+
 }
 
 .custom-cursor {
@@ -197,6 +197,7 @@ section {
       display: grid;
       grid-template-rows: 9% 91%;
       height: 100vh;
+      will-change: transform;
 
       .wo-am {
         /* overflow: hidden; */

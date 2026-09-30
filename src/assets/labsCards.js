@@ -3,6 +3,8 @@ import icons from "./techStackIcons"
 
 
 const img = './images/thing.png'
+const vid = '/images/some.png'
+
 const icon = [
     icons[0],
     icons[2],
@@ -17,7 +19,8 @@ const slicedModel = {
     description: '',
     role: 'ffsd',
     img,
-    icon
+    icon,
+    vid
 }
 
 const sortingVizualizer = {
@@ -28,7 +31,8 @@ const sortingVizualizer = {
     upTextC: '#000',
     mainTextC: '#000',
     img,
-    icon
+    icon,
+    vid
 }
 
 const particlesMorphing = {
@@ -37,7 +41,8 @@ const particlesMorphing = {
     description: '',
     role: 'sdfse',
     img,
-    icon
+    icon,
+    vid
 }
 
 const particlescursor = {
@@ -46,7 +51,8 @@ const particlescursor = {
     description: '',
     role: 'sefsfe',
     img,
-    icon
+    icon,
+    vid
 }
 
 const earthShader =  {
@@ -55,16 +61,18 @@ const earthShader =  {
     description: '',
     role: 'sfseft',
     img,
-    icon
+    icon,
+    vid
 }
 
 const LabsCards = [
+    'spawn',
     slicedModel,
     sortingVizualizer,
     particlesMorphing,
     particlescursor,
     earthShader,
-    "spawn"
+    'spawn'
 ]
 
 export default LabsCards

@@ -57,7 +57,7 @@ export default class App{
                 setTimeout( () =>{
                     this.animation = new Animation(this.Overlay)
                     this.lenis.resize();
-  ScrollTrigger.refresh();
+                    ScrollTrigger.refresh();
                 }, 4000)   
             })    
         
@@ -119,11 +119,14 @@ export default class App{
 
     initLenis() {
         this.lenis = new Lenis({
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        orientation: 'vertical', // Use 'vertical' if doing GSAP pin-scroll, or 'horizontal' if native X-scroll
-        gestureOrientation: 'both',
-        smoothWheel: true,
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            orientation: 'vertical', // Use 'vertical' if doing GSAP pin-scroll, or 'horizontal' if native X-scroll
+            gestureOrientation: 'both',
+            smoothWheel: true,
+            wheelMultiplier: 1,      // Ensure equal wheel sensitivity
+            lerp: 0.1,               // Lower lerp = smoother catch-up on reverse
+            syncTouch: true 
         });
 
         // Update GSAP ScrollTrigger whenever Lenis scrolls

@@ -8,20 +8,16 @@ import { ScrollToPlugin } from 'gsap/all';
 import SplitType from 'split-type';
 import App from "../App";
 import Ui from '../Ui/Ui';
-import Event from '../Utils/Event';
-
-
-
-
 
 
 let container = document.querySelector("div.section-container-div");
+
 
 export default class Animation {
 
     constructor(overlay) {
         this.app = new App();
-
+        this.setCursor()
         this.ui = new Ui();
         this.slide();
         this.setUi();
@@ -70,7 +66,7 @@ export default class Animation {
 
     slide() {
 
-        let slider = document.querySelector('.slider-hom')  //.sliders
+        let slider = document.querySelector('.slider-hom')
 
         let sliderTl = gsap.timeline({
             defaults: {
@@ -82,13 +78,15 @@ export default class Animation {
                 scrub: 1,
                 anticipatePin: 1,
                 end: () => "+=" + (slider.scrollWidth - window.innerWidth * 1),
-                invalidateOnRefresh: true
+                invalidateOnRefresh: true,
+                
+                    
             }
         })
 
         sliderTl
             .to(slider, {
-                x: () => -(slider.scrollWidth - window.innerWidth)
+                x: () => -(slider.scrollWidth - window.innerWidth),
             }, "<")
             .to('.slider-line', {
                 scaleX: 1,
@@ -96,16 +94,17 @@ export default class Animation {
             }, "<")
 
 
-
         let s1Elements = document.querySelectorAll('.slider');
+  
 
 
         s1Elements.forEach((s1) => {
             const lockedE = s1.querySelector('.wo-am')
             const pts = s1.querySelector('.wo-spacer svg')
-            console.log(pts);
-            
-            let sliderT2 = gsap.timeline({
+            const cards = s1.querySelectorAll('.slider-cont');
+
+
+            const sliderT2 = gsap.timeline({
                 defaults: {
                     ease: 'none'
                 },
@@ -113,24 +112,34 @@ export default class Animation {
                     trigger: s1,       // Tracks this specific element
                     pin: true,         // Pins this specific element
                     scrub: 1,
+                    snap: {
+                        snapTo: 1 / (cards.length - 1), // Snaps relative to total panels, 
+                        duration: { min: 0.15, max: 0.4 }, // Faster snap recovery
+                        delay: 0.15,                       // Brief delay before snapping engages
+                        ease: 'power1.inOut'
+                    },
                     anticipatePin: 1,
-                    end: () => "+=" + (s1.scrollWidth - window.innerWidth),
+                    end: () => "+=" + ((s1.scrollWidth - s1.clientWidth)),
                     invalidateOnRefresh: true,
                 }
 
             });
 
+
+
             sliderT2.to(s1, {
-                x: () => -(s1.scrollWidth - window.innerWidth)
+                x: () => -(s1.scrollWidth - s1.clientWidth),
             }, "<");
 
             if (lockedE) {
                 sliderT2.to(lockedE, {
-                    x: () => (s1.scrollWidth - window.innerWidth),
+                    x: () => (s1.scrollWidth - s1.clientWidth),
                 }, '<')
             }
 
         });
+
+    
 
 
     }

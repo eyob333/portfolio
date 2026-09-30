@@ -58,7 +58,7 @@ export default class Labs{
         let injectElement = LabsCards.map( (d,i) => {
         return `<div class="slider-cont sli-${i}"> 
             ${i == 0 ? `<div> something </div>`: `` }
-            ${ i !==0 && i < LabsCards.length-1 ? ` <div class="slider-cont sli-${i}"> 
+            ${ i !==0 && i < LabsCards.length -1 ? `
                     <div class="side-m"> 
                         <div class="s-vis">
                             <div class="s-image">
@@ -84,10 +84,10 @@ export default class Labs{
                             </div>
                         </div>
                     </div>
-                </div> `: ``}
+                `: ``}
                                     
 
-            ${i == LabsCards.length-1  ? `<div> something else </div>`: ""} 
+            ${i == LabsCards.length -1 ? `<div> something else </div>`: ""} 
         </div>`
         
     }).join('')
