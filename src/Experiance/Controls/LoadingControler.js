@@ -9,9 +9,6 @@ export default class LoadingManager{
     constructor(overlay){
         this.overlay = overlay
         this.overlaymaterial = this.overlay.material
-        
-        this.sectionContainingElement = document.querySelector("div.section-container-div");
-  
         this.loadingManager =  new THREE.LoadingManager(
             () =>{
                 window.setTimeout( () => {
@@ -32,6 +29,7 @@ export default class LoadingManager{
                     })   
                 }, 1000)  
                 this.isReady = true;
+                
             },
             (itemUrl, itemLoaded, itemTotal) => {
                 loadingNumberElement.innerHTML = `${Math.round((itemLoaded/itemTotal * 100) * 10)/10}%`;

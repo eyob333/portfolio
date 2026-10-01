@@ -15,7 +15,7 @@ let container = document.querySelector("div.section-container-div");
 
 export default class Animation {
 
-    constructor(overlay) {
+    constructor() {
         this.app = new App();
         this.setCursor()
         this.ui = new Ui();
@@ -41,7 +41,6 @@ export default class Animation {
         this.scroll_trig()
         this.setEvent()
 
-        this.overlay = overlay
 
         // this.event = new Event(this.app.ship, this.app.camera.instance, this.app.camera.controls)
         // this.raycast = new RayCaster()
@@ -103,6 +102,8 @@ export default class Animation {
             const pts = s1.querySelector('.wo-spacer svg')
             const cards = s1.querySelectorAll('.slider-cont');
 
+            const par = s1.querySelectorAll('.slider-cont .s-name h2')
+
 
             const sliderT2 = gsap.timeline({
                 defaults: {
@@ -136,6 +137,34 @@ export default class Animation {
                     x: () => (s1.scrollWidth - s1.clientWidth),
                 }, '<')
             }
+
+            cards.forEach((card) => {
+                const para = card.querySelector('.s-name h2');
+                const ima = card.querySelector('.s-name h2');
+                const line = card.querySelector('.s-name h2');
+                const numb = card.querySelector('.s-name h2');
+                const icons = card.querySelectorAll('.s-name h2');
+                if (!para) return;
+
+                // Set initial state
+                gsap.set(para, { opacity: 0, y: 40 });
+
+                // Individual trigger per card using the horizontal container as context
+                gsap.to(para, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: card,
+                        containerAnimation: sliderT2, // CRITICAL: Links card animation to the parent horizontal timeline!
+                        start: "left center",         // Triggers when the card hits the center of the screen
+                        toggleActions: "play reverse play reverse", // Fades in when scrolling forward, fades out going back
+                    }
+                });
+            });
+
+
 
         });
 

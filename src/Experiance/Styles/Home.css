@@ -248,6 +248,7 @@
         grid-template-rows: 20% 60%;;
         gap: 0;
         align-items: start;
+        text-align: center;
         padding-left: 5px;
         .title-cont {
           margin-top: 0;

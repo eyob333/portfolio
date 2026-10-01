@@ -3,11 +3,13 @@ import "../Styles/Labs.css"
 import { labSvg } from "../../assets/secIcons";
 
 export default class Labs{
-    constructor(root, ui, device){
+    constructor(root, ui, device, resources){
         this.container = root
-        this.device = device
+        this.device = device        
+        this.labC = LabsCards(resources)
         this.setParent()
         this.setInstance()
+
 
         if(ui){
             this.debug = ui.addFolder('lab')
@@ -54,11 +56,11 @@ export default class Labs{
 
     setInstance(){
         let element = document.querySelector('div.slider-lab .sliders');
-        console.log("foo end",LabsCards.length)
-        let injectElement = LabsCards.map( (d,i) => {
+        console.log("foo end",this.labC.length)
+        let injectElement = this.labC.map( (d,i) => {
         return `<div class="slider-cont sli-${i}"> 
             ${i == 0 ? `<div> something </div>`: `` }
-            ${ i !==0 && i < LabsCards.length -1 ? `
+            ${ i !==0 && i < this.labC.length -1 ? `
                     <div class="side-m"> 
                         <div class="s-vis">
                             <div class="s-image">
@@ -87,7 +89,7 @@ export default class Labs{
                 `: ``}
                                     
 
-            ${i == LabsCards.length -1 ? `<div> something else </div>`: ""} 
+            ${i == this.labC.length -1 ? `<div> something else </div>`: ""} 
         </div>`
         
     }).join('')
