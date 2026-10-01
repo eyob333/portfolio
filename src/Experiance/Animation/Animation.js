@@ -78,8 +78,8 @@ export default class Animation {
                 anticipatePin: 1,
                 end: () => "+=" + (slider.scrollWidth - window.innerWidth * 1),
                 invalidateOnRefresh: true,
-                
-                    
+
+
             }
         })
 
@@ -94,7 +94,7 @@ export default class Animation {
 
 
         let s1Elements = document.querySelectorAll('.slider');
-  
+
 
 
         s1Elements.forEach((s1) => {
@@ -168,7 +168,7 @@ export default class Animation {
 
         });
 
-    
+
 
 
     }
@@ -417,6 +417,31 @@ export default class Animation {
         console.log('foo svg', dfs)
         console.log('foo svg', cts)
         */
+
+        const socialIcons = document.querySelectorAll('.soc-li');
+
+        socialIcons.forEach(icon => {
+            // Ensure the cursor pointer style is active so users know it's clickable
+            icon.style.cursor = 'pointer';
+
+            icon.addEventListener('click', (e) => {
+                // Prevent event bubbling if the icon sits inside a clickable card or link
+                console.log(e)
+                e.stopPropagation()
+                // Retrieve the target URL from a data attribute on the wrapper, or fallback to a default
+               
+                const wrapper = icon.closest('a') || icon.closest('.icon-cont');
+                const url = icon.getAttribute('data-link');
+
+                if (url && url !== '#') {
+                    window.open(url, 'portfolio_tab', 'noopener,noreferrer');
+                } else {
+                    console.warn('Social icon clicked, but no valid destination URL was found.');
+                }
+            });
+        });
+
+
     }
     setCursor() {
         const cursor = document.querySelector('.custom-cursor');
@@ -436,6 +461,45 @@ export default class Animation {
     }
 
 
+    setScrollE() {
+        const scrollContainer = window;
+        const erkElement = document.querySelector('.erk');
+
+        // Set initial hidden state
+        gsap.set(erkElement, { autoAlpha: 0, y: 20 });
+
+        let scrollTimeout;
+        let isVisible = false;
+
+        scrollContainer.addEventListener('scroll', () => {
+            // 1. Show the element immediately as soon as scrolling starts
+            if (!isVisible) {
+                isVisible = true;
+                gsap.to(erkElement, {
+                    autoAlpha: 1,
+                    y: 0,
+                    duration: 0.3,
+                    ease: 'power2.out',
+                    overwrite: 'auto'
+                });
+            }
+
+            // 2. Clear the previous timeout
+            clearTimeout(scrollTimeout);
+
+            // 3. Hide the element after scrolling stops for 150ms
+            scrollTimeout = setTimeout(() => {
+                isVisible = false;
+                gsap.to(erkElement, {
+                    autoAlpha: 0,
+                    y: 20,
+                    duration: 0.5,
+                    ease: 'power2.in',
+                    overwrite: 'auto'
+                });
+            }, 150);
+        });
+    }
 
 
 }

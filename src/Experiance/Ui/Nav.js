@@ -65,7 +65,7 @@ export default class Nav{
 
         let socialI = document.querySelector('.social')
         let injectSocial = ContactIcons.map( d =>`
-            <div class="icons icons-s">
+            <div class="icons icons-s soc-li ${d.name}" data-link="${d.link}">
                 ${d.icon}
             </div>
             `).join('')

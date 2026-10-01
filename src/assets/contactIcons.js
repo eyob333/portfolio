@@ -40,17 +40,17 @@ const githubL = `
 
 const ContactIcons = [
     {name: 'telegram', link: 'https://t.me/chasingShadows4', icon: telegram},
-    {name: 'instagram', link: 'https://discord.gg/someting', icon: instagram},
+    {name: 'instagram', link: 'https://www.instagram.com/jemijobs224/', icon: instagram},
     {name: 'github', link: 'https://github.com/eyob333',icon: github},
 ]
 
 const formIcons = [
-    {name: 'whatsapp', link: 'https://wa.me/phone_no', icon: whatsapp},
+    {name: 'whatsapp', link: 'https://wa.me/chasingshadows4u', icon: whatsapp},
     {name: 'discord', link: 'https://discord.gg/someting', icon: discord},
     {name: 'telegram', link: 'https://t.me/chasingShadows4', icon: telegramL},
-    {name: 'email', link: 'mailto:jemijobs224@gmail.com', icon: email},
+    {name: 'email', link: 'mailto:jemijobs224@gmail.com?subject=Portfolio%20Inquiry&body=Hi%20Winter,%0A%0AI%20saw%20your%20portfolio%20and%20would%20like%20to%20discuss%20an%20opportunity.%0A%0ARegards,', icon: email},
     {name: 'github', link: 'https://github.com/eyob333', icon: githubL},
-    {name: 'instagram', link: 'instagram://user?username=jemijobs224', icon: instagramL}
+    {name: 'instagram', link: 'https://www.instagram.com/jemijobs224/', icon: instagramL}
 
 ]
 export default ContactIcons

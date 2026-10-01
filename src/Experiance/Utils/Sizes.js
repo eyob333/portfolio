@@ -22,7 +22,6 @@ export default class Sizes extends EventEmitter{
             this.device.tab =  this.width > 450 && this.width < 810
             this.device.desktop = this.width >810
             console.log(this.device)
-            window.alert(this.device.mobile)
             
             this.trigger('resize')
         })

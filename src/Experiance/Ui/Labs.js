@@ -28,24 +28,15 @@ export default class Labs{
                 </div>
                 <div class="slide-wrapper">  
                     <div class="slider slider-lab">
-                     ${ !this.device.mobile ? `
-                        <div class="wo-am">
-                            <div class="wo-spacer">
-                                ${labSvg}
-                            </div>
-                        </div>
-                        ` : ""}
 
                         <div class="sliders">
                         </div>
 
-                        ${ this.device.mobile ? `
                             <div class="wo-am">
                                 <div class="wo-spacer">
                                     ${labSvg}
                                 </div>
                             </div>
-                        ` : ""}
 
 
                     </div>

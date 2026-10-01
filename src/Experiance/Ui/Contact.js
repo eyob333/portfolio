@@ -65,7 +65,7 @@ export default class Contact{
         let icons = document.querySelector("#contact .socials")
         icons.innerHTML = formIcons.map( i =>`
             <div class="icons"> 
-                <div class="icon-s ${i.name}"> 
+                <div class="icon-s soc-li ${i.name}" data-link="${i.link}"> 
                     ${i.icon}
                 </div>
             </div>
