@@ -78,51 +78,62 @@ export default class Resources extends EventEmitter{
             }
             
 
-else if (source.type === 'video') {
-    this.loadingManager.itemStart(source.path);
+        else if (source.type === 'video') {
+            this.loadingManager.itemStart(source.path);
 
-    const video = document.createElement('video');
-    video.crossOrigin = 'anonymous';
-    video.preload = 'metadata';
-    video.muted = true; // Crucial for mobile permission policies
-    video.playsInline = true;
-    video.src = source.path;
+            const video = document.createElement('video');
+            video.crossOrigin = 'anonymous';
+            video.preload = 'auto'; // Change from 'metadata' to 'auto' for aggressive Safari preloading
+            video.muted = true;
+            video.playsInline = true;
+            
+            // CRITICAL FOR SAFARI: Give it physical layout size and attach it invisibly to the DOM
+            video.width = 320;
+            video.height = 180;
+            video.style.position = 'absolute';
+            video.style.opacity = '0';
+            video.style.pointerEvents = 'none';
+            document.body.appendChild(video);
 
-    let isFinished = false;
+            video.src = source.path;
 
-    const finishLoading = () => {
-        if (!isFinished) {
-            isFinished = true;
-            this.sourceLoaded(source, video);
-            this.loadingManager.itemEnd(source.path);
+            let isFinished = false;
+
+            const finishLoading = () => {
+                if (!isFinished) {
+                    isFinished = true;
+                    
+                    // Clean up the temporary DOM node once loaded
+                    if (video.parentNode) {
+                        video.parentNode.removeChild(video);
+                    }
+
+                    this.sourceLoaded(source, video);
+                    this.loadingManager.itemEnd(source.path);
+                }
+            };
+
+            video.addEventListener('loadeddata', finishLoading, { once: true });
+            video.addEventListener('canplay', finishLoading, { once: true });
+            video.addEventListener('canplaythrough', finishLoading, { once: true });
+
+            video.addEventListener('error', (e) => {
+                if (!isFinished) {
+                    console.warn(`Video error caught in Safari: ${source.path}`, e);
+                    finishLoading();
+                }
+            });
+
+            // Safety fallback timeout
+            setTimeout(() => {
+                if (!isFinished) {
+                    console.warn(`Safari video load timed out, forcing continuation: ${source.path}`);
+                    finishLoading();
+                }
+            }, 4000);
+
+            video.load();
         }
-    };
-
-    // Listen to multiple fallback events since mobile can be finicky
-    video.addEventListener('loadeddata', finishLoading, { once: true });
-    video.addEventListener('canplay', finishLoading, { once: true });
-    video.addEventListener('canplaythrough', finishLoading, { once: true });
-
-    video.addEventListener('error', (e) => {
-        if (!isFinished) {
-            isFinished = true;
-            console.warn(`Video warning/error on mobile: ${source.path}`, e);
-            // Force finish anyway so mobile loader never locks up the app
-            this.sourceLoaded(source, video);
-            this.loadingManager.itemEnd(source.path);
-        }
-    });
-
-    // SAFETY FALLBACK: If mobile refuses to fire video events for 4 seconds, force it through
-    setTimeout(() => {
-        if (!isFinished) {
-            console.warn(`Video load timed out on mobile, forcing continuation: ${source.path}`);
-            finishLoading();
-        }
-    }, 4000);
-
-    video.load();
-}
 
             else if (source.type === 'font') {
                 this.loadingManager.itemStart(source.path);

@@ -54,9 +54,8 @@ export default class App{
         
 
         this.resources.on('ready', () =>{
-            console.log(`conskskdfjslkdfj`)
                 setTimeout( () =>{
-                    console.log(`zzzzjslkdfj`)
+
                     this.animation = new Animation()
                     this.lenis.resize();
                     ScrollTrigger.refresh();
