@@ -3,9 +3,10 @@ import '../Styles/Models.css'
 import { modSvg } from "../../assets/secIcons";
 
 export default class Models{
-    constructor(root, ui, device){
+    constructor(root, ui, device, resources){
         this.container = root
         this.device = device
+        this.modelCard = ModelCards(resources)
 
         this.setParent()
         this.setInstance();
@@ -24,27 +25,14 @@ export default class Models{
                         </div>
                         <div class="slide-wrapper"> 
                             <div class="slider slider-mod">
-
-                                
-                            ${ !this.device.mobile ? `
-                                    <div class="wo-am"> 
-                                        <div class="wo-spacer"> 
-                                            ${modSvg}
-                                        </div>
-                                    </div>
-                                ` : ""}
-
-                            <div class="sliders">
-                            </div>
-
-
-                            ${ this.device.mobile ? `
+                            
+                                <div class="sliders">
+                                </div>
                                 <div class="wo-am"> 
                                         <div class="wo-spacer"> 
                                             ${modSvg}
                                         </div>
                                     </div>
-                                ` : ""}
                             </div>
                         <div>
             `;
@@ -52,12 +40,12 @@ export default class Models{
     }
     setInstance(){
         let projectElement = document.querySelector('div.slider-mod .sliders');
-        let injectElement = ModelCards.map( (d, i) => {
+        let injectElement = this.modelCard.map( (d, i) => {
             console.log(`foo i`,i)
             return ` <div class="slider-cont sli-${i}">
             ${i == 0 ? `<div> something </div>`: ""}
     
-            ${i !==0 && i < ModelCards.length -1 ?` 
+            ${i !==0 && i < this.modelCard.length -1 ?` 
                         <div class="side-m"> 
                             <div class="s-image">
                                 <img src="${d.img}" />
@@ -76,7 +64,7 @@ export default class Models{
                             </div>
                         </div>
                     `: ""}
-            ${i == ModelCards.length -1 ? `<div> something else</div>`: ""}
+            ${i == this.modelCard.length -1 ? `<div> something else</div>`: ""}
         </div>`
         }).join('');
         projectElement.innerHTML = injectElement;

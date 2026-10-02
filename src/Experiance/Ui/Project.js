@@ -1,11 +1,13 @@
 import '../Styles/Projects.css'
-import projects from "../../assets/porojectCards";
+import projectsC from "../../assets/porojectCards";
 import { proSvg } from '../../assets/secIcons';
 
 export default class Project{
-    constructor(root, ui, device){
+    constructor(root, ui, device, resouces){
         this.container = root
         this.device = device
+        this.projCards = projectsC(resouces)
+
         this.setParent()
         this.setInstance();
 
@@ -30,25 +32,15 @@ export default class Project{
                         </div>
                         <div class="slide-wrapper"> 
                             <div class="slider slider-proj">
-                                ${ !this.device.mobile ? 
-                                    `<div class="wo-am">
-                                        <div class="wo-spacer">
-                                           ${proSvg}
-                                        </div>
-                                    </div>`
-                                    :""}
 
                                 <div class="sliders">
                                 </div>
 
-                                ${ this.device.mobile ? 
-                                    `<div class="wo-am">
-                                        <div class="wo-spacer">
-                                           ${proSvg}
-                                        </div>
-                                    </div>`
-                                    :""}
-
+                                <div class="wo-am">
+                                    <div class="wo-spacer">
+                                        ${proSvg}
+                                    </div>
+                                </div>
 
                             </div>
                         </div>
@@ -58,14 +50,14 @@ export default class Project{
     }
     setInstance(){
         let projectElement = document.querySelector('div.slider-proj .sliders');
-        let injectElement = projects.map( (d, i) => `
+        let injectElement = this.projCards.map( (d, i) => `
         
             <div class="slider-cont i-${i}"> 
                 <div class="frac-wrap">   
                     <div class="cont-frac"> 
                         <div class="s-video" onmouseenter="this.querySelector('video').play()" onmouseleave="this.querySelector('video').pause()">
                             <video poster="${d.thum}" muted playsinline webkit-playsinline loop preload="auto">
-                                <source src="${d.vid}" type="video/mp4">
+                                <source src="${d.vid.src}" type="video/mp4">
                             </video> 
                         </div>
 

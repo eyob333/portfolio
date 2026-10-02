@@ -1,29 +1,3 @@
-@import url('https://fonts.cdnfonts.com/css/radenes');
-@import url('https://fonts.cdnfonts.com/css/fnt-basic-shapes-1');
-@import url('https://fonts.cdnfonts.com/css/nevermind-bauhaus');
-@import url('https://fonts.cdnfonts.com/css/enotria');
-
-@font-face {
-  font-family: 'Kapiler';
-  src: url('/fonts/kapiler.regular.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-
-@font-face {
-  font-family: 'Nebula';
-  src: url('/fonts/next_sphere/Next Sphere Thin.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Jura';
-  src: url('/fonts/identidad-cdnfonts/Identidad-ExtraLight.otf') format('truetype');
-}
 
 html,
 body {
@@ -37,7 +11,7 @@ body {
   border: 0;
   background-color: #000000;
   /* zoom: .5; */
-  cursor: none;
+  /*cursor: none; */
 }
 
 canvas {
@@ -50,7 +24,6 @@ canvas {
   z-index: 2;
   outline: none;
   background-color: transparent;
-  touch-action: none; /* Prevents iOS Safari elastic scroll interference */
 
 }
 
@@ -169,7 +142,7 @@ section {
 
 /*************************************** proj & labs & models *******************************/
 .page p {
-  font-family: 'NeverMind Bauhaus', sans-serif;
+  font-family: 'NeverMind-Bauhaus', sans-serif;
 }
 
 #project,
@@ -195,7 +168,7 @@ section {
 
     .slider {
       display: grid;
-      grid-template-rows: 9% 91%;
+      grid-template-rows: 91% 9%;
       height: 100vh;
       will-change: transform;
 
@@ -208,10 +181,10 @@ section {
           display: grid;
           justify-content: center;
           /* background-color:blueviolet; */
-          width: fit-content;
+          width: 100v;
           position: absolute;
           bottom: 10px;
-          right: 200px;
+          right: 10px;
 
           svg {
             width: 280px;

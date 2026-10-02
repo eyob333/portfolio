@@ -5,7 +5,7 @@ import icons from "./techStackIcons"
 export default (resources) => {
     const vid = resources.item.smtf.src
     const img =  resources.item.labI.src
-    console.log(resources)
+
     return [
     'spawn',
     {
