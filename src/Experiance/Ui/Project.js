@@ -31,7 +31,7 @@ export default class Project{
                             </div>
                         </div>
                         <div class="slide-wrapper"> 
-                            <div class="slider slider-proj">
+                            <div class="slider slider-proj" base="1">
 
                                 <div class="sliders">
                                 </div>

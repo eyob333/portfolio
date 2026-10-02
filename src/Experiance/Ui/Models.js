@@ -24,7 +24,7 @@ export default class Models{
                             </div>
                         </div>
                         <div class="slide-wrapper"> 
-                            <div class="slider slider-mod">
+                            <div class="slider slider-mod" base="1">
                             
                                 <div class="sliders">
                                 </div>

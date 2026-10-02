@@ -27,7 +27,7 @@ export default class Labs{
                     </div> 
                 </div>
                 <div class="slide-wrapper">  
-                    <div class="slider slider-lab">
+                    <div class="slider slider-lab" base="3" >
 
                         <div class="sliders">
                         </div>
@@ -50,7 +50,7 @@ export default class Labs{
         console.log("foo end",this.labC.length)
         let injectElement = this.labC.map( (d,i) => {
         return `<div class="slider-cont sli-${i}"> 
-            ${i == 0 ? `<div> something </div>`: `` }
+            ${i == 0 ? `<div class="side-m" > something </div>`: `` }
             ${ i !==0 && i < this.labC.length -1 ? `
                     <div class="side-m"> 
                         <div class="s-vis">
@@ -80,7 +80,7 @@ export default class Labs{
                 `: ``}
                                     
 
-            ${i == this.labC.length -1 ? `<div> something else </div>`: ""} 
+            ${i == this.labC.length -1 ? `<div class="side-m" > something else </div>`: ""} 
         </div>`
         
     }).join('')

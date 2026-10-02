@@ -103,6 +103,9 @@ export default class Animation {
             const cards = s1.querySelectorAll('.slider-cont');
 
             const par = s1.querySelectorAll('.slider-cont .s-name h2')
+            const wi =  s1.attributes.getNamedItem('base').value
+
+  
 
 
             const sliderT2 = gsap.timeline({
@@ -114,7 +117,7 @@ export default class Animation {
                     pin: true,         // Pins this specific element
                     scrub: 1,
                     snap: {
-                        snapTo: 1 / (cards.length - 1), // Snaps relative to total panels, 
+                        snapTo: 1 / (cards.length - wi), // Snaps relative to total panels, 
                         duration: { min: 0.15, max: 0.4 }, // Faster snap recovery
                         delay: 0.15,                       // Brief delay before snapping engages
                         ease: 'power1.inOut'

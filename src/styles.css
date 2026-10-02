@@ -219,7 +219,7 @@ section {
     .slider {
       .sliders {
         .slider-cont {
-          width: 33dvw;
+          width: calc(100vw / 3);
           height: fit-content;
 
 
