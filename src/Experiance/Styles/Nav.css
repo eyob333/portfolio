@@ -51,6 +51,7 @@
         display: flex;
         justify-content: center;
         /* align-items: stretch; */
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 
 
         .svg-cont {
@@ -141,6 +142,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        clip-path: circle(72.7% at 48% 51%);
 
         svg {
           /* transform: t; */
@@ -149,6 +151,7 @@
           margin: 0;
           padding: 0;
           border: 0;
+          pointer-events: none;
         }
       }
 

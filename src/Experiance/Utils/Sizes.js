@@ -9,7 +9,7 @@ export default class Sizes extends EventEmitter{
         this.pixelRatio = Math.min(window.devicePixelRatio, 2)
         this.device = {
             mobile: this.width < 450,
-            tab: 810 < this.width > 450 ,
+            tab: this.width > 450 && this.width < 810 ,
             desktop: this.width >810
         }
 
@@ -22,6 +22,7 @@ export default class Sizes extends EventEmitter{
             this.device.tab =  this.width > 450 && this.width < 810
             this.device.desktop = this.width >810
             console.log(this.device)
+            console.log(`foo k`,this.width)
             
             this.trigger('resize')
         })

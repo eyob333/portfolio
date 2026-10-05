@@ -19,9 +19,9 @@ export default class Animation {
         this.app = new App();
         this.setCursor()
         this.ui = new Ui();
-        this.slide();
-        this.setUi();
+        
         this.device = this.app.sizes.device.mobile;
+        this.slide();
 
         let nav = {
             prev_sv: '',
@@ -65,7 +65,8 @@ export default class Animation {
 
     slide() {
 
-        let slider = document.querySelector('.slider-hom')
+        let slider = document.querySelector('.slider-hom');
+        const cardsH = slider.querySelectorAll('.slide');
 
         let sliderTl = gsap.timeline({
             defaults: {
@@ -76,12 +77,17 @@ export default class Animation {
                 pin: true,
                 scrub: 1,
                 anticipatePin: 1,
-                end: () => "+=" + (slider.scrollWidth - window.innerWidth * 1),
+                snap: {
+                    snapTo: 1 / (cardsH.length - 1), // Snaps relative to total panels, 
+                    duration: { min: 0.15, max: 0.4 }, // Faster snap recovery
+                    delay: 0.15,                       // Brief delay before snapping engages
+                    ease: 'power1.inOut',
+                    marker: false
+                },
+                end: () => "+=" + (slider.scrollWidth - window.innerWidth),
                 invalidateOnRefresh: true,
-
-
             }
-        })
+        });
 
         sliderTl
             .to(slider, {
@@ -89,8 +95,32 @@ export default class Animation {
             }, "<")
             .to('.slider-line', {
                 scaleX: 1,
+            }, "<");
 
-            }, "<")
+        cardsH.forEach((card) => {
+            const para = card.querySelector('.par-cont p');
+
+            if (!para) return;
+
+            gsap.set(para, { opacity: 0, y: 40 });
+
+            gsap.to(para, {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: card,
+                    containerAnimation: sliderTl,
+                    start: "left 85%",
+                    end: "right 15%",
+                    toggleActions: "play reverse play reverse",
+                    //markers: true
+                }
+            });
+        });
+
+
 
 
         let s1Elements = document.querySelectorAll('.slider');
@@ -98,14 +128,16 @@ export default class Animation {
 
 
         s1Elements.forEach((s1) => {
-            const lockedE = s1.querySelector('.wo-am')
-            const pts = s1.querySelector('.wo-spacer svg')
+
             const cards = s1.querySelectorAll('.slider-cont');
+            const p = s1.classList.value.split(' ').at(-1) == 'projf';
+            const k = s1.classList.value.split(' ').at(-1) == 'ks';
 
-            const par = s1.querySelectorAll('.slider-cont .s-name h2')
-            const wi =  s1.attributes.getNamedItem('base').value
 
-  
+
+            const lockedE = s1.querySelector('.wo-am')
+            const wi = s1.attributes.getNamedItem('base').value
+            //console.log(`3i`, cards)
 
 
             const sliderT2 = gsap.timeline({
@@ -120,7 +152,9 @@ export default class Animation {
                         snapTo: 1 / (cards.length - wi), // Snaps relative to total panels, 
                         duration: { min: 0.15, max: 0.4 }, // Faster snap recovery
                         delay: 0.15,                       // Brief delay before snapping engages
-                        ease: 'power1.inOut'
+                        ease: 'power1.inOut',
+                        //markers: false
+                        
                     },
                     anticipatePin: 1,
                     end: () => "+=" + ((s1.scrollWidth - s1.clientWidth)),
@@ -128,7 +162,6 @@ export default class Animation {
                 }
 
             });
-
 
 
             sliderT2.to(s1, {
@@ -142,31 +175,54 @@ export default class Animation {
             }
 
             cards.forEach((card) => {
-                const para = card.querySelector('.s-name h2');
-                const ima = card.querySelector('.s-name h2');
-                const line = card.querySelector('.s-name h2');
-                const numb = card.querySelector('.s-name h2');
-                const icons = card.querySelectorAll('.s-name h2');
-                if (!para) return;
 
-                // Set initial state
-                gsap.set(para, { opacity: 0, y: 40 });
-
-                // Individual trigger per card using the horizontal container as context
-                gsap.to(para, {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.8,
-                    ease: "power2.out",
+                const cardTL= gsap.timeline({
+                    defaults: {},
                     scrollTrigger: {
-                        trigger: card,
-                        containerAnimation: sliderT2, // CRITICAL: Links card animation to the parent horizontal timeline!
-                        start: "left center",         // Triggers when the card hits the center of the screen
-                        toggleActions: "play reverse play reverse", // Fades in when scrolling forward, fades out going back
-                    }
+                            trigger: card,
+                            containerAnimation: sliderT2,
+                            start: "left 75%", // Single, clear start point
+                            end: "right 25%",  // Single, clear end point
+                            toggleActions: "play reverse play reverse",
+                            //markers: true
+                        }
                 });
-            });
+                               
+                if (p) {
+                    const desc = card.querySelectorAll('.s-name h2');
+                    const vid = card.querySelector('.s-name h2');
+                    const line = card.querySelector('.s-name h2');
+                    const tit = card.querySelector(`.frac-cont h2`);
 
+                    cardTL.set(tit, { opacity: 0, y: 40 });
+                    cardTL.to(tit, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 1.8,
+                        ease: "power2.out",
+                    });
+
+
+                } else{
+                    console.log(`coskdfj`, card)
+                    const parka = card.querySelectorAll('.s-name h2');
+
+                    console.log(`fook`, parka)
+                    
+                    if (!parka) return;
+
+                    cardTL.set(parka, { opacity: 0, y: 40 });
+
+                    cardTL.to(parka, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.8,
+                        ease: "power2.out",
+                        });
+
+                }
+
+            });
 
 
         });
@@ -241,7 +297,8 @@ export default class Animation {
             // });
             gsap.to(window, {
                 scrollTo: `#${target}`,
-                scrollBehavior: 'smooth',
+                duration: 1.8,
+                ease: "back.out(1)"
 
             })
 
@@ -276,7 +333,7 @@ export default class Animation {
 
     scroll_trig() {
         let scrollArr = gsap.utils.toArray('section')
-        // console.log(scrollArr);
+
 
         scrollArr.forEach((arr, j) => {
             // console.log(`foo ${j}`, arr)
@@ -329,31 +386,59 @@ export default class Animation {
     }
 
 
-    setUi() {
-        let element = document.querySelector('.main-icon svg');
-        gsap.to(element, {
-            y: 20
-        })
-
-        let title_c = gsap.utils.toArray('.nav-mask .title-cont')
-        title_c.forEach(e => {
-            gsap.to(e, {
-                scale: 0,
-            })
-
-        });
-
-    }
-
     setEvent() {
         let device = this.app.sizes.device;
         let element = document.querySelector(".util .theme .icons-t")
-        console.log(element)
+        let te = document.querySelector('.transition-overlay')
+
+        function snapElementToTarget(elementToMove, targetElement) {
+            // 1. Get the exact screen coordinates and dimensions of both elements
+            const targetRect = targetElement.getBoundingClientRect();
+                    // 2. Force the moving element to absolute/fixed positioning in the DOM root
+                gsap.set(elementToMove, {
+                    position: 'fixed',
+                    top: targetRect.top,
+                    left: targetRect.left,
+                    width: targetRect.width,
+                    height: targetRect.height,
+                    margin: 0, // Reset any default margins causing layout offsets
+                    zIndex: 9999
+            });
+        }
+        
+
+            gsap.set('.transition-overlay', {
+                clipPath: `circle(0% at  50% 50%)`,
+                                transformOrigin:'center' 
+            });
 
         element.addEventListener('click', (e) => {
-            console.log("yo")
+            console.log("yo") 
+            console.log(element)
+            snapElementToTarget(te, element)
+
+            // 3. Expand outwards covering the whole screen from that precise origin
+            gsap.to('.transition-overlay', {
+                clipPath: `circle(50% at 50% 50%)`,
+                duration: 2.2,
+                ease: 'power2.inOut',
+                scale: 53,
+                duration: 2.2,
+                onComplete: () => {
+                    gsap.to('.transition-overlay', {
+                        clipPath: `circle(0% at  50% 50%)`,
+                        scale: 1,
+                        duration: 2
+                    });
+                   
+                }
+                
+            });
+
+
             gsap.to(element, {
-                rotate: '+=180deg'
+                rotate: '+=180deg',
+                
             })
         })
 
@@ -372,6 +457,8 @@ export default class Animation {
         homC.addEventListener('click', () => {
             gsap.to(window, {
                 scrollTo: `#home`,
+                duration: 1.8,
+                ease: "back.out(1)"
 
             })
 
@@ -432,7 +519,7 @@ export default class Animation {
                 console.log(e)
                 e.stopPropagation()
                 // Retrieve the target URL from a data attribute on the wrapper, or fallback to a default
-               
+
                 const wrapper = icon.closest('a') || icon.closest('.icon-cont');
                 const url = icon.getAttribute('data-link');
 

@@ -114,7 +114,25 @@ p {
 .underlay-container-div {
   z-index: 1;
   position: absolute;
-  visibility: hidden;
+  visibility: visible;
+  background-color: rgb(131, 119, 119);
+}
+
+.transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+  pointer-events: none; /* Allows clicks to pass through when hidden */
+    z-index: 999;
+    background: rgba(255, 255, 255, 0.18);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2.4px);
+    -webkit-backdrop-filter: blur(2.4px);
+    will-change: clip-path, opacity;
+    transform: translateZ(0);
+    contain: layout style paint;
 }
 
 

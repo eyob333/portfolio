@@ -31,7 +31,7 @@ export default class Project{
                             </div>
                         </div>
                         <div class="slide-wrapper"> 
-                            <div class="slider slider-proj" base="1">
+                            <div class="slider slider-proj projf" base="1">
 
                                 <div class="sliders">
                                 </div>
@@ -52,7 +52,7 @@ export default class Project{
         let projectElement = document.querySelector('div.slider-proj .sliders');
         let injectElement = this.projCards.map( (d, i) => `
         
-            <div class="slider-cont i-${i}"> 
+            <div class="slider-cont i-${i} proj-e"> 
                 <div class="frac-wrap">   
                     <div class="cont-frac"> 
                         <div class="s-video" onmouseenter="this.querySelector('video').play()" onmouseleave="this.querySelector('video').pause()">
@@ -91,8 +91,7 @@ export default class Project{
                             <div class="title-line"> </div>
                         </div>
                     </div>
-                    <!-- <span class="s-empty"> </span> -->
-
+                   
                 </div>
             </div>`).join('');
         projectElement.innerHTML += injectElement;

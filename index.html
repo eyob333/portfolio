@@ -27,9 +27,23 @@
 
     <div class="underlay-container-div">
     </div>
+    <div class="transition-overlay">
+    </div>
     <!-- webgl canvas -->
     <canvas class="webgl"></canvas>
-    <div class="custom-cursor"></div>
+    <div class="custom-cursor">
+      <div class="cursor-bor">
+        <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="49" stroke="#F2EEEE" stroke-width="2"/>
+        </svg>
+      </div>
+      <div class="cursor-poi">
+        <svg width="34" height="35" viewBox="0 0 34 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10.8329 33.198L19.9646 24.5524L18.0129 18.9639L23.1128 21.5717L32.618 12.5725L1.10003 1.10013L10.8329 33.198Z" stroke="white" stroke-width="2.2" stroke-linejoin="round"/>
+        </svg>
+
+      </div>
+    </div>
 
     <script type="module" src="/src/main.js"></script>
   </body>

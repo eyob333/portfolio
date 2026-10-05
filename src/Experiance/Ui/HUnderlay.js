@@ -1,4 +1,4 @@
-import '../Styles/Home.css'
+import '../Styles/HUnderlay.css'
 
 export default class HUnderlay{
 
@@ -12,18 +12,50 @@ export default class HUnderlay{
     }
 
     setInstance(){
-        let element = document.createElement('div');
-        element.id = 'homeUnderlay';
-        element.classList.add('page');
-        element.innerHTML = `
+        this.container.innerHTML = `
+        <div id="home-underlay">
             <div class="header-home overlay">
-                <div class="heading-cont" >
+                <div class="heading-cont u-page" >
+                    <h1>winter nomad</h1>
+                </div>
+                <div class="slider-cont u-page" >
                     <h1>winter nomad</h1>
                 </div>
             </div>
-        `;
+        </div>    
 
-        this.container.appendChild(element);
+        <div id="project-underlay"> 
+            <div class="heading-cont u-page" >
+                    <h1>winter nomad</h1>
+            </div>   
+            <div class="slider-cont u-page" >
+                <h1>winter nomad</h1>
+            </div>
+
+        </div>
+
+        <div id="model-underlay">    
+            <div class="heading-cont u-page" >
+                <h1>winter nomad</h1>
+            </div>   
+            <div class="slider-cont u-page" >
+                <h1>winter nomad</h1>
+            </div>
+        </div>
+
+        <div id="lab-underlay"> 
+            <div class="heading-cont u-page" >
+                <h1>winter nomad</h1>
+            </div>   
+            <div class="slider-cont u-page" >
+                <h1>winter nomad</h1>
+            </div>   
+        
+        </div>
+        <div id="contact-underlay">    
+        
+        </div>
+        `;
 
     }
 

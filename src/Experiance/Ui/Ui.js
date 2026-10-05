@@ -1,4 +1,5 @@
 import App from "../App";
+import gsap from "gsap";
 
 import Nav from "./Nav";
 import Home from "./Home";
@@ -34,6 +35,30 @@ export default class Ui{
         this.contact = new Contact(this.container, this.ui)
 
         this.homeUnderlay = new HUnderlay(this.underlay, this.ui);
+
+        this.setUi();
+
+    }
+
+    setUi() {
+        let element = document.querySelector('.main-icon svg');
+        gsap.to(element, {
+            y: 22
+        })
+
+        let title_c = gsap.utils.toArray('.nav-mask .title-cont')
+        title_c.forEach(e => {
+            gsap.to(e, {
+                scale: 0,
+            })
+
+        });
+        let icos = gsap.utils.toArray('.nav-mask .svg-cont svg') 
+        icos.forEach(element => {
+            gsap.to(element, {
+                y: '21px',
+            })
+        });
 
     }
 

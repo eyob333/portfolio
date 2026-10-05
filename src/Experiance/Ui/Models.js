@@ -24,7 +24,7 @@ export default class Models{
                             </div>
                         </div>
                         <div class="slide-wrapper"> 
-                            <div class="slider slider-mod" base="1">
+                            <div class="slider slider-mod " base="${this.device.mobile? 1: 3 }" >
                             
                                 <div class="sliders">
                                 </div>
@@ -43,7 +43,7 @@ export default class Models{
         let injectElement = this.modelCard.map( (d, i) => {
             console.log(`foo i`,i)
             return ` <div class="slider-cont sli-${i}">
-            ${i == 0 ? `<div> something </div>`: ""}
+            ${i == 0 ? `<div class="s-name"> <h2>  something </h2> </div>`: ""}
     
             ${i !==0 && i < this.modelCard.length -1 ?` 
                         <div class="side-m"> 
@@ -64,7 +64,7 @@ export default class Models{
                             </div>
                         </div>
                     `: ""}
-            ${i == this.modelCard.length -1 ? `<div> something else</div>`: ""}
+            ${i == this.modelCard.length -1 ? `<div class="s-name"> <h2>  something </h2> </div>`: ""}
         </div>`
         }).join('');
         projectElement.innerHTML = injectElement;
