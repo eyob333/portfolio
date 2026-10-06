@@ -39,23 +39,9 @@ export default class Animation {
         this.nav = this.app.event.nav
         this.nav_select();
         this.scroll_trig()
-        this.setEvent()
-
+  
 
         // this.event = new Event(this.app.ship, this.app.camera.instance, this.app.camera.controls)
-        // this.raycast = new RayCaster()
-
-
-        // let btn = document.querySelector('.smthin')
-        // btn.addEventListener('click', () =>{
-        //     history.replaceState(null, "", `#${"home"}`);
-        //     let targetDiv = document.querySelector('#lab')
-        //     targetDiv.scrollIntoView({
-        //         behavior: "smooth", // Options: "smooth" (animated) or "auto" (instant snap)
-        //         block: "start",     // Aligns the top of the div to the top of the window
-        //         inline: "nearest"   // Handles horizontal alignment if necessary
-        //     });
-        // })
 
     }
 
@@ -387,60 +373,6 @@ export default class Animation {
 
 
     setEvent() {
-        let device = this.app.sizes.device;
-        let element = document.querySelector(".util .theme .icons-t")
-        let te = document.querySelector('.transition-overlay')
-
-        function snapElementToTarget(elementToMove, targetElement) {
-            // 1. Get the exact screen coordinates and dimensions of both elements
-            const targetRect = targetElement.getBoundingClientRect();
-                    // 2. Force the moving element to absolute/fixed positioning in the DOM root
-                gsap.set(elementToMove, {
-                    position: 'fixed',
-                    top: targetRect.top,
-                    left: targetRect.left,
-                    width: targetRect.width,
-                    height: targetRect.height,
-                    margin: 0, // Reset any default margins causing layout offsets
-                    zIndex: 9999
-            });
-        }
-        
-
-            gsap.set('.transition-overlay', {
-                clipPath: `circle(0% at  50% 50%)`,
-                                transformOrigin:'center' 
-            });
-
-        element.addEventListener('click', (e) => {
-            console.log("yo") 
-            console.log(element)
-            snapElementToTarget(te, element)
-
-            // 3. Expand outwards covering the whole screen from that precise origin
-            gsap.to('.transition-overlay', {
-                clipPath: `circle(50% at 50% 50%)`,
-                duration: 2.2,
-                ease: 'power2.inOut',
-                scale: 53,
-                duration: 2.2,
-                onComplete: () => {
-                    gsap.to('.transition-overlay', {
-                        clipPath: `circle(0% at  50% 50%)`,
-                        scale: 1,
-                        duration: 2
-                    });
-                   
-                }
-                
-            });
-
-
-            gsap.to(element, {
-                rotate: '+=180deg',
-                
-            })
-        })
 
 
 
@@ -453,20 +385,7 @@ export default class Animation {
             }, 250);
       }) */
 
-        const homC = document.querySelector('#nav .main-icon .icon-mask')
-        homC.addEventListener('click', () => {
-            gsap.to(window, {
-                scrollTo: `#home`,
-                duration: 1.8,
-                ease: "back.out(1)"
-
-            })
-
-        })
-
-        const pts = gsap.utils.toArray('.wo-spacer svg')
-        console.log(pts)
-
+        
         /* 
         const dfs = document.querySelector('#labs .wo-spacer svg')    
         const cts = document.querySelector('#project .wo-spacer svg')
@@ -507,29 +426,6 @@ export default class Animation {
         console.log('foo svg', dfs)
         console.log('foo svg', cts)
         */
-
-        const socialIcons = document.querySelectorAll('.soc-li');
-
-        socialIcons.forEach(icon => {
-            // Ensure the cursor pointer style is active so users know it's clickable
-            icon.style.cursor = 'pointer';
-
-            icon.addEventListener('click', (e) => {
-                // Prevent event bubbling if the icon sits inside a clickable card or link
-                console.log(e)
-                e.stopPropagation()
-                // Retrieve the target URL from a data attribute on the wrapper, or fallback to a default
-
-                const wrapper = icon.closest('a') || icon.closest('.icon-cont');
-                const url = icon.getAttribute('data-link');
-
-                if (url && url !== '#') {
-                    window.open(url, 'portfolio_tab', 'noopener,noreferrer');
-                } else {
-                    console.warn('Social icon clicked, but no valid destination URL was found.');
-                }
-            });
-        });
 
 
     }

@@ -37,6 +37,7 @@ export default class Ui{
         this.homeUnderlay = new HUnderlay(this.underlay, this.ui);
 
         this.setUi();
+        this.setEvent();
 
     }
 
@@ -65,6 +66,95 @@ export default class Ui{
 
     setDebug(){
         this.ui.addFolder("main")
+    }
+
+    setEvent(){
+        //theme change
+        let device = this.app.sizes.device;
+        let element = document.querySelector(".util .theme .icons-t")
+        let te = document.querySelector('.transition-overlay')
+
+        function snapElementToTarget(elementToMove, targetElement) {
+            const targetRect = targetElement.getBoundingClientRect();
+                gsap.set(elementToMove, {
+                    position: 'fixed',
+                    top: targetRect.top,
+                    left: targetRect.left,
+                    width: targetRect.width,
+                    height: targetRect.height,
+                    margin: 0, 
+                    zIndex: 9999
+            });
+        }
+        
+
+            gsap.set('.transition-overlay', {
+                clipPath: `circle(0% at  50% 50%)`,
+                                transformOrigin:'center' 
+            });
+
+        element.addEventListener('click', (e) => {
+            console.log("yo") 
+            console.log(element)
+            snapElementToTarget(te, element)
+
+            gsap.to('.transition-overlay', {
+                clipPath: `circle(50% at 50% 50%)`,
+                duration: 2.2,
+                ease: 'power2.inOut',
+                scale: 53,
+                duration: 2.2,
+                onComplete: () => {
+                    gsap.to('.transition-overlay', {
+                        clipPath: `circle(0% at  50% 50%)`,
+                        scale: 1,
+                        duration: 2
+                    });
+                   
+                }
+                
+            });
+
+            gsap.to(element, {
+                rotate: '+=180deg',
+                
+            })
+          
+        })
+
+
+        // link redirect
+        const socialIcons = document.querySelectorAll('.soc-li');
+
+        socialIcons.forEach(icon => {
+            icon.style.cursor = 'pointer';
+
+            icon.addEventListener('click', (e) => {
+                console.log(e)
+                e.stopPropagation()
+                const url = icon.getAttribute('data-link');
+                if (url && url !== '#') {
+                    window.open(url, 'portfolio_tab', 'noopener,noreferrer');
+                } else {
+                    console.warn('Social icon clicked, but no valid destination URL was found.');
+                }
+            });
+        });
+
+        // main logo goto
+        const homC = document.querySelector('#nav .main-icon .icon-mask')
+        homC.addEventListener('click', () => {
+            gsap.to(window, {
+                scrollTo: `#home`,
+                duration: 1.8,
+                ease: "back.out(1)"
+
+            })
+
+        })
+
+        const pts = gsap.utils.toArray('.wo-spacer svg')
+        console.log(pts)
     }
 
 }
