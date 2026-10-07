@@ -1,5 +1,6 @@
-import App from "../App";
 import gsap from "gsap";
+import App from "../App";
+import Event from "../Utils/Event";
 
 import Nav from "./Nav";
 import Home from "./Home";
@@ -14,6 +15,7 @@ import HUnderlay from "./HUnderlay";
 export default class Ui{
     constructor(){
         this.app = new App()
+        
         this.resouces = this.app.resources
         this.ui = null
         this.device = this.app.sizes.device
@@ -36,125 +38,74 @@ export default class Ui{
 
         this.homeUnderlay = new HUnderlay(this.underlay, this.ui);
 
-        this.setUi();
-        this.setEvent();
+        this.event = new Event();
+        this.setReqEvent();
 
     }
 
-    setUi() {
-        let element = document.querySelector('.main-icon svg');
-        gsap.to(element, {
-            y: 22
-        })
 
-        let title_c = gsap.utils.toArray('.nav-mask .title-cont')
-        title_c.forEach(e => {
-            gsap.to(e, {
-                scale: 0,
-            })
-
-        });
-        let icos = gsap.utils.toArray('.nav-mask .svg-cont svg') 
-        icos.forEach(element => {
-            gsap.to(element, {
-                y: '21px',
-            })
-        });
-
-    }
 
 
     setDebug(){
         this.ui.addFolder("main")
     }
 
-    setEvent(){
-        //theme change
-        let device = this.app.sizes.device;
-        let element = document.querySelector(".util .theme .icons-t")
-        let te = document.querySelector('.transition-overlay')
 
-        function snapElementToTarget(elementToMove, targetElement) {
-            const targetRect = targetElement.getBoundingClientRect();
-                gsap.set(elementToMove, {
-                    position: 'fixed',
-                    top: targetRect.top,
-                    left: targetRect.left,
-                    width: targetRect.width,
-                    height: targetRect.height,
-                    margin: 0, 
-                    zIndex: 9999
-            });
-        }
-        
+    async setReqEvent(){
+        const baseUrl = import.meta.env.VITE_API_URL 
+        document.getElementById('mscForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
 
-            gsap.set('.transition-overlay', {
-                clipPath: `circle(0% at  50% 50%)`,
-                                transformOrigin:'center' 
-            });
+            const submitBtn = document.querySelector('.submit-button');
+            //const responseMsg = document.getElementById('responseMessage');
 
-        element.addEventListener('click', (e) => {
-            console.log("yo") 
-            console.log(element)
-            snapElementToTarget(te, element)
+            const payload = {
+                name: document.getElementById('name').value.trim(),
+                sender: document.getElementById('email').value.trim(),
+                content: document.getElementById('subject').value.trim()
+            };
 
-            gsap.to('.transition-overlay', {
-                clipPath: `circle(50% at 50% 50%)`,
-                duration: 2.2,
-                ease: 'power2.inOut',
-                scale: 53,
-                duration: 2.2,
-                onComplete: () => {
-                    gsap.to('.transition-overlay', {
-                        clipPath: `circle(0% at  50% 50%)`,
-                        scale: 1,
-                        duration: 2
-                    });
-                   
-                }
+            try {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
+                //responseMsg.textContent = '';
+
+                // 3. Send POST request to your Express endpoint
+                const response = await fetch(`${baseUrl}api/msc`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    
+                // Success feedback
+                //responseMsg.style.color = 'green';
+                //responseMsg.textContent = 'Post submitted and notification email sent successfully!';
                 
-            });
-
-            gsap.to(element, {
-                rotate: '+=180deg',
-                
-            })
-          
-        })
-
-
-        // link redirect
-        const socialIcons = document.querySelectorAll('.soc-li');
-
-        socialIcons.forEach(icon => {
-            icon.style.cursor = 'pointer';
-
-            icon.addEventListener('click', (e) => {
-                console.log(e)
-                e.stopPropagation()
-                const url = icon.getAttribute('data-link');
-                if (url && url !== '#') {
-                    window.open(url, 'portfolio_tab', 'noopener,noreferrer');
+                // Clear form inputs
+                document.getElementById('mscForm').reset();
                 } else {
-                    console.warn('Social icon clicked, but no valid destination URL was found.');
+                // Error feedback from server validation
+                //responseMsg.style.color = 'red';
+                //responseMsg.textContent = result.error || 'Failed to submit post.';
                 }
-            });
+
+            } catch (error) {
+                console.error('Submission Error:', error);
+                //responseMsg.style.color = 'red';
+                //responseMsg.textContent = 'Network error. Please check if server is running.';
+            } finally {
+                // Re-enable button
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Post';
+            }
         });
-
-        // main logo goto
-        const homC = document.querySelector('#nav .main-icon .icon-mask')
-        homC.addEventListener('click', () => {
-            gsap.to(window, {
-                scrollTo: `#home`,
-                duration: 1.8,
-                ease: "back.out(1)"
-
-            })
-
-        })
-
-        const pts = gsap.utils.toArray('.wo-spacer svg')
-        console.log(pts)
+      
     }
 
 }

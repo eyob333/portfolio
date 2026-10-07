@@ -21,7 +21,7 @@ export default class Contact{
                 <div class="form-wrapper">
                     <h1 class="form-title">Got an idea, a project, or just want to chat? Drop a message below</h1>
 
-                    <form>
+                    <form id="mscForm">
                         <div class="form-field">
                             <label for="name">Name</label>
                             <div class="input-border-wrap name-border-wrap">

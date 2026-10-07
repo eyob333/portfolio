@@ -2,8 +2,19 @@
 html,
 body {
   width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
+    height: 100%;
+    margin: 0;
+}
+
+html,
+body,
+a,
+button,
+input,
+textarea,
+select,
+[role="button"] {
+  cursor: none !important;
 }
 
 body {
@@ -31,22 +42,53 @@ canvas {
   position: fixed;
   top: 0;
   left: 0;
-  width: 24px;
-  height: 24px;
-  background-color: #3b82f6;
-  border-radius: 50%;
+  width: 0;
+  height: 0;
   pointer-events: none; /* Ensures clicks pass through to underlying elements */
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.15s ease-out, background-color 0.2s ease, width 0.2s ease, height 0.2s ease;
+  z-index: 4;
+  visibility:hidden;
 }
 
-/* Hover state on interactive elements */
+
+/* Hover state on interactive elements 
 .custom-cursor.hovered {
   width: 48px;
   height: 48px;
   background-color: #ec4899;
   opacity: 0.8;
+
+}*/
+
+.cursor-poi,
+.cursor-bor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+    left: 7px;
+  top:  7px;
+}
+
+
+.custom-cursor .cursor-bor{
+  width: 60px;
+  height: 60px;
+  left: 3.5px;
+  top:  3.5px;
+}
+
+.custom-cursor .cursor-poi{
+  width: 15px;
+  height: 15px;
+
+
+}
+
+.custom-cursor svg{
+  width: 100%;
+  height: 100%;
 }
 
 h1,

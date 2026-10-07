@@ -17,7 +17,6 @@ export default class Animation {
 
     constructor() {
         this.app = new App();
-        this.setCursor()
         this.ui = new Ui();
         
         this.device = this.app.sizes.device.mobile;
@@ -191,7 +190,7 @@ export default class Animation {
 
                 } else{
                     console.log(`coskdfj`, card)
-                    const parka = card.querySelectorAll('.s-name h2');
+                    const parka = card.querySelector('.s-name h2');
 
                     console.log(`fook`, parka)
                     
@@ -373,9 +372,6 @@ export default class Animation {
 
 
     setEvent() {
-
-
-
         /* window.addEventListener('scroll', () => {
 
             
@@ -387,6 +383,9 @@ export default class Animation {
 
         
         /* 
+        const pts = gsap.utils.toArray('.wo-spacer svg')
+        console.log(pts)
+        
         const dfs = document.querySelector('#labs .wo-spacer svg')    
         const cts = document.querySelector('#project .wo-spacer svg')
         const mts = document.querySelector('#models .wo-spacer svg')
@@ -427,22 +426,6 @@ export default class Animation {
         console.log('foo svg', cts)
         */
 
-
-    }
-    setCursor() {
-        const cursor = document.querySelector('.custom-cursor');
-
-        // Move cursor element to match mouse position
-        window.addEventListener('mousemove', (e) => {
-            cursor.style.left = `${e.clientX}px`;
-            cursor.style.top = `${e.clientY}px`;
-        });
-
-        // Expand cursor when hovering over interactive elements
-        document.querySelectorAll('a, button').forEach((el) => {
-            el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
-            el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
-        });
 
     }
 
