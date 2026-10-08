@@ -28,7 +28,7 @@ export default class Underlay{
                 <div class="slider-cont u-slide" >
                     <div class="u-fill u1" >k1</div>
                     <div class="u-fill u2" >k2</div>
-                    <div class="u-fill u3" >k3</div>
+                    <div class="u-fill last" >k3</div>
                 </div>
             </div>
         </div>    
@@ -38,7 +38,7 @@ export default class Underlay{
                     <h1>proj</h1>
             </div>   
             <div class="slider-cont u-slide" >
-                ${this.cout.p.map( ()=>`<div class="u-fill" >k3</div>`).join('')}
+                ${this.cout.p.map( (j, i)=>`<div class="u-fill ${this.cout.p.length - 1 == i ? 'last':''}" >k${i}</div>`).join('')}
                 
             </div>
 
@@ -49,7 +49,7 @@ export default class Underlay{
                 <h1>mod</h1>
             </div>   
             <div class="slider-cont u-slide" >
-                ${this.cout.m.map( ()=>`<div class="u-fill" >k3</div>`).join('')}
+                ${this.cout.m.map( (j, i)=>`<div class="u-fill ${this.cout.m.length - 1 == i ? 'last':''}" >k${i}</div>`).join('')}
             </div>
         </div>
 
@@ -58,7 +58,7 @@ export default class Underlay{
                 <h1>lab</h1>
             </div>   
             <div class="slider-cont u-slide" >
-                ${this.cout.l.map( ()=>`<div class="u-fill" >k3</div>`).join('')}
+                ${this.cout.l.map( (j, i)=>`<div class="u-fill ${this.cout.l.length - 1 == i ? 'last':''}" >k${i}</div>`).join('')}
             </div>   
         
         </div>

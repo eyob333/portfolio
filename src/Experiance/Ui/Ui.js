@@ -38,8 +38,8 @@ export default class Ui{
 
         this.cCout = {
             p: this.project.cardCount(), 
-            l: this.labs.cardCount(),
-            m: this.models.cardCount(),
+            l: this.labs.cardCount().slice(0, -2),
+            m: this.models.cardCount().slice(0, -2),
         }
 
         this.homeUnderlay = new Underlay(this.underlay, this.ui, this.cCout);

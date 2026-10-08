@@ -1,9 +1,12 @@
-#home-underlay{
-
-
-    .u-fill.u3{
+.underlay-container-div{
+    pointer-events: none;
+}
+.underlay-container-div{
+    .u-fill.last{
         height: 100vh;
     }
+}
+#home-underlay{
     .slider-cont{
         background-color: rgba(51, 233, 243, 0.3) ;
 
@@ -23,14 +26,20 @@
     }
 }
 
+
 #model-underlay, #lab-underlay{
     .u-fill{
         height: calc(100vw / 3);
-        width: 100vw;
     }
-
 }
 
+
+#model-underlay, #lab-underlay{
+    .u-fill.last{
+        height: 100vh;
+        
+    }
+}
 #lab-underlay{
     
     .slider-cont{
@@ -45,3 +54,4 @@
 
     }
 }
+

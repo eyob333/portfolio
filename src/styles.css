@@ -154,7 +154,6 @@ p {
 }
 
 .underlay-container-div {
-  z-index: 1;
   position: absolute;
   visibility: visible;
   background-color: rgb(131, 119, 119);
