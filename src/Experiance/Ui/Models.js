@@ -70,4 +70,8 @@ export default class Models{
         projectElement.innerHTML = injectElement;
     }
 
+    cardCount(){
+        return this.modelCard;
+    }
+
 }

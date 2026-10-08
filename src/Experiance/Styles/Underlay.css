@@ -1,0 +1,47 @@
+#home-underlay{
+
+
+    .u-fill.u3{
+        height: 100vh;
+    }
+    .slider-cont{
+        background-color: rgba(51, 233, 243, 0.3) ;
+
+    }
+
+}
+
+.underlay-container-div{
+    .u-page{
+        height: 100vh;
+        width: 100vw;
+    }
+    
+    .u-fill{
+        height: 100vw;
+        width: 100vw;
+    }
+}
+
+#model-underlay, #lab-underlay{
+    .u-fill{
+        height: calc(100vw / 3);
+        width: 100vw;
+    }
+
+}
+
+#lab-underlay{
+    
+    .slider-cont{
+        background-color: rgba(51, 243, 61, 0.3) ;
+
+    }
+}
+
+#model-underlay{
+    .slider-cont{
+        background-color: rgba(137, 51, 243, 0.3) ;
+
+    }
+}

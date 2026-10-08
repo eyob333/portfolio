@@ -8,7 +8,7 @@ import Project from "./Project";
 import Labs from "./Labs";
 import Contact from "./Contact";
 import Models from "./Models";
-import HUnderlay from "./HUnderlay";
+import Underlay from "./Underlay";
 
 
 
@@ -36,7 +36,13 @@ export default class Ui{
         this.labs = new Labs(this.container, this.ui, this.device, this.resouces);
         this.contact = new Contact(this.container, this.ui)
 
-        this.homeUnderlay = new HUnderlay(this.underlay, this.ui);
+        this.cCout = {
+            p: this.project.cardCount(), 
+            l: this.labs.cardCount(),
+            m: this.models.cardCount(),
+        }
+
+        this.homeUnderlay = new Underlay(this.underlay, this.ui, this.cCout);
 
         this.event = new Event();
         this.setReqEvent();

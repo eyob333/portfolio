@@ -97,6 +97,10 @@ export default class Project{
         projectElement.innerHTML += injectElement;
     }
 
+    cardCount(){
+        return this.projCards;
+    }
+
     setDebug(){
 
     }

@@ -15,6 +15,7 @@ export default class Labs{
             this.debug = ui.addFolder('lab')
         }
     }
+
     setParent(){
         let parent = document.createElement('section')
         parent.id = 'labs'
@@ -102,5 +103,9 @@ export default class Labs{
 
         element.innerHTML = injectElement;
         
+    }
+
+    cardCount(){
+        return this.labC;
     }
 }
