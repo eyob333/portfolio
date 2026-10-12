@@ -55,3 +55,13 @@
     }
 }
 
+
+
+@media screen and (max-width: 440px) {
+    #model-underlay, #lab-underlay{
+        .u-fill{
+            height: calc(100vw / 1);
+        }
+    }
+
+}

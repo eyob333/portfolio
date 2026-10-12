@@ -1,6 +1,9 @@
 import '../Styles/Nav.css'
 import ContactIcons from "../../assets/contactIcons";
 import navIcon from "../../assets/navIcon";
+import { addDebugC } from '../Utils/Helper';
+import { theme } from '../../assets/config';
+import gsap from 'gsap';
 
 
 export default class Nav{
@@ -10,6 +13,8 @@ export default class Nav{
 
         if(ui){
             this.debug = ui.addFolder('nav')
+                    .close();
+            this.setDebug()
         }
     }
 
@@ -20,11 +25,12 @@ export default class Nav{
         element.innerHTML = `
             <div class="main-icon"> 
                     <div class="icon-mask">
-                        <svg width="246" height="100" viewBox="0 0 246 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path class="path" d="M138.346 87V5H154.104C156.82 5 159.425 6.07913 161.346 8L242.846 87" stroke="white" stroke-width="9"/>
-                            <path  class="path" d="M22.8462 0.5V99.5" stroke="#FFFAFA" stroke-width="8"/>
-                            <path  class="path" d="M2.84616 88L81.8462 8L85.7505 4.87653C86.4598 4.30912 87.341 4 88.2493 4H106.346V88" stroke="white" stroke-width="8"/>
+                        <svg width="211" height="74" viewBox="0 0 211 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M207 70.5368L143 8.5C141.079 6.57913 138.474 5.5 135.757 5.5H120V66.5" stroke="white" stroke-width="9"/>
+                        <path d="M88 66.5V4.50002H69.9031C68.9948 4.50002 68.1136 4.80914 67.4043 5.37654L63.5 8.50002L6.225 66.5H4.5V0" stroke="white" stroke-width="9"/>
                         </svg>
+
+
                     </div>
             </div>
 
@@ -73,8 +79,50 @@ export default class Nav{
         socialI.innerHTML = injectSocial;
     }
 
-    setDebug(){
-        this.theme = this.debug.addFolder("theme")
+    setDebug() {
+        let mainI = document.querySelector('#nav .main-icon')
+        addDebugC(this.debug, theme, 'mainIcPosX', mainI, (el, val) => {
+            gsap.set(el, {
+                x: val
+            })
+
+        }, { min: -10, max: 20, step: 0.1 });
+        addDebugC(this.debug, theme, 'mainIcPosY', mainI, (el, val) => {
+            gsap.set(el, {
+                y: val
+            })
+
+        }, { min: -30, max: 30, step: 0.1 });
+
+        const navU = document.querySelector('#nav .util')
+        addDebugC(this.debug, theme, 'utilPosX', navU, (el, val) => {
+            gsap.set(el, {
+                x: val
+            })
+
+        }, { min: -10, max: 20, step: 0.1 });
+        addDebugC(this.debug, theme, 'utilPosY', navU, (el, val) => {
+            gsap.set(el, {
+                y: val
+            })
+
+        }, { min: -30, max: 30, step: 0.1 });
+
+        const navN = document.querySelector('#nav .nav')
+        addDebugC(this.debug, theme, 'navPosX', navN, (el, val) => {
+            gsap.set(el, {
+                x: val
+            });
+
+        }, { min: -10, max: 20, step: 0.1 });
+
+        addDebugC(this.debug, theme, 'navPosY', navN, (el, val) => {
+            gsap.set(el, {
+                y: val
+            })
+
+        }, { min: -30, max: 30, step: 0.1 });
+
 
     }
 }

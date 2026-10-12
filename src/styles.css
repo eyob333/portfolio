@@ -67,7 +67,7 @@ canvas {
   pointer-events: none;
   transform: translate(-50%, -50%);
   will-change: transform;
-    left: 7px;
+  left: 7px;
   top:  7px;
 }
 
@@ -155,8 +155,13 @@ p {
 
 .underlay-container-div {
   position: absolute;
+  top: 0;
   visibility: visible;
   background-color: rgb(131, 119, 119);
+  will-change: transform;
+  transform: translateZ(0); 
+  backface-visibility: hidden;
+    pointer-events: none;
 }
 
 .transition-overlay {
@@ -176,7 +181,14 @@ p {
     contain: layout style paint;
 }
 
-
+.lil-gui, 
+.lil-gui [role="button"], 
+.lil-gui button,
+.lil-gui input,
+.lil-gui textarea,
+.lil-gui select{
+  cursor: pointer !important;
+}
 
 /* .page h1{
   font-family: 'Smooch Sans', sans-serif; 

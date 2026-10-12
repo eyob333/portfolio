@@ -12,6 +12,7 @@ import LoadingManager from './Controls/LoadingControler.js';
 import Overlay from './Ui/Overlay.js';
 import Animation from './Animation/Animation.js';
 import Lenis from 'lenis';
+
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import { ScrollToPlugin } from 'gsap/all';
@@ -63,7 +64,8 @@ export default class App{
             })    
         
         if(this.debug.active){
-            stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
+            stats.showPanel(0);
+           stats.dom.classList.add('stat-dom-k')
             document.body.appendChild( stats.dom );
         }
 

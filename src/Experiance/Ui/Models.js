@@ -1,6 +1,6 @@
 import ModelCards from "../../assets/modelCards";
 import '../Styles/Models.css'
-import { modSvg } from "../../assets/secIcons";
+import { mlSvg } from "../../assets/secIcons";
 
 export default class Models{
     constructor(root, ui, device, resources){
@@ -30,7 +30,7 @@ export default class Models{
                                 </div>
                                 <div class="wo-am"> 
                                         <div class="wo-spacer"> 
-                                            ${modSvg}
+                                            ${mlSvg}
                                         </div>
                                     </div>
                             </div>

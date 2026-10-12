@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import gsap from "gsap";
 import App from '../App';
+import { trackXHover } from './Helper';
 
 export default class Event {
 	constructor() {
@@ -151,7 +152,7 @@ export default class Event {
 		})
 
 		gsap.to(element, {
-			y: 22
+			y: 12
 		})
 
 		let title_c = gsap.utils.toArray('.nav-mask .title-cont')
@@ -168,8 +169,24 @@ export default class Event {
 			})
 		});
 
+		///*
+		//const icons = document.querySelector(`.`);
+		//trackXHover()
+		const targetElement = document.querySelector('.slider-mod .side-m');
+		console.log(`foo slide m`, targetElement)
 
+		trackXHover(targetElement, (normalizedX) => {
+		// Triggers ONLY when hovering inside .my-card
+		let i = targetElement.querySelector(`img`)
+		i.src = `/images/${normalizedX+1}.webp`;
+		console.log("Accurate Normalized X:", normalizedX); 
 		
+		// Example: Control GSAP animation progress based on mouse hover position
+		// myGsapTimeline.progress(normalizedX);
+		}, () =>{
+			console.log(`just exited`)
+		});
+
 	}
 
 

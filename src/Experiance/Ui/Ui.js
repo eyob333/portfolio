@@ -9,6 +9,8 @@ import Labs from "./Labs";
 import Contact from "./Contact";
 import Models from "./Models";
 import Underlay from "./Underlay";
+import { theme } from "../../assets/config";
+import { addDebugColorC, addDebugC } from "../Utils/Helper";
 
 
 
@@ -36,10 +38,13 @@ export default class Ui{
         this.labs = new Labs(this.container, this.ui, this.device, this.resouces);
         this.contact = new Contact(this.container, this.ui)
 
+        let k = this.device.mobile ? 0 : 2;
+        console.log(`ffo`, k);
+
         this.cCout = {
             p: this.project.cardCount(), 
-            l: this.labs.cardCount().slice(0, -2),
-            m: this.models.cardCount().slice(0, -2),
+            l: this.labs.cardCount().slice(0, -k),
+            m: this.models.cardCount().slice(0, -k),
         }
 
         this.homeUnderlay = new Underlay(this.underlay, this.ui, this.cCout);
@@ -53,7 +58,41 @@ export default class Ui{
 
 
     setDebug(){
-        this.ui.addFolder("main")
+        const df = this.ui.addFolder("theme")
+            .close();
+        const cf = this.ui.addFolder('commons')
+            //.close();    
+
+        //theme
+        const el = document.querySelector(`.underlay-container-div`)
+        const lg = document.querySelector('.lil-gui')
+        const sg = document.querySelector('.stat-dom-k')
+
+
+
+       df.addColor(theme, 'bgColor').name('background-c').onChange( () =>{gsap.set(el, {backgroundColor: theme.bgColor})});
+
+       df.add(theme, 'lilGuiX').name('lil-gui-x').min(-300).max(40).step(.1).onChange( () =>{gsap.set(lg, {x: theme.lilGuiX})});
+       df.add(theme, 'lilGuiY').name('lil-gui-x').min(-500).max(500).step(.1).onChange( () =>{gsap.set(lg, {x: theme.lilGuiY})});
+
+       df.add(theme, 'statX').name('stats-x').min(-300).max(40).step(.1).onChange( () =>{gsap.set(sg, {x: theme.statX})});
+       df.add(theme, 'statY').name('stats-y').min(-500).max(500).step(.1).onChange( () =>{gsap.set(sg, {x: theme.statY})});
+
+        //commons
+        //heading
+       const headCont = document.querySelector('.stat-dom-k');
+       const subHeCont = document.querySelector('.stat-dom-k');
+       cf.add(theme, 'statY').name('stats-y').min(-500).max(500).step(.1).onChange( () =>{gsap.set(sg, {x: theme.statY})});
+
+       //slide
+       const sliNum = document.querySelector('.stat-dom-k');
+       const sliTitle = document.querySelector('.stat-dom-k');
+       const sliC = document.querySelector('.stat-dom-k');
+       
+       cf.add(theme, 'statY').name('stats-y').min(-500).max(500).step(.1).onChange( () =>{gsap.set(sg, {x: theme.statY})});
+
+        
+        
     }
 
 

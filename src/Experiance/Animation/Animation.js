@@ -108,10 +108,10 @@ export default class Animation {
 
 
 
-        let s1Elements = document.querySelectorAll('.slider');
+        let s1Elements = document.querySelectorAll('.section-container-div .slider');
 
 
-
+        //console.log(`foo elek`,s1Elements)
         s1Elements.forEach((s1) => {
 
             const cards = s1.querySelectorAll('.slider-cont');
@@ -121,8 +121,9 @@ export default class Animation {
 
 
             const lockedE = s1.querySelector('.wo-am')
+            
             const wi = s1.attributes.getNamedItem('base').value
-            //console.log(`3i`, cards)
+            
 
 
             const sliderT2 = gsap.timeline({
@@ -189,10 +190,10 @@ export default class Animation {
 
 
                 } else{
-                    console.log(`coskdfj`, card)
+                    //console.log(`coskdfj`, card)
                     const parka = card.querySelector('.s-name h2');
 
-                    console.log(`fook`, parka)
+                    //console.log(`fook`, parka)
                     
                     if (!parka) return;
 

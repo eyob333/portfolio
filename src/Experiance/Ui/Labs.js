@@ -1,6 +1,6 @@
 import LabsCards from "../../assets/labsCards";
 import "../Styles/Labs.css"
-import { labSvg } from "../../assets/secIcons";
+import { mlSvg } from "../../assets/secIcons";
 
 export default class Labs{
     constructor(root, ui, device, resources){
@@ -35,7 +35,7 @@ export default class Labs{
 
                             <div class="wo-am">
                                 <div class="wo-spacer">
-                                    ${labSvg}
+                                    ${mlSvg}
                                 </div>
                             </div>
 

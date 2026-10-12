@@ -1,5 +1,8 @@
 import '../Styles/Home.css'
 import icons from "../../assets/techStackIcons";
+import { theme } from '../../assets/config';
+import { addDebugC } from '../Utils/Helper';
+import gsap from 'gsap';
 
 export default class Home{
 
@@ -8,15 +11,17 @@ export default class Home{
         this.setInstance();
         if(ui){
             this.debug = ui.addFolder('home')
+            this.setDebug()
+                                //.close();
         }
 
     }
 
     setInstance(){
-        let element = document.createElement('section');
-        element.id = 'home';
-        element.classList.add('page');
-        element.innerHTML = `
+        this.element = document.createElement('section');
+        this.element.id = 'home';
+        this.element.classList.add('page');
+        this.element.innerHTML = `
             <div class="page-home sec">
                 <div class="text-cont"> 
                     <div class="heading-cont" >
@@ -94,7 +99,7 @@ export default class Home{
 
         `;
 
-        this.container.appendChild(element);
+        this.container.appendChild(this.element);
 
         let techE =document.querySelector('.icon-cont');
         techE.innerHTML = icons.map(icon => `
@@ -112,45 +117,32 @@ export default class Home{
 
     setDebug(){
         // title section
-        this.debug.addFolder('heading')
-        this.debug.addFolder('subheading')
-        this.debug.addFolder('water-m')
+        let hh = this.debug.addFolder('heading')
 
-        // slider section
+        const maiHe = this.element.querySelector('.text-cont .heading-cont');
+        const subHe = this.element.querySelector('.text-cont .subhead-cont')
+
+    
+        hh.add(theme, 'homeHeadPosX').name('main-head-x').min(-50).max(300).step(.1).onChange( () =>{gsap.set(maiHe, { x: theme.homeHeadPosX})} );
+        hh.add(theme, 'homeHeadPosY').name('main-head-y').min(-50).max(300).step(.1).onChange( () =>{gsap.set(maiHe, { y: theme.homeHeadPosY})} );
+
+
+        hh.add(theme, 'homeHeadPosX').name('sub-head-x').min(-50).max(300).step(.1).onChange( () =>{gsap.set(subHe, { x: theme.homeHeadPosX})} );
+        hh.add(theme, 'homeHeadPosY').name('sub-head-y').min(-50).max(300).step(.1).onChange( () =>{gsap.set(subHe, { y: theme.homeHeadPosY})} );
+
+        //slider section  
+        let hs = this.debug.addFolder('slider')
+
+        const techHead = this.element.querySelector('.slide-wrapper .tech .title-cont');
+        const techSubHead = this.element.querySelector('.slide-wrapper .tech .title-cont');
+        const techIcon = this.element.querySelector('.slide-wrapper .tech .icon-cont')
+
+        const slideOnePara = this.element.querySelector('.slide-wrapper .tech .title-cont');
+        const slideTwoPara = this.element.querySelector('.slide-wrapper .tech .title-cont');
+
+        hs.add(theme, 'homeHeadPosY').name('sub-head-y').min(-50).max(300).step(.1).onChange( () =>{gsap.set(subhe, { y: theme.homeHeadPosY})} );
 
     }
 
-    addDebugControl(folder, { name, initialValue, min, max, step }, element, callback) {
-        if (!folder) return;
-
-        const targetObj = { [name]: initialValue };
-        const controller = folder.add(targetObj, name);
-
-        if (min !== undefined) controller.min(min);
-        if (max !== undefined) controller.max(max);
-        if (step !== undefined) controller.step(step);
-
-        controller.onChange((value) => {
-            if (callback && element) callback(element, value);
-        });
-
-        return controller;
-    }
-
-    /**
-     * Helper to create color picker debug controls.
-     */
-    addDebugColorControl(folder, { name, initialValue }, element, callback) {
-        if (!folder) return;
-
-        const targetObj = { [name]: initialValue };
-        const controller = folder.addColor(targetObj, name);
-
-        controller.onChange((value) => {
-            if (callback && element) callback(element, value);
-        });
-
-        return controller;
-    }
-          
+         
 }

@@ -249,7 +249,7 @@
         gap: 0;
         align-items: start;
         text-align: center;
-        padding-left: 5px;
+        padding-left: 0;
         .title-cont {
           margin-top: 0;
 
@@ -270,9 +270,8 @@
         }
 
         .icon-cont {
-          justify-content: left;
-          padding-right: 5px;
-          gap: 15px;
+          justify-content: center;
+          gap: 30px;
 
           .tech-i {
             width: 40px;
