@@ -27,19 +27,29 @@ const theme = {
     homeHeadPosY: 0,
     mainFontWeight: 0,
     mainFontFam: ``,
-    mainFontSize: ``,
+    mainFontSize: 0,
 
     homeSubHePosX: 0,
     homeSubHePosY: 0,
     HsubFontWeight: 0,
     HsubFontFam: ``,
-    HsubFontSize: ``,
+    HsubFontSize: 0,
 
     HslideParaFontFam: ``,
-    HslideParaFontWeig: ``,
+    HslideParaFontWeig: 0,
+    HslideParaFontSize: 0,
+
     HtechHeadFontFam: ``,
-    HtechHeadFontWeig: ``,
-    HtechHeadFontSize: ``,
+    HtechHeadFontWeig: 0,
+    HtechHeadFontSize: 0,
+    HtechHeadPosX: 0,
+    HtechHeadPosY: 0,
+
+    HtechSubhFontFam: ``,
+    HtechSubHFontWeig: 0,
+    HtechSubhFontSize: 0,
+    HtechSubhPosX: 0,
+    HtechSubhPosY: 0,
     
     // contacts
     contFormPosX: 0,

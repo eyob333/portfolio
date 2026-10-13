@@ -118,7 +118,7 @@ export default class Home{
     setDebug(){
         // title section
         let hh = this.debug.addFolder('heading')
-
+                                    .close();
         const maiHe = this.element.querySelector('.text-cont .heading-cont');
         const subHe = this.element.querySelector('.text-cont .subhead-cont')
 
@@ -126,7 +126,7 @@ export default class Home{
         hh.add(theme, 'homeHeadPosX').name('main-head-x').min(-50).max(300).step(.1).onChange( () =>{gsap.set(maiHe, { x: theme.homeHeadPosX})} );
         hh.add(theme, 'homeHeadPosY').name('main-head-y').min(-50).max(300).step(.1).onChange( () =>{gsap.set(maiHe, { y: theme.homeHeadPosY})} );
         
-        hh.add(theme, 'mainFontSize').name('main-size').min(.4).max(15).step(.01).onChange( () =>{gsap.set(maiHe.querySelector(`h1`), { fontSize: theme.mainFontSize})} );
+        hh.add(theme, 'mainFontSize').name('main-size').min(.4).max(15).step(.01).onChange( () =>{gsap.set(maiHe.querySelector(`h1`), { fontSize: `${theme.mainFontSize}rem`})} );
         hh.add(theme, 'mainFontWeight').name('main-weight').min(100).max(900).step(100).onChange( () =>{gsap.set(maiHe.querySelector(`h1`), { fontWeight: theme.mainFontWeight})} );
         hh.add(theme, 'mainFontFam', ['NextSphere', 'NextSphereLight', 'NextSphereExtraLight',]).name('main-font-family').onChange( () =>{gsap.set(maiHe.querySelector(`h1`), { fontFamily: theme.mainFontFam })} );    
 
@@ -134,22 +134,31 @@ export default class Home{
         hh.add(theme, 'homeSubHePosX').name('sub-head-x').min(-50).max(300).step(.1).onChange( () =>{gsap.set(subHe, { x: theme.homeSubHePosX})} );
         hh.add(theme, 'homeSubHePosY').name('sub-head-y').min(-50).max(300).step(.1).onChange( () =>{gsap.set(subHe, { y: theme.homeSubHePosY})} );
         
-        hh.add(theme, 'HsubFontSize').name('sub-size').min(0.5).max(12).step(.01).onChange( () =>{gsap.set(maiHe.querySelector(`h4`), { fontSize: theme.HsubFontSize + 'rem'})} );
-        hh.add(theme, 'HsubFontWeight').name('sub-weight').min(100).max(900).step(100).onChange( () =>{gsap.set(maiHe.querySelector(`h4`), { fontWeight: theme.HsubFontWeight})} );
+        hh.add(theme, 'HsubFontSize').name('sub-size').min(0.5).max(12).step(.01).onChange( () =>{gsap.set(subHe.querySelector(`h4`), { fontSize: `${theme.HsubFontSize}rem`})} );
+        hh.add(theme, 'HsubFontWeight').name('sub-weight').min(100).max(900).step(100).onChange( () =>{gsap.set(subHe.querySelector(`h4`), { fontWeight: theme.HsubFontWeight})} );
 
-        hh.add(theme, 'HsubFontFam', ['NextSphere', 'NextSphereLight', 'NextSphereExtraLight',]).name('sub-font-family').onChange( () =>{gsap.set(maiHe.querySelector(`h4`), { fontFamily: theme.HsubFontFam })} );  
+        hh.add(theme, 'HsubFontFam', ['NextSphere', 'NextSphereLight', 'NextSphereExtraLight',]).name('sub-font-family').onChange( () =>{gsap.set(subHe.querySelector(`h4`), { fontFamily: theme.HsubFontFam })} );  
 
         //slider section  
         let hs = this.debug.addFolder('slider')
-
+                                     //.close();
         const techHead = this.element.querySelector('.slide-wrapper .tech .title-cont');
         const techSubHead = this.element.querySelector('.slide-wrapper .tech .title-cont');
         const techIcon = this.element.querySelector('.slide-wrapper .tech .icon-cont')
+        const techIcPara = this.element.querySelector('.slide-wrapper .tech .icon-cont')
 
         const slideOnePara = this.element.querySelector('.slide-wrapper .tech .title-cont');
         const slideTwoPara = this.element.querySelector('.slide-wrapper .tech .title-cont');
 
-        hs.add(theme, 'homeHeadPosY').name('sub-head-y').min(-50).max(300).step(.1).onChange( () =>{gsap.set(subhe, { y: theme.homeHeadPosY})} );
+        hs.add(theme, 'HslideParaFontWeig').name('slide-para-weight').min(100).max(900).step(100).onChange( () =>{gsap.set([].querySelector(`h4`), { fontWeight: theme.HslideParaFontWeig})} );
+        hs.add(theme, 'HslideParaFontSize').name('slide-font-size').min(0.5).max(12).step(.01).onChange( () =>{gsap.set(subHe.querySelector(`h4`), { fontSize: `${theme.HtechHeadFontSize}rem`})} );
+        hs.add(theme, 'HslideParaFontFam', ['NextSphere', 'NextSphereLight', 'NextSphereExtraLight',]).name('slide-font-family').onChange( () =>{gsap.set(subHe.querySelector(`h4`), { fontFamily: theme.HslideParaFontFam })} ); 
+
+
+        hs.add(theme, 'HtechHeadFontFam', ['NextSphere', 'NextSphereLight', 'NextSphereExtraLight',]).name('tech-font-family').onChange( () =>{gsap.set(subHe.querySelector(`h4`), { fontFamily: theme.HsubFontFam })} ); 
+        hs.add(theme, 'HtechHeadFontSize').name('tech-font-size').min(0.5).max(12).step(.01).onChange( () =>{gsap.set(subHe.querySelector(`h4`), { fontSize: `${theme.HtechHeadFontSize}rem`})} );
+        hs.add(theme, 'HtechHeadFontWeig').name('tech-para-weight').min(100).max(900).step(100).onChange( () =>{gsap.set([].querySelector(`h4`), { fontWeight: theme.HtechHeadFontWeig})} );
+
 
     }
 
