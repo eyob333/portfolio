@@ -142,32 +142,36 @@ export default class Home{
         //slider section  
         let hs = this.debug.addFolder('slider')
                                      //.close();
-        const techHead = this.element.querySelector('.slide-wrapper .tech .title-cont');
-        const techSubHead = this.element.querySelector('.slide-wrapper .tech .title-cont');
-        const techIcon = this.element.querySelector('.slide-wrapper .tech .icon-cont')
-        const techIcPara = this.element.querySelector('.slide-wrapper .tech .icon-cont')
+        const techHead = this.element.querySelector('.slide-wrapper .tech .title-cont h2');
+        const techSubHead = this.element.querySelector('.slide-wrapper .tech .title-cont p');
+        const techIcon = this.element.querySelectorAll('.slide-wrapper .tech .icon-cont .svg-cont')
+        const techIcPara = this.element.querySelectorAll('.slide-wrapper .tech .icon-cont .icon-name')
 
-        const slideOnePara = this.element.querySelector('.slide-wrapper .tech .title-cont');
-        const slideTwoPara = this.element.querySelector('.slide-wrapper .tech .title-cont');
+        const slidePara = this.element.querySelectorAll('.slide.abt p');
 
-        hs.add(theme, 'HslideParaFontWeig').name('slide-para-weight').min(100).max(900).step(100).onChange( () =>{gsap.set([].querySelector(`h4`), { fontWeight: theme.HslideParaFontWeig})} );
-        hs.add(theme, 'HslideParaFontSize').name('slide-font-size').min(0.5).max(12).step(.01).onChange( () =>{gsap.set(subHe.querySelector(`h4`), { fontSize: `${theme.HtechHeadFontSize}rem`})} );
-        hs.add(theme, 'HslideParaFontFam', ['NextSphere', 'NextSphereLight', 'NextSphereExtraLight',]).name('slide-font-family').onChange( () =>{gsap.set(subHe.querySelector(`h4`), { fontFamily: theme.HslideParaFontFam })} ); 
+        hs.add(theme, 'HslideParaFontFam', ['NextSphere', 'NextSphereLight', 'NextSphereExtraLight',]).name('slide-font-family').onChange( () =>{gsap.set(slidePara, { fontFamily: theme.HslideParaFontFam })} ); 
+        hs.add(theme, 'HslideParaFontWeig').name('slide-para-weight').min(100).max(900).step(100).onChange( () =>{gsap.set(slidePara, { fontWeight: theme.HslideParaFontWeig})} );
+        hs.add(theme, 'HslideParaFontSize').name('slide-font-size').min(0.5).max(12).step(.01).onChange( () =>{gsap.set(slidePara, { fontSize: `${theme.HslideParaFontSize}rem`})} );
 
 
-        hs.add(theme, 'HtechHeadFontFam', ['NextSphere', 'NextSphereLight', 'NextSphereExtraLight',]).name('tech-font-family').onChange( () =>{gsap.set(subHe.querySelector(`h4`), { fontFamily: theme.HsubFontFam })} ); 
-        hs.add(theme, 'HtechHeadFontSize').name('tech-font-size').min(0.5).max(12).step(.01).onChange( () =>{gsap.set(subHe.querySelector(`h4`), { fontSize: `${theme.HtechHeadFontSize}rem`})} );
-        hs.add(theme, 'HtechHeadFontWeig').name('tech-para-weight').min(100).max(900).step(100).onChange( () =>{gsap.set([].querySelector(`h4`), { fontWeight: theme.HtechHeadFontWeig})} );
+        hs.add(theme, 'HtechHeadFontFam', ['NextSphere', 'NextSphereLight', 'NextSphereExtraLight',]).name('tech-head-font-family').onChange( () =>{gsap.set(techHead, { fontFamily: theme.HtechHeadFontFam })} ); 
+        hs.add(theme, 'HtechHeadFontSize').name('tech-head-font-size').min(0.5).max(12).step(.01).onChange( () =>{gsap.set( techHead, { fontSize: `${theme.HtechHeadFontSize}rem`})} );
+        hs.add(theme, 'HtechHeadFontWeig').name('tech-head-para-weight').min(100).max(900).step(100).onChange( () =>{gsap.set( techHead, { fontWeight: theme.HtechHeadFontWeig})} );
+        hs.add(theme, 'HtechHeadPosX').name('tech-head-para-posX').min(-10).max(30).step(.01).onChange( () =>{gsap.set( techHead, { x: theme.HtechHeadPosX})} );
+        hs.add(theme, 'HtechHeadPosY').name('tech-head-para-posY').min(-10).max(30).step(.01).onChange( () =>{gsap.set( techHead, { y: theme.HtechHeadPosY})} );
 
-        hs.add(theme, 'HtechHeadFontSize').name('tech-font-size').min(0.5).max(12).step(.01).onChange( () =>{gsap.set(subHe.querySelector(`h4`), { fontSize: `${theme.HtechHeadFontSize}rem`})} );
-        hs.add(theme, 'HtechHeadFontWeig').name('tech-para-weight').min(100).max(900).step(100).onChange( () =>{gsap.set([].querySelector(`h4`), { fontWeight: theme.HtechHeadFontWeig})} );
+        hs.add(theme, 'HtechSubhFontFam', ['NextSphere', 'NextSphereLight', 'NextSphereExtraLight',]).name('tech-subh-font-family').onChange( () =>{gsap.set(techSubHead, { fontFamily: theme.HtechSubhFontFam })} ); 
+        hs.add(theme, 'HtechSubhFontSize').name('tech-subh-font-size').min(0.5).max(12).step(.01).onChange( () =>{gsap.set(techSubHead, { fontSize: `${theme.HtechSubhFontSize}rem`})} );
+        hs.add(theme, 'HtechSubHFontWeig').name('tech-subh-para-weight').min(100).max(900).step(100).onChange( () =>{gsap.set(techSubHead, { fontWeight: theme.HtechSubHFontWeig})} );
+        hs.add(theme, 'HtechSubhPosX').name('tech-subh-para-posX').min(-10).max(30).step(.01).onChange( () =>{gsap.set( techSubHead, { x: theme.HtechSubhPosX})} );
+        hs.add(theme, 'HtechSubhPosY').name('tech-subh-para-posY').min(-10).max(30).step(.01).onChange( () =>{gsap.set( techSubHead, { y: theme.HtechSubhPosY})} );
 
-        hs.add(theme, 'HtechIconWidth').name('icon-width').min(1).max(50).step(.1).onChange( () =>{gsap.set([].querySelector(`h4`), { width: theme.HtechIconWidth})} );
-        hs.add(theme, 'HtechIconHeight').name('icon-height').min(1).max(50).step(.1).onChange( () =>{gsap.set([].querySelector(`h4`), { height: theme.HtechIconHeight})} );
 
-        hs.add(theme, 'HtechIconTextSize').name('icon-text-size').min(0.5).max(12).step(.01).onChange( () =>{gsap.set(subHe.querySelector(`h4`), { fontSize: `${theme.HtechIconTextSize}rem`})} );
-        hs.add(theme, 'HtechIconTextWeig').name('icon-text-weight').min(100).max(900).step(100).onChange( () =>{gsap.set([].querySelector(`h4`), { fontWeight: theme.HtechHeadFontWeig})} );
+        hs.add(theme, 'HtechIconWidth').name('icon-width').min(1).max(50).step(.1).onChange( () =>{gsap.set(techIcon, { width: theme.HtechIconWidth})} );
+        hs.add(theme, 'HtechIconHeight').name('icon-height').min(1).max(50).step(.1).onChange( () =>{gsap.set(techIcon, { height: theme.HtechIconHeight})} );
 
+        hs.add(theme, 'HtechIconTextSize').name('icon-text-size').min(0.5).max(12).step(.01).onChange( () =>{gsap.set(techIcPara, { fontSize: `${theme.HtechIconTextSize}rem`})} );
+        hs.add(theme, 'HtechIconTextWeig').name('icon-text-weight').min(100).max(900).step(100).onChange( () =>{gsap.set(techIcPara, { fontWeight: theme.HtechIconTextWeig})} );
 
     }
 

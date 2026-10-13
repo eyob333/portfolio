@@ -3,26 +3,47 @@ const theme = {
     bgColor: '#fffffff',
     iconColor: '#fffffff',
 
+    // Nav
+    navPosX:0,
+    navPosY:0,
+
+    utilPosX: 0,
+    utilPosY: 0,
+
     mainIcPosX: 0,
     mainIcPosY: 0,
     mainIcWidth: 0,
     mainIcheight: 0,
 
-
-    utilPosX: 0,
-    utilPosY: 0,
-
-    navPosX:0,
-    navPosY:0,
-
+    // Prefs
     lilGuiX: 0,
     lilGuiY: 0,
     
     statX: 0,
     statY: 0,
 
-    // home
+    
+    // commons
+    pageHeadPosX: 0,
+    pageHeadPosY: 0,
+    pageHeadFontSize: 0,
+    pageHeadFontWeig: 0,
+    pageHeadFontFam: ``,
 
+    pageSubhFontSize: 0,
+    pageSubhFontWeig: 0,
+    pageSubhFontFam: ``,
+    
+    pageSlideTitFontSize: 0,
+    pageSlideTitFontWeig: 0,
+    pageSlideTitFontFam: ``,
+
+    pageSlideScrWidth: 0,
+    pageSlideScrHeight: 0,
+    pageSlideScrPosX: 0,
+    pageSlideScrPosY: 0,
+
+    // home
     homeHeadPosX: 0,
     homeHeadPosY: 0,
     mainFontWeight: 0,
@@ -53,13 +74,15 @@ const theme = {
 
     HtechIconWidth: 0,
     HtechIconHeight: 0,
-    
+
     HtechIconTextSize: 0,
     HtechIconTextWeig: 0,
 
     // contacts
     contFormPosX: 0,
     contFormPosY: 0
+
+    // underlay
 
 }
 

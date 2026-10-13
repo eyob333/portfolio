@@ -58,28 +58,31 @@ export default class Ui{
 
 
     setDebug(){
+
+        //theme        
         const df = this.ui.addFolder("theme")
             .close();
-        const cf = this.ui.addFolder('commons')
-            //.close();    
-
-        //theme
+  
         const el = document.querySelector(`.underlay-container-div`)
+
+        df.addColor(theme, 'bgColor').name('background-c').onChange( () =>{gsap.set(el, {backgroundColor: theme.bgColor})});
+
+       //pref_logs
+        const pf = this.ui.addFolder("pref-Pos") 
+
         const lg = document.querySelector('.lil-gui')
-        const sg = document.querySelector('.stat-dom-k')
+        const sg = document.querySelector('.stat-dom-k')     
+        pf.add(theme, 'lilGuiX').name('lil-gui-x').min(-300).max(40).step(.1).onChange( () =>{gsap.set(lg, {x: theme.lilGuiX})});
+        pf.add(theme, 'lilGuiY').name('lil-gui-x').min(-500).max(500).step(.1).onChange( () =>{gsap.set(lg, {x: theme.lilGuiY})});
 
-
-
-       df.addColor(theme, 'bgColor').name('background-c').onChange( () =>{gsap.set(el, {backgroundColor: theme.bgColor})});
-
-       df.add(theme, 'lilGuiX').name('lil-gui-x').min(-300).max(40).step(.1).onChange( () =>{gsap.set(lg, {x: theme.lilGuiX})});
-       df.add(theme, 'lilGuiY').name('lil-gui-x').min(-500).max(500).step(.1).onChange( () =>{gsap.set(lg, {x: theme.lilGuiY})});
-
-       df.add(theme, 'statX').name('stats-x').min(-300).max(40).step(.1).onChange( () =>{gsap.set(sg, {x: theme.statX})});
-       df.add(theme, 'statY').name('stats-y').min(-500).max(500).step(.1).onChange( () =>{gsap.set(sg, {x: theme.statY})});
+        pf.add(theme, 'statX').name('stats-x').min(-300).max(40).step(.1).onChange( () =>{gsap.set(sg, {x: theme.statX})});
+        pf.add(theme, 'statY').name('stats-y').min(-500).max(500).step(.1).onChange( () =>{gsap.set(sg, {x: theme.statY})});
 
         //commons
         //heading
+        const cf = this.ui.addFolder('commons')
+            //.close(); 
+
        const headCont = document.querySelector('.stat-dom-k');
        const subHeCont = document.querySelector('.stat-dom-k');
        cf.add(theme, 'statY').name('stats-y').min(-500).max(500).step(.1).onChange( () =>{gsap.set(sg, {x: theme.statY})});
