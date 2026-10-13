@@ -8,6 +8,7 @@ const theme = {
     mainIcWidth: 0,
     mainIcheight: 0,
 
+
     utilPosX: 0,
     utilPosY: 0,
 
@@ -20,8 +21,29 @@ const theme = {
     statX: 0,
     statY: 0,
 
+    // home
+
     homeHeadPosX: 0,
     homeHeadPosY: 0,
+    mainFontWeight: 0,
+    mainFontFam: ``,
+    mainFontSize: ``,
+
+    homeSubHePosX: 0,
+    homeSubHePosY: 0,
+    HsubFontWeight: 0,
+    HsubFontFam: ``,
+    HsubFontSize: ``,
+
+    HslideParaFontFam: ``,
+    HslideParaFontWeig: ``,
+    HtechHeadFontFam: ``,
+    HtechHeadFontWeig: ``,
+    HtechHeadFontSize: ``,
+    
+    // contacts
+    contFormPosX: 0,
+    contFormPosY: 0
 
 }
 

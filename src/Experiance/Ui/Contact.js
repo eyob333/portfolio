@@ -1,4 +1,6 @@
 import { formIcons } from '../../assets/contactIcons'
+import { theme } from '../../assets/config'
+import gsap from 'gsap'
 import '../Styles/Contact.css'
 
 export default class Contact{
@@ -8,14 +10,15 @@ export default class Contact{
 
         if(ui){
             this.debug = ui.addFolder('contact')
+            this.setDebug();
         }
     }
 
     setInstance(){
-        let element = document.createElement('section')
-        element.id = 'contact';
-        element.classList.add('page');
-        element.innerHTML = `
+        this.element = document.createElement('section')
+        this.element.id = 'contact';
+        this.element.classList.add('page');
+        this.element.innerHTML = `
             <div class="s-empty">  </div>
             <div class="contacts">
                 <div class="form-wrapper">
@@ -60,7 +63,7 @@ export default class Contact{
                 
             </div>
             `;
-        this.container.appendChild(element);
+        this.container.appendChild(this.element);
         
         let icons = document.querySelector("#contact .socials")
         icons.innerHTML = formIcons.map( i =>`
@@ -70,6 +73,19 @@ export default class Contact{
                 </div>
             </div>
             `).join("")
+    }
+
+
+    setDebug(){
+
+        const sg = this.element.querySelector('.form-wrapper');
+        const formHed = this.element.querySelector('.text-cont .subhead-cont')
+        const inputTex = this.element.querySelector('.text-cont .subhead-cont')
+        const formIco = this.element.querySelector('.text-cont .subhead-cont')
+
+
+        this.debug.add(theme, 'contFormPosX').name('form-wrap-x').min(-300).max(40).step(.1).onChange( () =>{gsap.set(sg, {x: theme.contFormPosX})});
+        this.debug.add(theme, 'contFormPosY').name('form-wrap-y').min(-500).max(500).step(.1).onChange( () =>{gsap.set(sg, {y: theme.contFormPosY})});
     }
 }
 

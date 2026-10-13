@@ -125,10 +125,19 @@ export default class Home{
     
         hh.add(theme, 'homeHeadPosX').name('main-head-x').min(-50).max(300).step(.1).onChange( () =>{gsap.set(maiHe, { x: theme.homeHeadPosX})} );
         hh.add(theme, 'homeHeadPosY').name('main-head-y').min(-50).max(300).step(.1).onChange( () =>{gsap.set(maiHe, { y: theme.homeHeadPosY})} );
+        
+        hh.add(theme, 'mainFontSize').name('main-size').min(.4).max(15).step(.01).onChange( () =>{gsap.set(maiHe.querySelector(`h1`), { fontSize: theme.mainFontSize})} );
+        hh.add(theme, 'mainFontWeight').name('main-weight').min(100).max(900).step(100).onChange( () =>{gsap.set(maiHe.querySelector(`h1`), { fontWeight: theme.mainFontWeight})} );
+        hh.add(theme, 'mainFontFam', ['NextSphere', 'NextSphereLight', 'NextSphereExtraLight',]).name('main-font-family').onChange( () =>{gsap.set(maiHe.querySelector(`h1`), { fontFamily: theme.mainFontFam })} );    
 
 
-        hh.add(theme, 'homeHeadPosX').name('sub-head-x').min(-50).max(300).step(.1).onChange( () =>{gsap.set(subHe, { x: theme.homeHeadPosX})} );
-        hh.add(theme, 'homeHeadPosY').name('sub-head-y').min(-50).max(300).step(.1).onChange( () =>{gsap.set(subHe, { y: theme.homeHeadPosY})} );
+        hh.add(theme, 'homeSubHePosX').name('sub-head-x').min(-50).max(300).step(.1).onChange( () =>{gsap.set(subHe, { x: theme.homeSubHePosX})} );
+        hh.add(theme, 'homeSubHePosY').name('sub-head-y').min(-50).max(300).step(.1).onChange( () =>{gsap.set(subHe, { y: theme.homeSubHePosY})} );
+        
+        hh.add(theme, 'HsubFontSize').name('sub-size').min(0.5).max(12).step(.01).onChange( () =>{gsap.set(maiHe.querySelector(`h4`), { fontSize: theme.HsubFontSize + 'rem'})} );
+        hh.add(theme, 'HsubFontWeight').name('sub-weight').min(100).max(900).step(100).onChange( () =>{gsap.set(maiHe.querySelector(`h4`), { fontWeight: theme.HsubFontWeight})} );
+
+        hh.add(theme, 'HsubFontFam', ['NextSphere', 'NextSphereLight', 'NextSphereExtraLight',]).name('sub-font-family').onChange( () =>{gsap.set(maiHe.querySelector(`h4`), { fontFamily: theme.HsubFontFam })} );  
 
         //slider section  
         let hs = this.debug.addFolder('slider')

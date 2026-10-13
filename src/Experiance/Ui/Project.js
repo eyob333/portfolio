@@ -1,6 +1,8 @@
 import '../Styles/Projects.css'
 import projectsC from "../../assets/porojectCards";
 import { proSvg } from '../../assets/secIcons';
+import { theme } from '../../assets/config';
+import gsap from 'gsap';
 
 export default class Project{
     constructor(root, ui, device, resouces){
@@ -13,17 +15,17 @@ export default class Project{
 
         if(ui){
             this.debug = ui.addFolder('project')
+                //.close;
+            this.setDebug();
         }
-
-        console.log(device)
 
     }
     setParent(){
-        parent = document.createElement('section')
-        parent.id = "project" 
-        parent.classList.add('page')
+        this.parent = document.createElement('section')
+        this.parent.id = "project" 
+        this.parent.classList.add('page')
         // parent.classList.add('project')
-        parent.innerHTML= `
+        this.parent.innerHTML= `
                         <div class="intro-header header-proj"> 
                             <div class="title-cont"> 
                                 <h1>Projects</h1>
@@ -46,7 +48,7 @@ export default class Project{
                         </div>
                         
             `;
-        this.container.appendChild(parent)
+        this.container.appendChild(this.parent)
     }
     setInstance(){
         let projectElement = document.querySelector('div.slider-proj .sliders');
@@ -102,7 +104,15 @@ export default class Project{
     }
 
     setDebug(){
+        
+        const sg = this.parent.querySelector('.form-wrapper');
+        const formHed = this.parent.querySelector('.text-cont .subhead-cont')
+        const inputTex = this.parent.querySelector('.text-cont .subhead-cont')
+        const formIco = this.parent.querySelector('.text-cont .subhead-cont')
 
+
+        this.debug.add(theme, 'contFormPosX').name('form-wrap-x').min(-300).max(40).step(.1).onChange( () =>{gsap.set(sg, {x: theme.contFormPosX})});
+        this.debug.add(theme, 'contFormPosY').name('form-wrap-y').min(-500).max(500).step(.1).onChange( () =>{gsap.set(sg, {y: theme.contFormPosY})});
     }
 
 }

@@ -11,6 +11,8 @@ export default [
          path: '/videos/smtf.webm'
      },
 
+    //images
+
     {
          name: "smtfT",
          type: 'image',
@@ -29,16 +31,30 @@ export default [
          path: '/images/thing.png'
      },
 
+
+     //fonts
+
      {
         name: 'Kapiler',
         type: 'font',
         path: '/fonts/kapiler.regular.woff2'
     },
     {
-        name: 'Nebula',
+        name: 'NextSphere',
         type: 'font',
         path: '/fonts/next_sphere/Next Sphere Thin.otf'
     },
+    {
+        name: 'NextSphereLight',
+        type: 'font',
+        path: '/fonts/next_sphere/NextSphereLight.otf'
+    },
+    {
+        name: 'NextSphereExtraLight',
+        type: 'font',
+        path: '/fonts/next_sphere/Next Sphere Extra Light.otf'
+    },
+
 
     {
         name: 'Jura',

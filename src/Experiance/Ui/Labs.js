@@ -12,7 +12,7 @@ export default class Labs{
 
 
         if(ui){
-            this.debug = ui.addFolder('lab')
+            //this.debug = ui.addFolder('lab')
         }
     }
 
