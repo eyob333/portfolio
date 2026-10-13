@@ -159,6 +159,15 @@ export default class Home{
         hs.add(theme, 'HtechHeadFontSize').name('tech-font-size').min(0.5).max(12).step(.01).onChange( () =>{gsap.set(subHe.querySelector(`h4`), { fontSize: `${theme.HtechHeadFontSize}rem`})} );
         hs.add(theme, 'HtechHeadFontWeig').name('tech-para-weight').min(100).max(900).step(100).onChange( () =>{gsap.set([].querySelector(`h4`), { fontWeight: theme.HtechHeadFontWeig})} );
 
+        hs.add(theme, 'HtechHeadFontSize').name('tech-font-size').min(0.5).max(12).step(.01).onChange( () =>{gsap.set(subHe.querySelector(`h4`), { fontSize: `${theme.HtechHeadFontSize}rem`})} );
+        hs.add(theme, 'HtechHeadFontWeig').name('tech-para-weight').min(100).max(900).step(100).onChange( () =>{gsap.set([].querySelector(`h4`), { fontWeight: theme.HtechHeadFontWeig})} );
+
+        hs.add(theme, 'HtechIconWidth').name('icon-width').min(1).max(50).step(.1).onChange( () =>{gsap.set([].querySelector(`h4`), { width: theme.HtechIconWidth})} );
+        hs.add(theme, 'HtechIconHeight').name('icon-height').min(1).max(50).step(.1).onChange( () =>{gsap.set([].querySelector(`h4`), { height: theme.HtechIconHeight})} );
+
+        hs.add(theme, 'HtechIconTextSize').name('icon-text-size').min(0.5).max(12).step(.01).onChange( () =>{gsap.set(subHe.querySelector(`h4`), { fontSize: `${theme.HtechIconTextSize}rem`})} );
+        hs.add(theme, 'HtechIconTextWeig').name('icon-text-weight').min(100).max(900).step(100).onChange( () =>{gsap.set([].querySelector(`h4`), { fontWeight: theme.HtechHeadFontWeig})} );
+
 
     }
 

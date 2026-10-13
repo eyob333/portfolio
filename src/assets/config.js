@@ -50,7 +50,13 @@ const theme = {
     HtechSubhFontSize: 0,
     HtechSubhPosX: 0,
     HtechSubhPosY: 0,
+
+    HtechIconWidth: 0,
+    HtechIconHeight: 0,
     
+    HtechIconTextSize: 0,
+    HtechIconTextWeig: 0,
+
     // contacts
     contFormPosX: 0,
     contFormPosY: 0
