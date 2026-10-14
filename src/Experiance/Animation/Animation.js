@@ -69,14 +69,14 @@ export default class Animation {
                     ease: 'power1.inOut',
                     marker: false
                 },
-                end: () => "+=" + (slider.scrollWidth - window.innerWidth),
                 invalidateOnRefresh: true,
-            }
+                end: () => "+=" + (slider.scrollWidth - window.clientWidth),
+                }
         });
 
         sliderTl
             .to(slider, {
-                x: () => -(slider.scrollWidth - window.innerWidth),
+                x: () => -(slider.scrollWidth - window.clientWidth),
             }, "<")
             .to('.slider-line', {
                 scaleX: 1,
@@ -143,8 +143,8 @@ export default class Animation {
                         
                     },
                     anticipatePin: 1,
-                    end: () => "+=" + ((s1.scrollWidth - s1.clientWidth)),
                     invalidateOnRefresh: true,
+                    end: () => "+=" + ((s1.scrollWidth - s1.clientWidth)),             
                 }
 
             });

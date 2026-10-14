@@ -1,4 +1,5 @@
 import EventEmitter from "./EventEmitter"
+import { ScrollTrigger } from "gsap/all"
 
 export default class Sizes extends EventEmitter{
     constructor(){
@@ -14,6 +15,7 @@ export default class Sizes extends EventEmitter{
         }
 
         window.addEventListener('resize', () => {
+            ScrollTrigger.refresh();
             this.width = window.innerWidth
             this.height = window.innerHeight
             this.pixelRatio = Math.min(window.devicePixelRatio, 2)
