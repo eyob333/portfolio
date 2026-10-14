@@ -15,7 +15,7 @@ export default class Project{
 
         if(ui){
             this.debug = ui.addFolder('project')
-                .close;
+                .close()
             this.setDebug();
         }
 
