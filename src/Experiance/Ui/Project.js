@@ -15,7 +15,7 @@ export default class Project{
 
         if(ui){
             this.debug = ui.addFolder('project')
-                //.close;
+                .close;
             this.setDebug();
         }
 
@@ -105,14 +105,27 @@ export default class Project{
 
     setDebug(){
         
-        const sg = this.parent.querySelector('.form-wrapper');
-        const formHed = this.parent.querySelector('.text-cont .subhead-cont')
-        const inputTex = this.parent.querySelector('.text-cont .subhead-cont')
-        const formIco = this.parent.querySelector('.text-cont .subhead-cont')
+        const title = this.parent.querySelectorAll('.slide-wrapper h2');
+        const para = this.parent.querySelectorAll('.slide-wrapper .dec-item p')
+        const vid = this.parent.querySelectorAll('.slide-wrapper .s-video')
+        const icon = this.parent.querySelectorAll('.slide-wrapper .icon svg')
 
+        this.debug.add(theme, 'projVidPosX').name('vid-pos-x').min(-300).max(300).step(.1).onChange( () =>{gsap.set(vid, {x: theme.projVidPosX})});
+        this.debug.add(theme, 'projVidPosY').name('vid-pos-y').min(-300).max(300).step(.1).onChange( () =>{gsap.set(vid, {y: theme.projVidPosY})});
 
-        this.debug.add(theme, 'contFormPosX').name('form-wrap-x').min(-300).max(40).step(.1).onChange( () =>{gsap.set(sg, {x: theme.contFormPosX})});
-        this.debug.add(theme, 'contFormPosY').name('form-wrap-y').min(-500).max(500).step(.1).onChange( () =>{gsap.set(sg, {y: theme.contFormPosY})});
+        this.debug.add(theme, 'projTitFontFam', ['NextSphere', 'NextSphereLight', 'NextSphereExtraLight',]).name('title-font-family').onChange( () =>{gsap.set( title, { fontFamily: theme.projTitFontFam })} ); 
+        this.debug.add(theme, 'projTitFontSize').name('title-font-size').min(0.5).max(12).step(.01).onChange( () =>{gsap.set( title, { fontSize: `${theme.projTitFontSize}rem`})} );
+        this.debug.add(theme, 'projTitFontWeig').name('title-weight').min(100).max(900).step(100).onChange( () =>{gsap.set( title, { fontWeight: theme.projTitFontWeig})} );
+        this.debug.add(theme, 'projTitPosX').name('title-pos-x').min(-300).max(300).step(.1).onChange( () =>{gsap.set( title, {x: theme.projTitPosX})});
+        this.debug.add(theme, 'projTitPosY').name('title-pos-y').min(-300).max(300).step(.1).onChange( () =>{gsap.set( title, {y: theme.projTitPosY})});
+
+        this.debug.add(theme, 'projParaFontFam', ['NextSphere', 'NextSphereLight', 'NextSphereExtraLight',]).name('para-font-family').onChange( () =>{gsap.set( para, { fontFamily: theme.projParaFontFam })} ); 
+        this.debug.add(theme, 'projParaFontSize').name('para-font-size').min(0.3).max(12).step(.01).onChange( () =>{gsap.set( para, { fontSize: `${theme.projParaFontSize}rem`})} );
+        this.debug.add(theme, 'projParaFontWeig').name('para-weight').min(100).max(900).step(100).onChange( () =>{gsap.set( para, { fontWeight: theme.projParaFontWeig})} );
+        
+        this.debug.add(theme, 'projIconWidth').name('icon-width').min(0).max(100).step(.1).onChange( () =>{gsap.set(icon, {width: theme.projIconWidth})});
+        this.debug.add(theme, 'projIconHeight').name('icon-height').min(0).max(100).step(.1).onChange( () =>{gsap.set(icon, {height: theme.projIconHeight})});
+
     }
 
 }

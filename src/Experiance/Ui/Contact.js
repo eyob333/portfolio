@@ -10,6 +10,7 @@ export default class Contact{
 
         if(ui){
             this.debug = ui.addFolder('contact')
+                                    .close()
             this.setDebug();
         }
     }
@@ -79,13 +80,26 @@ export default class Contact{
     setDebug(){
 
         const sg = this.element.querySelector('.form-wrapper');
-        const formHed = this.element.querySelector('.text-cont .subhead-cont')
-        const inputTex = this.element.querySelector('.text-cont .subhead-cont')
-        const formIco = this.element.querySelector('.text-cont .subhead-cont')
+        const formHed = this.element.querySelector('.contacts h1.form-title')
+        const inputTex = this.element.querySelectorAll('.form-wrapper input, .form-wrapper textarea')
+        const formIco = this.element.querySelectorAll('.contacts .socials svg')
 
 
         this.debug.add(theme, 'contFormPosX').name('form-wrap-x').min(-300).max(40).step(.1).onChange( () =>{gsap.set(sg, {x: theme.contFormPosX})});
         this.debug.add(theme, 'contFormPosY').name('form-wrap-y').min(-500).max(500).step(.1).onChange( () =>{gsap.set(sg, {y: theme.contFormPosY})});
+
+        this.debug.add(theme, 'contHeadFontFam', ['NextSphere', 'NextSphereLight', 'NextSphereExtraLight',]).name('head-font-family').onChange( () =>{gsap.set( formHed, { fontFamily: theme.contHeadFontFam })} ); 
+        this.debug.add(theme, 'contHeadFontSize').name('head-font-size').min(0.5).max(12).step(.01).onChange( () =>{gsap.set( formHed, { fontSize: `${theme.contHeadFontSize}rem`})} );
+        this.debug.add(theme, 'contHeadFontWeig').name('head-weight').min(100).max(900).step(100).onChange( () =>{gsap.set( formHed, { fontWeight: theme.contHeadFontWeig})} );
+
+        this.debug.add(theme, 'contInputFontFam', ['NextSphere', 'NextSphereLight', 'NextSphereExtraLight',]).name('input-font-family').onChange( () =>{gsap.set( inputTex, { fontFamily: theme.contInputFontFam })} ); 
+        this.debug.add(theme, 'contInputFontSize').name('input-font-size').min(0.5).max(12).step(.01).onChange( () =>{gsap.set( inputTex, { fontSize: `${theme.contInputFontSize}rem`})} );
+        this.debug.add(theme, 'contInputFontWeig').name('input-weight').min(100).max(900).step(100).onChange( () =>{gsap.set( inputTex, { fontWeight: theme.contInputFontWeig})} );
+        
+        this.debug.add(theme, 'contIconWidth').name('icon-width').min(0).max(100).step(.1).onChange( () =>{gsap.set(formIco, {width: theme.contIconWidth})});
+        this.debug.add(theme, 'contIconHeig').name('icon-height').min(0).max(100).step(.1).onChange( () =>{gsap.set(formIco, {height: theme.contIconHeig})});
+        this.debug.add(theme, 'contIconPosX').name('icon-pos-x').min(-300).max(40).step(.1).onChange( () =>{gsap.set(formIco, {x: theme.contIconPosX})});
+        this.debug.add(theme, 'contIconPosY').name('icon-pos-y').min(-500).max(500).step(.1).onChange( () =>{gsap.set(formIco, {y: theme.contIconPosY})});
     }
 }
 

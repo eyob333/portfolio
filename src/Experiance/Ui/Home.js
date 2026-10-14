@@ -10,9 +10,10 @@ export default class Home{
         this.container = root
         this.setInstance();
         if(ui){
-            this.debug = ui.addFolder('home')
+            this.debug = ui.addFolder('home') 
+                                        .close();
             this.setDebug()
-                                //.close();
+                               
         }
 
     }
@@ -141,7 +142,7 @@ export default class Home{
 
         //slider section  
         let hs = this.debug.addFolder('slider')
-                                     //.close();
+                                    .close();
         const techHead = this.element.querySelector('.slide-wrapper .tech .title-cont h2');
         const techSubHead = this.element.querySelector('.slide-wrapper .tech .title-cont p');
         const techIcon = this.element.querySelectorAll('.slide-wrapper .tech .icon-cont .svg-cont')
