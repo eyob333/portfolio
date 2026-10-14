@@ -29,6 +29,9 @@ export default class LoadingManager{
                     })   
                 }, 1000)  
                 this.isReady = true;
+                document.body.style.display = 'none';
+                document.body.offsetHeight; // read layout property to force reflow
+                document.body.style.display = '';
                 
             },
             (itemUrl, itemLoaded, itemTotal) => {

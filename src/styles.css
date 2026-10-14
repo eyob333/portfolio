@@ -1,9 +1,13 @@
 
 html,
 body {
-   margin: 0;
-   min-height: 100dvh;
-   padding-bottom: env(safe-area-inset-bottom);
+margin: 0;
+    padding: 0;
+    width: 100%;
+    height: auto;          /* Allows document to expand for GSAP pinning */
+    min-height: 100dvh;    /* Fills dynamic mobile viewport */
+    overflow-x: hidden;    /* Blocks unwanted side-scrolling */
+    background-color: #000000;
 }
 
 html,
@@ -20,9 +24,7 @@ select,
 body {
   margin: 0;
   border: 0;
-  background-color: #000000;
-  
-  /*cursor: none; */
+
 }
 
 canvas {
@@ -35,6 +37,10 @@ canvas {
   z-index: 2;
   outline: none;
   background-color: transparent;
+  transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden
 
 }
 
@@ -239,23 +245,27 @@ section {
   }
 
   .slide-wrapper {
+    position: relative;
+        width: 100%;
+        max-width: 100vw;
+        overflow: hidden; /* Clips GSAP track overflow */
+        touch-action: pan-y; /* Fixes mobile swipe conflict */
 
     .slider {
       display: grid;
       grid-template-rows: 91% 9%;
       height: 100dvh;
+      touch-action: pan-y;
       will-change: transform;
 
       .wo-am {
-        /* overflow: hidden; */
-        position: relative;
         max-width: 100vw;
 
         .wo-spacer {
           display: grid;
           justify-content: center;
           /* background-color:blueviolet; */
-          width: 100v;
+          width: fit-content;
           position: absolute;
           bottom: 10px;
           right: 10px;

@@ -89,7 +89,7 @@ export default class Nav{
         }, { min: -10, max: 20, step: 0.1 });
         addDebugC(this.debug, theme, 'mainIcPosY', mainI, (el, val) => {
             gsap.set(el, {
-                y: val
+                y: val 
             })
 
         }, { min: -30, max: 30, step: 0.1 });
