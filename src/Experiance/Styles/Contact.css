@@ -1,5 +1,5 @@
 #contact {
-  height: 120vh;
+  height: 120dvh;
   width: 100vw;
 }
 
@@ -154,7 +154,7 @@ button.submit-button {
   .contacts {
     display: grid;
     width: 100%;
-    height: 100vh;
+    height: 100dvh;
     grid-template-columns: 100%;
 
     .form-wrapper {

@@ -70,13 +70,13 @@ export default class Animation {
                     marker: false
                 },
                 invalidateOnRefresh: true,
-                end: () => "+=" + (slider.scrollWidth - window.clientWidth),
+                end: () => "+=" + (slider.scrollWidth - slider.clientWidth),
                 }
         });
 
         sliderTl
             .to(slider, {
-                x: () => -(slider.scrollWidth - window.clientWidth),
+                x: () => -(slider.scrollWidth - slider.clientWidth),
             }, "<")
             .to('.slider-line', {
                 scaleX: 1,

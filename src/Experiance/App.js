@@ -19,6 +19,7 @@ import { ScrollToPlugin } from 'gsap/all';
 import { TextPlugin } from 'gsap/all';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, TextPlugin)
+ScrollTrigger.normalizeScroll(true);
 
 
 let instance = null;
