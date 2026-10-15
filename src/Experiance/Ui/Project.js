@@ -33,7 +33,7 @@ export default class Project{
                             </div>
                         </div>
                         <div class="slide-wrapper"> 
-                            <div class="slider slider-proj projf" base="1">
+                            <div class="slider slider-proj projf" base="${this.device.mobile? 1.3: 1}">
 
                                 <div class="sliders">
                                 </div>

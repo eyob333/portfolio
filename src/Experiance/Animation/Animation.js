@@ -38,7 +38,7 @@ export default class Animation {
         this.nav = this.app.event.nav
         this.nav_select();
         this.scroll_trig()
-        
+
     }
 
     nav_hash() {
@@ -111,7 +111,6 @@ export default class Animation {
         //console.log(`foo elek`,s1Elements)
         s1Elements.forEach((s1) => {
 
-            const cards = s1.querySelectorAll('.slider-cont');
             const p = s1.classList.value.split(' ').at(-1) == 'projf';
             const k = s1.classList.value.split(' ').at(-1) == 'ks';
 
@@ -119,7 +118,25 @@ export default class Animation {
 
             const lockedE = s1.querySelector('.wo-am')
             
-            const wi = s1.attributes.getNamedItem('base').value
+            const wi = Number(s1.attributes.getNamedItem('base').value)
+
+            const cards = gsap.utils.toArray(s1.querySelectorAll('.slider-cont'));
+            const track = cards[0].parentElement;          // the element your x tween moves (.sliders)
+
+            let snapPoints = [0];
+
+            const getDistance = () => Math.max(1, s1.scrollWidth - s1.clientWidth);
+
+            const computeSnaps = () => {
+                const dist = getDistance();
+                const trackLeft = track.getBoundingClientRect().left;
+                snapPoints = cards.map((c) => {
+                    const left = c.getBoundingClientRect().left - trackLeft;  // stays correct even while the track is translated
+                    return gsap.utils.clamp(0, 1, left / dist);
+                });
+            };
+            computeSnaps();
+
             
 
 
@@ -129,19 +146,21 @@ export default class Animation {
                 },
                 scrollTrigger: {
                     trigger: s1,       // Tracks this specific element
-                    pin: true,         // Pins this specific element
+                    pin: true,
                     scrub: 1,
+                    anticipatePin: 1,
+                    invalidateOnRefresh: true,
+                    end: () => '+=' + getDistance(),
+                    onRefresh: computeSnaps,  
                     snap: {
-                        snapTo: 1 / (cards.length - wi), // Snaps relative to total panels, 
+                        snapTo: (progress) => gsap.utils.snap(snapPoints, progress), // Snaps relative to total panels, 
                         duration: { min: 0.15, max: 0.4 }, // Faster snap recovery
                         delay: 0.15,                       // Brief delay before snapping engages
                         ease: 'power1.inOut',
                         //markers: false
                         
                     },
-                    anticipatePin: 1,
-                    invalidateOnRefresh: true,
-                    end: () => "+=" + ((s1.scrollWidth - s1.clientWidth)),             
+     
                 }
 
             });

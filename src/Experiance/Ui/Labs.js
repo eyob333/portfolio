@@ -52,14 +52,14 @@ export default class Labs{
         let injectElement = this.labC.map( (d,i) => {
         return `<div class="slider-cont sli-${i}"> 
             ${i == 0 ? `<div class="s-name">
-                 <h2>  something </h2> </div>
-                 <svg class="svg-intro" width="126" height="551" viewBox="0 0 126 551" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle class="obj-inneer" cx="63" cy="488" r="36" fill="white"/>
-                    <circle class="obj-outer" cx="63" cy="488" r="62" stroke="white" stroke-width="2"/>
-                    <path class="line" d="M58 0H67V438H58V0Z" fill="white"/>
+                <h2>  something </h2> 
+                <svg width="126" height="554" viewBox="0 0 126 554" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="63" cy="491" r="36" fill="white"/>
+                    <circle cx="63" cy="491" r="62.5" stroke="white"/>
+                    <path d="M61 0H65V438H61V0Z" fill="white"/>
                 </svg>
 
-                 `: "" }
+                </div> `: "" }
             ${ i !==0 && i < this.labC.length -1 ? `
                     <div class="side-m"> 
                         <div class="s-vis">
@@ -90,10 +90,10 @@ export default class Labs{
                                     
 
             ${i == this.labC.length -1 ? `<div class="s-name">
-                <svg  class="svg-intro" width="126" height="550" viewBox="0 0 126 550" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle class="obj-inneer" cx="63.054" cy="63.1526" r="36" transform="rotate(180 63.054 63.1526)" fill="white"/>
-                    <circle class="obj-inneer" cx="63" cy="63" r="62" transform="rotate(180 63 63)" stroke="white" stroke-width="2"/>
-                    <path class="line" d="M67 550H58V112H67V550Z" fill="white"/>
+                <svg width="126" height="554" viewBox="0 0 126 554" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="63" cy="63.0001" r="36" transform="rotate(-180 63 63.0001)" fill="white"/>
+                    <circle cx="63" cy="63" r="62.5" transform="rotate(-180 63 63)" stroke="white"/>
+                    <path d="M61.3033 553.975H57.3033L57.3033 115.975H61.3033L61.3033 553.975Z" fill="white"/>
                 </svg>
                 </div>`: ""} 
         </div>`

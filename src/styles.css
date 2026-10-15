@@ -226,6 +226,10 @@ section {
 #labs,
 #models {
 
+  p, h2, h1{
+    margin: 0;
+  }
+
   .intro-header {
     height: 100svh; 
     max-height: 100svh; 
@@ -424,6 +428,7 @@ section {
       }
 
       .sliders {
+        padding-top: 20px;
         .slider-cont {
           width: 130vw;
           height: 100%;
@@ -442,16 +447,17 @@ section {
     .slide-wrapper{ 
     .slider {
 
-
       .sliders {
+        gap: 80px;
         align-items: center;
         .slider-cont {
-          width: 113vw;
+          width: 100vw;
           height: fit-content;
 
 
           .side-m {
             height: 100%;
+            padding: 7px;
             .s-vis {
   
               .s-icon {

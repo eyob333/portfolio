@@ -29,14 +29,14 @@ export default class Contact{
                         <div class="form-field">
                             <label for="name">Name</label>
                             <div class="input-border-wrap name-border-wrap">
-                                <input type="text" id="name" name="name" value="Commander Elara Vance">
+                                <input type="text" id="name" name="name" placeholder="Commander Elara Vance" autocomplete="name">
                             </div>
                         </div>
 
                         <div class="form-field">
                             <label for="email">Email</label>
                             <div class="input-border-wrap email-border-wrap">
-                                <input type="text" id="email" name="email" value="e.vance.01@starfleet.network">
+                                <input type="text" id="email" name="email" placeholder="e.vance.01@starfleet.network" autocomplete="email">
                             </div>
                         </div>
 
