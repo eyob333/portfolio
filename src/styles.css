@@ -1,12 +1,9 @@
-
-html { overflow-x: visible; }
-
+html { background: #f1e8e8; }
 body {
-    margin: 0;
-     overflow-x: hidden;
-     overflow-x: clip;   /* Blocks unwanted side-scrolling */
-    background-color: #000000;
-
+  margin: 0;
+  background: #000;
+  overflow-x: clip;
+  min-height: 100svh;
 }
 
 html,
@@ -30,16 +27,19 @@ canvas {
   margin: 0;
   border: 0;
   position: fixed;
-  top: 0;
-  left: 0;
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100lvh;
 
   z-index: 2;
   outline: none;
   background-color: transparent;
   transform: translateZ(0);
-    -webkit-transform: translateZ(0);
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden
 
 }
 
@@ -148,14 +148,9 @@ p {
 
 
 .section-container-div {
-  /* visibility: hidden; */
   position: relative;
-  /* max-height: 0; */
-  /* max-width: 0; */
   z-index: 3;
-  border: 0;
   margin: 0;
-  padding: 0;
 }
 
 .underlay-container-div {

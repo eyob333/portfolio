@@ -20,7 +20,6 @@ import { TextPlugin } from 'gsap/all';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, TextPlugin)
 ScrollTrigger.config({ ignoreMobileResize: true });
-ScrollTrigger.normalizeScroll(true);
 
 
 let instance = null;
@@ -61,9 +60,9 @@ export default class App{
 
                     this.animation = new Animation()
                     this.lenis.resize();
-                    document.body.style.display = 'none';
-                    document.body.offsetHeight; // read layout property to force reflow
-                    document.body.style.display = '';
+                    document.body.style.overflow = '';
+                    document.body.style.position = '';
+                    document.documentElement.style.overflow = '';
                     ScrollTrigger.refresh();
                 }, 4000)   
             })    

@@ -38,10 +38,7 @@ export default class Animation {
         this.nav = this.app.event.nav
         this.nav_select();
         this.scroll_trig()
-  
-
-        // this.event = new Event(this.app.ship, this.app.camera.instance, this.app.camera.controls)
-
+        
     }
 
     nav_hash() {

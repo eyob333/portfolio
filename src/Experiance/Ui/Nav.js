@@ -81,21 +81,21 @@ export default class Nav{
     setDebug() {
         let mainI = document.querySelector('#nav .main-icon')
 
-        this.debug.add(theme, 'mainIcPosX').name('main-pos-x').min(-10).max(20).step(.1).onchange( gsap.set(mainI, {x: theme.mainIcPosX}))
-        this.debug.add(theme, 'mainIcPosY').name('main-pos-y').min(-30).max(30).step(.1).onchange( gsap.set(mainI, {y: theme.mainIcPosY}))
-        this.debug.add(theme, 'mainScale').name('main-pos-y').min(-30).max(30).step(.1).onchange( gsap.set(mainI, {scale: theme.mainScale}))
+        this.debug.add(theme, 'mainIcPosX').name('main-pos-x').min(-10).max(20).step(.1).onChange( ()=>{ gsap.set(mainI, {x: theme.mainIcPosX}) })
+        this.debug.add(theme, 'mainIcPosY').name('main-pos-y').min(-30).max(30).step(.1).onChange( ()=>{ gsap.set(mainI, {y: theme.mainIcPosY}) })
+        this.debug.add(theme, 'mainScale').name('main-pos-y').min(0).max(10).step(.01).onChange( ()=>{ gsap.set(mainI, {scale: theme.mainScale}) })
 
 
         const navU = document.querySelector('#nav .util')
 
-        this.debug.add(theme, 'utilPosX').name('util-pos-x').min(-10).max(20).step(.1).onchange( gsap.set(navU, {x: theme.utilPosX}))
-        this.debug.add(theme, 'utilPosY').name('util-pos-y').min(-30).max(30).step(.1).onchange( gsap.set(navU, {y: theme.utilPosY}))
+        this.debug.add(theme, 'utilPosX').name('util-pos-x').min(-10).max(20).step(.1).onChange( ()=>{ gsap.set(navU, {x: theme.utilPosX}) })
+        this.debug.add(theme, 'utilPosY').name('util-pos-y').min(-30).max(30).step(.1).onChange( ()=>{ gsap.set(navU, {y: theme.utilPosY}) })
 
 
         const navN = document.querySelector('#nav .nav')
         
-        this.debug.add(theme, 'navPosX').name('nav-pos-x').min(-10).max(20).step(.1).onchange( gsap.set(navN, {x: theme.navPosX}))
-        this.debug.add(theme, 'navPosY').name('nav-pos-y').min(-30).max(30).step(.1).onchange( gsap.set(navN, {y: theme.navPosY}))
+        this.debug.add(theme, 'navPosX').name('nav-pos-x').min(-10).max(20).step(.1).onChange( ()=>{ gsap.set(navN, {x: theme.navPosX}) })
+        this.debug.add(theme, 'navPosY').name('nav-pos-y').min(-30).max(30).step(.1).onChange( ()=>{ gsap.set(navN, {y: theme.navPosY}) })
 
         
 

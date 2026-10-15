@@ -187,6 +187,10 @@ export default class Event {
 			console.log(`just exited`)
 		});
 
+		document.addEventListener(`scroll`, () =>{
+			console.log(document.scrollingElement.scrollHeight, innerHeight, scrollY);
+		})
+
 	}
 
 
