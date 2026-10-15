@@ -1,7 +1,6 @@
 import '../Styles/Nav.css'
 import ContactIcons from "../../assets/contactIcons";
 import navIcon from "../../assets/navIcon";
-import { addDebugC } from '../Utils/Helper';
 import { theme } from '../../assets/config';
 import gsap from 'gsap';
 
@@ -81,48 +80,24 @@ export default class Nav{
 
     setDebug() {
         let mainI = document.querySelector('#nav .main-icon')
-        addDebugC(this.debug, theme, 'mainIcPosX', mainI, (el, val) => {
-            gsap.set(el, {
-                x: val
-            })
 
-        }, { min: -10, max: 20, step: 0.1 });
-        addDebugC(this.debug, theme, 'mainIcPosY', mainI, (el, val) => {
-            gsap.set(el, {
-                y: val 
-            })
+        this.debug.add(theme, 'mainIcPosX').name('main-pos-x').min(-10).max(20).step(.1).onchange( gsap.set(mainI, {x: theme.mainIcPosX}))
+        this.debug.add(theme, 'mainIcPosY').name('main-pos-y').min(-30).max(30).step(.1).onchange( gsap.set(mainI, {y: theme.mainIcPosY}))
+        this.debug.add(theme, 'mainScale').name('main-pos-y').min(-30).max(30).step(.1).onchange( gsap.set(mainI, {scale: theme.mainScale}))
 
-        }, { min: -30, max: 30, step: 0.1 });
 
         const navU = document.querySelector('#nav .util')
-        addDebugC(this.debug, theme, 'utilPosX', navU, (el, val) => {
-            gsap.set(el, {
-                x: val
-            })
 
-        }, { min: -10, max: 20, step: 0.1 });
-        addDebugC(this.debug, theme, 'utilPosY', navU, (el, val) => {
-            gsap.set(el, {
-                y: val
-            })
+        this.debug.add(theme, 'utilPosX').name('util-pos-x').min(-10).max(20).step(.1).onchange( gsap.set(navU, {x: theme.utilPosX}))
+        this.debug.add(theme, 'utilPosY').name('util-pos-y').min(-30).max(30).step(.1).onchange( gsap.set(navU, {y: theme.utilPosY}))
 
-        }, { min: -30, max: 30, step: 0.1 });
 
         const navN = document.querySelector('#nav .nav')
-        addDebugC(this.debug, theme, 'navPosX', navN, (el, val) => {
-            gsap.set(el, {
-                x: val
-            });
+        
+        this.debug.add(theme, 'navPosX').name('nav-pos-x').min(-10).max(20).step(.1).onchange( gsap.set(navN, {x: theme.navPosX}))
+        this.debug.add(theme, 'navPosY').name('nav-pos-y').min(-30).max(30).step(.1).onchange( gsap.set(navN, {y: theme.navPosY}))
 
-        }, { min: -10, max: 20, step: 0.1 });
-
-        addDebugC(this.debug, theme, 'navPosY', navN, (el, val) => {
-            gsap.set(el, {
-                y: val
-            })
-
-        }, { min: -30, max: 30, step: 0.1 });
-
+        
 
     }
 }

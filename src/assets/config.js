@@ -12,6 +12,7 @@ const theme = {
     // Nav
     navPosX:0,
     navPosY:0,
+    navScale: 0,
 
     utilPosX: 0,
     utilPosY: 0,
@@ -20,6 +21,7 @@ const theme = {
     mainIcPosY: 0,
     mainIcWidth: 0,
     mainIcheight: 0,
+    mainScale: 0,
 
     // Prefs
     lilGuiX: 0,
