@@ -1,9 +1,10 @@
-html { background: #f1e8e8; }
+html { background: #ff1c1c; }
 body {
   margin: 0;
-  background: #000;
+  background: #a28d8d;
   overflow-x: clip;
   min-height: 100svh;
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 html,
@@ -39,8 +40,8 @@ canvas {
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
   backface-visibility: hidden;
-  -webkit-backface-visibility: hidden
-
+  -webkit-backface-visibility: hidden;
+  pointer-events: none;
 }
 
 .custom-cursor {
@@ -181,6 +182,7 @@ p {
     will-change: clip-path, opacity;
     transform: translateZ(0);
     contain: layout style paint;
+    display: none !important; 
 }
 
 .lil-gui, 

@@ -129,11 +129,11 @@ export default class App{
             duration: 1.2,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
             orientation: 'vertical', // Use 'vertical' if doing GSAP pin-scroll, or 'horizontal' if native X-scroll
-            gestureOrientation: 'both',
+            gestureOrientation: 'vertical',
             smoothWheel: true,
             wheelMultiplier: 1,      // Ensure equal wheel sensitivity
             lerp: 0.1,               // Lower lerp = smoother catch-up on reverse
-            syncTouch: true 
+             //syncTouch: true 
         });
 
         // Update GSAP ScrollTrigger whenever Lenis scrolls
