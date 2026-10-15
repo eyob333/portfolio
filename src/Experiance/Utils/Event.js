@@ -97,11 +97,19 @@ export default class Event {
 				ease: 'power2.inOut',
 				scale: 53,
 				duration: 2.2,
+				onStart: ()=>{
+					gsap.set('.transition-overlay', {autoAlpha:1
+					})
+				},
 				onComplete: () => {
 					gsap.to('.transition-overlay', {
 						clipPath: `circle(0% at  50% 50%)`,
 						scale: 1,
-						duration: 2
+						duration: 2,
+						onComplete: ()=>{
+							gsap.set('.transition-overlay', {autoAlpha: 0})
+						},
+						
 					});
 
 				}

@@ -247,7 +247,6 @@
         grid-template-rows: 20% 60%;;
         gap: 0;
         align-items: start;
-        text-align: center;
         padding-left: 0;
         .title-cont {
           margin-top: 0;
@@ -271,6 +270,7 @@
         .icon-cont {
           justify-content: center;
           gap: 30px;
+           text-align: center;
 
           .tech-i {
             width: 40px;
