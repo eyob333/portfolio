@@ -9,7 +9,7 @@
   padding: 10px;
   box-sizing: border-box;
   transform: scale(1);
-  height: 75vh;
+  height: fit-content;
   background: rgba(255, 255, 255, 0.06);
   /*glass morph*/
   /* border-radius: 16px; */
@@ -178,11 +178,12 @@ button.submit-button {
   }
 
   .swq {
-    margin-top: 50px;
+    margin-top: 20px;
 
     p.sp {
       text-align: center;
       font-size: 1.5rem;
+      margin-bottom:20px;
     }
 
     .socials {

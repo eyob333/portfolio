@@ -74,6 +74,7 @@
           align-items: center;
           grid-template-columns: 60% 40%;
           padding: 0 70px;
+          padding-top: 20px;
           /* padding-left: 40px; */
 
           .s-video {
