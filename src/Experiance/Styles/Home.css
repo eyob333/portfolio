@@ -305,3 +305,95 @@
     }
   }
 }
+
+
+@media screen and (min-width: 440px) and (max-width: 1007px) {
+  #home .slide-wrapper {
+    .slider-hom {
+      .slide-hom {
+        .slide.abt.a2 {
+          padding-top: 0;
+        }
+
+        .slide.abt.a1,
+        .slide.abt.a2 {
+
+          .detail-cont {
+            max-width: 97%;
+          }
+
+          p {
+            font-weight: 400;
+            font-size: .84rem;
+            /* letter-spacing: .1rem; */
+          }
+        }
+
+
+        .slide.abt.a2 {
+          display: grid;
+          grid-template-columns: 85% 10%;
+          justify-content: start;
+        }
+
+        .slide.tech {
+          gap: 10%;
+
+          .title-cont {
+            margin-top: 0;
+
+            h2 {
+              font-size: 2.4rem;
+              font-weight: 900;
+
+            }
+
+            .sub-h-cont {
+              max-width: 80%;
+
+              p {
+                font-weight: 400;
+                font-size: .9rem;
+              }
+            }
+          }
+
+          .icon-cont {
+            justify-content: center;
+            gap: 40px;
+            text-align: center;
+
+            .tech-i {
+              width: 30px;
+              height: 30px;
+              display: flex;
+              align-items: stretch;
+              justify-content: center;
+              flex-direction: column;
+
+              .svg-cont {
+                width: 40px;
+                height: 40px;
+
+                svg {
+                  width: 100%;
+                  height: 100%;
+                }
+              }
+
+              .icon-name {
+                font-size: .54rem;
+                font-weight: 700;
+              }
+            }
+
+          }
+
+
+        }
+
+      }
+    }
+  }
+
+}

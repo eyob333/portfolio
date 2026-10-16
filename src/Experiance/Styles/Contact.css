@@ -7,6 +7,7 @@
 .form-wrapper {
   width: 300px;
   padding: 10px;
+  padding-right: 25px;
   box-sizing: border-box;
   transform: scale(1);
   height: fit-content;
