@@ -33,7 +33,7 @@ body {
   margin: 0;
   background: #a28d8d;
   overflow-x: clip;
-  min-height: 100svh;
+  min-height: 100lvh;
   padding-bottom: env(safe-area-inset-bottom);
 }
 
