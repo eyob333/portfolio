@@ -94,9 +94,13 @@ export default class Nav{
 
         const navN = document.querySelector('#nav .nav')
         
-        this.debug.add(theme, 'navPosX').name('nav-pos-x').min(-10).max(20).step(.1).onChange( ()=>{ gsap.set(navN, {x: theme.navPosX}) })
-        this.debug.add(theme, 'navPosY').name('nav-pos-y').min(-30).max(30).step(.1).onChange( ()=>{ gsap.set(navN, {y: theme.navPosY}) })
-
+        this.debug.add(theme, 'navPosX').name('nav-pos-x').min(-30).max(20).step(.1).onChange( ()=>{ gsap.set(navN, {x: theme.navPosX}) })
+        this.debug.add(theme, 'navPosY').name('nav-pos-y').min(-40).max(40).step(.1).onChange( ()=>{ gsap.set(navN, {y: theme.navPosY}) })
+        
+        const navS = navN.querySelectorAll('svg')
+        
+        this.debug.add(theme, 'navPosX').name('n-svg-pos-x').min(-30).max(30).step(.1).onChange( ()=>{ gsap.set(navS, {x: theme.navPosX}) })
+        this.debug.add(theme, 'navPosY').name('n-svg-pos-y').min(-40).max(40).step(.01).onChange( ()=>{ gsap.set(navS, {y: theme.navPosY}) })
         
 
     }

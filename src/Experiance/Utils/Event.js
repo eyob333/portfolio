@@ -6,8 +6,15 @@ import { trackXHover } from './Helper';
 export default class Event {
 	constructor() {
 		this.app = new App();
+		this.device = this.app.sizes.device
 
-		this.setCursor();
+
+		if (!this.device.mobile || this.device.tab){
+			console.log(this.device)
+			this.setCursor();		
+			console.log(`decived`)
+		}
+
 		this.setEvents();
 		this.setReDirect();
 		this.setTheme();
@@ -163,6 +170,8 @@ export default class Event {
 			y: 12
 		})
 
+		// nav goto
+
 		let title_c = gsap.utils.toArray('.nav-mask .title-cont')
 		title_c.forEach(e => {
 			gsap.to(e, {
@@ -173,7 +182,7 @@ export default class Event {
 		let icos = gsap.utils.toArray('.nav-mask .svg-cont svg')
 		icos.forEach(element => {
 			gsap.to(element, {
-				y: '21px',
+				y: '0px',
 			})
 		});
 
@@ -199,6 +208,15 @@ export default class Event {
 		console.log('scrollHeight', d.scrollHeight, 'innerHeight', innerHeight);
 		window.scrollTo(0, 500);
 		console.log('scrollY after', scrollY);
+
+
+		// nav
+
+		const nav = document.querySelector(`#nav .nav`) 
+
+		if (this.device.mobile){
+			gsap.set( nav, {y: 0})
+		}
 
 	}
 
