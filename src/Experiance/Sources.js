@@ -66,12 +66,21 @@ export default [
         type: 'font',
         path: '/fonts/nevermind/NeverMindBauhaus-Regular.ttf'
     },
-            {
+    {
         name: 'Radenes',
         type: 'font',
         path: 'fonts/radenes/Radenes.otf'
     },
-
+    {
+        name: 'Poiret',
+        type: 'font',
+        path: 'fonts/poiret-one/PoiretOne-Regular.ttf'
+    },
+    {
+        name: 'Primeform',
+        type: 'font',
+        path: 'fonts/primeform-pro/PrimeformPro-Light.otf'
+    },
 
 
 ]

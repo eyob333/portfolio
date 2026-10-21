@@ -171,20 +171,23 @@ export default class Event {
 		})
 
 		// nav goto
+		const nav_y = this.device.mobile ?  11.2 : 21;
+		const nav = document.querySelector(`#nav .nav`)
+		
+
 
 		let title_c = gsap.utils.toArray('.nav-mask .title-cont')
-		title_c.forEach(e => {
-			gsap.to(e, {
-				scale: 0,
-			})
+		gsap.to(title_c, {
+			scale: 0,
+		})
 
-		});
+
 		let icos = gsap.utils.toArray('.nav-mask .svg-cont svg')
-		icos.forEach(element => {
-			gsap.to(element, {
-				y: '0px',
-			})
-		});
+		gsap.to(icos, {
+			y: nav_y,
+		})
+
+
 
 		///*
 		//const icons = document.querySelector(`.`);
@@ -210,13 +213,6 @@ export default class Event {
 		console.log('scrollY after', scrollY);
 
 
-		// nav
-
-		const nav = document.querySelector(`#nav .nav`) 
-
-		if (this.device.mobile){
-			gsap.set( nav, {y: 0})
-		}
 
 	}
 

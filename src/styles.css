@@ -145,43 +145,93 @@ p {
 }
 
 
+
 /* lading configurations */
-.loading-bar {
+
+.loader {    
+
   position: absolute;
   z-index: 3;
-  top: 60%;
-  left: 35%;
-  /* width: 10px; */
-  height: 2px;
-  background-color: #ffffff;
-  transform: scaleX(0);
-  transform-origin: top center;
-  transition: transform 1s;
-  will-change: transform;
-  padding: 0 15%;
-}
-
-.loading-bar.enabled {
-  transform: scaleX(0);
-  transform-origin: top center;
-  transition: transform 3.5s ease-in-out;
-}
-
-.loading-text {
-  position: fixed;
-  top: 55%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: #ffffff;
-  z-index: 3;
-  will-change: transform;
+
+
 }
 
-.loading-text h1,
-.loading-text p {
-  display: inline;
-  font-size: 2rem;
+
+.parent {
+  position: relative;
+  width: 400px;
+  height: 100px;
+
+  /* overflow: hidden;  */
+  position: relative;
+  /* background: black; */
+  clip-path: polygon(0 0%, 100% 0, 100% 100%, 0% 100%);
+
 }
+
+.parent svg{
+  width: 100%;
+  height: 100%;
+  
+}
+
+.underlay-svg{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+.loder-info{
+  position: absolute;
+  z-index: 3;
+  right: 10px;
+  bottom: 10px;
+  background-color: rgba(137, 137, 137, 0.281);
+  width: 300px;
+  height: 60px;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 98% 2%;
+  align-items: center;
+
+  transform: translateX(310px);
+
+  .loder-text{
+    width: 100%;
+    width: 100%;
+    position: relative;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+
+  }
+  .loder-text p{
+    position: absolute;
+    margin: 0;
+    /*top: 50%; */
+    font-size: .8rem;
+    color: #dedede;
+    text-align: left;
+    padding: 0 22px;
+    font-family: 'Primeform';
+   
+
+  }
+  .load-line{
+    height: 4px;
+    background-color: aqua;
+    width: 100%;
+  }
+}
+
+
+
+
 
 
 .section-container-div {

@@ -17,13 +17,37 @@
   </head>
   <body>
 
-    <div class="loading-text">
-      <h1>Loading...
-        <p class="loading-number"></p>
-      </h1>
+    <div class="loader-cont">
+      <div class="loader">
+        <div class="load-icon">
+          <div class="parent">
+
+            <svg class="down-push" width="214" height="73" viewBox="0 0 214 73" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path class="path" d="M210.132 69.5368L146.132 7.5C144.211 5.57913 141.606 4.5 138.889 4.5H123.132V73" stroke-width="9" stroke="white"/>
+              <path class="path" d="M3.13203 69.5368L67.132 7.5C69.0529 5.57913 71.6582 4.5 74.3747 4.5H90.132V73" stroke-width="9" stroke="white"/>
+              <path class="path" d="M7.63203 0V72.5" stroke-width="9" stroke="white"/>
+            </svg>      
+
+            <svg class="underlay-svg down-push" width="210" height="73" viewBox="0 0 210 73" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M208.044 66.5368L144.044 4.5C142.123 2.57913 139.518 1.5 136.801 1.5H121.044V70" stroke-width="3" stroke="#E9E8E8" stroke-opacity="0.13"/>
+              <path d="M1.04401 66.5368L65.044 4.5C66.9649 2.57913 69.5701 1.5 72.2867 1.5H88.044V70" stroke-width="3" stroke="#E9E8E8" stroke-opacity="0.13"/>
+              <path d="M4.04401 0V72.5" stroke-width="3" stroke="#E9E8E8" stroke-opacity="0.13"/>
+            </svg>
+
+          </div>          
+        </div>
+
+      </div>
+      
+       <div class="loder-info">
+          <div class="loder-text">
+              <p>Establishing WebGL context and initializing shaders...</p>
+          </div>
+          <div class="load-line"></div>
+      </div>
+
     </div>
 
-    <div class="loading-bar"></div>
     
     <div class="section-container-div">
     </div> 
@@ -32,6 +56,7 @@
     </div>
     <div class="transition-overlay">
     </div>
+
     <!-- webgl canvas -->
     <canvas class="webgl"></canvas>
     
@@ -49,6 +74,6 @@
       </div>
     </div>
 
-    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/main.js" ></script>
   </body>
 </html>

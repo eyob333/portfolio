@@ -14,11 +14,14 @@ import Animation from './Animation/Animation.js';
 import Lenis from 'lenis';
 
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/all';
-import { ScrollToPlugin } from 'gsap/all';
-import { TextPlugin } from 'gsap/all';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import ScrollToPlugin from 'gsap/ScrollToPlugin';
+import TextPlugin from 'gsap/TextPlugin';
 
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, TextPlugin)
+import DrawSVGPlugin from "gsap/DrawSVGPlugin";
+import GSDevTools from "gsap/GSDevTools";
+
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, TextPlugin, DrawSVGPlugin, GSDevTools)
 ScrollTrigger.config({ ignoreMobileResize: true });
 
 

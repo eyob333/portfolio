@@ -1,5 +1,5 @@
 const theme = {
-    // Nav
+    // theme
     bgColor: '#fffffff',
     iconColor: '#fffffff',
     navColor: '#fffffff',
@@ -13,6 +13,11 @@ const theme = {
     navPosX:0,
     navPosY:0,
     navScale: 0,
+    navFade: 0,
+    navIcPosX:0,
+    navIcPosY:0,
+    navSvgPosX: 0,
+    navSvgPosY: 0,
 
     utilPosX: 0,
     utilPosY: 0,

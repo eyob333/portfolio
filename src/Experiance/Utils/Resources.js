@@ -10,6 +10,7 @@ export default class Resources extends EventEmitter{
         this.sources = sources
         this.loadingManager = loadingManager
         
+
         //set up
         this.item = {}
         this.toLoad = this.sources.length
@@ -24,7 +25,7 @@ export default class Resources extends EventEmitter{
         this.loaders.gltfLoader = new GLTFLoader(this.loadingManager)
         this.loaders.dracoLoader = new DRACOLoader(this.loadingManager)
         this.loaders.dracoLoader.setDecoderPath('/draco/')
-        this.loaders.textureLoader = new THREE.TextureLoader()
+        this.loaders.textureLoader = new THREE.TextureLoader(this.loadingManager)
     
         this.loaders.gltfLoader.setDRACOLoader( this.loaders.dracoLoader )
         
@@ -80,21 +81,32 @@ export default class Resources extends EventEmitter{
 
         else if (source.type === 'video') {
             this.loadingManager.itemStart(source.path);
-
             const video = document.createElement('video');
             video.crossOrigin = 'anonymous';
-            video.preload = 'auto'; // Change from 'metadata' to 'auto' for aggressive Safari preloading
+            video.preload = 'auto';
             video.muted = true;
+            video.loop = true; // if you want it looping for the texture
             video.playsInline = true;
-            
-            // CRITICAL FOR SAFARI: Give it physical layout size and attach it invisibly to the DOM
+            video.setAttribute('playsinline', '');
+            video.setAttribute('webkit-playsinline', '');
+            video.setAttribute('muted', '');
+
+            // Safari wants it in the DOM with real size, but it must not affect layout
+            Object.assign(video.style, {
+            position: 'fixed',
+            top: '0',
+            left: '0',
+            width: '320px',
+            height: '180px',
+            opacity: '0',
+            pointerEvents: 'none',
+            zIndex: '-1',
+            contain: 'strict'
+            });
             video.width = 320;
             video.height = 180;
-            video.style.position = 'absolute';
-            video.style.opacity = '0';
-            video.style.pointerEvents = 'none';
-            document.body.appendChild(video);
 
+            document.body.appendChild(video);
             video.src = source.path;
 
             let isFinished = false;
@@ -174,6 +186,6 @@ export default class Resources extends EventEmitter{
             console.log( 'ready' )
             
             this.trigger('ready')
-        }
+        } 
     }
 }

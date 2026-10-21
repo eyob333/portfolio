@@ -96,12 +96,18 @@ export default class Nav{
         
         this.debug.add(theme, 'navPosX').name('nav-pos-x').min(-30).max(20).step(.1).onChange( ()=>{ gsap.set(navN, {x: theme.navPosX}) })
         this.debug.add(theme, 'navPosY').name('nav-pos-y').min(-40).max(40).step(.1).onChange( ()=>{ gsap.set(navN, {y: theme.navPosY}) })
+        this.debug.add(theme, 'navFade').name('nav-fade').min(0).max(80).step(.01).onChange( ()=>{ gsap.set(navN, {'--fade': theme.navFade}) })
+
+        const navI = navN.querySelector('.nav-item')
+
+        this.debug.add(theme, 'navIcPosX').name('n-Item-pos-x').min(-30).max(20).step(.1).onChange( ()=>{ gsap.set(navI, {x: theme.navIcPosX}) })
+        this.debug.add(theme, 'navIcPosY').name('n-Item-pos-y').min(-40).max(40).step(.1).onChange( ()=>{ gsap.set(navI, {y: theme.navIcPosY}) })
         
         const navS = navN.querySelectorAll('svg')
         
-        this.debug.add(theme, 'navPosX').name('n-svg-pos-x').min(-30).max(30).step(.1).onChange( ()=>{ gsap.set(navS, {x: theme.navPosX}) })
-        this.debug.add(theme, 'navPosY').name('n-svg-pos-y').min(-40).max(40).step(.01).onChange( ()=>{ gsap.set(navS, {y: theme.navPosY}) })
-        
+        this.debug.add(theme, 'navSvgPosX').name('n-svg-pos-x').min(-30).max(30).step(.1).onChange( ()=>{ gsap.set(navS, {x: theme.navSvgPosX}) })
+        this.debug.add(theme, 'navSvgPosY').name('n-svg-pos-y').min(-40).max(40).step(.01).onChange( ()=>{ gsap.set(navS, {y: theme.navSvgPosY}) })
+
 
     }
 }
