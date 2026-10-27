@@ -17,15 +17,18 @@ import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import ScrollToPlugin from 'gsap/ScrollToPlugin';
 import TextPlugin from 'gsap/TextPlugin';
+import Draggable from 'gsap/Draggable';
+import InertiaPlugin from 'gsap/InertiaPlugin';
 
 import DrawSVGPlugin from "gsap/DrawSVGPlugin";
 import GSDevTools from "gsap/GSDevTools";
 
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, TextPlugin, DrawSVGPlugin, GSDevTools)
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, TextPlugin, Draggable, InertiaPlugin ,DrawSVGPlugin, GSDevTools)
 ScrollTrigger.config({ ignoreMobileResize: true });
 
 
 let instance = null;
+history.scrollRestoration = 'manual';   // put this at the very top of main.js
 
 
 var stats = new Stats();
@@ -67,6 +70,8 @@ export default class App{
                     document.body.style.position = '';
                     document.documentElement.style.overflow = '';
                     ScrollTrigger.refresh();
+                    this.resize();
+
                 }, 4000)   
             })    
         
@@ -85,6 +90,7 @@ export default class App{
             this.update()
         })
 
+       
     }
             
     resize(){

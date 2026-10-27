@@ -1,6 +1,9 @@
 import * as THREE from 'three'
 import gsap from "gsap";
+import Draggable from 'gsap/Draggable';
+
 import App from '../App';
+
 import { trackXHover } from './Helper';
 
 export default class Event {
@@ -12,7 +15,7 @@ export default class Event {
 		if (!this.device.mobile || this.device.tab){
 			console.log(this.device)
 			this.setCursor();		
-			console.log(`decived`)
+	
 		}
 
 		this.setEvents();
@@ -156,7 +159,25 @@ export default class Event {
 		// main logo goto
 		let element = document.querySelector('.main-icon svg');
 		const homC = document.querySelector('#nav .main-icon .icon-mask')
+			const navK = document.querySelectorAll('#nav .util .icons');
+			let direc = 1;
+		
 		homC.addEventListener('click', () => {
+			let val = direc == 1 ? -200: 0; 
+
+			gsap.to(navK, {
+				yPercent: val,
+				duration: .5,
+				stagger: .1,
+				onComplete: () =>{
+					if( direc == 1){
+						direc = 0
+					}else{
+						direc = 1
+					}
+					console.log(`foo direct`,direc)
+				}
+			})
 			gsap.to(window, {
 				scrollTo: `#home`,
 				duration: 1.8,
@@ -167,7 +188,7 @@ export default class Event {
 		})
 
 		gsap.to(element, {
-			y: 12
+			y: 21
 		})
 
 		// nav goto
@@ -207,10 +228,54 @@ export default class Event {
 			console.log(`just exited`)
 		});
 
-		const d = document.scrollingElement;
-		console.log('scrollHeight', d.scrollHeight, 'innerHeight', innerHeight);
-		window.scrollTo(0, 500);
-		console.log('scrollY after', scrollY);
+
+		const navI = document.querySelector('#nav .nav');
+		const list = nav.querySelector('.nav-item');
+		const items = gsap.utils.toArray('.nav .nav-mask');
+
+		let points = [];   // list y-positions that put each item at the centre of .nav
+
+		function measure() {
+		const navH = navI.clientHeight;
+		const listTop = list.getBoundingClientRect().top;
+		const y = gsap.getProperty(list, 'y');
+
+		points = items.map((item) => {
+			const r = item.getBoundingClientRect();
+			// item centre measured from the list's own top, so the current translation cancels out
+			const centreInList = r.top - listTop + r.height / 2;
+			return navH / 2 - centreInList;
+		});
+		return y;
+		}
+
+		measure();
+		gsap.set(list, { y: points[0] });          // start with the first item centred
+
+		const [drag] = Draggable.create(list, {
+		type: 'y',
+		inertia: true,
+		bounds: { minY: Math.min(...points), maxY: Math.max(...points) },
+		snap: {
+			y: (value) => gsap.utils.snap(points, value),   // nearest centred position
+		},
+		onThrowComplete() {
+			const i = points.reduce(
+			(best, p, idx) => (Math.abs(p - this.y) < Math.abs(points[best] - this.y) ? idx : best), 0);
+			console.log('centred item:', i);
+		},
+		});
+
+		// re-measure after fonts/images load or on width changes
+		function remeasure() {
+		const i = points.reduce(
+			(best, p, idx) => (Math.abs(p - gsap.getProperty(list, 'y')) < Math.abs(points[best] - gsap.getProperty(list, 'y')) ? idx : best), 0);
+		measure();
+		drag.applyBounds({ minY: Math.min(...points), maxY: Math.max(...points) });
+		gsap.set(list, { y: points[i] });
+		}
+		let lastW = innerWidth;
+		addEventListener('resize', () => { if (innerWidth !== lastW) { lastW = innerWidth; remeasure(); } });
 
 
 

@@ -3,7 +3,7 @@ import gsap from 'gsap';
 
 
 const loadSvg = document.querySelector('.loader');
-const loadInfo = document.querySelectorAll('.loder-info');
+const loadInfo = document.querySelector('.loder-info');
 
 
 export default class LoadingManager{
@@ -31,7 +31,7 @@ export default class LoadingManager{
                 this.loOutroTl.to( loadSvg, { opacity: 0, display: `none` })
                 this.loOutroTl.to( loadInfo, { x: `310px`, display: `none` }) 
                 this.loOutroTl.to( '.loader-cont', { display: `none`, duration: .01 })                 
-                this.loOutroTl.to( this.overlayMaterial.uniforms.uAlpha, { duration: 5, value: .0, delay: 1, ease: 'expo.out', onComplete: () =>{ this.overlay.destroy() } }) 
+                this.loOutroTl.to( this.overlayMaterial.uniforms.uAlpha, { duration: 5, value: .0, delay: 1, ease: 'expo.out', onComplete: () =>{ this.overlay.destroy(); gsap.to('canvas', {zIndex: 2} ) } }) 
 
 
 
@@ -40,9 +40,17 @@ export default class LoadingManager{
                 
             },
             (itemUrl, itemLoaded, itemTotal) => {
-                // onProgress 
-               
 
+                const raw = (itemLoaded / itemTotal);
+
+                gsap.to( loadInfo.querySelector(`.load-line`), {
+                    scaleX: `${raw}%;`,
+                    duration: 0.6,
+                    ease: "power2.out",
+                    overwrite: true,                       // retarget smoothly on each event
+                });
+
+                // onProgress 
                 const currentItem = Math.round( (itemLoaded / itemTotal)  * 4); 
 
                 switch (currentItem) {

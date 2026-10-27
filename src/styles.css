@@ -70,7 +70,7 @@ canvas {
   height: 100vh;
   height: 100lvh;
 
-  z-index: 2;
+  z-index: 3;
   outline: none;
   background-color: transparent;
   transform: translateZ(0);
@@ -151,7 +151,7 @@ p {
 .loader {    
 
   position: absolute;
-  z-index: 3;
+  z-index: 4;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -187,7 +187,7 @@ p {
 
 .loder-info{
   position: absolute;
-  z-index: 3;
+  z-index: 4;
   right: 10px;
   bottom: 10px;
   background-color: rgba(137, 137, 137, 0.281);
@@ -199,7 +199,7 @@ p {
   align-items: center;
 
   transform: translateX(310px);
-
+ 
   .loder-text{
     width: 100%;
     width: 100%;
@@ -226,6 +226,8 @@ p {
     height: 4px;
     background-color: aqua;
     width: 100%;
+    transform: scaleX(0) ;  
+    transform-origin: left;
   }
 }
 
@@ -361,7 +363,7 @@ section {
 
           svg {
             width: 280px;
-            height: 27px;
+            height: 17px;
           }
         }
       }

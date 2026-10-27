@@ -38,6 +38,7 @@ export default class Animation {
         this.nav = this.app.event.nav
         this.nav_select();
         this.scroll_trig()
+        this.setHomeScrol()
 
     }
 
@@ -229,8 +230,11 @@ export default class Animation {
 
         });
 
+    }
 
 
+    pageTl(){
+        const pageTi = gsap.timeline({defaults: { ease: `power1.out`}}); 
 
     }
 
@@ -487,5 +491,70 @@ export default class Animation {
         });
     }
 
+    setHomeScrol(){
 
-}
+        const homeSec = document.querySelector('#home .page-home');
+
+        let homTl = gsap.timeline({
+            defaults: {
+                ease: 'none'
+            },
+            scrollTrigger: {
+                trigger: homeSec,
+                scrub: 1,
+                toggleActions: "play reverse play reverse",
+                markers: true,
+                }
+        });
+
+        homTl.to( homeSec.querySelector(`.heading-cont h1`), {fontSize: `3rem`} )
+
+
+        const pageSec = gsap.utils.toArray('.intro-header');
+
+        let pageTl = gsap.timeline({
+            defaults: {
+                ease: 'none'
+            },
+            scrollTrigger: {
+                trigger: pageSec,
+                scrub: 1,
+                anticipatePin: 1,
+                invalidateOnRefresh: true,
+                
+                }
+        });
+
+
+        const contacSe = document.querySelector('#contact .contacts');
+
+        let contTl = gsap.timeline({
+            defaults: {
+               ease: `power4.inOut`
+            },
+            scrollTrigger: {
+                trigger: contacSe,
+                toggleActions: "play reverse play reverse",
+                start: "bottom 80%", 
+                end: "top 20%", 
+                //markers: true
+                }
+        });
+
+        contTl.set(contacSe.querySelectorAll('.submit-wrapper button'), { yPercent: -200, opacity:0, transformOrigin: `top` })
+        contTl.set(contacSe.querySelectorAll('.swq .socials .icons'), { yPercent: -110, opacity:0,  transformOrigin: `top`, skewY: 10 })    
+        contTl.set( contacSe.querySelectorAll('.form-field label'), { x: -10 })
+
+        contTl.to( contacSe, { scaleY: 1, duration: .7 })           
+        contTl.to( contacSe.querySelectorAll('.input-border-wrap, .subject-border-wrap'), { scaleX: 1, stagger: .1, duration: 1 }, `-=.4`)
+        contTl.to( contacSe.querySelectorAll('.submit-wrapper button'), { yPercent: -100, duration: .4, opacity: 1 }, `-=.4`)
+        contTl.to( contacSe.querySelector('.swq p.sp'), { duration: .2, opacity: 1 },  `-=.3`)
+        contTl.to( contacSe.querySelectorAll('.swq .socials .icons'), { yPercent: 0, stagger: .07 , duration: .4, opacity: 1, skewY: 0 },  `-=.3`)
+        contTl.to( contacSe.querySelector('h1.form-title'), { duration: .3, opacity: 1 },  `-=.3`)
+        contTl.to( contacSe.querySelectorAll('.form-field label'), { duration: .3, opacity: 1, x: 0  }, `-=.3`)
+        contTl.to( contacSe.querySelectorAll('input, textarea'), { duration: .3, color: '#ffffff' }, `-=.2`)
+
+    }
+
+
+} 
