@@ -61,7 +61,7 @@ export default class Contact{
                 </div>
              
             </div>
-            <div class="footer-mark"> <p>@something something </p> </div> 
+            <div class="footer-mark"> <p>@something something</p> </div> 
             `;
         this.container.appendChild(this.element);
         

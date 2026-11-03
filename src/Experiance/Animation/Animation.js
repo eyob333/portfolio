@@ -2,15 +2,14 @@ import * as THREE from 'three'
 import Lenis from 'lenis'
 import gsap from "gsap";
 
-import { ScrollTrigger } from 'gsap/all';
-import { ScrollToPlugin } from 'gsap/all';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import SplitText from 'gsap/SplitText';
+import ScrambleTextPlugin from 'gsap/ScrambleTextPlugin';
 
-import SplitType from 'split-type';
+
 import App from "../App";
 import Ui from '../Ui/Ui';
 
-
-let container = document.querySelector("div.section-container-div");
 
 
 export default class Animation {
@@ -19,7 +18,7 @@ export default class Animation {
         this.app = new App();
         this.ui = new Ui();
         
-        this.device = this.app.sizes.device.mobile;
+        this.device = this.app.sizes.device;
         this.slide();
 
         let nav = {
@@ -112,14 +111,14 @@ export default class Animation {
         //console.log(`foo elek`,s1Elements)
         s1Elements.forEach((s1) => {
 
-            const p = s1.classList.value.split(' ').at(-1) == 'projf';
+            //const proj = s1.classList.value.split(' ').at(-1) == 'projf';
+            const proj = false;
             const k = s1.classList.value.split(' ').at(-1) == 'ks';
 
 
 
             const lockedE = s1.querySelector('.wo-am')
             
-            const wi = Number(s1.attributes.getNamedItem('base').value)
 
             const cards = gsap.utils.toArray(s1.querySelectorAll('.slider-cont'));
             const track = cards[0].parentElement;          // the element your x tween moves (.sliders)
@@ -132,7 +131,7 @@ export default class Animation {
                 const dist = getDistance();
                 const trackLeft = track.getBoundingClientRect().left;
                 snapPoints = cards.map((c) => {
-                    const left = c.getBoundingClientRect().left - trackLeft;  // stays correct even while the track is translated
+                    const left = c.getBoundingClientRect().left - trackLeft;  
                     return gsap.utils.clamp(0, 1, left / dist);
                 });
             };
@@ -177,53 +176,100 @@ export default class Animation {
                 }, '<')
             }
 
-            cards.forEach((card) => {
+            cards.forEach((card, i) => {
+                
+                /*                 
+                if (proj) {
 
-                const cardTL= gsap.timeline({
-                    defaults: {},
-                    scrollTrigger: {
-                            trigger: card,
-                            containerAnimation: sliderT2,
-                            start: "left 75%", // Single, clear start point
-                            end: "right 25%",  // Single, clear end point
-                            toggleActions: "play reverse play reverse",
-                            //markers: true
-                        }
-                });
-                               
-                if (p) {
-                    const desc = card.querySelectorAll('.s-name h2');
-                    const vid = card.querySelector('.s-name h2');
-                    const line = card.querySelector('.s-name h2');
-                    const tit = card.querySelector(`.frac-cont h2`);
+                    if( !this.device.mobile){
 
-                    cardTL.set(tit, { opacity: 0, y: 40 });
-                    cardTL.to(tit, {
-                        opacity: 1,
-                        y: 0,
-                        duration: 1.8,
-                        ease: "power2.out",
+                        const desc = card.querySelectorAll('.s-name h2');
+                        const vid = card.querySelector('.s-name h2');
+                        const line = card.querySelector('.title-line');
+                        const tit = card.querySelector(`.frac-cont h2`);
+
+                        const descCont = card.querySelectorAll('.s-desc .icons, .s-desc .desc');
+                        const vidCont = card.querySelector('.s-video');
+
+                        const containerV = card.querySelector('.frac-wrap').offsetWidth;
+                        const vidV = vidCont.querySelector('video').offsetWidth;
+                        const vidContV = vidCont.getBoundingClientRect().width;
+
+                        console.log( `cont-frac`, containerV, `\nvideo: `, vidV, `\nvideo-cont: `, vidContV);
+
+                        
+                        gsap.set(tit, { opacity: 0, yPercent: 100 });
+                        gsap.set(line, {scaleX: 0});
+                        gsap.set(descCont, { xPercent: -120, scaleY: .8, opacity: 0 });
+                        gsap.set(vidCont, { x: ((containerV-vidContV ) / 2) - 70, yPercent: -30, scale: 1.2 }); 
+
+                        cardTL.to(vidCont, { yPercent: 14, duration: .8}) 
+                        cardTL.to(vidCont, { clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 15%)' }, `-=.5`)   
+                        cardTL.to(vidCont, { clipPath: 'polygon(0 0, 100% 0, 100% 46%, 0 15%)' })  
+                        cardTL.to(vidCont, { clipPath: 'polygon(0 0, 100% 0, 100% 50%, 0 51%)' }) 
+                        cardTL.to(vidCont, { clipPath: 'polygon(0 0, 100% 0, 100% 83%, 0 51%)' })
+                        cardTL.to(vidCont, { clipPath: 'polygon(0 0, 100% 0, 100% 81%, 0 100%)' }) 
+                        cardTL.to(vidCont, { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' })                     
+                        cardTL.to(vidCont, { x: 0, duration: .4}) 
+                        cardTL.to(vidCont, { scale: 1, duration: .4}) 
+                        cardTL.to(line, { scaleX: 1, duration: .7 }, `-=.1`);    
+                        cardTL.to(tit, { opacity: 1, yPercent: 0, duration: .8, ease: "power2.out"}, `-=.2`);
+
+        
+                        cardTL.to(descCont, { xPercent: 0, scaleY: 1, opacity: 1, stagger: .3, duration: .8, ease: "power2.out" });
+
+                    }
+                    else{
+
+                        
+                    }
+
+                } 
+                */
+                 
+                ///*
+                if(k){
+                    
+                    const cardTL= gsap.timeline({
+                        defaults: {
+                            duration: .1,
+                        },
+                        scrollTrigger: {
+                                trigger: card,
+                                containerAnimation: sliderT2,
+                                start: "left 85%",
+                                end: "right 25%", 
+                                toggleActions: "play reverse play reverse",
+                                markers: true
+                            }
                     });
 
-
-                } else{
                     //console.log(`coskdfj`, card)
-                    const parka = card.querySelector('.s-name h2');
+                    const lineK = card.querySelector(`.s-line`);
+                    const image = card.querySelector(`.s-image`);
+                    const number = card.querySelector(`.s-index p`);
+                    const titl = card.querySelector(`.s-name h2`);
+                    const icon = card.querySelectorAll(`.s-icon .icon-cont`);
+                    if (!titl) return 0;
+                    console.log(`fook`, lineK)
+                   
+                    gsap.set(lineK, {scaleX:0, transformOrigin: `left`});
+                    gsap.set(titl, { opacity: 0, yPercent: -30 });
+                    gsap.set(image, { opacity: 0, yPercent: 100 });
+                    gsap.set(icon, { yPercent: 100, scaleX: .7 });
+                    gsap.set(number, { opacity: 0, yPercent: -30 });
 
-                    //console.log(`fook`, parka)
+                    cardTL.to(image, {opacity:1, yPercent: 0, duration: .4})
+                    cardTL.to(lineK, { scaleX: 1, duration: .8, ease: "power2.out" });
+                    cardTL.to(icon, { yPercent: 0, scaleX: 1, duration: .3 });
+                    cardTL.to(titl, { opacity: 1, yPercent: 0, duration: .4, ease: "power2.out" });
+                    cardTL.to(number, { opacity: 1, yPercent: 0, duration: .4, ease: "power2.out" });
                     
-                    if (!parka) return;
+                    cardTL.to( titl, {  duration: 2, scrambleText:{ text: titl.innerText, chars: "10", speed: .01 }})       
 
-                    cardTL.set(parka, { opacity: 0, y: 40 });
-
-                    cardTL.to(parka, {
-                        opacity: 1,
-                        y: 0,
-                        duration: 0.8,
-                        ease: "power2.out",
-                        });
 
                 }
+               //*/
 
             });
 
@@ -233,10 +279,7 @@ export default class Animation {
     }
 
 
-    pageTl(){
-        const pageTi = gsap.timeline({defaults: { ease: `power1.out`}}); 
 
-    }
 
 
     nav_change(sp, p1, pa, to_view, hash) {
@@ -248,8 +291,8 @@ export default class Animation {
         let prev_spar = this.nav.prev_spar
         let prev_par = this.nav.prev_par
 
-        let pk = this.device ? 35 : 50;
-        let pi = this.device ? 25 : 30;
+        let pk = this.device.mobile ? 35 : 50;
+        let pi = this.device.mobile ? 25 : 30;
 
 
         history.replaceState(null, "", `#${hash}`);
@@ -266,7 +309,7 @@ export default class Animation {
                 // width: '0%'
                 scale: 0
             })
-            if (!this.device) {
+            if (!this.device.mobile) {
                 gsap.to(prev_p, {
                     fontSize: '0rem'
                 })
@@ -282,7 +325,7 @@ export default class Animation {
             // width: '100%'
             scale: 1
         })
-        if (!this.device) {
+        if (!this.device.mobile) {
             gsap.to(p, {
                 fontSize: '1.1rem'
             })
@@ -302,8 +345,8 @@ export default class Animation {
             //     inline: "nearest"   // Handles horizontal alignment if necessary
             // });
             gsap.to(window, {
-                scrollTo: `#${target}`,
-                duration: 1.8,
+                scrollTo: { autoKill: true, y: `#${target}` },
+                duration: 1.4,
                 ease: "back.out(1)"
 
             })
@@ -454,7 +497,7 @@ export default class Animation {
     setScrollE() {
         const scrollContainer = window;
         const erkElement = document.querySelector('.erk');
-
+        
         // Set initial hidden state
         gsap.set(erkElement, { autoAlpha: 0, y: 20 });
 
@@ -462,7 +505,6 @@ export default class Animation {
         let isVisible = false;
 
         scrollContainer.addEventListener('scroll', () => {
-            // 1. Show the element immediately as soon as scrolling starts
             if (!isVisible) {
                 isVisible = true;
                 gsap.to(erkElement, {
@@ -474,10 +516,8 @@ export default class Animation {
                 });
             }
 
-            // 2. Clear the previous timeout
             clearTimeout(scrollTimeout);
 
-            // 3. Hide the element after scrolling stops for 150ms
             scrollTimeout = setTimeout(() => {
                 isVisible = false;
                 gsap.to(erkElement, {
@@ -492,7 +532,7 @@ export default class Animation {
     }
 
     setHomeScrol(){
-
+        //home-introHeader,
         const homeSec = document.querySelector('#home .page-home');
 
         let homTl = gsap.timeline({
@@ -501,31 +541,62 @@ export default class Animation {
             },
             scrollTrigger: {
                 trigger: homeSec,
-                scrub: 1,
                 toggleActions: "play reverse play reverse",
-                markers: true,
+                start: "center center",
+                end: "bottom 70%",
+                invalidateOnRefresh: true,
+                //markers: true,
                 }
         });
+        const mainHead = homeSec.querySelector(`.heading-cont h1`);
+        const mainHeSplit = SplitText.create( mainHead, { type: "words, chars" });
 
-        homTl.to( homeSec.querySelector(`.heading-cont h1`), {fontSize: `3rem`} )
+        gsap.set( homeSec.querySelector(`.subhead-cont h4`), {opacity: 0})
+        gsap.set( mainHead, {yPercent: 100});
+        gsap.set( mainHeSplit.words, {opacity: 0 });
+       
+        homTl.to( mainHeSplit.words, {yPercent: -100, opacity: 1, stagger: .3, duration: .3})
+        
+        homTl.to( homeSec.querySelectorAll(`.subhead-cont h4`), {yPercent: -100, opacity: 1, duration: 1})
 
 
+        //page-introHeader,
         const pageSec = gsap.utils.toArray('.intro-header');
 
-        let pageTl = gsap.timeline({
-            defaults: {
-                ease: 'none'
-            },
-            scrollTrigger: {
-                trigger: pageSec,
-                scrub: 1,
-                anticipatePin: 1,
-                invalidateOnRefresh: true,
-                
-                }
+        pageSec.forEach( introH => {
+            const pageHe = introH.querySelector('.title-cont h1');
+            const pagePa = introH.querySelector('.title-cont p');
+
+            const pageHeSp = SplitText.create( pageHe, { type: "chars" });
+            const pagPaSp = SplitText.create( pagePa, { type: "words, chars" });
+            
+
+            gsap.set( pageHeSp.chars, {yPercent:100, opacity: 0})
+            gsap.set( pagePa, {opacity:0})
+
+            const pageTl = gsap.timeline({
+                defaults: {
+                    ease: 'none'
+                },
+                scrollTrigger: {
+                    trigger: introH,
+                    invalidateOnRefresh: true,
+                    toggleActions: "play reverse play reverse",
+                    start: "20% center",
+                    end: "bottom 70%",
+                    //markers: true,
+                    
+                    }
+            });    
+            pageTl.to( pageHeSp.chars, { yPercent: 0, opacity: 1, duration: .3, stagger: .04 });
+  
+
+            
+
         });
 
 
+        //constact-timeL,
         const contacSe = document.querySelector('#contact .contacts');
 
         let contTl = gsap.timeline({
@@ -545,13 +616,13 @@ export default class Animation {
         contTl.set(contacSe.querySelectorAll('.swq .socials .icons'), { yPercent: -110, opacity:0,  transformOrigin: `top`, skewY: 10 })    
         contTl.set( contacSe.querySelectorAll('.form-field label'), { x: -10 })
 
-        contTl.to( contacSe, { scaleY: 1, duration: .7 })           
-        contTl.to( contacSe.querySelectorAll('.input-border-wrap, .subject-border-wrap'), { scaleX: 1, stagger: .1, duration: 1 }, `-=.4`)
+        contTl.to( contacSe, { scaleY: 1, duration: .6 })           
+        contTl.to( contacSe.querySelectorAll('.input-border-wrap, .subject-border-wrap'), { scaleX: 1, stagger: .1, duration: 1 }, `-=.5`)
         contTl.to( contacSe.querySelectorAll('.submit-wrapper button'), { yPercent: -100, duration: .4, opacity: 1 }, `-=.4`)
         contTl.to( contacSe.querySelector('.swq p.sp'), { duration: .2, opacity: 1 },  `-=.3`)
-        contTl.to( contacSe.querySelectorAll('.swq .socials .icons'), { yPercent: 0, stagger: .07 , duration: .4, opacity: 1, skewY: 0 },  `-=.3`)
-        contTl.to( contacSe.querySelector('h1.form-title'), { duration: .3, opacity: 1 },  `-=.3`)
-        contTl.to( contacSe.querySelectorAll('.form-field label'), { duration: .3, opacity: 1, x: 0  }, `-=.3`)
+        contTl.to( contacSe.querySelectorAll('.swq .socials .icons'), { yPercent: 0, stagger: .07 , duration: .4, opacity: 1, skewY: 0 },  `-=.4`)
+        contTl.to( contacSe.querySelector('h1.form-title'), { duration: .3, opacity: 1 },  `-=.6`)
+        contTl.to( contacSe.querySelectorAll('.form-field label'), { duration: .3, opacity: 1, xPercent: 0, stagger: .07 }, `-=.3`)
         contTl.to( contacSe.querySelectorAll('input, textarea'), { duration: .3, color: '#ffffff' }, `-=.2`)
 
     }

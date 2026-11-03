@@ -28,8 +28,10 @@
 
       .mask {
         /* line-height: 2.2rem; */
-        height: 100%;
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        position: relative;
+        min-height: 100%;
+        height: 1.5rem;
+        overflow-y: hidden;
 
         h4 {
           font-family: 'Radenes', sans-serif;
@@ -39,10 +41,11 @@
           margin: 0;
           letter-spacing: .09rem;
           color: #d8d8d8;
+          margin: 0;
         }
 
         .primary {
-          position: relative;
+          position: absolute;
         }
 
         .secondary,

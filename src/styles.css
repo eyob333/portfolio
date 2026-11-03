@@ -394,6 +394,11 @@ section {
           width: calc(100vw / 3);
           height: fit-content;
 
+          .M-intro{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
 
           .side-m {
             padding: 30px;
@@ -419,6 +424,7 @@ section {
                 display: flex;
                 justify-content: center;
                 gap: 10px;
+                overflow-y: hidden;
 
                 .icon-cont {
                   svg {

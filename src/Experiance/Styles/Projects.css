@@ -6,6 +6,7 @@
     align-items: center;
 
     .title-cont {
+      overflow-y: hidden;
       width: fit-content;
     }
 
@@ -28,7 +29,7 @@
     .wo-am {
       .wo-spacer {
         svg {
-          width: 280px;
+         
         }
       }
 
@@ -42,12 +43,14 @@
 
         .s-title {
           display: grid;
-          grid-template-columns: 50% 50%;
+
+          grid-template-columns: 60% 40%;
 
           .frac-cont {
             padding: 0 70px;
             padding-top: 20px;
             padding-left: 0;
+
 
             h2 {
               text-align: right;
@@ -63,6 +66,7 @@
               background-color: #ffffff;
               width: 100%;
               height: 1px;
+              transform-origin: left;
             }
           }
 
@@ -86,6 +90,7 @@
             max-height: 100%;
             /* aspect-ratio: 16 / 9; */
             margin: 0;
+            clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
 
 
             video {
@@ -103,6 +108,7 @@
             gap: 50px;
             align-items: center;
             justify-content: end;
+            overflow-x: hidden;
 
             .icons {
               display: flex;

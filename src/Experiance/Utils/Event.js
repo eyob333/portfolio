@@ -184,6 +184,13 @@ export default class Event {
 				ease: "back.out(1)"
 
 			})
+			
+			gsap.to(element, {
+				strokeDasharray: 1000,
+				strokeDashoffset: 1000,
+				duration: 2,
+				ease: "power2.inOut"
+			});
 
 		})
 
@@ -201,6 +208,7 @@ export default class Event {
 		gsap.to(title_c, {
 			scale: 0,
 		})
+
 
 
 		let icos = gsap.utils.toArray('.nav-mask .svg-cont svg')

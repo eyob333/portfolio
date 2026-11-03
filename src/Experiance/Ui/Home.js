@@ -1,7 +1,6 @@
 import '../Styles/Home.css'
 import icons from "../../assets/techStackIcons";
 import { theme } from '../../assets/config';
-import { addDebugC } from '../Utils/Helper';
 import gsap from 'gsap';
 
 export default class Home{
@@ -32,9 +31,9 @@ export default class Home{
                     <div class="subhead-cont">
                         <div class="mask">
                             <h4 class="primary">Software Engnieer</h4>
-                            <h4 class="secondary">Fullstack Developer</h4>
-                            <h4 class="teritiary">Shader Artist</h4> 
-                            <h4 class="fourth">Createive Developer</h4>
+                            <h4 class="secondary m-und">Fullstack Developer</h4>
+                            <h4 class="teritiary m-und">Shader Artist</h4> 
+                            <h4 class="fourth m-und">Createive Developer</h4>
                         </div>
                     </div>
                  </div> 

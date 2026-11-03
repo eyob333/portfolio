@@ -16,14 +16,24 @@ import Lenis from 'lenis';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import ScrollToPlugin from 'gsap/ScrollToPlugin';
-import TextPlugin from 'gsap/TextPlugin';
+import SplitText from 'gsap/SplitText';
+import ScrambleTextPlugin from 'gsap/ScrambleTextPlugin';
 import Draggable from 'gsap/Draggable';
 import InertiaPlugin from 'gsap/InertiaPlugin';
 
 import DrawSVGPlugin from "gsap/DrawSVGPlugin";
 import GSDevTools from "gsap/GSDevTools";
 
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, TextPlugin, Draggable, InertiaPlugin ,DrawSVGPlugin, GSDevTools)
+gsap.registerPlugin( 
+    ScrollTrigger,
+    ScrollToPlugin,  
+    Draggable, 
+    InertiaPlugin,
+    DrawSVGPlugin, 
+    SplitText,
+    ScrambleTextPlugin,
+    GSDevTools
+);
 ScrollTrigger.config({ ignoreMobileResize: true });
 
 
