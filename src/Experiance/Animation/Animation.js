@@ -230,6 +230,8 @@ export default class Animation {
                 ///*
                 if(k){
                     
+                    
+                    
                     const cardTL= gsap.timeline({
                         defaults: {
                             duration: .1,
@@ -244,27 +246,43 @@ export default class Animation {
                             }
                     });
 
+                    if (i == 0 || i == cards.length -1 ){
+                       
+                        const lineS = card.querySelector(`svg .line-s`);
+                        const cirleInS = card.querySelector(`svg .circle-i`);
+                        const cirleOuS = card.querySelector(`svg .circle-o`);
+                        
+                        //console.log(`console conjest`, lineS, cirleInS, cirleOuS);
+                        gsap.set( cirleInS, {yPercent: -300});
+
+                        cardTL.to(cirleInS, {yPercent: 0, duration: 3});
+
+                        return;
+                        
+                    }
+
                     //console.log(`coskdfj`, card)
                     const lineK = card.querySelector(`.s-line`);
                     const image = card.querySelector(`.s-image`);
                     const number = card.querySelector(`.s-index p`);
                     const titl = card.querySelector(`.s-name h2`);
                     const icon = card.querySelectorAll(`.s-icon .icon-cont`);
-                    if (!titl) return 0;
+
+
                     console.log(`fook`, lineK)
                    
                     gsap.set(lineK, {scaleX:0, transformOrigin: `left`});
                     gsap.set(titl, { opacity: 0, yPercent: -30 });
                     gsap.set(image, { opacity: 0, yPercent: 100 });
-                    gsap.set(icon, { yPercent: 100, scaleX: .7 });
+                    gsap.set(icon, { yPercent: 100, scaleX: .4});
                     gsap.set(number, { opacity: 0, yPercent: -30 });
 
                     cardTL.to(image, {opacity:1, yPercent: 0, duration: .4})
                     cardTL.to(lineK, { scaleX: 1, duration: .8, ease: "power2.out" });
-                    cardTL.to(icon, { yPercent: 0, scaleX: 1, duration: .3 });
-                    cardTL.to(titl, { opacity: 1, yPercent: 0, duration: .4, ease: "power2.out" });
-                    cardTL.to(number, { opacity: 1, yPercent: 0, duration: .4, ease: "power2.out" });
-                    
+                    cardTL.to(icon, { yPercent: 0, scaleX: 1, stagger: .07, duration: .3 });
+   
+                    cardTL.to(titl, { opacity: 1, yPercent: 0, duration: .4, ease: "power2.out" }, "<");
+                    cardTL.to(number, { opacity: 1, yPercent: 0, duration: .4, ease: "power2.out" }, "<");
                     cardTL.to( titl, {  duration: 2, scrambleText:{ text: titl.innerText, chars: "10", speed: .01 }})       
 
 

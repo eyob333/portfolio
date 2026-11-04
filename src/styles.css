@@ -389,7 +389,12 @@ section {
   .slide-wrapper {
 
     .slider {
+      
+
       .sliders {
+        .slider-cont.io-expansion{
+          width: 100vw;
+        }
         .slider-cont {
           width: calc(100vw / 3);
           height: fit-content;
@@ -398,6 +403,7 @@ section {
             display: flex;
             align-items: center;
             justify-content: center;
+
           }
 
           .side-m {
@@ -475,6 +481,7 @@ section {
           }
         }
       }
+
     }
   }
 }

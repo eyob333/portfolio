@@ -50,13 +50,13 @@ export default class Labs{
         let element = document.querySelector('div.slider-lab .sliders');
         console.log("foo end",this.labC.length)
         let injectElement = this.labC.map( (d,i) => {
-        return `<div class="slider-cont sli-${i}"> 
+        return `<div class="slider-cont sli-${i} ${i == 0 || i == this.labC.length -1 ? 'io-expansion':''}"> 
             ${i == 0 ? `
                 <div class="M-intro forward">
                     <svg width="126" height="554" viewBox="0 0 126 554" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="63" cy="491" r="36" fill="white"/>
-                        <circle cx="63" cy="491" r="62.5" stroke="white"/>
-                        <path d="M61 0H65V438H61V0Z" fill="white"/>
+                        <circle class="circle-i" cx="63" cy="491" r="36" fill="white"/>
+                        <circle class="circle-o" cx="63" cy="491" r="62.5" stroke="white"/>
+                        <path class="line-s" d="M61 0H65V438H61V0Z" fill="white"/>
                     </svg>
 
                 </div> `: "" }
@@ -92,9 +92,9 @@ export default class Labs{
             ${i == this.labC.length -1 ? `
                 <div class="M-intro forward">
                     <svg width="126" height="554" viewBox="0 0 126 554" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="63" cy="63.0001" r="36" transform="rotate(-180 63 63.0001)" fill="white"/>
-                        <circle cx="63" cy="63" r="62.5" transform="rotate(-180 63 63)" stroke="white"/>
-                        <path d="M61.3033 553.975H57.3033L57.3033 115.975H61.3033L61.3033 553.975Z" fill="white"/>
+                        <circle class="circle-i" cx="63" cy="63.0001" r="36" transform="rotate(-180 63 63.0001)" fill="white"/>
+                        <circle class="circle-o" cx="63" cy="63" r="62.5" transform="rotate(-180 63 63)" stroke="white"/>
+                        <path class="line-s" d="M61.3033 553.975H57.3033L57.3033 115.975H61.3033L61.3033 553.975Z" fill="white"/>
                     </svg>
                 </div>`: ""} 
         </div>`
