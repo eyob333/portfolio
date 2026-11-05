@@ -7,7 +7,7 @@ const loadInfo = document.querySelector('.loder-info');
 
 
 export default class LoadingManager{
-    constructor(overlay){
+    constructor(overlay, goHash){
         this.overlay = overlay
         this.overlayMaterial = this.overlay.material
         let hasStarted = false;
@@ -31,7 +31,20 @@ export default class LoadingManager{
                 this.loOutroTl.to( loadSvg, { opacity: 0, display: `none` })
                 this.loOutroTl.to( loadInfo, { x: `310px`, display: `none` }) 
                 this.loOutroTl.to( '.loader-cont', { display: `none`, duration: .01 })                 
-                this.loOutroTl.to( this.overlayMaterial.uniforms.uAlpha, { duration: 5, value: .0, delay: 1, ease: 'expo.out', onComplete: () =>{ this.overlay.destroy(); gsap.to('canvas', {zIndex: 2} ) } }) 
+                this.loOutroTl.to( this.overlayMaterial.uniforms.uAlpha, { duration: 3, value: .0, delay: 1, ease: 'expo.out', onComplete: () =>{ 
+                    this.overlay.destroy(); gsap.to('canvas', {zIndex: 2} ); 
+
+
+                    if(goHash){
+                        console.log(`fooo hASH:`, goHash);
+
+                        gsap.to(window, {
+                            duration: 1.,
+                            scrollTo: { autoKill: true, y: `${goHash}` },
+                        } )
+                    }
+
+                } }); 
 
 
 

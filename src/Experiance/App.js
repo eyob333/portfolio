@@ -54,26 +54,28 @@ export default class App{
         window.experiance = this
 
         this.initLenis()
+        
+        this.goHash = window.location.hash !== '#debug' || window.location.hash === '' ? window.location.hash : false;
+        this.goHash = this.goHash === '#home' ? false : this.goHash;
 
         this.canvas = canvas
         this.sizes  = new Sizes()            
         this.time = new Time()
         this.scene = new THREE.Scene()
         this.Overlay = new Overlay(this.scene)
-        this.LoadingManager = new LoadingManager( this.Overlay);
+        this.LoadingManager = new LoadingManager( this.Overlay, this.goHash );
         this.resources = new Resources( sources, this.LoadingManager.loadingManager)          
         this.camera = new Camera(this)
         this.renderer = new Renderer()
         this.world = new World()
         this.debug = new Debug
 
+
         gsap.ticker.lagSmoothing(0);
         
         
-
         this.resources.on('ready', () =>{
                 setTimeout( () =>{
-
                     this.animation = new Animation()
                     this.lenis.resize();
                     document.body.style.overflow = '';

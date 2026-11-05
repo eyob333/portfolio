@@ -10,7 +10,7 @@ export default class Event {
 	constructor() {
 		this.app = new App();
 		this.device = this.app.sizes.device
-
+		
 
 		if (!this.device.mobile || this.device.tab){
 			console.log(this.device)

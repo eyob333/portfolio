@@ -53,11 +53,12 @@ export default class Labs{
         return `<div class="slider-cont sli-${i} ${i == 0 || i == this.labC.length -1 ? 'io-expansion':''}"> 
             ${i == 0 ? `
                 <div class="M-intro forward">
-                    <svg width="126" height="554" viewBox="0 0 126 554" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle class="circle-i" cx="63" cy="491" r="36" fill="white"/>
-                        <circle class="circle-o" cx="63" cy="491" r="62.5" stroke="white"/>
-                        <path class="line-s" d="M61 0H65V438H61V0Z" fill="white"/>
+                    <svg width="75" height="505" viewBox="0 0 75 505" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle  class="circle-i" cx="37.5" cy="46.5" r="20.5" fill="white"/>
+                        <path class="circle-o" d="M74.5 467.5C74.5 487.935 57.9345 504.5 37.5 504.5C17.0655 504.5 0.5 487.935 0.5 467.5C0.5 447.065 17.0655 430.5 37.5 430.5C57.9345 430.5 74.5 447.065 74.5 467.5Z" stroke="white"/>
+                        <path  class="line-s" d="M38 438V0" stroke-width="5" stroke="white"/>
                     </svg>
+
 
                 </div> `: "" }
             ${ i !==0 && i < this.labC.length -1 ? `

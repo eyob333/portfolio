@@ -2,10 +2,8 @@ import * as THREE from 'three'
 import Lenis from 'lenis'
 import gsap from "gsap";
 
-import ScrollTrigger from 'gsap/ScrollTrigger';
 import SplitText from 'gsap/SplitText';
-import ScrambleTextPlugin from 'gsap/ScrambleTextPlugin';
-
+import ScrollTrigger from 'gsap/ScrollTrigger';
 
 import App from "../App";
 import Ui from '../Ui/Ui';
@@ -155,7 +153,7 @@ export default class Animation {
                     snap: {
                         snapTo: (progress) => gsap.utils.snap(snapPoints, progress), // Snaps relative to total panels, 
                         duration: { min: 0.15, max: 0.4 }, // Faster snap recovery
-                        delay: 0.15,                       // Brief delay before snapping engages
+                        delay: 0.1,                       // Brief delay before snapping engages
                         ease: 'power1.inOut',
                         //markers: false
                         
@@ -242,7 +240,7 @@ export default class Animation {
                                 start: "left 85%",
                                 end: "right 25%", 
                                 toggleActions: "play reverse play reverse",
-                                markers: true
+                                //markers: true
                             }
                     });
 
@@ -253,9 +251,14 @@ export default class Animation {
                         const cirleOuS = card.querySelector(`svg .circle-o`);
                         
                         //console.log(`console conjest`, lineS, cirleInS, cirleOuS);
-                        gsap.set( cirleInS, {yPercent: -300});
+                        gsap.set( cirleInS, {y: 0});
+                        gsap.set( lineS, { scaleY: .04 });
+                        gsap.set( cirleOuS, { scale: .0, transformOrigin: "center" });
 
-                        cardTL.to(cirleInS, {yPercent: 0, duration: 3});
+                        cardTL.to(cirleInS, {y: 422, duration: 2});
+                        cardTL.to(lineS, { scaleY: 1, duration: 2 }, "<");
+                        cardTL.to(lineS, { drawSVG: false, duration: 1 }, "-=1.3");
+                        cardTL.to(cirleOuS, {scale: 1, duration: .3 }, "-=.2");
 
                         return;
                         
