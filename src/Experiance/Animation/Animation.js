@@ -300,8 +300,7 @@ export default class Animation {
     }
 
 
-
-
+    /*
 
     nav_change(sp, p1, pa, to_view, hash) {
         let spar = sp;
@@ -317,39 +316,29 @@ export default class Animation {
 
 
         history.replaceState(null, "", `#${hash}`);
-        // console.log("foo hash", hash)
+        console.log("foo state", par, spar)
 
+        const navTl = gsap.timeline() 
 
         if (prev_p && prev_par && prev_spar) {
-            gsap.to(prev_spar, {
-                width: `${pi}px`,
-                height: `${pi}px`,
-                transformOrigin: 'bottom'
-            })
-            gsap.to(prev_par, {
-                // width: '0%'
-                scale: 0
-            })
+
+            navTl.to(prev_spar, { width: `${pi}px`, height: `${pi}px`, transformOrigin: 'bottom' })
+            navTl.to(prev_spar, { y: 21})
+            navTl.to(prev_par, { scale: 0 })
             if (!this.device.mobile) {
-                gsap.to(prev_p, {
-                    fontSize: '0rem'
-                })
+                navTl.to( prev_p, { fontSize: '0rem', opacity: 0 })
             }
 
         }
-
-        gsap.to(spar, {
-            width: `${pk}px`,
-            height: `${pk}px`
-        })
-        gsap.to(par, {
-            // width: '100%'
-            scale: 1
-        })
+        //0.91
+        navTl.to(spar, { width: `${pk}px`, height: `${pk}px`})
+        let ks = gsap.getProperty(spar, "y", "px");
+        console.log(`FOO Y`,ks);
+        navTl.to(spar, { y: 0.91})
+       
+        navTl.to(par, { scale: 1 })
         if (!this.device.mobile) {
-            gsap.to(p, {
-                fontSize: '1.1rem'
-            })
+            navTl.to(p, { fontSize: '0rem' })
         }
 
 
@@ -360,11 +349,6 @@ export default class Animation {
 
         if (to_view) {
             let target = to_view.target;
-            // target.scrollIntoView({
-            //     behavior: "smooth", // Options: "smooth" (animated) or "auto" (instant snap)
-            //     block: "start",     // Aligns the top of the div to the top of the window
-            //     inline: "nearest"   // Handles horizontal alignment if necessary
-            // });
             gsap.to(window, {
                 scrollTo: { autoKill: true, y: `#${target}` },
                 duration: 1.4,
@@ -374,6 +358,45 @@ export default class Animation {
 
         }
     }
+    */
+    nav_change(spar, p, par, to_view, hash) {
+        const mobile = this.device.mobile;
+        const pk = mobile ? 35 : 50;
+        const pi = mobile ? 25 : 30;
+        const prev = this.nav.prev;
+
+        if (prev?.spar === spar) return; // nothing changed
+
+        history.replaceState(null, "", `#${hash}`);
+
+        this.nav.tl?.kill();
+        const tl = (this.nav.tl = gsap.timeline({
+            defaults: { duration: 0.35, ease: "power2.out", overwrite: "auto" },
+        }));
+
+        if (prev) {
+            tl
+                .to(prev.spar, { width: pi, height: pi, y: 21, transformOrigin: "bottom" })
+                .to(prev.par, { scale: 0 }, 0);
+            if (!mobile) tl.to(prev.p, { fontSize: 0, opacity: 0 });
+        }
+
+        tl 
+            .to(spar, { width: pk, height: pk, y: 0 })
+            .to(par, { scale: 1 }, 0);
+        if (!mobile) tl.to(p, { fontSize: "1rem", opacity: 1 });
+
+        this.nav.prev = { spar, p, par };
+
+        if (to_view) {
+            gsap.to(window, {
+            scrollTo: `#${to_view.target}`,
+            duration: 1.4,
+            ease: "back.out(1)",
+            overwrite: true,
+            });
+        }
+     }
 
 
     nav_select() {
@@ -387,12 +410,8 @@ export default class Animation {
                 let p = par.children[0]
 
                 let k = e.target.classList[1].split('-')[0]
-                // console.log("rru",k)
-                // this.app.event.hash = k
-                let to_view = {
-                    target: k
-                }
 
+                let to_view = {  target: k }
                 this.nav_change(spar, p, par, to_view, k);
 
             })
