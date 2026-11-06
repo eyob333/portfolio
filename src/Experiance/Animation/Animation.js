@@ -227,9 +227,7 @@ export default class Animation {
                  
                 ///*
                 if(k){
-                    
-                    
-                    
+                                                            
                     const cardTL= gsap.timeline({
                         defaults: {
                             duration: .1,
@@ -255,10 +253,11 @@ export default class Animation {
                         gsap.set( lineS, { scaleY: .04 });
                         gsap.set( cirleOuS, { scale: .0, transformOrigin: "center" });
 
-                        cardTL.to(cirleInS, {y: 422, duration: 2});
-                        cardTL.to(lineS, { scaleY: 1, duration: 2 }, "<");
-                        cardTL.to(lineS, { drawSVG: false, duration: 1 }, "-=1.3");
-                        cardTL.to(cirleOuS, {scale: 1, duration: .3 }, "-=.2");
+                        cardTL
+                            .to(cirleInS, {y: 422, duration: 2})
+                            .to(lineS, { scaleY: 1, duration: 2 }, "<")
+                            .to(lineS, { drawSVG: false, duration: 1 }, "-=1.3")
+                            .to(cirleOuS, {scale: 1, duration: .3 }, "-=.2");
 
                         return;
                         
@@ -382,7 +381,7 @@ export default class Animation {
         }
 
         tl 
-            .to(spar, { width: pk, height: pk, y: 0 })
+            .to(spar, { width: pk, height: pk, y: 5 })
             .to(par, { scale: 1 }, 0);
         if (!mobile) tl.to(p, { fontSize: "1rem", opacity: 1 });
 
@@ -390,10 +389,10 @@ export default class Animation {
 
         if (to_view) {
             gsap.to(window, {
-            scrollTo: `#${to_view.target}`,
-            duration: 1.4,
-            ease: "back.out(1)",
-            overwrite: true,
+                scrollTo: `#${to_view.target}`,
+                duration: 1.4,
+                ease: "back.out(1)",
+                overwrite: true,
             });
         }
      }

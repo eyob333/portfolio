@@ -10,7 +10,9 @@ export default class LoadingManager{
     constructor(overlay, goHash){
         this.overlay = overlay
         this.overlayMaterial = this.overlay.material
+
         let hasStarted = false;
+        let indexL;  
 
         this.loTimeL = gsap.timeline({
             id: "loader",
@@ -47,7 +49,6 @@ export default class LoadingManager{
                 } }); 
 
 
-
                 this.isReady = true;
 
                 
@@ -65,7 +66,7 @@ export default class LoadingManager{
 
                 // onProgress 
                 const currentItem = Math.round( (itemLoaded / itemTotal)  * 4); 
-
+                
                 switch (currentItem) {
                     case 0:
                         this.timeL(`parsing model`);

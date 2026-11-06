@@ -5,6 +5,7 @@ import Draggable from 'gsap/Draggable';
 import App from '../App';
 
 import { trackXHover } from './Helper';
+import Nav from '../Ui/Nav';
 
 export default class Event {
 	constructor() {
@@ -17,7 +18,7 @@ export default class Event {
 			this.setCursor();		
 	
 		}
-
+		this.setOnStart();
 		this.setEvents();
 		this.setReDirect();
 		this.setTheme();
@@ -62,9 +63,7 @@ export default class Event {
 		//mouse leave
 		document.body.addEventListener('mouseleave', (e) => {
 			console.log('Mouse left the screen/viewport!');
-			gsap.set(cursor, {
-				visibility: 'hidden',
-			});
+			gsap.set(cursor, { visibility: 'hidden' });
 
 		});
 
@@ -86,7 +85,7 @@ export default class Event {
 				width: targetRect.width,
 				height: targetRect.height,
 				margin: 0,
-				zIndex: 9999
+				zIndex: 9
 			});
 		}
 
@@ -157,94 +156,32 @@ export default class Event {
 
 	setEvents() {
 		// main logo goto
-		let element = document.querySelector('.main-icon svg');
 		const homC = document.querySelector('#nav .main-icon .icon-mask')
-			const navK = document.querySelectorAll('#nav .util .icons');
-			let direc = 1;
+		const navK = document.querySelectorAll('#nav .util .icons');
+		let direc = 1;
 		
 		homC.addEventListener('click', () => {
 			let val = direc == 1 ? -200: 0; 
 
-			gsap.to(navK, {
-				yPercent: val,
-				duration: .5,
-				stagger: .1,
+			gsap.to(navK, { yPercent: val, duration: .5, stagger: .1, overwrite: true,
 				onComplete: () =>{
-					if( direc == 1){
-						direc = 0
-					}else{
-						direc = 1
-					}
-					console.log(`foo direct`,direc)
+					if( direc == 1){ direc = 0}
+					else{ direc = 1 }
 				}
 			})
-			gsap.to(window, {
-				scrollTo: `#home`,
-				duration: 1.8,
-				ease: "back.out(1)"
-
-			})
+			gsap.to(window, { scrollTo: `#home`, duration: 1.2, ease: "back.out(1)", overwrite: true })
 			
-			gsap.to(element, {
-				strokeDasharray: 1000,
-				strokeDashoffset: 1000,
-				duration: 2,
-				ease: "power2.inOut"
-			});
-
 		})
 
-		gsap.to(element, {
-			y: 21
-		})
-
-		// nav goto
-		const nav_y = this.device.mobile ?  11.2 : 21;
+	
 		const nav = document.querySelector(`#nav .nav`)
-		
-
-
-		let title_c = gsap.utils.toArray('.nav-mask .title-cont')
-		gsap.to(title_c, {
-			scale: 0,
-		})
-
-
-
-		let icos = gsap.utils.toArray('.nav-mask .svg-cont svg')
-		gsap.to(icos, {
-			y: nav_y,
-		})
-
-
-
-		///*
-		//const icons = document.querySelector(`.`);
-		//trackXHover()
-		const targetElement = document.querySelector('.slider-mod .side-m');
-		console.log(`foo slide m`, targetElement)
-
-		trackXHover(targetElement, (normalizedX) => {
-		// Triggers ONLY when hovering inside .my-card
-		let i = targetElement.querySelector(`img`)
-		i.src = `/images/${normalizedX+1}.webp`;
-		console.log("Accurate Normalized X:", normalizedX); 
-		
-		// Example: Control GSAP animation progress based on mouse hover position
-		// myGsapTimeline.progress(normalizedX);
-		}, () =>{
-			console.log(`just exited`)
-		});
-
-
-		const navI = document.querySelector('#nav .nav');
 		const list = nav.querySelector('.nav-item');
 		const items = gsap.utils.toArray('.nav .nav-mask');
 
 		let points = [];   // list y-positions that put each item at the centre of .nav
 
 		function measure() {
-		const navH = navI.clientHeight;
+		const navH = nav.clientHeight;
 		const listTop = list.getBoundingClientRect().top;
 		const y = gsap.getProperty(list, 'y');
 
@@ -261,12 +198,12 @@ export default class Event {
 		gsap.set(list, { y: points[0] });          // start with the first item centred
 
 		const [drag] = Draggable.create(list, {
-		type: 'y',
-		inertia: true,
-		bounds: { minY: Math.min(...points), maxY: Math.max(...points) },
-		snap: {
-			y: (value) => gsap.utils.snap(points, value),   // nearest centred position
-		},
+			type: 'y',
+			inertia: true,
+			bounds: { minY: Math.min(...points), maxY: Math.max(...points) },
+			snap: {
+				y: (value) => gsap.utils.snap(points, value),   // nearest centred position
+			},
 		onThrowComplete() {
 			const i = points.reduce(
 			(best, p, idx) => (Math.abs(p - this.y) < Math.abs(points[best] - this.y) ? idx : best), 0);
@@ -285,11 +222,40 @@ export default class Event {
 		let lastW = innerWidth;
 		addEventListener('resize', () => { if (innerWidth !== lastW) { lastW = innerWidth; remeasure(); } });
 
-
-
 	}
 
 
+	setOnStart(){
+		// main logo
+		let element = document.querySelector('.main-icon svg');
+		gsap.to(element, { y: 21, })
+
+		// nav goto
+		const nav_y = this.device.mobile ?  11.2 : 21;
+	
+		let title_c = gsap.utils.toArray('.nav-mask .title-cont')
+		gsap.set(title_c, { scale: 0 })
+
+		let icos = gsap.utils.toArray('.nav-mask .svg-cont svg')
+		gsap.set(icos, { y: nav_y,})
+
+	}
+
+	setImages(){
+		
+		const targetElement = document.querySelector('.slider-mod .side-m');
+		//console.log(`foo slide m`, targetElement)
+
+		trackXHover(targetElement, (normalizedX) => {
+			// Triggers ONLY when hovering inside .my-card
+			let i = targetElement.querySelector(`img`)
+			i.src = `/images/${normalizedX+1}.webp`;
+			console.log("Accurate Normalized X:", normalizedX); 
+			
+			// Example: Control GSAP animation progress based on mouse hover position
+			// myGsapTimeline.progress(normalizedX);
+		}, () =>{ console.log(`just exited`) });
+	}
 
 
 }
