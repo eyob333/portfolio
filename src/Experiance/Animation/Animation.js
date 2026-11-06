@@ -1,5 +1,4 @@
 import * as THREE from 'three'
-import Lenis from 'lenis'
 import gsap from "gsap";
 
 import SplitText from 'gsap/SplitText';

@@ -1,10 +1,12 @@
 import * as THREE from 'three'
 import gsap from "gsap";
 import Draggable from 'gsap/Draggable';
+import Lenis from 'lenis';
 
 import App from '../App';
 
 import { trackXHover } from './Helper';
+
 import Nav from '../Ui/Nav';
 
 export default class Event {
@@ -157,18 +159,8 @@ export default class Event {
 	setEvents() {
 		// main logo goto
 		const homC = document.querySelector('#nav .main-icon .icon-mask')
-		const navK = document.querySelectorAll('#nav .util .icons');
-		let direc = 1;
 		
 		homC.addEventListener('click', () => {
-			let val = direc == 1 ? -200: 0; 
-
-			gsap.to(navK, { yPercent: val, duration: .5, stagger: .1, overwrite: true,
-				onComplete: () =>{
-					if( direc == 1){ direc = 0}
-					else{ direc = 1 }
-				}
-			})
 			gsap.to(window, { scrollTo: `#home`, duration: 1.2, ease: "back.out(1)", overwrite: true })
 			
 		})
@@ -221,6 +213,35 @@ export default class Event {
 		}
 		let lastW = innerWidth;
 		addEventListener('resize', () => { if (innerWidth !== lastW) { lastW = innerWidth; remeasure(); } });
+
+
+		//sdf
+
+		const navK = document.querySelectorAll('#nav .util .icons');
+
+		const STOP_DELAY = 500; // longer than your snap pauses
+
+		let stopTimer, idleCall;
+		let scrolling = false;
+
+		this.app.lenis.on("scroll", ({ velocity }) => {
+		clearTimeout(stopTimer);
+		idleCall?.kill();
+
+		if (!scrolling) {
+			scrolling = true;
+			gsap.to(navK, { yPercent: -200, duration: 0.8, ease: "power2.out", overwrite: true });
+		}
+
+		stopTimer = setTimeout(() => {
+			scrolling = false;
+			gsap.to(navK, { yPercent: 0, duration: 0.4, ease: "power2.out", overwrite: true });
+			idleCall = gsap.delayedCall(3, () =>
+				gsap.to(navK, { yPercent: -200, delay: 1.7, duration: 0.6, ease: "power2.out", stagger: .07, overwrite: true })
+			);
+		}, STOP_DELAY);
+		});
+
 
 	}
 
