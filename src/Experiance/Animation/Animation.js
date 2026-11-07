@@ -363,37 +363,24 @@ export default class Animation {
         const pi = mobile ? 25 : 30;
         const prev = this.nav.prev;
 
-        if (prev?.spar === spar) return; // nothing changed
-
         history.replaceState(null, "", `#${hash}`);
 
-        this.nav.tl?.kill();
-        const tl = (this.nav.tl = gsap.timeline({
-            defaults: { duration: 0.35, ease: "power2.out", overwrite: "auto" },
-        }));
 
         if (prev) {
-            tl
-                .to(prev.spar, { width: pi, height: pi, y: 21, transformOrigin: "bottom" })
-                .to(prev.par, { scale: 0 }, 0);
-            if (!mobile) tl.to(prev.p, { fontSize: 0, opacity: 0 });
+            gsap.to(prev.spar, { width: pi, height: pi, transformOrigin: "bottom", duration: .6 });
+            gsap.to(prev.spar, { y: 21, duration: .3, delay: .6});
+            gsap.to(prev.par, { scale: 0, delay: .9 });
+            if (!mobile) gsap.to(prev.p, { fontSize: 0, opacity: 0 });
         }
 
-        tl 
-            .to(spar, { width: pk, height: pk, y: 5 })
-            .to(par, { scale: 1 }, 0);
-        if (!mobile) tl.to(p, { fontSize: "1rem", opacity: 1 });
+        gsap.to(spar, { width: pk, height: pk, duration: .6 });
+        gsap.to(spar, { y: 5, delay: .6, duration: .3 });
+        gsap.to(par, { scale: 1, delay: .9 });
 
+        if (!mobile) gsap.to(p, { fontSize: "1rem", opacity: 1 });
+        
         this.nav.prev = { spar, p, par };
-
-        if (to_view) {
-            gsap.to(window, {
-                scrollTo: `#${to_view.target}`,
-                duration: 1.4,
-                ease: "back.out(1)",
-                overwrite: true,
-            });
-        }
+        
      }
 
 
@@ -410,8 +397,16 @@ export default class Animation {
                 let k = e.target.classList[1].split('-')[0]
 
                 let to_view = {  target: k }
-                this.nav_change(spar, p, par, to_view, k);
-
+                console.log(`fooo destnation =>:`, spar, p, par)
+                //this.nav_change(spar, p, par, to_view, k);
+                if (to_view) {
+                    gsap.to(window, {
+                        scrollTo: `#${to_view.target}`,
+                        duration: 1.4,
+                        ease: "back.out(1)",
+                        overwrite: true,
+                    });
+                }
             })
         });
 

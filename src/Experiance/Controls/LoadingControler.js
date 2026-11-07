@@ -66,28 +66,30 @@ export default class LoadingManager{
 
                 // onProgress 
                 const currentItem = Math.round( (itemLoaded / itemTotal)  * 4); 
-                
-                switch (currentItem) {
-                    case 0:
-                        this.timeL(`parsing model`);
-                        break;
-                    case 1:
-                        this.timeL(`loading texture, model...`);
-                        break;
-                    case 2:
-                        this.timeL(`loading assets... `);
-                        break;
-                    case 3:
-                        this.timeL(`rasterizing font`);
-                        break;
-                    case 4:
-                        this.timeL(`finalizing scene`);
-                        break;      
 
-                    default:
-                        break;
+                if( currentItem !== indexL ){
+                    switch (currentItem) {
+                        case 0:
+                            this.timeL(`parsing model`);
+                            break;
+                        case 1:
+                            this.timeL(`loading texture, model...`);
+                            break;
+                        case 2:
+                            this.timeL(`loading assets... `);
+                            break;
+                        case 3:
+                            this.timeL(`rasterizing font`);
+                            break;
+                        case 4:
+                            this.timeL(`finalizing scene`);
+                            break;      
+                        default:
+                            break;
+                    }
+                    console.log( `ffoooosdk::`,indexL)
+                    indexL = currentItem;
                 }
-
                   
             }
         );
